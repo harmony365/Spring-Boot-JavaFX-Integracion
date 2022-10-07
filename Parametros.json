@@ -1,0 +1,12 @@
+{
+    "WsdlUrl"          : "https://sede.gobiernodecanarias.org/tributos/middlewarecaut/services/servicioKiosko?wsdl",
+    "WsdlUser"         : "kiosko",
+    "WsdlPassword"     : "vbfCa7qfOhXisEt1y0QbAA==",
+    "QRPassDecoder"    : "Grecasa2022",
+    "QRCODEDEMO"       : "DER_qrcode_temp_new2.png",
+    "PasaporteDemo"    : "P<GRPMARK<FORD<<MARK<<<<<<<<<<<<<<<<<<<<<<<<44303145Q<GRP8507099F220514218025084<<<<<<88",
+    "DniNifNieTieDemo" : "IDESPBLT104297855312970V<<<<<<6912233M3003024ESP<<<<<<<<<<<9RAMOS<ZABALA<<MOISES<JESUS<<<<",
+    "AppDemo"          : true
+}
+    
+

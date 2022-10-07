@@ -42,6 +42,10 @@ public class IndexController implements Initializable {
 
     @FXML
     private Label lblTitulo;
+    @FXML
+    private Label WsdlResponse;
+    @FXML
+    private Label WsdlTimeStamp;
 
 
     @FXML
@@ -56,7 +60,7 @@ public class IndexController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        lblTitulo.setText(titulo);
+        //lblTitulo.setText(titulo);
         comboClientes.setItems(FXCollections.observableArrayList(clienteRep.findAll()));
 
         txtTelefono.getProperties().put(VK_TYPE, VK_TYPE_NUMERIC);
@@ -86,7 +90,11 @@ public class IndexController implements Initializable {
         validarRemesaDerResponse  = KioskoServiceClient.getInstance().validarRemesa(DummyData.getExampleKO());
         KioskoServiceClientUtils.printResponse(validarRemesaDerResponse);
 
-        validarRemesaDerResponse = KioskoServiceClient.getInstance().validarRemesa(DummyData.getExample());
-        KioskoServiceClientUtils.printResponse(validarRemesaDerResponse);
+        //validarRemesaDerResponse = KioskoServiceClient.getInstance().validarRemesa(DummyData.getExample());
+        //KioskoServiceClientUtils.printResponse(validarRemesaDerResponse);
+
+        WsdlTimeStamp.setText(validarRemesaDerResponse.getFechaEstado().toString());
+        WsdlResponse.setText(validarRemesaDerResponse.getEstado());
+
     }
 }
