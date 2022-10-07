@@ -39,7 +39,6 @@ import javafx.animation.Timeline;
 import javafx.util.Callback;
 import javafx.util.Duration;
 
-import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.ParametrosModel;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.services.ComputerIdentifier;
 
 import org.json.simple.JSONArray;
@@ -57,7 +56,6 @@ public class SpringJavaFxIntegrationApplication extends Application {
     private static Scene scene;
     String  Teclas="";
     public static JSONObject parametros;
-    public static ParametrosModel parametrosModel = new ParametrosModel();
     public static Object ob;
 
     public LocalDate date = LocalDate.now();
@@ -68,7 +66,7 @@ public class SpringJavaFxIntegrationApplication extends Application {
     Timeline BackGroundWonder = new Timeline(new KeyFrame(Duration.seconds(30), new EventHandler<ActionEvent>() { 
         @Override public void handle(ActionEvent event) { 
 
-            GetParametros();
+            //GetParametros();
             System.out.println("this is called every 30 seconds on UI thread"); 
 
             /*
@@ -102,18 +100,12 @@ public class SpringJavaFxIntegrationApplication extends Application {
         
         System.out.println("App: start");
 
-        //GetParametros();
-
-        //String identifier = ComputerIdentifier.generateLicenseKey();
-        String cpuUUI = parametrosModel.getKIOSKOID();
-        //System.out.println(identifier);
-
         final ObservableList<Image> icons = primaryStage.getIcons();
         icons.add(new Image("/icons/favicon-128x128x32.png"));
 
         Locale locale = Locale.getDefault();
 
-        primaryStage.setTitle("Agencia Tributaria Canarias ( " + cpuUUI + " )");
+        primaryStage.setTitle("Agencia Tributaria Canarias ( " + "UUID" + " )");
         
         scene = new Scene(loadFXML("index",locale), 640, 480, false, SceneAntialiasing.BALANCED);
         //scene.getStylesheets().add("../../../resources/com/diva/styles.css");
@@ -230,48 +222,11 @@ public class SpringJavaFxIntegrationApplication extends Application {
 
 		ResourceBundle rb = ResourceBundle.getBundle("i18n/idioma", locale);
 
-		FXMLLoader fxmlLoader = new FXMLLoader(SpringJavaFxIntegrationApplication.class.getResource(fxml + ".fxml"),rb);
+		FXMLLoader fxmlLoader = new FXMLLoader(SpringJavaFxIntegrationApplication.class.getResource( fxml + ".fxml"),rb);
 		fxmlLoader.setControllerFactory(applicationContext::getBean);
 		return fxmlLoader.load();
 		
 	}
-		
-    public void GetParametros(){
-        // parsing file "Parametros.json"
-        //Object ob;
-        try {
-            ob = new JSONParser().parse(new FileReader("Parametros.json"));
-            parametros = (JSONObject) ob;
-            parametrosModel.ParametrosModel(
-                (String) parametros.get("WsdlUrl"),
-                (String) parametros.get("WsdlUser"),
-                (String) parametros.get("WsdlPassword"),
-                (String) parametros.get("QRPassDecoder"),
-                (String) parametros.get("QRCODEDEMO"),
-                (String) ComputerIdentifier.cpuUUI(),
-                (String) parametros.get("PasaporteDemo"),
-                (String) parametros.get("DniNifNieTieDemo"),
-                (Boolean) parametros.get("AppDemo"),
-                (String) date.format(formatter)
-            );
-
-
-        } catch (IOException | ParseException e) {
-            //TODO Auto-generated catch block
-            e.printStackTrace();
-
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setTitle("Error");
-            alert.setContentText(e.getLocalizedMessage());
-            alert.showAndWait();    
-        }
-
-        System.out.println("Parametros: " + parametrosModel.toString() + "\n");
-
-    }
-
-
 
 	@Override
     public void stop() {

@@ -1,26 +1,38 @@
 package com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model;
 
-import org.hibernate.annotations.GenericGenerator;
-
-import javax.persistence.*;
 import java.io.Serializable;
-import java.util.UUID;
 
-@Entity
-@Table(name = "Cliente")
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+
+@Entity(name ="client")
 public class Cliente implements Serializable {
-    @Id @GeneratedValue(generator="system-uuid")
-    @GenericGenerator(name="system-uuid", strategy = "uuid")
-    private String id = UUID.randomUUID().toString().replace("-","");
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)  
+    @Column(name = "id")
+    private Integer id;
+
+    @Column(name = "name")
     private String nombre;
+
+    @Column(name = "surname")
     private String apellido;
+    
+    @Column(name = "phone")
     private String telefono;
 
-    public String getId() {
+    public Cliente(){}
+
+    public Integer getNombgetId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

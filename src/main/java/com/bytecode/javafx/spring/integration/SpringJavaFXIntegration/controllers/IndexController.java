@@ -2,7 +2,8 @@ package com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.controlle
 
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Cliente;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.DummyData;
-import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.ClienteRep;
+import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.ClienteRepository;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
@@ -15,6 +16,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
@@ -33,25 +35,25 @@ import org.grecasa.ext.mw.externo.kiosko_service.ValidarRemesaDerResponse;
 
 @Component
 public class IndexController implements Initializable {
+    
     @Autowired
-    @Qualifier("lblTitulo")
-    private String titulo;
-
-    @Autowired
-    private ClienteRep clienteRep;
+    private ClienteRepository clienteRepository;
 
     @FXML
     private Label lblTitulo;
+    
     @FXML
     private Label WsdlResponse;
+    
     @FXML
     private Label WsdlTimeStamp;
 
-
     @FXML
     private TextField txtNombre;
+    
     @FXML
     private TextField txtApellido;
+    
     @FXML
     private TextField txtTelefono;
 
@@ -61,25 +63,18 @@ public class IndexController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //lblTitulo.setText(titulo);
-        comboClientes.setItems(FXCollections.observableArrayList(clienteRep.findAll()));
-
+    
         txtTelefono.getProperties().put(VK_TYPE, VK_TYPE_NUMERIC);
        // p2_tf_codigo_aba.getProperties().put(VK_TYPE, VK_TYPE_NUMERIC);
       //  p2_tf_email.getProperties().put(VK_TYPE, VK_TYPE_EMAIL);
-
+        refesh();    
 
     }
 
     @FXML
     public void onSave(){
-        Cliente cliente = new Cliente();
 
-        cliente.setApellido(txtApellido.getText());
-        cliente.setNombre(txtNombre.getText());
-        cliente.setTelefono(txtTelefono.getText());
-
-        clienteRep.save(cliente);
-        comboClientes.setItems(FXCollections.observableArrayList(clienteRep.findAll()));
+        clienteRepository.save(getFromUI());
     }
 
     @FXML
@@ -97,4 +92,23 @@ public class IndexController implements Initializable {
         WsdlResponse.setText(validarRemesaDerResponse.getEstado());
 
     }
+
+    public Cliente getFromUI(){
+        Cliente cliente = new Cliente();
+        cliente.setApellido(txtApellido.getText());
+        cliente.setNombre(txtNombre.getText());
+        cliente.setTelefono(txtTelefono.getText());
+        return cliente;
+    }
+
+    public void setFromUI(Cliente cliente) {
+        txtApellido.setText(cliente.getApellido());
+        txtNombre.setText(cliente.getNombre());
+        txtTelefono.setText(cliente.getTelefono());
+    }
+    
+    public void refesh() {
+        comboClientes.setItems(FXCollections.observableArrayList(clienteRepository.findAll()));
+    }
+
 }

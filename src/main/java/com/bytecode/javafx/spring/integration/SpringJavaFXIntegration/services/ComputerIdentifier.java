@@ -48,7 +48,7 @@ public class ComputerIdentifier {
         
     }
     
-    /* 
+    /*
     public static void main(String[] arguments)
     {
         String identifier = generateLicenseKey();
