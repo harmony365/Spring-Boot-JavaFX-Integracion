@@ -1,6 +1,7 @@
 package com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.controllers;
 
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Cliente;
+import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.DummyData;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.ClienteRep;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -15,6 +16,20 @@ import org.springframework.stereotype.Component;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+
+import org.comtel2000.keyboard.control.DefaultLayer;
+import org.comtel2000.keyboard.control.KeyBoardPopup;
+import org.comtel2000.keyboard.control.KeyBoardPopupBuilder;
+import static org.comtel2000.keyboard.control.VkProperties.*;
+
+import org.grecasa.ext.mw.externo.KioskoServiceClient;
+import org.grecasa.ext.mw.externo.KioskoServiceClientUtils;
+import org.grecasa.ext.mw.externo.kiosko_service.KioskoService;
+import org.grecasa.ext.mw.externo.kiosko_service.KioskoService_Service;
+import org.grecasa.ext.mw.externo.kiosko_service.ValidarDerResponse;
+import org.grecasa.ext.mw.externo.kiosko_service.ValidarRemesaDer;
+import org.grecasa.ext.mw.externo.kiosko_service.ValidarRemesaDerResponse;
 
 @Component
 public class IndexController implements Initializable {
@@ -43,6 +58,12 @@ public class IndexController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         lblTitulo.setText(titulo);
         comboClientes.setItems(FXCollections.observableArrayList(clienteRep.findAll()));
+
+        txtTelefono.getProperties().put(VK_TYPE, VK_TYPE_NUMERIC);
+       // p2_tf_codigo_aba.getProperties().put(VK_TYPE, VK_TYPE_NUMERIC);
+      //  p2_tf_email.getProperties().put(VK_TYPE, VK_TYPE_EMAIL);
+
+
     }
 
     @FXML
@@ -55,5 +76,17 @@ public class IndexController implements Initializable {
 
         clienteRep.save(cliente);
         comboClientes.setItems(FXCollections.observableArrayList(clienteRep.findAll()));
+    }
+
+    @FXML
+    public void onWsdl(){
+        
+        ValidarRemesaDerResponse validarRemesaDerResponse;
+        
+        validarRemesaDerResponse  = KioskoServiceClient.getInstance().validarRemesa(DummyData.getExampleKO());
+        KioskoServiceClientUtils.printResponse(validarRemesaDerResponse);
+
+        validarRemesaDerResponse = KioskoServiceClient.getInstance().validarRemesa(DummyData.getExample());
+        KioskoServiceClientUtils.printResponse(validarRemesaDerResponse);
     }
 }
