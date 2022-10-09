@@ -1,9 +1,5 @@
 package com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.controllers;
 
-import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Cliente;
-import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.DummyData;
-import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.ClienteRepository;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
@@ -15,8 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 
@@ -31,6 +29,13 @@ import org.grecasa.ext.mw.externo.kiosko_service.KioskoService;
 import org.grecasa.ext.mw.externo.kiosko_service.KioskoService_Service;
 import org.grecasa.ext.mw.externo.kiosko_service.ValidarDerResponse;
 import org.grecasa.ext.mw.externo.kiosko_service.ValidarRemesaDer;
+
+
+import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.App;
+import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.DummyData;
+import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Cliente;
+import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.ClienteRepository;
+
 import org.grecasa.ext.mw.externo.kiosko_service.ValidarRemesaDerResponse;
 
 @Component
@@ -71,10 +76,21 @@ public class IndexController implements Initializable {
 
     }
 
+    
+    @FXML 
+    private void switchToAnterior() throws IOException  {
+
+        Locale locale = new Locale("es", "ES");
+        Locale.setDefault(locale);
+        App.setRoot("views/primary",locale);
+
+    }   
+
     @FXML
     public void onSave(){
 
         clienteRepository.save(getFromUI());
+        refesh();
     }
 
     @FXML

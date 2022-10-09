@@ -8,6 +8,6 @@ public class Configuracion {
 
     @Bean("lblTitulo")
     private String getTitulo(){
-        return "Bienvenido a Spring y JavaFX";
+        return "Sistema DIVA DER Canarias";
     }
 }
