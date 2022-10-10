@@ -34,7 +34,9 @@ import org.grecasa.ext.mw.externo.kiosko_service.ValidarRemesaDer;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.App;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.DummyData;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Cliente;
+import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.DigicModoPago;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.ClienteRepository;
+import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.DigicModoPagoRepository;
 
 import org.grecasa.ext.mw.externo.kiosko_service.ValidarRemesaDerResponse;
 
@@ -43,6 +45,9 @@ public class Valida_Envia_DERController implements Initializable {
     
     @Autowired
     private ClienteRepository clienteRepository;
+
+    @Autowired
+    private DigicModoPagoRepository digicModoPagoRepository;
 
     @FXML
     private Label lblTitulo;
@@ -65,13 +70,142 @@ public class Valida_Envia_DERController implements Initializable {
     @FXML
     private ComboBox<Cliente> comboClientes;
 
+    /*
+     * 
+     * Nueva implementación
+     * 
+     * 
+     */
+
+    @FXML
+    private ComboBox<DigicModoPago> p4_cb_clave_banco;
+
+    @FXML
+    private ComboBox<DigicModoPago> p4_cb_clave_control;
+
+    @FXML
+    private ComboBox<DigicModoPago> p4_cb_codigoBic;
+
+    @FXML
+    private ComboBox<DigicModoPago> p4_cb_codigo_aba;
+
+    @FXML
+    private ComboBox<DigicModoPago> p4_cb_cuenta_bancaria;
+
+    @FXML
+    private ComboBox<DigicModoPago> p4_cb_descripcion_banco;
+
+    @FXML
+    private ComboBox<DigicModoPago> p4_cb_email;
+
+    @FXML
+    private ComboBox<DigicModoPago> p4_cb_identificadorBillete;
+
+    @FXML
+    private ComboBox<DigicModoPago> p4_cb_modoTransporte;
+
+    @FXML
+    private ComboBox<DigicModoPago> p4_cb_pais_banco;
+
+    @FXML
+    private ComboBox<DigicModoPago> p4_cb_valorMedioPago;
+
+    @FXML
+    private Label p4_lb_clave_banco;
+
+    @FXML
+    private Label p4_lb_clave_control;
+
+    @FXML
+    private Label p4_lb_codigoBic;
+
+    @FXML
+    private Label p4_lb_codigo_aba;
+
+    @FXML
+    private Label p4_lb_codigo_cuenta_internacional;
+
+    @FXML
+    private Label p4_lb_codigo_cuenta_nacional;
+
+    @FXML
+    private Label p4_lb_cuenta_bancaria;
+
+    @FXML
+    private Label p4_lb_datos_transporte;
+
+    @FXML
+    private Label p4_lb_datos_viajeros;
+
+    @FXML
+    private Label p4_lb_descripcion_banco;
+
+    @FXML
+    private Label p4_lb_fechaLimiteSalida;
+
+    @FXML
+    private Label p4_lb_identificadorBillete;
+
+    @FXML
+    private Label p4_lb_medios_de_pago;
+
+    @FXML
+    private Label p4_lb_modoTransporte;
+
+    @FXML
+    private Label p4_lb_pais_banco;
+
+    @FXML
+    private Label p4_lb_valorMedioPago;
+
+    @FXML
+    private TextField p4_tf_clave_banco;
+
+    @FXML
+    private TextField p4_tf_clave_control;
+
+    @FXML
+    private TextField p4_tf_codigoBic;
+
+    @FXML
+    private TextField p4_tf_codigo_aba;
+
+    @FXML
+    private TextField p4_tf_cuenta_bancaria;
+
+    @FXML
+    private TextField p4_tf_descripcion_banco;
+
+    @FXML
+    private TextField p4_tf_email;
+
+    @FXML
+    private TextField p4_tf_identificadorBillete;
+
+    @FXML
+    private TextField p4_tf_modoTransporte;
+
+    @FXML
+    private TextField p4_tf_pais_banco;
+
+    @FXML
+    private TextField p4_tf_valorMedioPago;
+
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //lblTitulo.setText(titulo);
     
         txtTelefono.getProperties().put(VK_TYPE, VK_TYPE_NUMERIC);
-       // p2_tf_codigo_aba.getProperties().put(VK_TYPE, VK_TYPE_NUMERIC);
-      //  p2_tf_email.getProperties().put(VK_TYPE, VK_TYPE_EMAIL);
+
+        p4_tf_codigo_aba.getProperties().put(VK_TYPE, VK_TYPE_NUMERIC);
+        p4_tf_email.getProperties().put(VK_TYPE, VK_TYPE_EMAIL);
+        /*
+         * 
+         * p4_tf_clave_banco
+         * 
+         */
         refesh();    
 
     }
