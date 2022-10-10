@@ -39,7 +39,7 @@ import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.Clien
 import org.grecasa.ext.mw.externo.kiosko_service.ValidarRemesaDerResponse;
 
 @Component
-public class IndexController implements Initializable {
+public class Valida_Envia_DERController implements Initializable {
     
     @Autowired
     private ClienteRepository clienteRepository;

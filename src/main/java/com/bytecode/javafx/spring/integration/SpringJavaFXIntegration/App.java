@@ -42,7 +42,6 @@ import javafx.util.Callback;
 import javafx.util.Duration;
 
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.ParametrosModel;
-import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.services.ComputerIdentifier;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -156,7 +155,6 @@ public class App extends Application {
 
         GetParametros();
 
-        String identifier = ComputerIdentifier.generateLicenseKey();
         String cpuUUI = parametrosModel.getKIOSKOID();
 
 

@@ -199,7 +199,6 @@ public class PassPortLoginController  implements Initializable {
 
         bundle = resources;
         p3_btn_demo.setVisible(App.parametrosModel.getAppDemo());
-        p3_passaport_img.requestFocus();
         p3_lb_nombre.setText("");
         p3_lb_numero_pasaporte.setText("");
 
@@ -207,7 +206,8 @@ public class PassPortLoginController  implements Initializable {
         App.parametrosModel.setDniNifNieTieDemo("");
         App.parametrosModel.setNombreViajero("");
 
-        p3_passaport_img.setOnKeyTyped(new EventHandler<KeyEvent>() {
+        p3_qrcode_img.requestFocus();
+        p3_qrcode_img.setOnKeyTyped(new EventHandler<KeyEvent>() {
             public void handle(KeyEvent ke) {
                 //System.out.println("p2_img_barcode Key Pressed: " + ke.getText());
                 //System.out.println("p2_img_barcode Key Pressed: " + ke.getCharacter());

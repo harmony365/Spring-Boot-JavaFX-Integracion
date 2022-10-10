@@ -74,7 +74,7 @@
       </Button>
       <Label fx:id="p2_lb_plantilla" alignment="CENTER" contentDisplay="CENTER" layoutX="525.0" layoutY="23.0" prefHeight="89.0" prefWidth="799.0" text="%p2_lb_plantilla" textAlignment="CENTER">
          <font>
-            <Font name="System Bold" size="24.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
       <Label fx:id="p2_lb_justificante" alignment="CENTER" contentDisplay="CENTER" layoutX="1059.0" layoutY="179.0" prefHeight="35.0" prefWidth="281.0" text="0000000000000" textAlignment="CENTER">

@@ -7,7 +7,7 @@
 	<artifactId>SpringJavaFXIntegration</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SpringJavaFXIntegration</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Aplicacion DER Agencía Tributaria Canarias</description>
     <packaging>jar</packaging>
 
 	<parent>
@@ -24,7 +24,7 @@
 
 	<dependencies>
 
-		<!-- Sprint -->
+		<!-- Sprint boot framework -->
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -138,6 +138,14 @@
 				<groupId>io.github.typhon0</groupId>
 				<artifactId>AnimateFX</artifactId>
 				<version>1.2.3</version>
+			</dependency>
+
+		<!-- Manejo Automático de los Setters y Getters -->
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>1.18.20</version>
+				<scope>provided</scope>
 			</dependency>
 
 	</dependencies>

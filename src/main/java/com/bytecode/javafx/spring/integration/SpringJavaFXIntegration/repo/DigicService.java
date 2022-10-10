@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 public class DigicService {
 
     @Autowired
-    ClienteRepository clienteRepository;
+    DigicRepository digiRepository;
 
     public DigicService(){}
 

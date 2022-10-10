@@ -96,6 +96,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.cxf.frontend.ClientProxy;
 import org.apache.cxf.ws.security.wss4j.WSS4JOutInterceptor;
 
@@ -120,6 +121,7 @@ import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.App;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Digic;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.DummyData;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.DigicRepository;
+import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.utiles.JsonUtils;
 
 @Component
 public class Modelo_403Controller implements Initializable {
@@ -287,21 +289,23 @@ public class Modelo_403Controller implements Initializable {
         selectedCells.addListener(new ListChangeListener() {
             @Override
             public void onChanged(Change c) {
-                /*
+                
                 try {
-                    
+                 
                     TablePosition tablePosition = (TablePosition) selectedCells.get(0);
                     Object val = tablePosition.getTableColumn().getCellData(tablePosition.getRow());
                 
+                    
+                   System.out.println("Selected Value: " + existJustificante((String)val));
                     System.out.println("Selected Value: " + val);
-
+  /* 
                     if(DIGIDAO.FindDIGI(val.toString())){
                         System.out.println("\ngetapellidosViajero: " + DIGIDAO.digic.getapellidosViajero());
                         FillPlantilla(new JSONObject(DIGIDAO.digic.toString()));
                     }
                     
-
-                } catch (SQLException e) {
+*/
+                } catch (Exception e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
 
@@ -311,7 +315,7 @@ public class Modelo_403Controller implements Initializable {
                     alert.setContentText(e.getMessage());
                     alert.showAndWait();                     
                 }
-                    */
+                
             }
         });        
         
@@ -341,7 +345,6 @@ public class Modelo_403Controller implements Initializable {
         p2_btn_demo.setVisible(App.parametrosModel.getAppDemo());
 
         p2_img_barcode.requestFocus();
-
         p2_img_barcode.setOnKeyTyped(new EventHandler<KeyEvent>() {
             public void handle(KeyEvent ke) {
                 //System.out.println("p2_img_barcode Key Pressed: " + ke.getText());
@@ -386,7 +389,7 @@ public class Modelo_403Controller implements Initializable {
     @FXML 
     private void switchToAnterior() throws IOException {
         Locale locale = Locale.getDefault();
-        App.setRoot("primary",locale);
+        App.setRoot("views/primary",locale);
 
     }
 
@@ -587,8 +590,7 @@ public class Modelo_403Controller implements Initializable {
                 p2_tx_info_item.setText(bundle.getString( "p2_tx_info_item2"));
                 p2_an_info_item.setVisible(true);
             
-            }else if (/*DIGIDAO.FindDIGI(myJson.getString("justificante"))*/ false){
-
+            }else if (existJustificante(myJson.getString("justificante"))){
         
                 System.out.print("\nreadQR: Registro ya procesado");
                 
@@ -596,6 +598,7 @@ public class Modelo_403Controller implements Initializable {
                 p2_an_info_item.setVisible(true);
 
             }else{
+
                 FillPlantilla(myJson);
                 InsertItem(myJson); 
             }            
@@ -613,6 +616,24 @@ public class Modelo_403Controller implements Initializable {
 
         }
     }
+
+    public Boolean existJustificante(String justificante){
+
+        if(StringUtils.isBlank(justificante)){
+            return false;
+        }
+
+        List<Digic> digicLits = digicRepository.findByJustificante(justificante);
+        
+        if(digicLits.size() == 0)
+            return false;
+
+        Digic digic = digicLits.get(0);
+        
+        return (digic == null || digic.getJustificante() == null) ? false : true;
+    }
+
+
 
     private static String readQR(String pathname) throws FormatException, ChecksumException, NotFoundException, IOException {
 
@@ -888,166 +909,13 @@ public class Modelo_403Controller implements Initializable {
 
 
     public void InsertItem(JSONObject myJson) throws SQLException, ClassNotFoundException {
-        
-            if (myJson.isNull("cuentaSinIBAN")){
-                myJson.put("cuentaSinIBAN","NO");
-            }
-            
-            if (myJson.isNull("paisBanco")){
-                myJson.put("paisBanco","");
-            }
-            
-            if (myJson.isNull("claveBanco")){
-                myJson.put("claveBanco","");
-            }
 
-            if (myJson.isNull("valorMedioPago")){
-                myJson.put("valorMedioPago","");
-            }
-
-            if (myJson.isNull("descInstFinanciera")){
-                myJson.put("descInstFinanciera","");
-            }
-
-            if (myJson.isNull("numeroABA")){
-                myJson.put("numeroABA","");
-            }
-
-            if (myJson.isNull("claveControl")){
-                myJson.put("claveControl","");
-            }
-
-            if (myJson.isNull("modoPago")){
-                myJson.put("modoPago","");
-            }
-        
-            if (myJson.isNull("codigoBic")){
-                myJson.put("codigoBic","");
-            }
-
-            if (myJson.isNull("valorMedioPago")){
-                myJson.put("valorMedioPago","");
-            };
-
-            if (myJson.isNull("modoTransporte")){
-                myJson.put("modoTransporte","");
-            };
-
-            if (myJson.isNull("identificadorBillete")){
-                myJson.put("identificadorBillete","");
-            };
-
-
-            String monto = Double.toString((Double) myJson.get("totalDigic"));
-
-        Digic digic = new Digic(
-            (String) myJson.get("justificante"),
-            (String) myJson.get("nombreViajero"),
-            (String) myJson.get("apellidosViajero"),
-            (String) myJson.get("tipoDocumento"),
-            (String) myJson.get("valorDocumento"),
-            (String) myJson.get("paisExpedicion"),
-            (String) myJson.get("paisResidencia"),
-            (String) myJson.get("nifEstablecimiento"),
-            (String) myJson.get("razonSocial"),
-            (String) myJson.get("numeroFactura"),
-            (String) myJson.get("fechaFactura"),
-            monto,
-            (String) myJson.get("fechaLimiteSalida"),
-            (String) myJson.get("cuentaSinIBAN"),
-            (String) myJson.get("modoPago"),
-            (String) myJson.get("email"),
-            (String) myJson.get("codigoBic"),
-            (String) myJson.get("valorMedioPago"),
-            (String) myJson.get("claveControl"),
-            (String) myJson.get("cuentaSinIBAN"),
-            (String) myJson.get("numeroABA"),  
-            (String) myJson.get("claveBanco"),
-            (String) myJson.get("descInstFinanciera"),
-            (String) myJson.get("paisBanco"),
-            (String) myJson.get("modoTransporte"),
-            (String) myJson.get("identificadorBillete"),
-            0,
-            "",
-            ""
-        );
-
-        //ojo aqui
-        //if (!DIGIDAO.InsertItem(digic)) p2_an_warning.setVisible(true);
+        Digic digic = JsonUtils.convertJsonToDigic(myJson);        
         digicRepository.save(digic);
 
-        Justificante p1 = new Justificante(p2_lb_justificante.getText(),p2_lb_monto_factura.getText());
-        p2_tv_justificantes.getItems().addAll(p1);
-
-
-        //p2_tv_justificantes.setTableMenuButtonVisible(true);
+        Justificante justificante = new Justificante(digic.getJustificante(), digic.getTotalDigic());
+        p2_tv_justificantes.getItems().addAll(justificante);  
     }
-
-    /*public void InsertItem() throws SQLException, ClassNotFoundException {
-
-        DIGIModel_v2 digic = new DIGIModel_v2(
-            p2_lb_justificante.getText(),
-            p2_lb_nombreViajero.getText(),
-            p2_lb_apellidosViajero.getText(),
-            p2_lb_tipoDocumento.getText(),
-            p2_lb_valorDocumento.getText(),
-            p2_lb_paisExpedicion.getText(),
-            p2_lb_paisResidencia.getText(),
-            p2_lb_nif.getText(),
-            p2_lb_razon_social.getText(),
-            p2_lb_numero_factura.getText(),
-            p2_lb_fecha_factura.getText(),
-            p2_lb_monto_factura.getText(),
-            p2_lb_fechaLimiteSalida.getText(),
-            p2_lb_cuentaInternacional.getText(),
-            p2_lb_medioPago.getText(),
-            p2_tf_email.getText(),
-            p2_tf_codigoBic.getText(),
-            p2_tf_valorMedioPago.getText(),
-            p2_tf_clave_control.getText(),
-            p2_lb_cuentaInternacional.getText(),
-            p2_tf_codigo_aba.getText(),  
-            p2_tf_clave_banco.getText(),
-            p2_tf_descripcion_banco.getText(),
-            p2_tf_pais_banco.getText(),
-            0,
-            "",
-            ""
-        );
-
-        if (!DIGIDAO.InsertItem(digic)) p2_an_warning.setVisible(true);
-
-        Justificante p1 = new Justificante(p2_lb_justificante.getText());
-        
-        p2_tv_justificantes.getItems().addAll(p1);
-
-        //p2_tv_justificantes.setTableMenuButtonVisible(true);
-    }*/
-
-
-
-
-
-
-
-
-    /*public static class MyJustificante {
-        private final SimpleStringProperty JUSTIFICANTES;
-     
-        private MyJustificante(String fNumero) {
-            this.JUSTIFICANTES = new SimpleStringProperty(fNumero);
-        }
-     
-        public String getfNumero() {
-            return JUSTIFICANTES.get();
-        }
-        public void setfNumero(String fNumero) {
-            JUSTIFICANTES.set(fNumero);
-        }
-    }*/
-
-
-
 
     @FXML
     public void UpdateItem() throws SQLException, ClassNotFoundException {
@@ -1056,6 +924,7 @@ public class Modelo_403Controller implements Initializable {
 
         Digic digic = new Digic();
 
+        /* 
         digic.setjustificante(p2_lb_justificante.getText());
         digic.setemail(p2_tf_email.getText());
         digic.setcodigoBic(p2_tf_codigoBic.getText());
@@ -1069,11 +938,13 @@ public class Modelo_403Controller implements Initializable {
         digic.setpaisBanco( p2_tf_pais_banco.getText());
 
         digic.setfecha_upload(LocalDateTime.now().toString());
+        // */
 
         System.out.println("todo: " + digic.toString());        
         
         //if (!DIGIDAO.UpdateItem(digic)) p2_an_warning.setVisible(true);
         digicRepository.save(digic);
+        
     }
 
     @FXML
@@ -1131,7 +1002,8 @@ public class Modelo_403Controller implements Initializable {
     public Digic getFromUI(){
         Digic digic = new Digic();
 
-            digic.setjustificante(p2_lb_justificante.getText());
+            /* 
+            digic.setJustificante(p2_lb_justificante.getText());
             digic.setnifEstablecimiento(p2_lb_nif.getText());
             digic.setrazonSocial(p2_lb_razon_social.getText());
             digic.setnumeroFactura(p2_lb_numero_factura.getText()); 
@@ -1157,13 +1029,14 @@ public class Modelo_403Controller implements Initializable {
             digic.setvalorMedioPago(p2_tf_valorMedioPago.getText()); 
             digic.setmodoTransporte(p2_tf_modoTransporte.getText()); 
             digic.setidentificadorBillete(p2_tf_identificadorBillete.getText()); 
-
+            // */
 
         return digic;
     }
 
     public void setFromUI(Digic digic) {
 
+        /*
         p2_lb_justificante.setText(digic.getjustificante());
         p2_lb_nif.setText(digic.getnifEstablecimiento());
         p2_lb_razon_social.setText(digic.getrazonSocial());
@@ -1190,6 +1063,7 @@ public class Modelo_403Controller implements Initializable {
         p2_tf_valorMedioPago.setText(digic.getvalorMedioPago());
         p2_tf_modoTransporte.setText(digic.getmodoTransporte());
         p2_tf_identificadorBillete.setText(digic.getidentificadorBillete());      
+        //*/
 
     }
     
