@@ -2,6 +2,8 @@ package com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.controlle
 
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
+import javafx.event.EventHandler;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -54,22 +56,10 @@ public class Valida_Envia_DERController implements Initializable {
     private DigicRepository digicRepository;
 
     @FXML
-    private Label lblTitulo;
-    
-    @FXML
-    private Label WsdlResponse;
-    
-    @FXML
-    private Label WsdlTimeStamp;
+    private Label lblTitulo, WsdlResponse, WsdlTimeStamp;
 
     @FXML
-    private TextField txtNombre;
-    
-    @FXML
-    private TextField txtApellido;
-    
-    @FXML
-    private TextField txtTelefono;
+    private TextField txtNombre, txtApellido, txtTelefono;
 
     @FXML
     private ComboBox<Cliente> comboClientes;
@@ -82,38 +72,10 @@ public class Valida_Envia_DERController implements Initializable {
      */
 
     @FXML
-    private ComboBox<Digic> p4_cb_clave_banco;
-
-    @FXML
-    private ComboBox<Digic> p4_cb_clave_control;
-
-    @FXML
-    private ComboBox<Digic> p4_cb_codigoBic;
-
-    @FXML
-    private ComboBox<Digic> p4_cb_codigo_aba;
-
-    @FXML
-    private ComboBox<Digic> p4_cb_cuenta_bancaria;
-
-    @FXML
-    private ComboBox<Digic> p4_cb_descripcion_banco;
-
-    @FXML
-    private ComboBox<Digic> p4_cb_email;
-
-    @FXML
-    private ComboBox<Digic> p4_cb_identificadorBillete;
-
-    @FXML
-    private ComboBox<Digic> p4_cb_modoTransporte;
-
-    @FXML
-    private ComboBox<Digic> p4_cb_pais_banco;
-
-    @FXML
-    private ComboBox<Digic> p4_cb_valorMedioPago;
-
+    private ComboBox<Digic> p4_cb_clave_banco, p4_cb_clave_control, p4_cb_codigoBic, p4_cb_codigo_aba,
+            p4_cb_cuenta_bancaria, p4_cb_descripcion_banco, p4_cb_email, p4_cb_identificadorBillete,
+            p4_cb_modoTransporte, p4_cb_pais_banco, p4_cb_valorMedioPago;
+/*
     @FXML
     private Label p4_lb_clave_banco;
 
@@ -161,55 +123,49 @@ public class Valida_Envia_DERController implements Initializable {
 
     @FXML
     private Label p4_lb_valorMedioPago;
-
+*/
     @FXML
-    private TextField p4_tf_clave_banco;
+    private TextField p4_tf_clave_banco, p4_tf_clave_control,p4_tf_codigoBic,p4_tf_codigo_aba,
+                      p4_tf_cuenta_bancaria,p4_tf_descripcion_banco,p4_tf_email,p4_tf_identificadorBillete,
+                      p4_tf_modoTransporte,p4_tf_pais_banco,p4_tf_valorMedioPago;
 
-    @FXML
-    private TextField p4_tf_clave_control;
+    public String valorDocumento;
 
-    @FXML
-    private TextField p4_tf_codigoBic;
-
-    @FXML
-    private TextField p4_tf_codigo_aba;
-
-    @FXML
-    private TextField p4_tf_cuenta_bancaria;
-
-    @FXML
-    private TextField p4_tf_descripcion_banco;
-
-    @FXML
-    private TextField p4_tf_email;
-
-    @FXML
-    private TextField p4_tf_identificadorBillete;
-
-    @FXML
-    private TextField p4_tf_modoTransporte;
-
-    @FXML
-    private TextField p4_tf_pais_banco;
-
-    @FXML
-    private TextField p4_tf_valorMedioPago;
-
-    public String valorDocumento = "44303145Q";
-
+    // Strings which hold css elements to easily re-use in the SpringJavaFxIntegrationApplicationlication
+    protected
+    String successMessage = String.format("-fx-text-fill: GREEN;");
+    String successStyle   = String.format("-fx-border-color: GREEN; -fx-border-width: 2; -fx-border-radius: 5;");
+    String errorMessage   = String.format("-fx-text-fill: RED;");
+    String errorStyle     = String.format("-fx-border-color: RED; -fx-border-width: 2; -fx-border-radius: 5;");
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //lblTitulo.setText(titulo);
-    
+        valorDocumento = App.parametrosModel.getNumeroPasaporte();//"44303145Q";
         txtTelefono.getProperties().put(VK_TYPE, VK_TYPE_NUMERIC);
 
         p4_tf_codigo_aba.getProperties().put(VK_TYPE, VK_TYPE_NUMERIC);
+        p4_tf_codigoBic.getProperties().put(VK_TYPE, VK_TYPE_NUMERIC);
         p4_tf_email.getProperties().put(VK_TYPE, VK_TYPE_EMAIL);
+
         /*
          * 
          * p4_tf_clave_banco
          * 
          */
+        
+        p4_cb_email.setOnAction(e -> p4_tf_email.setText(p4_cb_email.getValue()+""));
+        p4_cb_clave_banco.setOnAction(e -> p4_tf_clave_banco.setText(p4_cb_clave_banco.getValue()+""));
+        p4_cb_clave_control.setOnAction(e -> p4_tf_clave_control.setText(p4_cb_clave_control.getValue()+""));
+        p4_cb_codigoBic.setOnAction(e -> p4_tf_codigoBic.setText(p4_cb_codigoBic.getValue()+""));
+        p4_cb_codigo_aba.setOnAction(e -> p4_tf_codigo_aba.setText(p4_cb_codigo_aba.getValue()+""));
+        p4_cb_cuenta_bancaria.setOnAction(e -> p4_tf_cuenta_bancaria.setText(p4_cb_cuenta_bancaria.getValue()+""));
+        p4_cb_descripcion_banco.setOnAction(e -> p4_tf_descripcion_banco.setText(p4_cb_descripcion_banco.getValue()+""));
+        p4_cb_identificadorBillete.setOnAction(e -> p4_tf_identificadorBillete.setText(p4_cb_identificadorBillete.getValue()+""));
+        p4_cb_modoTransporte.setOnAction(e -> p4_tf_modoTransporte.setText(p4_cb_modoTransporte.getValue()+""));
+        p4_cb_pais_banco.setOnAction(e -> p4_tf_pais_banco.setText(p4_cb_pais_banco.getValue()+""));
+        p4_cb_valorMedioPago.setOnAction(e -> p4_tf_valorMedioPago.setText(p4_cb_valorMedioPago.getValue()+""));
+
         refesh();    
 
     }
@@ -217,7 +173,31 @@ public class Valida_Envia_DERController implements Initializable {
 
     @FXML
     private void switchToAceptar() throws IOException {
+
+        if (p4_tf_email.getText().isEmpty()){ PlayEmpty(p4_tf_email);}else{p4_tf_email.setStyle(successStyle);};
+        if (p4_tf_clave_banco.getText().isEmpty()){ PlayEmpty(p4_tf_clave_banco);}else{p4_tf_clave_banco.setStyle(successStyle);};
+        if (p4_tf_clave_control.getText().isEmpty()){ PlayEmpty(p4_tf_clave_control);}else{p4_tf_clave_control.setStyle(successStyle);};
+        if (p4_tf_codigoBic.getText().isEmpty()){ PlayEmpty(p4_tf_codigoBic);}else{p4_tf_codigoBic.setStyle(successStyle);};
+        if (p4_tf_codigo_aba.getText().isEmpty()){ PlayEmpty(p4_tf_codigo_aba);}else{p4_tf_codigo_aba.setStyle(successStyle);};
+        if (p4_tf_cuenta_bancaria.getText().isEmpty()){ PlayEmpty(p4_tf_cuenta_bancaria);}else{p4_tf_cuenta_bancaria.setStyle(successStyle);};
+        if (p4_tf_descripcion_banco.getText().isEmpty()){ PlayEmpty(p4_tf_descripcion_banco);}else{p4_tf_descripcion_banco.setStyle(successStyle);};
+        if (p4_tf_identificadorBillete.getText().isEmpty()){ PlayEmpty(p4_tf_identificadorBillete);}else{p4_tf_identificadorBillete.setStyle(successStyle);};
+        if (p4_tf_modoTransporte.getText().isEmpty()){ PlayEmpty(p4_tf_modoTransporte);}else{p4_tf_modoTransporte.setStyle(successStyle);};
+        if (p4_tf_pais_banco.getText().isEmpty()){ PlayEmpty(p4_tf_pais_banco);}else{p4_tf_pais_banco.setStyle(successStyle);};
+        if (p4_tf_valorMedioPago.getText().isEmpty()){ PlayEmpty(p4_tf_valorMedioPago);}else{p4_tf_valorMedioPago.setStyle(successStyle);};
         
+    }
+
+    private void PlayEmpty(TextField tf){
+        
+        System.out.println("style: " + tf.getStyle());
+        tf.setStyle(errorStyle);
+        
+        new animatefx.animation.Shake(tf).play();
+        new animatefx.animation.Wobble(tf).play();
+
+        tf.requestFocus();
+
     }
 
     @FXML 
@@ -266,8 +246,27 @@ public class Valida_Envia_DERController implements Initializable {
         txtTelefono.setText(cliente.getTelefono());
     }
     
+    public DigicModoPago getDERFromUI(){
+        DigicModoPago digicModoPago = new DigicModoPago();
+
+        digicModoPago.setClaveBanco(p4_tf_clave_banco.getText()); 
+        digicModoPago.setClaveControl(p4_tf_clave_control.getText());
+        digicModoPago.setCodigoBic(p4_tf_codigoBic.getText());
+        digicModoPago.setNumeroABA(p4_tf_codigo_aba.getText());
+        //digicModoPago.setCuenta(p4_tf_cuenta_bancaria.getText());
+        digicModoPago.setDescInstFinanciera(p4_tf_descripcion_banco.getText());
+        digicModoPago.setEmail(p4_tf_email.getText());
+        digicModoPago.setIdentificadorBillete(p4_tf_identificadorBillete.getText());
+        digicModoPago.setModoPago(p4_tf_modoTransporte.getText());
+        digicModoPago.setPaisBanco(p4_tf_pais_banco.getText());
+        digicModoPago.setValorMedioPago(p4_tf_valorMedioPago.getText());
+
+        return digicModoPago;
+    }
+
     public void refesh() {
         comboClientes.setItems(FXCollections.observableArrayList(clienteRepository.findAll()));
+
         p4_cb_email.setItems(FXCollections.observableArrayList(digicRepository.findAllEmail(valorDocumento)));
         p4_cb_modoTransporte.setItems(FXCollections.observableArrayList(digicRepository.findAllModoTransporte(valorDocumento)));
         p4_cb_descripcion_banco.setItems(FXCollections.observableArrayList(digicRepository.findAllDescInstFinanciera(valorDocumento)));
@@ -280,10 +279,6 @@ public class Valida_Envia_DERController implements Initializable {
         p4_cb_descripcion_banco.setItems(FXCollections.observableArrayList(digicRepository.findAllDescInstFinanciera(valorDocumento)));
         p4_cb_cuenta_bancaria.setItems(FXCollections.observableArrayList(digicRepository.findAllValorMedioPago(valorDocumento)));
         //p4_cb_codigo_aba.setItems(FXCollections.observableArrayList(digicRepository.findAllCodigoBaba(valorDocumento)));
-        
-        
-
-
     }
 
 
