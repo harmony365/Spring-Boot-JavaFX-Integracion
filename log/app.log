@@ -13,3 +13,5 @@
 2022-10-11 02:18:36.379  INFO 33560 --- [JavaFX Application Thread] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.SQLDialect
 2022-10-11 02:18:36.415  INFO 33560 --- [JavaFX Application Thread] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [2] less than 4
 2022-10-11 02:18:36.913  INFO 33560 --- [JavaFX Application Thread] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-11 02:18:37.286  INFO 33560 --- [JavaFX Application Thread] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2022-10-11 02:18:37.662  INFO 33560 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : Started application in 3.48 seconds (JVM running for 4.389)
