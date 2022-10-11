@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox prefHeight="668.0" prefWidth="936.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.controllers.PassPortLoginController">
+   <children>
+      <VBox fx:id="containerLeft" alignment="CENTER" prefHeight="609.0" prefWidth="398.0" HBox.hgrow="ALWAYS">
+         <children>
+            <Label fx:id="p3_passaporte" alignment="CENTER" contentDisplay="CENTER" prefHeight="118.0" prefWidth="438.0" text="%p3_passaporte" wrapText="true">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Button fx:id="p3_btn_qr" mnemonicParsing="false" onAction="#QRcodeRead" prefHeight="186.0" prefWidth="188.0">
+               <graphic>
+                  <ImageView fx:id="p3_qrcode_img" fitHeight="186.0" fitWidth="197.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/qr_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="p3_btn_demo" mnemonicParsing="false" onAction="#QRcodeRead" prefHeight="47.0" prefWidth="51.0" text="DEMO" />
+            <VBox prefHeight="306.0" prefWidth="242.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="310.0" prefWidth="391.0">
+                     <children>
+                        <Label fx:id="p3_lb_numero_pasaporte" alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="393.0" text="ZAB0003540" textAlignment="CENTER">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="p3_lb_nombre" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="90.0" prefHeight="33.0" prefWidth="393.0" text="MARK FORD MARK" textAlignment="CENTER">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="p3_tf_numerodocumeto" alignment="CENTER" prefHeight="41.0" prefWidth="391.0" promptText="%p3_tf_numerodocumeto">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </TextField>
+                        <Button fx:id="p3_btn_aceptar" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchToAceptar" text="%p3_btn_aceptar">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="p3_btn_cancelar" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchToAnterior" prefHeight="16.0" prefWidth="242.0" text="%p3_btn_cancelar">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets left="30.0" right="30.0" />
+               </VBox.margin>
+            </VBox>
+         </children>
+      </VBox>
+      <VBox fx:id="containerRight" alignment="CENTER" prefHeight="544.0" prefWidth="390.0" style="-fx-background-color: #e9ecef;" HBox.hgrow="ALWAYS">
+         <children>
+            <ImageView fx:id="p3_logo_img" fitHeight="224.0" fitWidth="332.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/Gobierno_Canarias_logo.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="p3_passaport_img" fitHeight="431.0" fitWidth="509.0" layoutX="54.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/pasaporte2.png" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+   </children>
+</HBox>
