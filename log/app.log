@@ -304,3 +304,4 @@ Caused by: java.lang.NullPointerException: Cannot invoke "javafx.scene.control.T
 2022-10-11 06:03:05.193  INFO 35616 --- [JavaFX Application Thread] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [2] less than 4
 2022-10-11 06:03:05.684  INFO 35616 --- [JavaFX Application Thread] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
 2022-10-11 06:03:06.074  INFO 35616 --- [JavaFX Application Thread] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2022-10-11 06:03:06.432  INFO 35616 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : Started application in 3.1 seconds (JVM running for 3.946)
