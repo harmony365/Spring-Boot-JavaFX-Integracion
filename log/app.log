@@ -566,3 +566,4 @@ Caused by: org.sqlite.SQLiteException: [SQLITE_ERROR] SQL error or missing datab
 2022-10-10 06:09:26.606  INFO 30212 --- [JavaFX Application Thread] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [2] less than 4
 2022-10-10 06:09:27.092  INFO 30212 --- [JavaFX Application Thread] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
 2022-10-10 06:09:27.545  INFO 30212 --- [JavaFX Application Thread] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2022-10-10 06:09:27.887  INFO 30212 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : Started application in 3.801 seconds (JVM running for 4.459)
