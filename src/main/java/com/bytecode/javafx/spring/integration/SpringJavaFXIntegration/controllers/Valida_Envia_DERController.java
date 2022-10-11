@@ -30,13 +30,14 @@ import org.grecasa.ext.mw.externo.kiosko_service.KioskoService_Service;
 import org.grecasa.ext.mw.externo.kiosko_service.ValidarDerResponse;
 import org.grecasa.ext.mw.externo.kiosko_service.ValidarRemesaDer;
 
-
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.App;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.DummyData;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Cliente;
+import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Digic;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.DigicModoPago;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.ClienteRepository;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.DigicModoPagoRepository;
+import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.DigicRepository;
 
 import org.grecasa.ext.mw.externo.kiosko_service.ValidarRemesaDerResponse;
 
@@ -48,6 +49,9 @@ public class Valida_Envia_DERController implements Initializable {
 
     @Autowired
     private DigicModoPagoRepository digicModoPagoRepository;
+
+    @Autowired
+    private DigicRepository digicRepository;
 
     @FXML
     private Label lblTitulo;
@@ -78,37 +82,37 @@ public class Valida_Envia_DERController implements Initializable {
      */
 
     @FXML
-    private ComboBox<DigicModoPago> p4_cb_clave_banco;
+    private ComboBox<Digic> p4_cb_clave_banco;
 
     @FXML
-    private ComboBox<DigicModoPago> p4_cb_clave_control;
+    private ComboBox<Digic> p4_cb_clave_control;
 
     @FXML
-    private ComboBox<DigicModoPago> p4_cb_codigoBic;
+    private ComboBox<Digic> p4_cb_codigoBic;
 
     @FXML
-    private ComboBox<DigicModoPago> p4_cb_codigo_aba;
+    private ComboBox<Digic> p4_cb_codigo_aba;
 
     @FXML
-    private ComboBox<DigicModoPago> p4_cb_cuenta_bancaria;
+    private ComboBox<Digic> p4_cb_cuenta_bancaria;
 
     @FXML
-    private ComboBox<DigicModoPago> p4_cb_descripcion_banco;
+    private ComboBox<Digic> p4_cb_descripcion_banco;
 
     @FXML
-    private ComboBox<DigicModoPago> p4_cb_email;
+    private ComboBox<Digic> p4_cb_email;
 
     @FXML
-    private ComboBox<DigicModoPago> p4_cb_identificadorBillete;
+    private ComboBox<Digic> p4_cb_identificadorBillete;
 
     @FXML
-    private ComboBox<DigicModoPago> p4_cb_modoTransporte;
+    private ComboBox<Digic> p4_cb_modoTransporte;
 
     @FXML
-    private ComboBox<DigicModoPago> p4_cb_pais_banco;
+    private ComboBox<Digic> p4_cb_pais_banco;
 
     @FXML
-    private ComboBox<DigicModoPago> p4_cb_valorMedioPago;
+    private ComboBox<Digic> p4_cb_valorMedioPago;
 
     @FXML
     private Label p4_lb_clave_banco;
@@ -191,7 +195,7 @@ public class Valida_Envia_DERController implements Initializable {
     @FXML
     private TextField p4_tf_valorMedioPago;
 
-
+    public String valorDocumento = "44303145Q";
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -210,13 +214,18 @@ public class Valida_Envia_DERController implements Initializable {
 
     }
 
-    
+
+    @FXML
+    private void switchToAceptar() throws IOException {
+        
+    }
+
     @FXML 
     private void switchToAnterior() throws IOException  {
 
         Locale locale = new Locale("es", "ES");
         Locale.setDefault(locale);
-        App.setRoot("views/primary",locale);
+        App.setRoot("views/Modelo_403_v2",locale);
 
     }   
 
@@ -259,6 +268,25 @@ public class Valida_Envia_DERController implements Initializable {
     
     public void refesh() {
         comboClientes.setItems(FXCollections.observableArrayList(clienteRepository.findAll()));
+        p4_cb_email.setItems(FXCollections.observableArrayList(digicRepository.findAllEmail(valorDocumento)));
+        p4_cb_modoTransporte.setItems(FXCollections.observableArrayList(digicRepository.findAllModoTransporte(valorDocumento)));
+        p4_cb_descripcion_banco.setItems(FXCollections.observableArrayList(digicRepository.findAllDescInstFinanciera(valorDocumento)));
+        p4_cb_clave_banco.setItems(FXCollections.observableArrayList(digicRepository.findAllClaveBanco(valorDocumento)));
+        p4_cb_clave_control.setItems(FXCollections.observableArrayList(digicRepository.findAllClaveControl(valorDocumento)));
+        p4_cb_codigoBic.setItems(FXCollections.observableArrayList(digicRepository.findAllCodigoBic(valorDocumento)));
+        p4_cb_valorMedioPago.setItems(FXCollections.observableArrayList(digicRepository.findAllValorMedioPago(valorDocumento)));
+        p4_cb_pais_banco.setItems(FXCollections.observableArrayList(digicRepository.findAllPaisBanco(valorDocumento)));
+        p4_cb_identificadorBillete.setItems(FXCollections.observableArrayList(digicRepository.findAllIdentificadorBillete(valorDocumento)));
+        p4_cb_descripcion_banco.setItems(FXCollections.observableArrayList(digicRepository.findAllDescInstFinanciera(valorDocumento)));
+        p4_cb_cuenta_bancaria.setItems(FXCollections.observableArrayList(digicRepository.findAllValorMedioPago(valorDocumento)));
+        //p4_cb_codigo_aba.setItems(FXCollections.observableArrayList(digicRepository.findAllCodigoBaba(valorDocumento)));
+        
+        
+
+
     }
+
+
+
 
 }

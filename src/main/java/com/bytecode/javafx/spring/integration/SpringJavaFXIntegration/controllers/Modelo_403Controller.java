@@ -390,9 +390,7 @@ public class Modelo_403Controller implements Initializable {
     private void switchToAnterior() throws IOException {
         Locale locale = Locale.getDefault();
         App.setRoot("views/primary",locale);
-
     }
-
 
     @FXML 
     private void switchToWSDL() throws IOException, InvocationTargetException {
@@ -412,107 +410,10 @@ public class Modelo_403Controller implements Initializable {
 
 
     @FXML
-    private void switchToAceptar() throws IOException, SQLException, ClassNotFoundException {
+    private void switchToAceptar() throws IOException {
+        Locale locale = Locale.getDefault();
+        App.setRoot("views/Valida_Envia_DER",locale);
 
-/*
-        if ( p2_lb_justificante.getText().length() > 0 && 
-             !DIGIDAO.FindDIGI(p2_lb_justificante.getText()) ){
-
-            if (p2_tf_pais_banco.getText().isEmpty() || 
-                p2_tf_clave_banco.getText().isEmpty() ||             
-                p2_tf_cuenta_bancaria.getText().isEmpty() ||             
-                p2_tf_descripcion_banco.getText().isEmpty() ||             
-                p2_tf_codigoBic.getText().isEmpty() ||             
-                p2_tf_codigo_aba.getText().isEmpty() ||
-                p2_tf_email.getText().isEmpty()) {
-
-                //invalidDetails.setStyle(errorMessage);
-
-                
-                if (p2_tf_pais_banco.getText().isEmpty()) {
-                    //invalidDetails.setText("The Login fields are required!");
-                    p2_tf_pais_banco.setStyle(errorStyle);
-
-                    new animatefx.animation.Shake(p2_tf_pais_banco).play();
-                    new animatefx.animation.Wobble(p2_tf_pais_banco).play();
-                    
-                } else 
-                    if (p2_tf_clave_banco.getText().isEmpty()) {
-                        p2_tf_clave_banco.setStyle(errorStyle);
-                        p2_tf_pais_banco.setStyle(successStyle);
-
-                        new animatefx.animation.Shake(p2_tf_clave_banco).play();
-                        new animatefx.animation.Pulse(p2_tf_clave_banco).play();
-
-                    }  else 
-                        if (p2_tf_cuenta_bancaria.getText().isEmpty()) {
-                            p2_tf_cuenta_bancaria.setStyle(errorStyle);
-                            p2_tf_pais_banco.setStyle(successStyle);     
-
-                            new animatefx.animation.Shake(p2_tf_cuenta_bancaria).play();
-                            new animatefx.animation.Wobble(p2_tf_cuenta_bancaria).play();
-                            
-                        }else 
-                            if (p2_tf_descripcion_banco.getText().isEmpty()) {
-                                p2_tf_descripcion_banco.setStyle(errorStyle);
-                                p2_tf_cuenta_bancaria.setStyle(successStyle);     
-
-                                new animatefx.animation.Shake(p2_tf_descripcion_banco).play();
-                                new animatefx.animation.Wobble(p2_tf_descripcion_banco).play();
-                                
-                            } else 
-                                if (p2_tf_codigoBic.getText().isEmpty()) {
-                                    p2_tf_codigoBic.setStyle(errorStyle);
-                                    p2_tf_descripcion_banco.setStyle(successStyle);     
-
-                                    new animatefx.animation.Shake(p2_tf_codigoBic).play();
-                                    new animatefx.animation.Wobble(p2_tf_codigoBic).play();
-
-                                } else 
-                                    if (p2_tf_codigo_aba.getText().isEmpty()) {
-                                        p2_tf_codigo_aba.setStyle(errorStyle);
-                                        p2_tf_codigoBic.setStyle(successStyle);     
-
-                                        new animatefx.animation.Shake(p2_tf_codigo_aba).play();
-                                        new animatefx.animation.Wobble(p2_tf_codigo_aba).play();
-                                        
-                                    } else 
-                                        if (p2_tf_email.getText().isEmpty()) {
-                                            p2_tf_email.setStyle(errorStyle);
-                                            p2_tf_email.setStyle(successStyle);     
-
-                                            new animatefx.animation.Shake(p2_tf_email).play();
-                                            new animatefx.animation.Wobble(p2_tf_email).play();
-                                        
-                                    }
-
-                            
-            } else {
-
-                    p2_tf_pais_banco.setStyle(successStyle); 
-                    p2_tf_clave_banco.setStyle(successStyle);             
-                    p2_tf_descripcion_banco.setStyle(successStyle);             
-                    p2_tf_codigoBic.setStyle(successStyle);             
-                    p2_tf_codigo_aba.setStyle(successStyle);
-                    p2_tf_cuenta_bancaria.setStyle(successStyle);
-                    p2_tf_email.setStyle(successStyle);
-
-                    new animatefx.animation.Tada(p2_tf_pais_banco).play();
-                    new animatefx.animation.Tada(p2_tf_clave_banco).play();
-                    new animatefx.animation.Tada(p2_tf_descripcion_banco).play();
-                    new animatefx.animation.Tada(p2_tf_codigoBic).play();
-                    new animatefx.animation.Tada(p2_tf_codigo_aba).play();
-                    new animatefx.animation.Tada(p2_tf_cuenta_bancaria).play();
-                    new animatefx.animation.Tada(p2_tf_email).play();
-                    
-                    //InsertItem();
-
-            }
-
-        } else {
-            p2_an_warning.setVisible(true);
-        }
-        */
     }
 
     @FXML

@@ -181,6 +181,9 @@ public class Digic implements Serializable {
 
     }
     
-
+    @Override
+    public String toString() {
+        return "Cliente: " + email;
+    }
 
 }
