@@ -13,7 +13,13 @@
 
 <AnchorPane prefHeight="1046.0" prefWidth="2568.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.controllers.Valida_Envia_DERController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="129.0" layoutX="24.0" layoutY="367.0" stroke="#bebebf" strokeType="INSIDE" width="1327.0" />
+      <Rectangle fx:id="rec_mensaje" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="653.0" layoutX="1360.0" layoutY="186.0" stroke="#bebebf" strokeType="INSIDE" width="302.0" />
+      <Label fx:id="p4_lb_mensaje" alignment="TOP_LEFT" layoutX="1368.0" layoutY="202.0" prefHeight="623.0" prefWidth="282.0" text="%p4_lb_mensaje" wrapText="true">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="129.0" layoutX="-361.0" layoutY="363.0" stroke="#bebebf" strokeType="INSIDE" width="1327.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="127.0" layoutX="24.0" layoutY="190.0" stroke="#bebebf" strokeType="INSIDE" width="1327.0" />
       <Label fx:id="lblTitulo" alignment="CENTER" contentDisplay="CENTER" layoutX="1978.0" layoutY="136.0" prefHeight="27.0" prefWidth="458.0" text="%txt.p1.titulo" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS">
          <font>
@@ -29,14 +35,14 @@
          <font>
             <Font size="36.0" />
          </font></Button>
-      <Label layoutX="2094.0" layoutY="385.0" text="Respuesta:" />
-      <Label fx:id="WsdlResponse" layoutX="2167.0" layoutY="382.0" prefHeight="27.0" prefWidth="212.0" text="?" textFill="#790c0c">
+      <Label fx:id="p4_ld_wsdl_raspuesta" layoutX="1374.0" layoutY="453.0" text="Respuesta:" />
+      <Label fx:id="WsdlResponse" layoutX="1447.0" layoutY="450.0" prefHeight="27.0" prefWidth="212.0" text="?" textFill="#790c0c">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="2094.0" layoutY="408.0" text="TimeStamp:" />
-      <Label fx:id="WsdlTimeStamp" layoutX="2167.0" layoutY="407.0" prefHeight="18.0" prefWidth="212.0" text="??:??:??" textFill="#790c0c">
+      <Label fx:id="p4_ld_wsdl_TimeStamp" layoutX="1374.0" layoutY="476.0" text="TimeStamp:" />
+      <Label fx:id="WsdlTimeStamp" layoutX="1447.0" layoutY="475.0" prefHeight="18.0" prefWidth="212.0" text="??:??:??" textFill="#790c0c">
          <font>
             <Font size="18.0" />
          </font>
@@ -267,12 +273,6 @@
       <Label fx:id="p4_lb_informacion" layoutX="1373.0" layoutY="150.0" prefHeight="35.0" prefWidth="249.0" text="%p4_lb_informacion">
          <font>
             <Font name="System Bold" size="24.0" />
-         </font>
-      </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="653.0" layoutX="1360.0" layoutY="186.0" stroke="#bebebf" strokeType="INSIDE" width="302.0" />
-      <Label fx:id="p4_lb_mensaje" alignment="TOP_LEFT" layoutX="1368.0" layoutY="202.0" prefHeight="623.0" prefWidth="282.0" text="%p4_lb_mensaje" wrapText="true">
-         <font>
-            <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
    </children>

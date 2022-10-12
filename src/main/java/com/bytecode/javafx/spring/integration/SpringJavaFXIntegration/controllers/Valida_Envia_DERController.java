@@ -10,6 +10,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.shape.Rectangle;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -71,6 +73,8 @@ public class Valida_Envia_DERController implements Initializable {
      * 
      * 
      */
+    @FXML
+    private Rectangle rec_mensaje;
 
     @FXML
     private ComboBox<Digic> p4_cb_clave_banco, p4_cb_clave_control, p4_cb_codigoBic, p4_cb_codigo_aba,
@@ -82,7 +86,7 @@ public class Valida_Envia_DERController implements Initializable {
                   p4_lb_codigo_cuenta_internacional, p4_lb_codigo_cuenta_nacional, p4_lb_cuenta_bancaria,
                   p4_lb_datos_transporte, p4_lb_datos_viajeros, p4_lb_descripcion_banco, p4_lb_fechaLimiteSalida,
                   p4_lb_identificadorBillete, p4_lb_medios_de_pago, p4_lb_modoTransporte, p4_lb_pais_banco, 
-                  p4_lb_valorMedioPago, p4_lb_mensaje;
+                  p4_lb_valorMedioPago, p4_lb_mensaje, p4_ld_wsdl_raspuesta, p4_ld_wsdl_TimeStamp;
     
     @FXML
     private TextField p4_tf_clave_banco, p4_tf_clave_control,p4_tf_codigoBic,p4_tf_codigo_aba,
@@ -114,6 +118,11 @@ public class Valida_Envia_DERController implements Initializable {
          * 
          */
         
+        p4_ld_wsdl_raspuesta.setVisible(false);
+        p4_ld_wsdl_TimeStamp.setVisible(false);
+        WsdlResponse.setVisible(false);
+        WsdlTimeStamp.setVisible(false);
+
         p4_cb_email.setOnAction(e -> p4_tf_email.setText(p4_cb_email.getValue()+""));
         p4_cb_clave_banco.setOnAction(e -> p4_tf_clave_banco.setText(p4_cb_clave_banco.getValue()+""));
         p4_cb_clave_control.setOnAction(e -> p4_tf_clave_control.setText(p4_cb_clave_control.getValue()+""));
@@ -133,19 +142,21 @@ public class Valida_Envia_DERController implements Initializable {
 
     @FXML
     private void switchToAceptar() throws IOException {
+        Boolean procesarWSDL = false;
 
-        if (p4_tf_email.getText().isEmpty()){ PlayEmpty(p4_tf_email);}else{p4_tf_email.setStyle(successStyle);};
-        if (p4_tf_clave_banco.getText().isEmpty()){ PlayEmpty(p4_tf_clave_banco);}else{p4_tf_clave_banco.setStyle(successStyle);};
-        if (p4_tf_clave_control.getText().isEmpty()){ PlayEmpty(p4_tf_clave_control);}else{p4_tf_clave_control.setStyle(successStyle);};
-        if (p4_tf_codigoBic.getText().isEmpty()){ PlayEmpty(p4_tf_codigoBic);}else{p4_tf_codigoBic.setStyle(successStyle);};
-        if (p4_tf_codigo_aba.getText().isEmpty()){ PlayEmpty(p4_tf_codigo_aba);}else{p4_tf_codigo_aba.setStyle(successStyle);};
-        if (p4_tf_cuenta_bancaria.getText().isEmpty()){ PlayEmpty(p4_tf_cuenta_bancaria);}else{p4_tf_cuenta_bancaria.setStyle(successStyle);};
-        if (p4_tf_descripcion_banco.getText().isEmpty()){ PlayEmpty(p4_tf_descripcion_banco);}else{p4_tf_descripcion_banco.setStyle(successStyle);};
-        if (p4_tf_identificadorBillete.getText().isEmpty()){ PlayEmpty(p4_tf_identificadorBillete);}else{p4_tf_identificadorBillete.setStyle(successStyle);};
-        if (p4_tf_modoTransporte.getText().isEmpty()){ PlayEmpty(p4_tf_modoTransporte);}else{p4_tf_modoTransporte.setStyle(successStyle);};
-        if (p4_tf_pais_banco.getText().isEmpty()){ PlayEmpty(p4_tf_pais_banco);}else{p4_tf_pais_banco.setStyle(successStyle);};
-        if (p4_tf_valorMedioPago.getText().isEmpty()){ PlayEmpty(p4_tf_valorMedioPago);}else{p4_tf_valorMedioPago.setStyle(successStyle);};
+        if (p4_tf_email.getText().isEmpty()){ PlayEmpty(p4_tf_email);procesarWSDL = true;}else{p4_tf_email.setStyle(successStyle);};
+        if (p4_tf_clave_banco.getText().isEmpty()){ PlayEmpty(p4_tf_clave_banco);procesarWSDL = true;}else{p4_tf_clave_banco.setStyle(successStyle);};
+        if (p4_tf_clave_control.getText().isEmpty()){ PlayEmpty(p4_tf_clave_control);procesarWSDL = true;}else{p4_tf_clave_control.setStyle(successStyle);};
+        if (p4_tf_codigoBic.getText().isEmpty()){ PlayEmpty(p4_tf_codigoBic);procesarWSDL = true;}else{p4_tf_codigoBic.setStyle(successStyle);};
+        if (p4_tf_codigo_aba.getText().isEmpty()){ PlayEmpty(p4_tf_codigo_aba);procesarWSDL = true;}else{p4_tf_codigo_aba.setStyle(successStyle);};
+        if (p4_tf_cuenta_bancaria.getText().isEmpty()){ PlayEmpty(p4_tf_cuenta_bancaria);procesarWSDL = true;}else{p4_tf_cuenta_bancaria.setStyle(successStyle);};
+        if (p4_tf_descripcion_banco.getText().isEmpty()){ PlayEmpty(p4_tf_descripcion_banco);procesarWSDL = true;}else{p4_tf_descripcion_banco.setStyle(successStyle);};
+        if (p4_tf_identificadorBillete.getText().isEmpty()){ PlayEmpty(p4_tf_identificadorBillete);procesarWSDL = true;}else{p4_tf_identificadorBillete.setStyle(successStyle);};
+        if (p4_tf_modoTransporte.getText().isEmpty()){ PlayEmpty(p4_tf_modoTransporte);procesarWSDL = true;}else{p4_tf_modoTransporte.setStyle(successStyle);};
+        if (p4_tf_pais_banco.getText().isEmpty()){ PlayEmpty(p4_tf_pais_banco);procesarWSDL = true;}else{p4_tf_pais_banco.setStyle(successStyle);};
+        if (p4_tf_valorMedioPago.getText().isEmpty()){ PlayEmpty(p4_tf_valorMedioPago);procesarWSDL = true;}else{p4_tf_valorMedioPago.setStyle(successStyle);};
         
+        if(!procesarWSDL)onWsdl();
     }
 
     private void PlayEmpty(TextField tf){
@@ -189,6 +200,13 @@ public class Valida_Envia_DERController implements Initializable {
 
         WsdlTimeStamp.setText(validarRemesaDerResponse.getFechaEstado().toString());
         WsdlResponse.setText(validarRemesaDerResponse.getEstado());
+
+        if(WsdlResponse.getText().equals("ER")) rec_mensaje.setStyle(errorStyle);
+        if(WsdlResponse.getText().equals("OK")) rec_mensaje.setStyle(successStyle);
+        p4_ld_wsdl_raspuesta.setVisible(true);
+        p4_ld_wsdl_TimeStamp.setVisible(true);
+        WsdlResponse.setVisible(true);
+        WsdlTimeStamp.setVisible(true);
 
     }
 

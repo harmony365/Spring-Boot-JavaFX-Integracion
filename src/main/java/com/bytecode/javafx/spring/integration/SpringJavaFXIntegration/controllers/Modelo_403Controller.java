@@ -389,7 +389,7 @@ public class Modelo_403Controller implements Initializable {
     @FXML 
     private void switchToAnterior() throws IOException {
         Locale locale = Locale.getDefault();
-        App.setRoot("views/primary",locale);
+        App.setRoot("/views/primary",locale);
     }
 
     @FXML 

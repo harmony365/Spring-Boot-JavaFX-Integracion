@@ -19,7 +19,7 @@
                   <Font size="30.0" />
                </font>
             </Label>
-            <Button fx:id="p3_btn_qr" mnemonicParsing="false" prefHeight="186.0" prefWidth="188.0">
+            <Button fx:id="p3_btn_qr" mnemonicParsing="false" onAction="#switchToQRCode" prefHeight="186.0" prefWidth="188.0">
                <graphic>
                   <ImageView fx:id="p3_qrcode_img" fitHeight="186.0" fitWidth="197.0" pickOnBounds="true" preserveRatio="true">
                      <image>

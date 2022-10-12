@@ -307,7 +307,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="p2_tf_valorMedioPago" layoutX="56.0" layoutY="855.0" prefHeight="25.0" prefWidth="481.0">
+      <TextField fx:id="p2_tf_valorMedioPago" disable="true" layoutX="56.0" layoutY="855.0" prefHeight="25.0" prefWidth="481.0">
          <font>
             <Font size="14.0" />
          </font>
@@ -317,7 +317,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="p2_tf_codigoBic" layoutX="610.0" layoutY="917.0" prefHeight="30.0" prefWidth="196.0">
+      <TextField fx:id="p2_tf_codigoBic" disable="true" layoutX="610.0" layoutY="917.0" prefHeight="30.0" prefWidth="196.0">
          <font>
             <Font size="14.0" />
          </font>
@@ -327,7 +327,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="p2_tf_cuenta_bancaria" layoutX="1004.0" layoutY="785.0" prefHeight="30.0" prefWidth="309.0">
+      <TextField fx:id="p2_tf_cuenta_bancaria" disable="true" layoutX="1004.0" layoutY="785.0" prefHeight="30.0" prefWidth="309.0">
          <font>
             <Font size="14.0" />
          </font>
@@ -362,27 +362,27 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="p2_tf_pais_banco" layoutX="610.0" layoutY="785.0" prefHeight="30.0" prefWidth="196.0">
+      <TextField fx:id="p2_tf_pais_banco" disable="true" layoutX="610.0" layoutY="785.0" prefHeight="30.0" prefWidth="196.0">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="p2_tf_clave_banco" layoutX="821.0" layoutY="785.0" prefHeight="30.0" prefWidth="172.0">
+      <TextField fx:id="p2_tf_clave_banco" disable="true" layoutX="821.0" layoutY="785.0" prefHeight="30.0" prefWidth="172.0">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="p2_tf_clave_control" layoutX="610.0" layoutY="852.0" prefHeight="30.0" prefWidth="196.0">
+      <TextField fx:id="p2_tf_clave_control" disable="true" layoutX="610.0" layoutY="852.0" prefHeight="30.0" prefWidth="196.0">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="p2_tf_descripcion_banco" layoutX="821.0" layoutY="852.0" prefHeight="30.0" prefWidth="196.0">
+      <TextField fx:id="p2_tf_descripcion_banco" disable="true" layoutX="821.0" layoutY="852.0" prefHeight="30.0" prefWidth="196.0">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="p2_tf_codigo_aba" layoutX="821.0" layoutY="917.0" prefHeight="30.0" prefWidth="196.0">
+      <TextField fx:id="p2_tf_codigo_aba" disable="true" layoutX="821.0" layoutY="917.0" prefHeight="30.0" prefWidth="196.0">
          <font>
             <Font size="14.0" />
          </font>
@@ -414,7 +414,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="p2_tf_modoTransporte" layoutX="30.0" layoutY="604.0" prefHeight="30.0" prefWidth="309.0">
+      <TextField fx:id="p2_tf_modoTransporte" disable="true" editable="false" layoutX="30.0" layoutY="604.0" prefHeight="30.0" prefWidth="309.0">
          <font>
             <Font size="14.0" />
          </font>
@@ -424,7 +424,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="p2_tf_identificadorBillete" layoutX="464.0" layoutY="601.0" prefHeight="30.0" prefWidth="309.0">
+      <TextField fx:id="p2_tf_identificadorBillete" disable="true" editable="false" layoutX="464.0" layoutY="601.0" prefHeight="30.0" prefWidth="309.0">
          <font>
             <Font size="14.0" />
          </font>
