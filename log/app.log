@@ -743,3 +743,4 @@ Caused by: org.hibernate.QueryException: could not resolve property: cuentaSinib
 2022-10-12 19:22:14.890  INFO 9760 --- [JavaFX Application Thread] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
 2022-10-12 19:22:15.305  INFO 9760 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : Started application in 3.281 seconds (JVM running for 4.263)
 2022-10-12 19:23:10.478  INFO 9760 --- [JavaFX Application Thread] o.a.c.w.s.f.ReflectionServiceFactoryBean : Creating Service {http://externo.mw.ext.grecasa.org/kiosko-service/}kiosko-service from WSDL: https://sede.gobiernodecanarias.org/tributos/middlewarecaut/services/servicioKiosko?wsdl
+2022-10-12 19:23:10.782  WARN 9760 --- [JavaFX Application Thread] javax.xml.soap                           : Using deprecated META-INF/services mechanism with non-standard property: javax.xml.soap.MetaFactory. Property javax.xml.soap.SAAJMetaFactory should be used instead.
