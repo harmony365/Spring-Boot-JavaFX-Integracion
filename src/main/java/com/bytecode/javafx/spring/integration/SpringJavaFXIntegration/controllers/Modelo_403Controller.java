@@ -412,7 +412,7 @@ public class Modelo_403Controller implements Initializable {
     @FXML
     private void switchToAceptar() throws IOException {
         Locale locale = Locale.getDefault();
-        App.setRoot("views/Valida_Envia_DER",locale);
+        App.setRoot("/views/Valida_Envia_DER",locale);
 
     }
 

@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-
+import org.springframework.core.io.ClassPathResource;
 import org.comtel2000.keyboard.control.DefaultLayer;
 import org.comtel2000.keyboard.control.KeyBoardPopup;
 import org.comtel2000.keyboard.control.KeyBoardPopupBuilder;
@@ -30,7 +30,9 @@ import static org.comtel2000.keyboard.control.VkProperties.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -162,10 +164,12 @@ public class App extends Application {
         icons.add(new Image("/icons/favicon-128x128x32.png"));
 
         Locale locale = Locale.getDefault();
+        //Locale locale = new Locale("es", "ES");
+        //Locale.setDefault(locale);
 
         primaryStage.setTitle("Agencia Tributaria Canarias ( " + cpuUUI + " )");
         
-        scene = new Scene(loadFXML("views/primary",locale), 640, 480, false, SceneAntialiasing.BALANCED);
+        scene = new Scene(loadFXML("/views/primary",locale), 640, 480, false, SceneAntialiasing.BALANCED);
         //scene.getStylesheets().add("../../../resources/com/diva/styles.css");
 
         // Optener el tamaño de la pantalla
@@ -277,12 +281,13 @@ public class App extends Application {
 		//Locale locale = new Locale("ja", "JP");
 		//Locale locale = new Locale("sp", "ES");
 		//Locale locale = new Locale("en", "US");
+       
+            ResourceBundle rb = ResourceBundle.getBundle("i18n/idioma", locale);
 
-		ResourceBundle rb = ResourceBundle.getBundle("i18n/idioma", locale);
+            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource( fxml + ".fxml"),rb);
+            fxmlLoader.setControllerFactory(applicationContext::getBean);
+            return fxmlLoader.load();
 
-		FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource( fxml + ".fxml"),rb);
-		fxmlLoader.setControllerFactory(applicationContext::getBean);
-		return fxmlLoader.load();
 		
 	}
 

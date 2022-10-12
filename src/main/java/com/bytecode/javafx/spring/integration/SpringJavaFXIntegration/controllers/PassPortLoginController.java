@@ -110,7 +110,7 @@ public class PassPortLoginController  implements Initializable {
            // App.parametrosModel.setNombreViajero("");
 
             Locale locale = Locale.getDefault();
-            App.setRoot("views/modelo_403_v2",locale);            
+            App.setRoot("/views/modelo_403_v2",locale);            
         }
 
     }   

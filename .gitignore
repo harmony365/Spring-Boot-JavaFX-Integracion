@@ -28,5 +28,9 @@ HELP.md
 ### VS Code ###
 .vscode/
 
+<<<<<<< HEAD
 ### Log de  base de datos ###
+=======
+### Log Database ###
+>>>>>>> f40b90648700a6860faf592f0c97dc25eb897083
 log/

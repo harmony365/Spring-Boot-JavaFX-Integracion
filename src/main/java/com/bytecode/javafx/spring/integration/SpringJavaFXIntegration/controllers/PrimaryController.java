@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 public class PrimaryController implements Initializable  {
 
     //public String Segunda_Pantalla = "modelo_403_v1";
-    public String Segunda_Pantalla = "views/PassPortLogin";
+    public String Segunda_Pantalla = "/views/PassPortLogin";
 
     @FXML
     public void initialize() {

@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -75,55 +76,14 @@ public class Valida_Envia_DERController implements Initializable {
     private ComboBox<Digic> p4_cb_clave_banco, p4_cb_clave_control, p4_cb_codigoBic, p4_cb_codigo_aba,
             p4_cb_cuenta_bancaria, p4_cb_descripcion_banco, p4_cb_email, p4_cb_identificadorBillete,
             p4_cb_modoTransporte, p4_cb_pais_banco, p4_cb_valorMedioPago;
-/*
-    @FXML
-    private Label p4_lb_clave_banco;
 
     @FXML
-    private Label p4_lb_clave_control;
-
-    @FXML
-    private Label p4_lb_codigoBic;
-
-    @FXML
-    private Label p4_lb_codigo_aba;
-
-    @FXML
-    private Label p4_lb_codigo_cuenta_internacional;
-
-    @FXML
-    private Label p4_lb_codigo_cuenta_nacional;
-
-    @FXML
-    private Label p4_lb_cuenta_bancaria;
-
-    @FXML
-    private Label p4_lb_datos_transporte;
-
-    @FXML
-    private Label p4_lb_datos_viajeros;
-
-    @FXML
-    private Label p4_lb_descripcion_banco;
-
-    @FXML
-    private Label p4_lb_fechaLimiteSalida;
-
-    @FXML
-    private Label p4_lb_identificadorBillete;
-
-    @FXML
-    private Label p4_lb_medios_de_pago;
-
-    @FXML
-    private Label p4_lb_modoTransporte;
-
-    @FXML
-    private Label p4_lb_pais_banco;
-
-    @FXML
-    private Label p4_lb_valorMedioPago;
-*/
+    private Label p4_lb_informacion,p4_lb_clave_banco,p4_lb_clave_control, p4_lb_codigoBic,
+                  p4_lb_codigo_cuenta_internacional, p4_lb_codigo_cuenta_nacional, p4_lb_cuenta_bancaria,
+                  p4_lb_datos_transporte, p4_lb_datos_viajeros, p4_lb_descripcion_banco, p4_lb_fechaLimiteSalida,
+                  p4_lb_identificadorBillete, p4_lb_medios_de_pago, p4_lb_modoTransporte, p4_lb_pais_banco, 
+                  p4_lb_valorMedioPago, p4_lb_mensaje;
+    
     @FXML
     private TextField p4_tf_clave_banco, p4_tf_clave_control,p4_tf_codigoBic,p4_tf_codigo_aba,
                       p4_tf_cuenta_bancaria,p4_tf_descripcion_banco,p4_tf_email,p4_tf_identificadorBillete,
@@ -205,7 +165,7 @@ public class Valida_Envia_DERController implements Initializable {
 
         Locale locale = new Locale("es", "ES");
         Locale.setDefault(locale);
-        App.setRoot("views/Modelo_403_v2",locale);
+        App.setRoot("/views/Modelo_403_v2",locale);
 
     }   
 
