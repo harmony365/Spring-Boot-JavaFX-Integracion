@@ -6,10 +6,14 @@ import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,9 +50,12 @@ import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.Digic
 
 import org.grecasa.ext.mw.externo.kiosko_service.ValidarRemesaDerResponse;
 
+
 @Component
 public class Valida_Envia_DERController implements Initializable {
     
+    private ResourceBundle bundle;
+
     @Autowired
     private ClienteRepository clienteRepository;
 
@@ -74,7 +81,7 @@ public class Valida_Envia_DERController implements Initializable {
      * 
      */
     @FXML
-    private Rectangle rec_mensaje;
+    private Rectangle p4_rec_mensaje;
 
     @FXML
     private ComboBox<Digic> p4_cb_clave_banco, p4_cb_clave_control, p4_cb_codigoBic, p4_cb_codigo_aba,
@@ -82,16 +89,21 @@ public class Valida_Envia_DERController implements Initializable {
             p4_cb_modoTransporte, p4_cb_pais_banco, p4_cb_valorMedioPago;
 
     @FXML
-    private Label p4_lb_informacion,p4_lb_clave_banco,p4_lb_clave_control, p4_lb_codigoBic,
-                  p4_lb_codigo_cuenta_internacional, p4_lb_codigo_cuenta_nacional, p4_lb_cuenta_bancaria,
-                  p4_lb_datos_transporte, p4_lb_datos_viajeros, p4_lb_descripcion_banco, p4_lb_fechaLimiteSalida,
-                  p4_lb_identificadorBillete, p4_lb_medios_de_pago, p4_lb_modoTransporte, p4_lb_pais_banco, 
-                  p4_lb_valorMedioPago, p4_lb_mensaje, p4_ld_wsdl_raspuesta, p4_ld_wsdl_TimeStamp;
+    private Label p2_lb_informacion,p2_lb_clave_banco,p2_lb_clave_control, p2_lb_codigoBic,
+                  p2_lb_codigo_cuenta_internacional, p2_lb_codigo_cuenta_nacional, p2_lb_cuenta_bancaria,
+                  p2_lb_datos_transporte, p2_lb_datos_viajeros, p2_lb_descripcion_banco, p2_lb_fechaLimiteSalida,
+                  p2_lb_identificadorBillete, p2_lb_medios_de_pago, p2_lb_modoTransporte, p2_lb_pais_banco, 
+                  p2_lb_valorMedioPago, 
+                  
+                  p4_lb_mensaje, p4_ld_wsdl_raspuesta, p4_ld_wsdl_TimeStamp;
     
     @FXML
     private TextField p4_tf_clave_banco, p4_tf_clave_control,p4_tf_codigoBic,p4_tf_codigo_aba,
                       p4_tf_cuenta_bancaria,p4_tf_descripcion_banco,p4_tf_email,p4_tf_identificadorBillete,
                       p4_tf_modoTransporte,p4_tf_pais_banco,p4_tf_valorMedioPago;
+
+    @FXML
+    private Button p2_btn_aceptar, p2_btn_salir;
 
     public String valorDocumento;
 
@@ -102,8 +114,14 @@ public class Valida_Envia_DERController implements Initializable {
     String errorMessage   = String.format("-fx-text-fill: RED;");
     String errorStyle     = String.format("-fx-border-color: RED; -fx-border-width: 2; -fx-border-radius: 5;");
     
+    public Boolean procesoWsdl = false;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        procesoWsdl = false;
+        bundle = resources;
+
         //lblTitulo.setText(titulo);
         valorDocumento = App.parametrosModel.getNumeroPasaporte();//"44303145Q";
         txtTelefono.getProperties().put(VK_TYPE, VK_TYPE_NUMERIC);
@@ -134,6 +152,7 @@ public class Valida_Envia_DERController implements Initializable {
         p4_cb_modoTransporte.setOnAction(e -> p4_tf_modoTransporte.setText(p4_cb_modoTransporte.getValue()+""));
         p4_cb_pais_banco.setOnAction(e -> p4_tf_pais_banco.setText(p4_cb_pais_banco.getValue()+""));
         p4_cb_valorMedioPago.setOnAction(e -> p4_tf_valorMedioPago.setText(p4_cb_valorMedioPago.getValue()+""));
+        p4_cb_codigo_aba.setOnAction(e -> p4_tf_codigo_aba.setText(p4_cb_codigo_aba.getValue()+""));
 
         refesh();    
 
@@ -174,9 +193,14 @@ public class Valida_Envia_DERController implements Initializable {
     @FXML 
     private void switchToAnterior() throws IOException  {
 
-        Locale locale = new Locale("es", "ES");
-        Locale.setDefault(locale);
-        App.setRoot("/views/Modelo_403_v2",locale);
+        Locale locale = Locale.getDefault();
+
+        if (procesoWsdl){
+            App.setRoot("/views/primary",locale);
+
+        }else{
+            App.setRoot("/views/Modelo_403_v2",locale);
+        }
 
     }   
 
@@ -189,7 +213,11 @@ public class Valida_Envia_DERController implements Initializable {
 
     @FXML
     public void onWsdl(){
-        
+
+        procesoWsdl = true;
+
+        digicModoPagoRepository.save(getDERFromUI());
+
         ValidarRemesaDerResponse validarRemesaDerResponse;
         
         validarRemesaDerResponse  = KioskoServiceClient.getInstance().validarRemesa(DummyData.getExampleKO());
@@ -201,13 +229,46 @@ public class Valida_Envia_DERController implements Initializable {
         WsdlTimeStamp.setText(validarRemesaDerResponse.getFechaEstado().toString());
         WsdlResponse.setText(validarRemesaDerResponse.getEstado());
 
-        if(WsdlResponse.getText().equals("ER")) rec_mensaje.setStyle(errorStyle);
-        if(WsdlResponse.getText().equals("OK")) rec_mensaje.setStyle(successStyle);
+
+        //WsdlResponse.setText("KO");
+
+        if(WsdlResponse.getText().equals("ER")) {
+            p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
+            p4_lb_mensaje.setText(bundle.getString( "p4_lb_mensaje_ER"));
+        }
+        if(WsdlResponse.getText().equals("KO")) {
+            p4_rec_mensaje.setFill(Color.rgb(227, 250, 228, 1));
+            p4_lb_mensaje.setText(bundle.getString( "p4_lb_mensaje_KO"));
+        }
+        if(WsdlResponse.getText().equals("OK")) {
+            p4_rec_mensaje.setFill(Color.rgb(227, 250, 228, 1));
+            p4_lb_mensaje.setText(bundle.getString( "p4_lb_mensaje_OK"));
+        }
+        
         p4_ld_wsdl_raspuesta.setVisible(true);
         p4_ld_wsdl_TimeStamp.setVisible(true);
         WsdlResponse.setVisible(true);
         WsdlTimeStamp.setVisible(true);
 
+        p2_btn_aceptar.setVisible(false);
+
+    }
+
+    private Rectangle buildFigure(int x, int y, int size, String image) {
+        Rectangle rect = new Rectangle();
+        rect.setX(x);
+        rect.setY(y);
+        rect.setHeight(size);
+        rect.setWidth(size);
+        Image img = new Image(this.getClass().getClassLoader().getResource(image).toString());
+        rect.setFill(new ImagePattern(img));
+        return rect;
+    }
+
+    public void setFromUI(Cliente cliente) {
+        txtApellido.setText(cliente.getApellido());
+        txtNombre.setText(cliente.getNombre());
+        txtTelefono.setText(cliente.getTelefono());
     }
 
     public Cliente getFromUI(){
@@ -217,12 +278,6 @@ public class Valida_Envia_DERController implements Initializable {
         cliente.setTelefono(txtTelefono.getText());
         return cliente;
     }
-
-    public void setFromUI(Cliente cliente) {
-        txtApellido.setText(cliente.getApellido());
-        txtNombre.setText(cliente.getNombre());
-        txtTelefono.setText(cliente.getTelefono());
-    }
     
     public DigicModoPago getDERFromUI(){
         DigicModoPago digicModoPago = new DigicModoPago();
@@ -230,14 +285,19 @@ public class Valida_Envia_DERController implements Initializable {
         digicModoPago.setClaveBanco(p4_tf_clave_banco.getText()); 
         digicModoPago.setClaveControl(p4_tf_clave_control.getText());
         digicModoPago.setCodigoBic(p4_tf_codigoBic.getText());
-        digicModoPago.setNumeroABA(p4_tf_codigo_aba.getText());
-        //digicModoPago.setCuenta(p4_tf_cuenta_bancaria.getText());
+        digicModoPago.setCuentaInternacional("SI");
+        digicModoPago.setCuentaSinIBAN("SI");
         digicModoPago.setDescInstFinanciera(p4_tf_descripcion_banco.getText());
         digicModoPago.setEmail(p4_tf_email.getText());
         digicModoPago.setIdentificadorBillete(p4_tf_identificadorBillete.getText());
         digicModoPago.setModoPago(p4_tf_modoTransporte.getText());
+        digicModoPago.setModoTransporte(p4_tf_modoTransporte.getText());
+        digicModoPago.setNumeroABA(p4_tf_codigo_aba.getText());
         digicModoPago.setPaisBanco(p4_tf_pais_banco.getText());
+        digicModoPago.setValorDocumento(valorDocumento);
         digicModoPago.setValorMedioPago(p4_tf_valorMedioPago.getText());
+
+        digicModoPago.setEstatusUpload(3);
 
         return digicModoPago;
     }
@@ -256,7 +316,7 @@ public class Valida_Envia_DERController implements Initializable {
         p4_cb_identificadorBillete.setItems(FXCollections.observableArrayList(digicRepository.findAllIdentificadorBillete(valorDocumento)));
         p4_cb_descripcion_banco.setItems(FXCollections.observableArrayList(digicRepository.findAllDescInstFinanciera(valorDocumento)));
         p4_cb_cuenta_bancaria.setItems(FXCollections.observableArrayList(digicRepository.findAllValorMedioPago(valorDocumento)));
-        //p4_cb_codigo_aba.setItems(FXCollections.observableArrayList(digicRepository.findAllCodigoBaba(valorDocumento)));
+        p4_cb_codigo_aba.setItems(FXCollections.observableArrayList(digicRepository.findAllNumeroAba(valorDocumento)));
     }
 
 

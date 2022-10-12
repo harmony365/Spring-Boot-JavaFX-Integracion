@@ -1,12 +1,11 @@
 package com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo;
 
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Digic;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DigicRepository extends JpaRepository<Digic, String> {
@@ -46,12 +45,12 @@ public interface DigicRepository extends JpaRepository<Digic, String> {
 
     @Query(value = "SELECT DISTINCT d.cuentaInternacional FROM digic d WHERE d.valorDocumento = :valorDocumento")
     public List<Digic> findAllCuentaInternacional(String valorDocumento);
-/*    
-    @Query(value = "SELECT d.cuentaSinIban FROM digic d WHERE d.valorDocumento = :valorDocumento")
+   
+    @Query(value = "SELECT d.cuentaSinIBAN FROM digic d WHERE d.valorDocumento = :valorDocumento")
     public List<Digic> findAllCuentaSinIban(String valorDocumento);
 
-    @Query(value = "SELECT d.numeroaba FROM digic d WHERE d.valorDocumento = :valorDocumento")
+    @Query(value = "SELECT d.numeroABA FROM digic d WHERE d.valorDocumento = :valorDocumento")
     public List<Digic> findAllNumeroAba(String valorDocumento);
-*/
+
 
 }

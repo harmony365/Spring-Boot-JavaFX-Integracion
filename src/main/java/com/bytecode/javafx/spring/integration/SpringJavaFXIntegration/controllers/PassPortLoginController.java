@@ -70,7 +70,7 @@ public class PassPortLoginController  implements Initializable {
     @FXML 
     private void switchToAnterior() throws IOException {
         Locale locale = Locale.getDefault();
-        App.setRoot("views/primary",locale);
+        App.setRoot("/views/primary",locale);
 
     }   
 
