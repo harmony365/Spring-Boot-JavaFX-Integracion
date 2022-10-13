@@ -1,15 +1,15 @@
 package com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.controllers;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
-import javafx.event.EventHandler;
-import javafx.event.ActionEvent;
+//import javafx.collections.ListChangeListener;
+//import javafx.event.EventHandler;
+//import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
+//import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
@@ -17,27 +17,27 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+//import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
+//import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 
-import org.comtel2000.keyboard.control.DefaultLayer;
-import org.comtel2000.keyboard.control.KeyBoardPopup;
-import org.comtel2000.keyboard.control.KeyBoardPopupBuilder;
+//import org.comtel2000.keyboard.control.DefaultLayer;
+//import org.comtel2000.keyboard.control.KeyBoardPopup;
+//import org.comtel2000.keyboard.control.KeyBoardPopupBuilder;
 import static org.comtel2000.keyboard.control.VkProperties.*;
 
 import org.grecasa.ext.mw.externo.KioskoServiceClient;
 import org.grecasa.ext.mw.externo.KioskoServiceClientUtils;
-import org.grecasa.ext.mw.externo.kiosko_service.KioskoService;
-import org.grecasa.ext.mw.externo.kiosko_service.KioskoService_Service;
-import org.grecasa.ext.mw.externo.kiosko_service.ValidarDerResponse;
-import org.grecasa.ext.mw.externo.kiosko_service.ValidarRemesaDer;
+//import org.grecasa.ext.mw.externo.kiosko_service.KioskoService;
+//import org.grecasa.ext.mw.externo.kiosko_service.KioskoService_Service;
+//import org.grecasa.ext.mw.externo.kiosko_service.ValidarDerResponse;
+//import org.grecasa.ext.mw.externo.kiosko_service.ValidarRemesaDer;
 
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.App;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.DummyData;
@@ -49,6 +49,8 @@ import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.Digic
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.DigicRepository;
 
 import org.grecasa.ext.mw.externo.kiosko_service.ValidarRemesaDerResponse;
+
+import org.iban4j.*;
 
 
 @Component
@@ -174,7 +176,19 @@ public class Valida_Envia_DERController implements Initializable {
         if (p4_tf_modoTransporte.getText().isEmpty()){ PlayEmpty(p4_tf_modoTransporte);procesarWSDL = true;}else{p4_tf_modoTransporte.setStyle(successStyle);};
         if (p4_tf_pais_banco.getText().isEmpty()){ PlayEmpty(p4_tf_pais_banco);procesarWSDL = true;}else{p4_tf_pais_banco.setStyle(successStyle);};
         if (p4_tf_valorMedioPago.getText().isEmpty()){ PlayEmpty(p4_tf_valorMedioPago);procesarWSDL = true;}else{p4_tf_valorMedioPago.setStyle(successStyle);};
-        
+
+        // How to validate Iban
+        try {
+            IbanUtil.validate(p4_tf_valorMedioPago.getText());
+            //IbanUtil.validate("DE89 3704 0044 0532 0130 00", IbanFormat.Default);
+            // valid
+        } catch (IbanFormatException |
+                 InvalidCheckDigitException |
+                 UnsupportedCountryException e) {
+            // invalid
+
+        }
+
         if(!procesarWSDL)onWsdl();
     }
 
