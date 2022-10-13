@@ -1,56 +1,40 @@
 package com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.controllers;
 
+import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.App;
+import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Cliente;
+import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Digic;
+import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.DigicModoPago;
+import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.DummyData;
+import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.ClienteRepository;
+import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.DigicModoPagoRepository;
+import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.DigicRepository;
 import javafx.collections.FXCollections;
-//import javafx.collections.ListChangeListener;
-//import javafx.event.EventHandler;
-//import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-//import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
-
+import org.grecasa.ext.mw.externo.KioskoServiceClient;
+import org.grecasa.ext.mw.externo.KioskoServiceClientUtils;
+import org.grecasa.ext.mw.externo.kiosko_service.ValidarRemesaDerResponse;
+import org.iban4j.IbanFormatException;
+import org.iban4j.IbanUtil;
+import org.iban4j.InvalidCheckDigitException;
+import org.iban4j.UnsupportedCountryException;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.net.URL;
-//import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-
-//import org.comtel2000.keyboard.control.DefaultLayer;
-//import org.comtel2000.keyboard.control.KeyBoardPopup;
-//import org.comtel2000.keyboard.control.KeyBoardPopupBuilder;
 import static org.comtel2000.keyboard.control.VkProperties.*;
-
-import org.grecasa.ext.mw.externo.KioskoServiceClient;
-import org.grecasa.ext.mw.externo.KioskoServiceClientUtils;
-//import org.grecasa.ext.mw.externo.kiosko_service.KioskoService;
-//import org.grecasa.ext.mw.externo.kiosko_service.KioskoService_Service;
-//import org.grecasa.ext.mw.externo.kiosko_service.ValidarDerResponse;
-//import org.grecasa.ext.mw.externo.kiosko_service.ValidarRemesaDer;
-
-import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.App;
-import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.DummyData;
-import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Cliente;
-import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Digic;
-import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.DigicModoPago;
-import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.ClienteRepository;
-import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.DigicModoPagoRepository;
-import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.DigicRepository;
-
-import org.grecasa.ext.mw.externo.kiosko_service.ValidarRemesaDerResponse;
-
-import org.iban4j.*;
 
 
 @Component
@@ -186,7 +170,8 @@ public class Valida_Envia_DERController implements Initializable {
                  InvalidCheckDigitException |
                  UnsupportedCountryException e) {
             // invalid
-
+            PlayEmpty(p4_tf_cuenta_bancaria);
+            procesarWSDL = true;
         }
 
         if(!procesarWSDL)onWsdl();
