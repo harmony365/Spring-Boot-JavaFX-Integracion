@@ -1,8 +1,7 @@
 package com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.utiles;
 
-import org.json.JSONObject;
-
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Digic;
+import org.json.JSONObject;
 
 public class JsonUtils {
 
@@ -46,15 +45,15 @@ public class JsonUtils {
 
             if (myJson.isNull("valorMedioPago")){
                 myJson.put("valorMedioPago","");
-            };
+            }
 
             if (myJson.isNull("modoTransporte")){
                 myJson.put("modoTransporte","");
-            };
+            }
 
             if (myJson.isNull("identificadorBillete")){
                 myJson.put("identificadorBillete","");
-            };
+            }
 
             String monto = Double.toString((Double) myJson.get("totalDigic"));
 
@@ -85,8 +84,10 @@ public class JsonUtils {
             digic.setPaisBanco((String) myJson.get("paisBanco"));
             digic.setModoTransporte((String) myJson.get("modoTransporte"));
             digic.setIdentificadorBillete((String) myJson.get("identificadorBillete"));
-            digic.setEstatus_upload((Integer) 3);
-            
+            digic.setEstatus_upload(3);
+
+            //digic.setClaveUuid((String) App.UUIDProcess);
+
                             /* 
                 0,
                 "",

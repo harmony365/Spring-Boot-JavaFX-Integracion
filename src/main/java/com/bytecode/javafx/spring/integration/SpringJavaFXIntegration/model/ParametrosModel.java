@@ -15,7 +15,7 @@ public class ParametrosModel {
     private String  DniNifNieTieDemo;
     private Boolean AppDemo;
     private String  FechaHoy;
-    
+
     public void ParametrosModel() {}
 
     public void ParametrosModel(
@@ -116,7 +116,7 @@ public class ParametrosModel {
     public void setNumeroPasaporte(String NumeroPasaporte) {
         this.NumeroPasaporte = NumeroPasaporte;
     }
-    
+
     public String getWsdlUrl() {
         return WsdlUrl;
     }

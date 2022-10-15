@@ -1,127 +1,58 @@
 package com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.controllers;
 
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.net.MalformedURLException;
-import java.net.URL;
-
-import javafx.event.Event;
-import javafx.event.EventHandler;
-import javafx.event.EventType;
-import javafx.beans.property.ReadOnlyIntegerWrapper;
-import javafx.beans.property.ReadOnlyStringWrapper;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
-import javafx.collections.ListChangeListener.Change;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Labeled;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TablePosition;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextArea;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Popup;
-import javafx.stage.Stage;
-import javafx.util.Callback;
-import javafx.scene.input.InputMethodEvent;
-import javafx.scene.control.TextInputControl;
-import javafx.scene.control.TableColumn.CellDataFeatures;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
-import java.util.Locale;
-import java.util.Map;
-import java.util.ResourceBundle;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
-//------------------------
-//--  QRCode
-
-import java.io.*;
-import javax.imageio.ImageIO;
-import javax.json.JsonObject;
-import javax.json.JsonValue;
-
-import org.json.*;
-
-import java.awt.image.BufferedImage;
-
-import com.google.gson.JsonParser;
-import com.google.zxing.*;
-import com.google.zxing.Reader;
-import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
-import com.google.zxing.client.j2se.MatrixToImageWriter;
-import com.google.zxing.common.BitMatrix;
-import com.google.zxing.common.HybridBinarizer;
-import com.google.zxing.qrcode.QRCodeWriter;
-
-// -- end QRCode
-//------------------------------
-
-import org.jasypt.util.password.BasicPasswordEncryptor;
-import org.jasypt.util.text.BasicTextEncryptor; 
-
-import java.util.Random;
-
-/* 
- *  CRUDHelper para SQLite * 
-*/
-    import java.sql.*;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import org.apache.commons.lang.StringUtils;
-import org.apache.cxf.frontend.ClientProxy;
-import org.apache.cxf.ws.security.wss4j.WSS4JOutInterceptor;
-
-import org.comtel2000.keyboard.control.DefaultLayer;
-import org.comtel2000.keyboard.control.KeyBoardPopup;
-import org.comtel2000.keyboard.control.KeyBoardPopupBuilder;
-import static org.comtel2000.keyboard.control.VkProperties.*;
-
-import org.grecasa.ext.mw.externo.KioskoServiceClient;
-import org.grecasa.ext.mw.externo.KioskoServiceClientUtils;
-import org.grecasa.ext.mw.externo.kiosko_service.KioskoService;
-import org.grecasa.ext.mw.externo.kiosko_service.KioskoService_Service;
-import org.grecasa.ext.mw.externo.kiosko_service.ValidarDerResponse;
-import org.grecasa.ext.mw.externo.kiosko_service.ValidarRemesaDer;
-import org.grecasa.ext.mw.externo.kiosko_service.ValidarRemesaDerResponse;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
-
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.App;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Digic;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.DummyData;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.DigicRepository;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.utiles.JsonUtils;
+import com.google.zxing.*;
+import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
+import com.google.zxing.common.HybridBinarizer;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
+import org.apache.commons.lang.StringUtils;
+import org.grecasa.ext.mw.externo.KioskoServiceClient;
+import org.grecasa.ext.mw.externo.KioskoServiceClientUtils;
+import org.grecasa.ext.mw.externo.kiosko_service.ValidarRemesaDerResponse;
+import org.jasypt.util.text.BasicTextEncryptor;
+import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
+import java.net.URL;
+import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.Locale;
+import java.util.Random;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import static org.comtel2000.keyboard.control.VkProperties.*;
 
 @Component
 public class Modelo_403Controller implements Initializable {
@@ -220,7 +151,10 @@ public class Modelo_403Controller implements Initializable {
     @FXML public TableColumn<Justificante, String> p2_tc_listajustificantes = new TableColumn<Justificante, String>("JUSTIFICANTE");
     
     @FXML public TableColumn<Justificante, String> p2_tc_listajustificantesMonto  = new TableColumn<Justificante, String>("MONTO");
-    
+
+
+    @FXML public TableView<Digic> p2_tv_justificantesdigic = new TableView<Digic>();
+
     private String ScannerReader ="";
 
     private ResourceBundle bundle;
@@ -277,9 +211,83 @@ public class Modelo_403Controller implements Initializable {
         fechaHoy = date.format(formatter);
         LocalDate parsedDate = LocalDate.parse(fechaHoy, formatter);
 
+        if(App.parametrosModel.getTipoDoumento() == null) App.parametrosModel.setTipoDoumento("I");
+
+        switch (App.parametrosModel.getTipoDoumento()){
+            case "P" :
+                p2_lb_valorDocumento.setText(App.parametrosModel.getNumeroPasaporte());
+                p2_lb_valorDocumentoEsperado.setText(App.parametrosModel.getNumeroPasaporte());
+                p2_lb_tipoDocumento.setText("PASAPORTE");
+                break;
+            case "I" :
+                p2_lb_valorDocumento.setText(App.parametrosModel.getDniNifNieTieDemo());
+                p2_lb_valorDocumentoEsperado.setText(App.parametrosModel.getDniNifNieTieDemo());
+                p2_lb_tipoDocumento.setText("NIF/NIE/TIE");
+                break;
+        }
+
+        p2_lb_nombreViajero.setText(App.parametrosModel.getNombreViajero());
+
+        p2_btn_demo.setVisible(App.parametrosModel.getAppDemo());
+
         p2_tc_listajustificantes.setCellValueFactory(new PropertyValueFactory<>("numero"));
         p2_tc_listajustificantesMonto.setCellValueFactory(new PropertyValueFactory<>("monto"));
-        
+
+        /*
+        *   Tableview ObservableList de la tabla digic
+        */
+                TableColumn<Digic, String> p2_tc_listajustificantesdigic = new TableColumn("JUSTIFICANTE");
+                TableColumn<Digic, String> p2_tc_listajustificantesMontodigic  = new TableColumn("MONTO");
+
+                p2_tc_listajustificantesdigic.setCellValueFactory(new PropertyValueFactory<>("justificante"));
+                p2_tc_listajustificantesMontodigic.setCellValueFactory(new PropertyValueFactory<>("totalDigic"));
+
+                p2_tv_justificantesdigic.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+                p2_tv_justificantesdigic.getColumns().setAll(p2_tc_listajustificantesdigic,p2_tc_listajustificantesMontodigic);
+
+                ObservableList<Digic> datos =  FXCollections.observableArrayList(digicRepository.findByValorDocumento(p2_lb_valorDocumento.getText()));
+                //p2_tv_justificantesdigic.getItems().setAll(datos);
+                p2_tv_justificantesdigic.setItems(datos);
+
+                //p2_tv_justificantesdigic.getItems().setAll(FXCollections.observableArrayList(digicRepository.findByValorDocumento(p2_lb_valorDocumento.getText())));
+
+                //p2_tv_justificantesdigic.setItems(FXCollections.observableArrayList(digicRepository.findByValorDocumento(p2_lb_valorDocumento.getText())));
+
+                p2_tv_justificantesdigic.getSelectionModel().setCellSelectionEnabled(false);
+                ObservableList selectedCellsdigic = p2_tv_justificantesdigic.getSelectionModel().getSelectedCells();
+
+                p2_tv_justificantesdigic.refresh();
+                selectedCellsdigic.addListener(new ListChangeListener() {
+                    @Override
+                    public void onChanged(Change c) {
+
+                        try {
+
+                            TablePosition tablePosition = (TablePosition) selectedCellsdigic.get(0);
+                            Object val = tablePosition.getTableColumn().getCellData(tablePosition.getRow());
+
+                            System.out.println("Selected digic Value: " + existJustificante((String)val));
+                            System.out.println("Selected digic Value: " + val);
+
+                        } catch (Exception e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setHeaderText(null);
+                            alert.setTitle("Error");
+                            alert.setContentText(e.getMessage());
+                            alert.showAndWait();
+                        }
+
+                    }
+                });
+
+
+
+        /*   fin ObservableList digic   */
+
         //p2_tc_listajustificantes.setMinWidth(100);
         p2_tv_justificantes.setPlaceholder(new Label(bundle.getString( "p2_tv_Placeholder")));
 
@@ -323,26 +331,6 @@ public class Modelo_403Controller implements Initializable {
         //p2_tv_justificantes.getColumns().addAll(p2_tc_listajustificantesMonto);
 
         ClearPlantilla();
-
-        if(App.parametrosModel.getTipoDoumento() == null) App.parametrosModel.setTipoDoumento("I");
-
-        
-        switch (App.parametrosModel.getTipoDoumento()){
-            case "P" : 
-                p2_lb_valorDocumento.setText(App.parametrosModel.getNumeroPasaporte());
-                p2_lb_valorDocumentoEsperado.setText(App.parametrosModel.getNumeroPasaporte());
-                p2_lb_tipoDocumento.setText("PASAPORTE");
-                break;
-            case "I" : 
-                p2_lb_valorDocumento.setText(App.parametrosModel.getDniNifNieTieDemo());
-                p2_lb_valorDocumentoEsperado.setText(App.parametrosModel.getDniNifNieTieDemo());
-                p2_lb_tipoDocumento.setText("NIF/NIE/TIE");
-                break;
-        }
-       
-        p2_lb_nombreViajero.setText(App.parametrosModel.getNombreViajero());
-
-        p2_btn_demo.setVisible(App.parametrosModel.getAppDemo());
 
         p2_img_barcode.requestFocus();
         p2_img_barcode.setOnKeyTyped(new EventHandler<KeyEvent>() {
@@ -525,12 +513,14 @@ public class Modelo_403Controller implements Initializable {
         }
 
         List<Digic> digicLits = digicRepository.findByJustificante(justificante);
-        
+
         if(digicLits.size() == 0)
             return false;
 
         Digic digic = digicLits.get(0);
-        
+
+
+
         return (digic == null || digic.getJustificante() == null) ? false : true;
     }
 

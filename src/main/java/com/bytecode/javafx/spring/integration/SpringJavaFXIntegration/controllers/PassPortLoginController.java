@@ -1,32 +1,25 @@
 package com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.controllers;
 
-import java.io.IOException;
-import java.net.URL;
-
-import java.util.Locale;
-
+import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.App;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
-
-import java.util.ResourceBundle;
-
-import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.App;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import java.util.UUID;
 
 @Component
 public class PassPortLoginController  implements Initializable {
@@ -96,6 +89,10 @@ public class PassPortLoginController  implements Initializable {
             App.parametrosModel.setNumeroPasaporte(p3_tf_numerodocumeto.getText().trim());
             App.parametrosModel.setDniNifNieTieDemo(p3_tf_numerodocumeto.getText().trim());
            // App.parametrosModel.setNombreViajero("");
+
+            UUID uuid= UUID.randomUUID();
+
+            App.UUIDProcess = (uuid.toString());
 
             Locale locale = Locale.getDefault();
             App.setRoot("/views/modelo_403_v2",locale);            
@@ -205,10 +202,21 @@ public class PassPortLoginController  implements Initializable {
                     ke.getCharacter().getBytes()[0] == '\n' || 
                     ke.getCharacter().getBytes()[0] == '\r') {
                 
-                    System.out.println("\nData: " + ScannerReader); 
-                    
+                    System.out.println("\nData: " + ScannerReader);
+
                     try {
-                        QRcodeRead(ScannerReader);
+
+                        if(ScannerReader.length() <= 92 && ( ScannerReader.substring(0,1).equals("I") || ScannerReader.substring(0,1).equals("P"))) {
+                            QRcodeRead(ScannerReader);
+                        }else{
+
+                            Alert alert = new Alert(Alert.AlertType.ERROR);
+                            alert.setHeaderText(null);
+                            alert.setTitle("Error");
+                            alert.setContentText("DOCUMENTO NO VALIDO.");
+                            alert.showAndWait();
+                            p3_passaport_img.requestFocus();
+                        }
                     } catch (IOException e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();

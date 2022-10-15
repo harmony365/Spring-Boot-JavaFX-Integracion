@@ -1,5 +1,7 @@
 package com.bytecode.javafx.spring.integration.SpringJavaFXIntegration;
 
+import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.ParametrosModel;
+import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
@@ -18,36 +20,25 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.core.io.ClassPathResource;
+import javafx.util.Duration;
 import org.comtel2000.keyboard.control.DefaultLayer;
 import org.comtel2000.keyboard.control.KeyBoardPopup;
 import org.comtel2000.keyboard.control.KeyBoardPopupBuilder;
-import static org.comtel2000.keyboard.control.VkProperties.*;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.ResourceBundle;
-
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.util.Callback;
-import javafx.util.Duration;
-
-import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.ParametrosModel;
-
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.*;
 
 
 @SpringBootApplication
@@ -66,6 +57,8 @@ public class App extends Application {
     public LocalDate date = LocalDate.now();
     public DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
 	public KeyBoardPopup popup;
+
+    public static String UUIDProcess;
 
     
     Timeline BackGroundWonder = new Timeline(new KeyFrame(Duration.seconds(30), new EventHandler<ActionEvent>() { 

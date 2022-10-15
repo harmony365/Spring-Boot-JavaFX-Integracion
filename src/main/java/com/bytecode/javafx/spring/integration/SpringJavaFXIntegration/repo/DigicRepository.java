@@ -2,8 +2,8 @@ package com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo;
 
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Digic;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -12,6 +12,12 @@ public interface DigicRepository extends JpaRepository<Digic, String> {
 
     @Query(value = "SELECT d FROM digic d WHERE d.justificante = :justificante")
     public List<Digic> findByJustificante(String justificante);
+
+    @Query(value = "SELECT d.justificante, d.totalDigic FROM digic d WHERE d.valorDocumento = :valorDocumento")
+    public List<Digic> findByValorDocumento(String valorDocumento);
+
+    @Query(value = "SELECT DISTINCT trim(d.fechaLimiteSalida) FROM digic d WHERE d.valorDocumento = :valorDocumento AND length(trim(d.fechaLimiteSalida)) > 0 ")
+    public List<Digic> findAllFechaLimiteSalida(String valorDocumento);
 
     @Query(value = "SELECT DISTINCT trim(d.email) FROM digic d WHERE d.valorDocumento = :valorDocumento AND length(trim(d.email)) > 0 ")
     public List<Digic> findAllEmail(String valorDocumento);

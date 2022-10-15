@@ -8,14 +8,13 @@ import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Dumm
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.ClienteRepository;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.DigicModoPagoRepository;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.DigicRepository;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
@@ -31,6 +30,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -72,24 +72,29 @@ public class Valida_Envia_DERController implements Initializable {
     @FXML
     private ComboBox<Digic> p4_cb_clave_banco, p4_cb_clave_control, p4_cb_codigoBic, p4_cb_codigo_aba,
             p4_cb_cuenta_bancaria, p4_cb_descripcion_banco, p4_cb_email, p4_cb_identificadorBillete,
-            p4_cb_modoTransporte, p4_cb_pais_banco, p4_cb_valorMedioPago;
+            p4_cb_modoTransporte, p4_cb_pais_banco, p4_cb_valorMedioPago,  p4_cb_fechaLimiteSalida,
+            p4_cb_cuetaiban;
 
     @FXML
     private Label p2_lb_informacion,p2_lb_clave_banco,p2_lb_clave_control, p2_lb_codigoBic,
                   p2_lb_codigo_cuenta_internacional, p2_lb_codigo_cuenta_nacional, p2_lb_cuenta_bancaria,
                   p2_lb_datos_transporte, p2_lb_datos_viajeros, p2_lb_descripcion_banco, p2_lb_fechaLimiteSalida,
                   p2_lb_identificadorBillete, p2_lb_medios_de_pago, p2_lb_modoTransporte, p2_lb_pais_banco, 
-                  p2_lb_valorMedioPago, 
-                  
+                  p2_lb_valorMedioPago, p2_lb_fecha_salida,
                   p4_lb_mensaje, p4_ld_wsdl_raspuesta, p4_ld_wsdl_TimeStamp;
-    
+    @FXML
+    private DatePicker p4_dtp_fechaLimiteSalida;
+
     @FXML
     private TextField p4_tf_clave_banco, p4_tf_clave_control,p4_tf_codigoBic,p4_tf_codigo_aba,
                       p4_tf_cuenta_bancaria,p4_tf_descripcion_banco,p4_tf_email,p4_tf_identificadorBillete,
-                      p4_tf_modoTransporte,p4_tf_pais_banco,p4_tf_valorMedioPago;
+                      p4_tf_modoTransporte,p4_tf_pais_banco,p4_tf_valorMedioPago, p4_tf_fechaLimiteSalida;
 
     @FXML
     private Button p2_btn_aceptar, p2_btn_salir;
+
+    @FXML
+    private Pane p4_pane_numeroaba, p4_pane_cuentaiban, p4_pane_cuentainternacional;
 
     public String valorDocumento;
 
@@ -101,6 +106,7 @@ public class Valida_Envia_DERController implements Initializable {
     String errorStyle     = String.format("-fx-border-color: RED; -fx-border-width: 2; -fx-border-radius: 5;");
     
     public Boolean procesoWsdl = false;
+    public DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -114,18 +120,44 @@ public class Valida_Envia_DERController implements Initializable {
 
         p4_tf_codigo_aba.getProperties().put(VK_TYPE, VK_TYPE_NUMERIC);
         p4_tf_codigoBic.getProperties().put(VK_TYPE, VK_TYPE_NUMERIC);
+        p4_dtp_fechaLimiteSalida.getProperties().put(VK_TYPE, VK_TYPE_NUMERIC);
         p4_tf_email.getProperties().put(VK_TYPE, VK_TYPE_EMAIL);
 
-        /*
-         * 
-         * p4_tf_clave_banco
-         * 
-         */
-        
+        p4_tf_pais_banco.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.length() > 2) ((StringProperty)observable).setValue(oldValue);
+
+            if (!newValue.matches("\\sa-zA-Z*")) {
+                p4_tf_pais_banco.setText(newValue.replaceAll("[^\\sa-zA-Z]", ""));
+            }
+            if (newValue.equals("US")){
+                p4_pane_numeroaba.setVisible(true);
+            }else{
+                p4_pane_numeroaba.setVisible(false);
+            }
+
+            p4_tf_pais_banco.setText(newValue.toUpperCase());
+        });
+
+        p4_tf_codigoBic.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                p4_tf_codigoBic.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
+        p4_tf_codigo_aba.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue.length() > 9) ((StringProperty)observable).setValue(oldValue);
+
+            if (!newValue.matches("\\d*")) {
+                p4_tf_codigo_aba.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
+
+
         p4_ld_wsdl_raspuesta.setVisible(false);
         p4_ld_wsdl_TimeStamp.setVisible(false);
         WsdlResponse.setVisible(false);
         WsdlTimeStamp.setVisible(false);
+
+        p4_pane_numeroaba.setVisible(false);
 
         p4_cb_email.setOnAction(e -> p4_tf_email.setText(p4_cb_email.getValue()+""));
         p4_cb_clave_banco.setOnAction(e -> p4_tf_clave_banco.setText(p4_cb_clave_banco.getValue()+""));
@@ -136,7 +168,34 @@ public class Valida_Envia_DERController implements Initializable {
         p4_cb_descripcion_banco.setOnAction(e -> p4_tf_descripcion_banco.setText(p4_cb_descripcion_banco.getValue()+""));
         p4_cb_identificadorBillete.setOnAction(e -> p4_tf_identificadorBillete.setText(p4_cb_identificadorBillete.getValue()+""));
         p4_cb_modoTransporte.setOnAction(e -> p4_tf_modoTransporte.setText(p4_cb_modoTransporte.getValue()+""));
-        p4_cb_pais_banco.setOnAction(e -> p4_tf_pais_banco.setText(p4_cb_pais_banco.getValue()+""));
+
+        // TODO --> Desarrollar funcionabilidad de verificación de la fecha de salida
+        //p4_cb_fechaLimiteSalida.setOnAction(e -> p4_dtp_fechaLimiteSalida.setValue(LocalDate.parse(p4_cb_fechaLimiteSalida.getValue()+"")));
+
+        p4_cb_cuetaiban.setOnAction((e) ->{
+            String sn = p4_cb_cuetaiban.getValue()+"";
+            if(sn.equals("SI")){
+                p4_pane_cuentaiban.setVisible(true);
+                p4_pane_cuentainternacional.setVisible(false);
+            }else{
+                p4_pane_cuentaiban.setVisible(false);
+                p4_pane_cuentainternacional.setVisible(true);
+            }
+        });
+
+        p4_cb_pais_banco.setOnAction((e) ->{
+            p4_tf_pais_banco.setText(p4_cb_pais_banco.getValue()+"");
+            if(p4_tf_pais_banco.getText().equals("US")){
+                p4_pane_numeroaba.setVisible(true);
+            }else{p4_pane_numeroaba.setVisible(false);}
+        });
+        p4_cb_pais_banco.getSelectionModel().selectFirst();
+
+        p4_tf_pais_banco.setOnInputMethodTextChanged((e) -> {
+            if(p4_tf_pais_banco.getText().equals("US")){
+                p4_pane_numeroaba.setVisible(true);
+            }else{p4_pane_numeroaba.setVisible(false);}
+        });
         p4_cb_valorMedioPago.setOnAction(e -> p4_tf_valorMedioPago.setText(p4_cb_valorMedioPago.getValue()+""));
         p4_cb_codigo_aba.setOnAction(e -> p4_tf_codigo_aba.setText(p4_cb_codigo_aba.getValue()+""));
 
@@ -144,34 +203,58 @@ public class Valida_Envia_DERController implements Initializable {
 
     }
 
+    public boolean isValidLetter(String s){
+        String regex="[A-Za-z\\s]+";
+        return s.matches(regex);//returns true if input and regex matches otherwise false;
+    }
 
     @FXML
     private void switchToAceptar() throws IOException {
         Boolean procesarWSDL = false;
+        String sn = p4_cb_cuetaiban.getValue()+"";
 
         if (p4_tf_email.getText().isEmpty()){ PlayEmpty(p4_tf_email);procesarWSDL = true;}else{p4_tf_email.setStyle(successStyle);};
-        if (p4_tf_clave_banco.getText().isEmpty()){ PlayEmpty(p4_tf_clave_banco);procesarWSDL = true;}else{p4_tf_clave_banco.setStyle(successStyle);};
-        if (p4_tf_clave_control.getText().isEmpty()){ PlayEmpty(p4_tf_clave_control);procesarWSDL = true;}else{p4_tf_clave_control.setStyle(successStyle);};
-        if (p4_tf_codigoBic.getText().isEmpty()){ PlayEmpty(p4_tf_codigoBic);procesarWSDL = true;}else{p4_tf_codigoBic.setStyle(successStyle);};
-        if (p4_tf_codigo_aba.getText().isEmpty()){ PlayEmpty(p4_tf_codigo_aba);procesarWSDL = true;}else{p4_tf_codigo_aba.setStyle(successStyle);};
-        if (p4_tf_cuenta_bancaria.getText().isEmpty()){ PlayEmpty(p4_tf_cuenta_bancaria);procesarWSDL = true;}else{p4_tf_cuenta_bancaria.setStyle(successStyle);};
-        if (p4_tf_descripcion_banco.getText().isEmpty()){ PlayEmpty(p4_tf_descripcion_banco);procesarWSDL = true;}else{p4_tf_descripcion_banco.setStyle(successStyle);};
         if (p4_tf_identificadorBillete.getText().isEmpty()){ PlayEmpty(p4_tf_identificadorBillete);procesarWSDL = true;}else{p4_tf_identificadorBillete.setStyle(successStyle);};
         if (p4_tf_modoTransporte.getText().isEmpty()){ PlayEmpty(p4_tf_modoTransporte);procesarWSDL = true;}else{p4_tf_modoTransporte.setStyle(successStyle);};
-        if (p4_tf_pais_banco.getText().isEmpty()){ PlayEmpty(p4_tf_pais_banco);procesarWSDL = true;}else{p4_tf_pais_banco.setStyle(successStyle);};
-        if (p4_tf_valorMedioPago.getText().isEmpty()){ PlayEmpty(p4_tf_valorMedioPago);procesarWSDL = true;}else{p4_tf_valorMedioPago.setStyle(successStyle);};
 
-        // How to validate Iban
-        try {
-            IbanUtil.validate(p4_tf_valorMedioPago.getText());
-            //IbanUtil.validate("DE89 3704 0044 0532 0130 00", IbanFormat.Default);
-            // valid
-        } catch (IbanFormatException |
-                 InvalidCheckDigitException |
-                 UnsupportedCountryException e) {
-            // invalid
-            PlayEmpty(p4_tf_cuenta_bancaria);
-            procesarWSDL = true;
+        if(sn.equals("NO")){
+            if (p4_tf_clave_banco.getText().isEmpty()){ PlayEmpty(p4_tf_clave_banco);procesarWSDL = true;}else{p4_tf_clave_banco.setStyle(successStyle);};
+            if (p4_tf_clave_control.getText().isEmpty()){ PlayEmpty(p4_tf_clave_control);procesarWSDL = true;}else{p4_tf_clave_control.setStyle(successStyle);};
+            if (p4_tf_codigoBic.getText().isEmpty()){ PlayEmpty(p4_tf_codigoBic);procesarWSDL = true;}else{p4_tf_codigoBic.setStyle(successStyle);};
+            if (p4_tf_pais_banco.getText().isEmpty()){ PlayEmpty(p4_tf_pais_banco);procesarWSDL = true;}else{p4_tf_pais_banco.setStyle(successStyle);};
+            if (p4_tf_descripcion_banco.getText().isEmpty()){ PlayEmpty(p4_tf_descripcion_banco);procesarWSDL = true;}else{p4_tf_descripcion_banco.setStyle(successStyle);};
+            if (p4_tf_cuenta_bancaria.getText().isEmpty()) { PlayEmpty(p4_tf_cuenta_bancaria); procesarWSDL = true; } else { p4_tf_cuenta_bancaria.setStyle(successStyle);};
+
+            if (!isValidLetter(p4_tf_pais_banco.getText())){PlayEmpty(p4_tf_pais_banco);procesarWSDL = true;}else{p4_tf_pais_banco.setStyle(successStyle);};
+
+            if (p4_tf_codigo_aba.getText().isEmpty()){ PlayEmpty(p4_tf_codigo_aba);procesarWSDL = true;}else{p4_tf_codigo_aba.setStyle(successStyle);};
+            if (p4_tf_codigo_aba.getText().length()<9){ PlayEmpty(p4_tf_codigo_aba);procesarWSDL = true;}else{p4_tf_codigo_aba.setStyle(successStyle);};
+
+            try {
+                IbanUtil.validate(p4_tf_cuenta_bancaria.getText());
+
+            } catch (IbanFormatException | InvalidCheckDigitException | UnsupportedCountryException e) {
+                // invalid
+                PlayEmpty(p4_tf_cuenta_bancaria);
+                procesarWSDL = true;
+            }
+
+        }
+
+        if(sn.equals("SI")) {
+            if (p4_tf_valorMedioPago.getText().isEmpty()){ PlayEmpty(p4_tf_valorMedioPago);procesarWSDL = true;}else{p4_tf_valorMedioPago.setStyle(successStyle);};
+
+            // How to validate Iban
+            try {
+                IbanUtil.validate(p4_tf_valorMedioPago.getText());
+                //IbanUtil.validate("DE89 3704 0044 0532 0130 00", IbanFormat.Default);
+                // valid
+            } catch (IbanFormatException | InvalidCheckDigitException | UnsupportedCountryException e) {
+                // invalid
+                PlayEmpty(p4_tf_valorMedioPago);
+                procesarWSDL = true;
+            }
+
         }
 
         if(!procesarWSDL)onWsdl();
@@ -213,6 +296,7 @@ public class Valida_Envia_DERController implements Initializable {
     @FXML
     public void onWsdl(){
 
+        // TODO : PENDIENTE DE REALIZAR EL ARMADO DE LA DATA PARA EL ENVIO DEL DER
         procesoWsdl = true;
 
         digicModoPagoRepository.save(getDERFromUI());
@@ -311,11 +395,14 @@ public class Valida_Envia_DERController implements Initializable {
         p4_cb_clave_control.setItems(FXCollections.observableArrayList(digicRepository.findAllClaveControl(valorDocumento)));
         p4_cb_codigoBic.setItems(FXCollections.observableArrayList(digicRepository.findAllCodigoBic(valorDocumento)));
         p4_cb_valorMedioPago.setItems(FXCollections.observableArrayList(digicRepository.findAllValorMedioPago(valorDocumento)));
+        p4_cb_fechaLimiteSalida.setItems(FXCollections.observableArrayList(digicRepository.findAllFechaLimiteSalida(valorDocumento)));
         p4_cb_pais_banco.setItems(FXCollections.observableArrayList(digicRepository.findAllPaisBanco(valorDocumento)));
         p4_cb_identificadorBillete.setItems(FXCollections.observableArrayList(digicRepository.findAllIdentificadorBillete(valorDocumento)));
         p4_cb_descripcion_banco.setItems(FXCollections.observableArrayList(digicRepository.findAllDescInstFinanciera(valorDocumento)));
         p4_cb_cuenta_bancaria.setItems(FXCollections.observableArrayList(digicRepository.findAllValorMedioPago(valorDocumento)));
         p4_cb_codigo_aba.setItems(FXCollections.observableArrayList(digicRepository.findAllNumeroAba(valorDocumento)));
+        p4_cb_cuetaiban.setItems(FXCollections.observableArrayList(digicRepository.findAllCuentaSinIban(valorDocumento)));
+
     }
 
 

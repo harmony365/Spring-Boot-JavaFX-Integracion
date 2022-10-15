@@ -1,14 +1,9 @@
 package com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model;
 
-import java.io.Serializable;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 import lombok.Data;
+
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity(name ="digicmodopago")
 @Data 
@@ -18,9 +13,10 @@ public class DigicModoPago implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)  
     @Column(name = "id")
     private Integer id;
-    
+
     @Column(name = "valorDocumento", unique = true, nullable = false)
     private String valorDocumento;
+
     @Column(name = "email")
     private String email;
     @Column(name = "cuentaInternacional")
@@ -47,6 +43,8 @@ public class DigicModoPago implements Serializable {
     private String modoTransporte;
     @Column(name = "identificadorBillete")
     private String identificadorBillete;
+    @Column(name = "fechaLimiteSalida")
+    private String fechaLimiteSalida;
     @Column(name = "estatusupload")
     private Integer estatusUpload;
     @Column(name = "fechaupload")

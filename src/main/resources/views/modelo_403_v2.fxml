@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onDragDetected="#switchToSQLiteConnect" prefHeight="1220.0" prefWidth="1795.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.controllers.Modelo_403Controller">
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onDragDetected="#switchToSQLiteConnect" prefHeight="1220.0" prefWidth="2449.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.controllers.Modelo_403Controller">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" layoutX="14.0" layoutY="567.0" stroke="#bebebf" strokeType="INSIDE" width="1327.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eaeaeb" height="42.0" layoutX="31.0" layoutY="242.0" stroke="#bebebf" strokeType="INSIDE" width="560.0" />
@@ -208,7 +200,7 @@
       <TableView fx:id="p2_tv_justificantes" layoutX="1352.0" layoutY="390.0" prefHeight="486.0" prefWidth="302.0">
         <columns>
           <TableColumn fx:id="p2_tc_listajustificantes" prefWidth="198.39990234375" text="%p2_tc_listajustificantes" />
-            <TableColumn prefWidth="99.9998779296875" text="%p2_tc_listajustificantesMonto" />
+            <TableColumn fx:id="p2_tc_listajustificantesMonto" prefWidth="99.9998779296875" text="%p2_tc_listajustificantesMonto" />
         </columns>
       </TableView>
       <Button fx:id="p2_btn_salir" layoutX="1506.0" layoutY="888.0" mnemonicParsing="false" onAction="#switchToAnterior" prefHeight="100.0" prefWidth="147.0" text="%p2_btn_anterior" textFill="#b52b2b">
@@ -429,5 +421,11 @@
             <Font size="14.0" />
          </font>
       </TextField>
+      <TableView fx:id="p2_tv_justificantesdigic" layoutX="1697.0" layoutY="390.0" prefHeight="495.0" prefWidth="281.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>
