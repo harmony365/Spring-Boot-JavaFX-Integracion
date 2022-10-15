@@ -4,10 +4,10 @@ import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.App;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Cliente;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Digic;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.DigicModoPago;
-import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.DummyData;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.ClienteRepository;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.DigicModoPagoRepository;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.DigicRepository;
+import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.services.DatabaseDerUtil;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -20,6 +20,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import org.grecasa.ext.mw.externo.KioskoServiceClient;
 import org.grecasa.ext.mw.externo.KioskoServiceClientUtils;
+import org.grecasa.ext.mw.externo.kiosko_service.ValidarRemesaDer;
 import org.grecasa.ext.mw.externo.kiosko_service.ValidarRemesaDerResponse;
 import org.iban4j.IbanFormatException;
 import org.iban4j.IbanUtil;
@@ -293,22 +294,34 @@ public class Valida_Envia_DERController implements Initializable {
         refesh();
     }
 
+
+    @Autowired
+    DatabaseDerUtil databaseDerUtil;
+
     @FXML
     public void onWsdl(){
 
-        // TODO : PENDIENTE DE REALIZAR EL ARMADO DE LA DATA PARA EL ENVIO DEL DER
         procesoWsdl = true;
+        // TODO : PENDIENTE DE REALIZAR EL ARMADO DE LA DATA PARA EL ENVIO DEL DER
 
-        digicModoPagoRepository.save(getDERFromUI());
+        //digicModoPagoRepository.save(getDERFromUI());
 
         ValidarRemesaDerResponse validarRemesaDerResponse;
-        
+        /*
         validarRemesaDerResponse  = KioskoServiceClient.getInstance().validarRemesa(DummyData.getExampleKO());
         KioskoServiceClientUtils.printResponse(validarRemesaDerResponse);
+        WsdlTimeStamp.setText(validarRemesaDerResponse.getFechaEstado().toString());
+        WsdlResponse.setText(validarRemesaDerResponse.getEstado());
 
-        //validarRemesaDerResponse = KioskoServiceClient.getInstance().validarRemesa(DummyData.getExample());
-        //KioskoServiceClientUtils.printResponse(validarRemesaDerResponse);
+        validarRemesaDerResponse = KioskoServiceClient.getInstance().validarRemesa(DummyData.getExample());
+        KioskoServiceClientUtils.printResponse(validarRemesaDerResponse);
+        WsdlTimeStamp.setText(validarRemesaDerResponse.getFechaEstado().toString());
+        WsdlResponse.setText(validarRemesaDerResponse.getEstado());
+        */
 
+        ValidarRemesaDer validarRemesaDer = databaseDerUtil.getDERtoSend(valorDocumento,3);
+        validarRemesaDerResponse  = KioskoServiceClient.getInstance().validarRemesa(validarRemesaDer);
+        KioskoServiceClientUtils.printResponse(validarRemesaDerResponse);
         WsdlTimeStamp.setText(validarRemesaDerResponse.getFechaEstado().toString());
         WsdlResponse.setText(validarRemesaDerResponse.getEstado());
 

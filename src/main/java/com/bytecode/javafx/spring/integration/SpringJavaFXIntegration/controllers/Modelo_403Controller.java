@@ -85,56 +85,17 @@ public class Modelo_403Controller implements Initializable {
     *  Variables de la plantilla
     */
 
-    @FXML private Button 
-        p2_btn_aceptar,  
-        p2_btn_qr, 
-        p2_btn_salir, 
-        p2_btn_demo;
+    @FXML private Button p2_btn_aceptar,  p2_btn_qr, p2_btn_salir, p2_btn_demo;
 
-    @FXML private Label 
-        p2_lb_justificante,
-        p2_lb_datos_establecimiento,
-        p2_lb_nif,
-        p2_lb_razon_social,
-        p2_lb_numero_factura,
-        p2_lb_fecha_factura,
-        p2_lb_monto_factura,
-        p2_lb_nombreViajero,
-        p2_lb_apellidosViajero,
-        p2_lb_tipoDocumento,
-        p2_lb_valorDocumento,
-        p2_lb_paisExpedicion,
-        p2_lb_paisResidencia,
-        p2_lb_fechaLimiteSalida,
-        p2_lb_medioPago,
-        p2_lb_cuentaInternacional,
-        p2_lb_codigoBic,
-        p2_lb_valorMedioPago,
-        p2_lb_codigo_cuenta_internacional,
-        p2_lb_codigo_cuenta_nacional,
-        p2_lb_botonqr,
-        p2_lb_clave_banco,
-        p2_lb_clave_control,
-        p2_lb_codigo_aba,
-        p2_lb_cuenta_bancaria,
-        p2_lb_descripcion_banco,
-        p2_lb_modelo,
-        p2_lb_pais_banco,
-        p2_lb_plantilla,
-        p2_lb_medioPago_txt,
-        p2_lb_valorDocumentoEsperado;  
+    @FXML private Label p2_lb_justificante, p2_lb_datos_establecimiento,  p2_lb_nif,  p2_lb_razon_social,
+        p2_lb_numero_factura, p2_lb_fecha_factura,  p2_lb_monto_factura, p2_lb_nombreViajero, p2_lb_apellidosViajero,
+        p2_lb_tipoDocumento, p2_lb_valorDocumento, p2_lb_paisExpedicion, p2_lb_paisResidencia, p2_lb_fechaLimiteSalida,
+        p2_lb_medioPago, p2_lb_cuentaInternacional, p2_lb_codigoBic, p2_lb_valorMedioPago, p2_lb_codigo_cuenta_internacional,
+        p2_lb_codigo_cuenta_nacional, p2_lb_botonqr, p2_lb_clave_banco, p2_lb_clave_control, p2_lb_codigo_aba, p2_lb_cuenta_bancaria,
+        p2_lb_descripcion_banco, p2_lb_modelo, p2_lb_pais_banco, p2_lb_plantilla, p2_lb_medioPago_txt, p2_lb_valorDocumentoEsperado;
 
-    @FXML private TextField 
-        p2_tf_email,
-        p2_tf_codigoBic,
-        p2_tf_valorMedioPago,
-        p2_tf_clave_banco,
-        p2_tf_clave_control,
-        p2_tf_codigo_aba,
-        p2_tf_cuenta_bancaria,
-        p2_tf_descripcion_banco,
-        p2_tf_pais_banco,
-        p2_tf_modoTransporte,
+    @FXML private TextField p2_tf_email, p2_tf_codigoBic, p2_tf_valorMedioPago, p2_tf_clave_banco, p2_tf_clave_control,
+        p2_tf_codigo_aba, p2_tf_cuenta_bancaria, p2_tf_descripcion_banco, p2_tf_pais_banco, p2_tf_modoTransporte,
         p2_tf_identificadorBillete,
         p2_input_scanner;
     
