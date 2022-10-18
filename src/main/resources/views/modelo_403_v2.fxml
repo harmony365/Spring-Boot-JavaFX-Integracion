@@ -79,21 +79,21 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="p2_lb_nif" contentDisplay="CENTER" layoutX="31.0" layoutY="199.0" prefHeight="27.0" prefWidth="281.0" text="00000">
+      <!--Label fx:id="p2_lb_nif" contentDisplay="CENTER" layoutX="31.0" layoutY="199.0" prefHeight="27.0" prefWidth="281.0" text="00000">
          <font>
             <Font size="18.0" />
          </font>
-      </Label>
+      </Label-->
       <Label fx:id="p2_lb_razon_social" alignment="BOTTOM_LEFT" layoutX="324.0" layoutY="179.0" prefHeight="20.0" prefWidth="717.0" text="%p2_lb_RAZON_SOCIAL">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="p2_lb_razon_social" contentDisplay="CENTER" layoutX="324.0" layoutY="199.0" prefHeight="27.0" prefWidth="717.0" text="DATA RAZON SOCIAL">
+      <!--Label fx:id="p2_lb_razon_social" contentDisplay="CENTER" layoutX="324.0" layoutY="199.0" prefHeight="27.0" prefWidth="717.0" text="DATA RAZON SOCIAL">
          <font>
             <Font size="18.0" />
          </font>
-      </Label>
+      </Label-->
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="56.0" layoutX="14.0" layoutY="284.0" stroke="#bebebf" strokeType="INSIDE" width="1327.0" />
       <Label contentDisplay="CENTER" layoutX="39.0" layoutY="248.0" prefHeight="27.0" prefWidth="31.0" text="2. -">
          <font>
@@ -199,8 +199,8 @@
       </Label>
       <TableView fx:id="p2_tv_justificantes" layoutX="1352.0" layoutY="390.0" prefHeight="486.0" prefWidth="302.0">
         <columns>
-          <TableColumn fx:id="p2_tc_listajustificantes" prefWidth="198.39990234375" text="%p2_tc_listajustificantes" />
-            <TableColumn fx:id="p2_tc_listajustificantesMonto" prefWidth="99.9998779296875" text="%p2_tc_listajustificantesMonto" />
+          <TableColumn fx:id="p2_tc_listajustificantes" prefWidth="299.0" text="%p2_tc_listajustificantes" />
+            <TableColumn fx:id="p2_tc_listajustificantesMonto" minWidth="0.0" prefWidth="0.0" text="%p2_tc_listajustificantesMonto" />
         </columns>
       </TableView>
       <Button fx:id="p2_btn_salir" layoutX="1506.0" layoutY="888.0" mnemonicParsing="false" onAction="#switchToAnterior" prefHeight="100.0" prefWidth="147.0" text="%p2_btn_anterior" textFill="#b52b2b">

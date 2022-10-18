@@ -46,7 +46,7 @@ public class App extends Application {
 
 	public static ConfigurableApplicationContext applicationContext;
 	public static Parent rootNode;
-	//public static Stage stage;
+	//public static Stage;
 
     private static Scene scene;
     String  Teclas="";
@@ -120,7 +120,7 @@ public class App extends Application {
             );
 
         } catch (IOException | ParseException e) {
-            //TODO Auto-generated catch block
+
             e.printStackTrace();
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -130,7 +130,7 @@ public class App extends Application {
             alert.showAndWait();    
         }
 
-        System.out.println("Parametros: " + parametrosModel.toString() + "\n");
+        //System.out.println("Parametros: " + parametrosModel.toString() + "\n");
 
     }
 
@@ -195,15 +195,16 @@ public class App extends Application {
                 try {
                     //App.setRoot("mantenimiento_der_v1", locale);
                     App.setRoot("views/ViewLogin", locale);
+
                 } catch (IOException e) {
-                    // TODO Auto-generated catch block
+
                     e.printStackTrace();
 
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setHeaderText(null);
                     alert.setTitle("Error");
                     alert.setContentText(e.getLocalizedMessage());
-                    alert.showAndWait();                    
+                    alert.showAndWait();
                 }
 
             }

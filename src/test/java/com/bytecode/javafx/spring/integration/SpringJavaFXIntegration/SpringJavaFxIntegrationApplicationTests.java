@@ -1,12 +1,8 @@
 package com.bytecode.javafx.spring.integration.SpringJavaFXIntegration;
 
-import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Cliente;
+
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 
 //@RunWith(SpringRunner.class)
 //@SpringBootTest
@@ -49,7 +45,7 @@ public class SpringJavaFxIntegrationApplicationTests {
             System.out.println(MachineID);
 
         } catch (IOException e) {
-            //TODO Auto-generated catch block
+
             e.printStackTrace();
 
         }

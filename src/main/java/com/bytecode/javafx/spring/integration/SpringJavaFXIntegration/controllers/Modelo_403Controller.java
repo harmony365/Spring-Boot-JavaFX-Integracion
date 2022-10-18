@@ -10,7 +10,6 @@ import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -45,10 +44,7 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Locale;
-import java.util.Random;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -85,7 +81,7 @@ public class Modelo_403Controller implements Initializable {
     *  Variables de la plantilla
     */
 
-    @FXML private Button p2_btn_aceptar,  p2_btn_qr, p2_btn_salir, p2_btn_demo;
+    @FXML private Button p2_btn_aceptar,  p2_btn_qr, p2_btn_salir, p2_btn_demo, p2_btn_wsdl;
 
     @FXML private Label p2_lb_justificante, p2_lb_datos_establecimiento,  p2_lb_nif,  p2_lb_razon_social,
         p2_lb_numero_factura, p2_lb_fecha_factura,  p2_lb_monto_factura, p2_lb_nombreViajero, p2_lb_apellidosViajero,
@@ -190,18 +186,26 @@ public class Modelo_403Controller implements Initializable {
         p2_lb_nombreViajero.setText(App.parametrosModel.getNombreViajero());
 
         p2_btn_demo.setVisible(App.parametrosModel.getAppDemo());
+        p2_btn_wsdl.setVisible(App.parametrosModel.getAppDemo());
+        p2_tv_justificantesdigic.setVisible(App.parametrosModel.getAppDemo());
+
+        p2_btn_aceptar.setVisible(false);
 
         p2_tc_listajustificantes.setCellValueFactory(new PropertyValueFactory<>("numero"));
         p2_tc_listajustificantesMonto.setCellValueFactory(new PropertyValueFactory<>("monto"));
 
         /*
         *   Tableview ObservableList de la tabla digic
+        *
         */
+        /*
+                p2_tv_justificantesdigic.setVisible(App.parametrosModel.getAppDemo());
+
                 TableColumn<Digic, String> p2_tc_listajustificantesdigic = new TableColumn("JUSTIFICANTE");
                 TableColumn<Digic, String> p2_tc_listajustificantesMontodigic  = new TableColumn("MONTO");
 
                 p2_tc_listajustificantesdigic.setCellValueFactory(new PropertyValueFactory<>("justificante"));
-                p2_tc_listajustificantesMontodigic.setCellValueFactory(new PropertyValueFactory<>("totalDigic"));
+                p2_tc_listajustificantesMontodigic.setCellValueFactory(new PropertyValueFactory<>("TotalDigic"));
 
                 p2_tv_justificantesdigic.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
@@ -232,7 +236,7 @@ public class Modelo_403Controller implements Initializable {
                             System.out.println("Selected digic Value: " + val);
 
                         } catch (Exception e) {
-                            // TODO Auto-generated catch block
+
                             e.printStackTrace();
 
                             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -245,7 +249,7 @@ public class Modelo_403Controller implements Initializable {
                     }
                 });
 
-
+                                        */
 
         /*   fin ObservableList digic   */
 
@@ -263,20 +267,18 @@ public class Modelo_403Controller implements Initializable {
                  
                     TablePosition tablePosition = (TablePosition) selectedCells.get(0);
                     Object val = tablePosition.getTableColumn().getCellData(tablePosition.getRow());
-                
-                    
-                   System.out.println("Selected Value: " + existJustificante((String)val));
-                    System.out.println("Selected Value: " + val);
-  /* 
-                    if(DIGIDAO.FindDIGI(val.toString())){
-                        System.out.println("\ngetapellidosViajero: " + DIGIDAO.digic.getapellidosViajero());
-                        FillPlantilla(new JSONObject(DIGIDAO.digic.toString()));
-                    }
-                    
-*/
+
+                    List<Digic> digicLits = digicRepository.findByJustificante((String)val);
+
+                    Digic digic = digicLits.get(0);
+
+                    FillPlantilla(digic);
+
+
                 } catch (Exception e) {
-                    // TODO Auto-generated catch block
+
                     e.printStackTrace();
+                    System.out.println(e.getMessage());
 
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setHeaderText(null);
@@ -307,9 +309,9 @@ public class Modelo_403Controller implements Initializable {
                     System.out.println("\nData: " + ScannerReader); 
                     
                     try {
-                        QRcodeRead(ScannerReader);
+                        QRcodeRead(ScannerReader,0);
                     } catch (IOException e) {
-                        // TODO Auto-generated catch block
+
                         e.printStackTrace();
 
                         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -337,8 +339,21 @@ public class Modelo_403Controller implements Initializable {
 
     @FXML 
     private void switchToAnterior() throws IOException {
-        Locale locale = Locale.getDefault();
-        App.setRoot("/views/primary",locale);
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation Dialog");
+        alert.setHeaderText("Look, a Confirmation Dialog");
+        alert.setContentText("Are you ok with this?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            Locale locale = Locale.getDefault();
+            App.setRoot("/views/primary",locale);
+        } else {
+            // ... user chose CANCEL or closed the dialog
+        }
+
+
     }
 
     @FXML 
@@ -384,11 +399,11 @@ public class Modelo_403Controller implements Initializable {
         //String pathname = "DER_qrcode_temp.png";
         String pathname = App.parametrosModel.getQRCODEDEMO();
         String text     = readQR(pathname);
-        QRcodeRead(text);       
+        QRcodeRead(text,1);
 
     }
 
-    @FXML private void QRcodeRead(String qr_text) throws IOException {
+    @FXML private void QRcodeRead(String qr_text, Integer index) throws IOException {
         
         ClearPlantilla();
         p2_img_barcode.requestFocus();
@@ -411,7 +426,7 @@ public class Modelo_403Controller implements Initializable {
              * numero de justificante para efecto de demo
              */
 
-            if (App.parametrosModel.getAppDemo()){
+            if (App.parametrosModel.getAppDemo() && index.equals(1)){
                 Integer n = rand.nextInt(5);
                 String  ns = myJson.getString("justificante");
                 String  as = myJson.getString("apellidosViajero");
@@ -554,12 +569,12 @@ public class Modelo_403Controller implements Initializable {
             p2_tf_descripcion_banco.setText("");
             p2_tf_codigo_aba.setText("");
             p2_tf_clave_control.setText("");            
-            
-
 
     }
 
     @FXML private void FillPlantilla(JSONObject myJson){
+
+            p2_btn_aceptar.setVisible(true);
 
             // Justificante Modelo 403
             p2_lb_justificante.setText((String) myJson.get("justificante"));
@@ -698,6 +713,147 @@ public class Modelo_403Controller implements Initializable {
 
     }
 
+
+    @FXML private void FillPlantilla(Digic myJson){
+
+        p2_btn_aceptar.setVisible(true);
+
+        // Justificante Modelo 403
+        p2_lb_justificante.setText((String) myJson.getJustificante());
+
+        // 1. Datos de Comercio
+        p2_lb_nif.setText((String) myJson.getNifEstablecimiento());
+        p2_lb_razon_social.setText((String) myJson.getRazonSocial());
+
+
+        // 2. Datos del Viajero
+        LocalDate fechaFactura = LocalDate.parse((String) myJson.getFechaFactura(), formatter);
+        p2_lb_numero_factura.setText((String) myJson.getNumeroFactura());
+        p2_lb_fecha_factura.setText(fechaFactura.toString());
+        p2_lb_monto_factura.setText(myJson.getTotalDigic().toString());
+
+        // 3. Datos del Viajero
+        p2_lb_nombreViajero.setText((String) myJson.getNombreViajero());
+        p2_lb_apellidosViajero.setText((String) myJson.getApellidosViajero());
+        p2_lb_tipoDocumento.setText((String) myJson.getTipoDocumento());
+        p2_lb_valorDocumento.setText((String) myJson.getValorDocumento());
+        p2_lb_paisExpedicion.setText(SeleccionarPais((String) myJson.getPaisExpedicion()));
+        p2_lb_paisResidencia.setText(SeleccionarPais((String) myJson.getPaisResidencia()));
+        p2_tf_email.setText((String) myJson.getEmail());
+
+        // 4. Datos Transporte
+        LocalDate fechaLimiteSalida = LocalDate.parse((String) myJson.getFechaLimiteSalida(), formatter);
+        p2_lb_fechaLimiteSalida.setText(fechaLimiteSalida.toString());
+
+        // 5. Datos de medio de pago
+        //if (!myJson.isNull("cuentaSinIBAN")){
+            p2_lb_cuentaInternacional.setText((String) myJson.getCuentaSinIBAN());
+        //}else{
+        //    p2_lb_cuentaInternacional.setText("NO");
+        //}
+
+        //if (!myJson.isNull("paisBanco")){
+            p2_tf_pais_banco.setText((String) myJson.getPaisBanco());
+        //}
+
+        //if (!myJson.isNull("claveBanco")){
+            p2_tf_clave_banco.setText((String) myJson.getClaveBanco());
+       // }
+
+        //if (!myJson.isNull("valorMedioPago")){
+            p2_tf_cuenta_bancaria.setText((String) myJson.getValorMedioPago());
+        //}
+
+        //if (!myJson.isNull("descInstFinanciera")){
+            p2_tf_descripcion_banco.setText((String) myJson.getDescInstFinanciera());
+        //}
+
+        //if (!myJson.isNull("numeroABA")){
+            p2_tf_codigo_aba.setText((String) myJson.getNumeroABA());
+        //}
+
+        //if (!myJson.isNull("claveControl")){
+            p2_tf_clave_control.setText((String) myJson.getClaveControl());
+        //}
+
+        //if (!myJson.isNull("modoPago")){
+            p2_lb_medioPago.setText((String) myJson.getModoPago());
+        //}
+
+        //if (!myJson.isNull("codigoBic")){
+            p2_tf_codigoBic.setText((String) myJson.getCodigoBic());
+        //}
+
+        //if (!myJson.isNull("valorMedioPago")){
+            p2_tf_valorMedioPago.setText((String) myJson.getValorMedioPago());
+        //}
+
+        //if (!myJson.isNull("modoTransporte")){
+            p2_tf_modoTransporte.setText((String) myJson.getModoPago());
+        //}
+
+        //if (!myJson.isNull("identificadorBillete")){
+            p2_tf_identificadorBillete.setText((String) myJson.getIdentificadorBillete());
+        //}
+
+
+        // Colocar en Visible o No Visibles los campos de la plantilla
+
+        if( (boolean) myJson.getCuentaSinIBAN().equals("SI")){
+            System.out.println("SI: " + (String) myJson.getCuentaSinIBAN());
+
+            p2_lb_codigoBic.setVisible(true);
+            p2_lb_codigo_cuenta_internacional.setVisible(true);
+
+            p2_tf_codigoBic.setVisible(true);
+
+            p2_lb_pais_banco.setVisible(true);
+            p2_tf_pais_banco.setVisible(true);
+            p2_lb_clave_banco.setVisible(true);
+            p2_tf_clave_banco.setVisible(true);
+            p2_lb_cuenta_bancaria.setVisible(true);
+            p2_tf_cuenta_bancaria.setVisible(true);
+            p2_lb_clave_control.setVisible(true);
+            p2_tf_clave_control.setVisible(true);
+            p2_lb_codigo_aba.setVisible(true);
+            p2_tf_codigo_aba.setVisible(true);
+            p2_lb_descripcion_banco.setVisible(true);
+            p2_tf_descripcion_banco.setVisible(true);
+
+            p2_tf_valorMedioPago.setVisible(false);
+            p2_lb_valorMedioPago.setVisible(false);
+            p2_lb_codigo_cuenta_nacional.setVisible(false);
+
+
+
+        }else{
+
+            p2_lb_codigoBic.setVisible(false);
+            p2_lb_codigo_cuenta_internacional.setVisible(false);
+
+            p2_tf_codigoBic.setVisible(false);
+
+            p2_lb_pais_banco.setVisible(false);
+            p2_tf_pais_banco.setVisible(false);
+            p2_lb_clave_banco.setVisible(false);
+            p2_tf_clave_banco.setVisible(false);
+            p2_lb_cuenta_bancaria.setVisible(false);
+            p2_tf_cuenta_bancaria.setVisible(false);
+            p2_lb_clave_control.setVisible(false);
+            p2_tf_clave_control.setVisible(false);
+            p2_lb_codigo_aba.setVisible(false);
+            p2_tf_codigo_aba.setVisible(false);
+            p2_lb_descripcion_banco.setVisible(false);
+            p2_tf_descripcion_banco.setVisible(false);
+
+            p2_tf_valorMedioPago.setVisible(true);
+            p2_lb_valorMedioPago.setVisible(true);
+            p2_lb_codigo_cuenta_nacional.setVisible(true);
+
+        }
+
+
+    }
 
 
     /*

@@ -115,7 +115,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="p2_lb_fechaLimiteSalida" layoutX="1090.0" layoutY="401.0" text="00000000">
+      <Label fx:id="p2_lb_fechaLimiteSalidaHora" layoutX="1049.0" layoutY="404.0" text="%p2_lb_fecha_salida_hora">
          <font>
             <Font size="18.0" />
          </font>
@@ -184,7 +184,7 @@
          </font>
       </Label>
       <ComboBox fx:id="p4_cb_fechaLimiteSalida" layoutX="848.0" layoutY="402.0" prefHeight="26.0" prefWidth="179.0" />
-      <TextField fx:id="p4_tf_fechaLimiteSalida" layoutX="1090.0" layoutY="433.0" prefHeight="30.0" prefWidth="179.0" promptText="YYYY/MM/DD">
+      <TextField fx:id="p4_tf_fechaLimiteSalidaHora" alignment="CENTER" layoutX="1049.0" layoutY="436.0" prefHeight="30.0" prefWidth="47.0" promptText="HH">
          <font>
             <Font size="14.0" />
          </font>
@@ -291,5 +291,10 @@
          </children>
       </Pane>
       <ComboBox fx:id="p4_cb_cuetaiban" layoutX="525.0" layoutY="550.0" prefHeight="26.0" prefWidth="63.0" />
+      <TextField fx:id="p4_tf_fechaLimiteSalidaMinuto" alignment="CENTER" layoutX="1104.0" layoutY="436.0" prefHeight="30.0" prefWidth="47.0" promptText="MM">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>

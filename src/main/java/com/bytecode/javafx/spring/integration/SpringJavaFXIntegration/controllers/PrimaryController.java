@@ -1,20 +1,15 @@
 package com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.controllers;
 
+import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.App;
 import javafx.application.Platform;
-import java.io.IOException;
-import java.net.URL;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import org.springframework.stereotype.Component;
 
+import java.io.IOException;
+import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
-
-import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.App;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 
 @Component
 public class PrimaryController implements Initializable  {
@@ -136,7 +131,8 @@ public class PrimaryController implements Initializable  {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // TODO Auto-generated method stub
+        // TODO Auto-generated method, no se está usando el método por ahora
+        //
         
     }
 

@@ -218,7 +218,7 @@ public class PassPortLoginController  implements Initializable {
                             p3_passaport_img.requestFocus();
                         }
                     } catch (IOException e) {
-                        // TODO Auto-generated catch block
+
                         e.printStackTrace();
 
                         Alert alert = new Alert(Alert.AlertType.ERROR);

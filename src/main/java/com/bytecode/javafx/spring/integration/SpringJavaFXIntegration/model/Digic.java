@@ -16,6 +16,7 @@ public class Digic implements Serializable {
     
     @Column(name = "justificante", unique = true, nullable = false)
     private String justificante;
+
     @Column(name = "nombreViajero")
     private String nombreViajero;
     @Column(name = "apellidosViajero")

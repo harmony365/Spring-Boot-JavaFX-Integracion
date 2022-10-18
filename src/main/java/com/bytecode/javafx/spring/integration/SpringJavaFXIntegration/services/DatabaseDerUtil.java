@@ -27,10 +27,11 @@ public class DatabaseDerUtil {
     @Autowired
     private DigicRepository digicRepository;
 
-    public ValidarRemesaDer getDERtoSend(String valorDocumento, Integer estatus) {
+    public ValidarRemesaDer getDERtoSend(String valorDocumento, Integer estatus, String kiosko) {
 
         ValidarRemesaDer validarRemesaDer = new ValidarRemesaDer();
-        validarRemesaDer.setCodigoKiosko("NULL");
+
+        validarRemesaDer.setCodigoKiosko(kiosko);
 
         List<Digic> digicLis = digicRepository.findAllByValorDocumentoEstatus(valorDocumento, estatus);
 
@@ -51,6 +52,8 @@ public class DatabaseDerUtil {
 
         derType.setJustificante(digic.getJustificante());
         derType.setFechaFactura(digic.getFechaFactura());
+        //TODO: Validar el formato de la fecha de la factura en la listad DER enviada.
+        //derType.setFechaFactura(String.valueOf(getFecha()));
         derType.setNifEstablecimiento(digic.getNifEstablecimiento());
         derType.setNumeroFactura(digic.getNumeroFactura());
         derType.setRazonSocial(digic.getRazonSocial());
@@ -60,7 +63,6 @@ public class DatabaseDerUtil {
     }
 
     private void setMedioPagoFromBd(Digic digic, ValidarRemesaDer validarRemesaDer) {
-        //TODO terminar de rellenar
         MedioPagoType medioPagoType = new MedioPagoType();
         for(DigicModoPago digicModoPago : digicModoPagoRepository.findByValorDocumento(digic.getValorDocumento()))
         {
@@ -79,34 +81,26 @@ public class DatabaseDerUtil {
             medioPagoType.setBIC(digicModoPago.getCodigoBic());
             medioPagoType.setNumeroABA(digicModoPago.getNumeroABA());
 
+            validarRemesaDer.setMailViajero(digicModoPago.getEmail());
+            //TODO: verificar por qué no se setea la fecha limite de salida.
+            //validarRemesaDer.setF(digicModoPago.getFechaLimiteSalida());
         }
         validarRemesaDer.setMedioPago(medioPagoType);
+
     }
 
     private void setRemesaDerFromDigicBD(Digic digic, ValidarRemesaDer validarRemesaDer) {
-        //TODO terminar de rellenar
+
         validarRemesaDer.setMailViajero(digic.getEmail());
         validarRemesaDer.setOnline(Boolean.TRUE);
-
-
- /*
-        ValidarRemesaDer ValidarRemesaDer = new ValidarRemesaDer();
-        ValidarRemesaDer.setTipoDocumento("PASAPORTE");
-        ValidarRemesaDer.setValorTipoDocumento("2AB000254AAF");
-        ValidarRemesaDer.setNombreViajero("CHRISTIAN ALBERTO");
-        ValidarRemesaDer.setApellidosViajero("GEUSCH GESSELLSCHAFT-BERATUNG");
-        ValidarRemesaDer.setPaisExpedicion("GS");
-        ValidarRemesaDer.setPaisResidencia("QU");
-
-        ValidarRemesaDer.setMailViajero("ejimenez@asistacanarias.org");
-        ValidarRemesaDer.setCodigoKiosko("9S716U722600ZL2000094");
-        ValidarRemesaDer.setOnline(Boolean.TRUE);
-        ValidarRemesaDer.setFechaSolicitud(getFecha());
-        ValidarRemesaDer.setFechaEnvioSolicitud(getFecha());
-  */
-
-
-
+        validarRemesaDer.setTipoDocumento(digic.getTipoDocumento());
+        validarRemesaDer.setValorTipoDocumento(digic.getValorDocumento());
+        validarRemesaDer.setNombreViajero(digic.getNombreViajero());
+        validarRemesaDer.setApellidosViajero(digic.getApellidosViajero());
+        validarRemesaDer.setPaisExpedicion(digic.getPaisExpedicion());
+        validarRemesaDer.setPaisResidencia(digic.getPaisResidencia());
+        validarRemesaDer.setFechaSolicitud(getFecha());
+        validarRemesaDer.setFechaEnvioSolicitud(getFecha());
 
     }
 

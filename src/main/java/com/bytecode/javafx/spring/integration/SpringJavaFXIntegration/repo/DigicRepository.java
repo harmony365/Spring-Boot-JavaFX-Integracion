@@ -10,8 +10,12 @@ import java.util.List;
 @Repository
 public interface DigicRepository extends JpaRepository<Digic, String> {
 
+    @Query(value = "UPDATE digic d SET estatus_upload = 1, fecha_upload=CURRENT_TIMESTAMP WHERE d.valorDocumento = :valorDocumento")
+    List<Digic> updateStatusByValorDocumento(String valorDocumento);
+
     @Query(value = "SELECT d FROM digic d WHERE d.justificante = :justificante")
     List<Digic> findByJustificante(String justificante);
+
 
     @Query(value = "SELECT d FROM digic d WHERE d.valorDocumento = :valorDocumento AND d.estatus_upload = :estatus")
     List<Digic> findAllByValorDocumentoEstatus(String valorDocumento, Integer estatus);
