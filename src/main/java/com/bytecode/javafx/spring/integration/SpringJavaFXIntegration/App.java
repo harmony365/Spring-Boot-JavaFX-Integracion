@@ -65,7 +65,7 @@ public class App extends Application {
         @Override public void handle(ActionEvent event) { 
 
             GetParametros();
-            System.out.println("this is called every 30 seconds on UI thread"); 
+            //System.out.println("this is called every 30 seconds on UI thread");
 
             /*
              *  llamada a la funcion de envio de datos al wsdl
@@ -102,7 +102,7 @@ public class App extends Application {
                 output.append(line + "\n");
             }
             String MachineID=output.toString().substring(output.indexOf("\n"), output.length()).trim();;
-            System.out.println(MachineID);
+            //System.out.println(MachineID);
 
             ob = new JSONParser().parse(new FileReader("Parametros.json"));
             parametros = (JSONObject) ob;

@@ -110,9 +110,9 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="p2_lb_fecha_salida" layoutX="850.0" layoutY="379.0" prefHeight="25.0" prefWidth="179.0" text="%p2_lb_fecha_salida">
+      <Label fx:id="p2_lb_fecha_salida" layoutX="848.0" layoutY="404.0" prefHeight="25.0" prefWidth="179.0" text="%p2_lb_fecha_salida">
          <font>
-            <Font size="14.0" />
+            <Font size="18.0" />
          </font>
       </Label>
       <Label fx:id="p2_lb_fechaLimiteSalidaHora" layoutX="1049.0" layoutY="404.0" text="%p2_lb_fecha_salida_hora">
@@ -183,13 +183,13 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <ComboBox fx:id="p4_cb_fechaLimiteSalida" layoutX="848.0" layoutY="402.0" prefHeight="26.0" prefWidth="179.0" />
+      <ComboBox fx:id="p4_cb_fechaLimiteSalida" layoutX="894.0" layoutY="253.0" prefHeight="26.0" prefWidth="179.0" />
       <TextField fx:id="p4_tf_fechaLimiteSalidaHora" alignment="CENTER" layoutX="1049.0" layoutY="436.0" prefHeight="30.0" prefWidth="47.0" promptText="HH">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <DatePicker fx:id="p4_dtp_fechaLimiteSalida" layoutX="848.0" layoutY="435.0" prefHeight="30.0" prefWidth="179.0" promptText="YYYY/MM/DD" />
+      <DatePicker fx:id="p4_dtp_fechaLimiteSalida" editable="false" layoutX="848.0" layoutY="435.0" prefHeight="30.0" prefWidth="179.0" promptText="YYYY/MM/DD" />
       <Pane fx:id="p4_pane_cuentaiban" layoutX="57.0" layoutY="578.0" prefHeight="200.0" prefWidth="505.0">
          <children>
             <Label fx:id="p2_lb_valorMedioPago" alignment="CENTER" prefHeight="36.0" prefWidth="481.0" text="%p2_lb_codigo_iban" textAlignment="CENTER">
@@ -296,5 +296,6 @@
             <Font size="14.0" />
          </font>
       </TextField>
+      <ComboBox fx:id="p4_cb_hora" layoutX="1082.0" layoutY="253.0" prefHeight="25.0" prefWidth="57.0" />
    </children>
 </AnchorPane>

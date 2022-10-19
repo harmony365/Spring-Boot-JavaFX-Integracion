@@ -410,7 +410,7 @@ public class Modelo_403Controller implements Initializable {
   
         try {
           
-            System.out.print("readQR: " + qr_text);
+            if(App.parametrosModel.getAppDemo()) System.out.print("readQR: " + qr_text);
 
             //String password = "Grecasa2022";
             String password = App.parametrosModel.getQRPassDecoder();
@@ -445,19 +445,19 @@ public class Modelo_403Controller implements Initializable {
 
              if (!App.parametrosModel.getAppDemo() && Integer.parseInt(myJson.getString("fechaLimiteSalida")) < Integer.parseInt(App.parametrosModel.getFechaHoy())){
 
-                System.out.print("\nfecha Limite Salida: Se encuentra caducada");
+                if(App.parametrosModel.getAppDemo()) System.out.print("\nfecha Limite Salida: Se encuentra caducada");
                 p2_tx_info_item.setText(bundle.getString( "p2_tx_info_fechalimite"));
                 p2_an_info_item.setVisible(true);
 
              }else  if ( !myJson.getString("valorDocumento").equals(p2_lb_valorDocumentoEsperado.getText())){
 
-                System.out.print("\nvalorDocumento: No corresponde con el valor esperado");
+                 if(App.parametrosModel.getAppDemo()) System.out.print("\nvalorDocumento: No corresponde con el valor esperado");
                 p2_tx_info_item.setText(bundle.getString( "p2_tx_info_item2"));
                 p2_an_info_item.setVisible(true);
             
             }else if (existJustificante(myJson.getString("justificante"))){
-        
-                System.out.print("\nreadQR: Registro ya procesado");
+
+                 if(App.parametrosModel.getAppDemo()) System.out.print("\nreadQR: Registro ya procesado");
                 
                 p2_tx_info_item.setText(bundle.getString( "p2_tx_info_item"));                
                 p2_an_info_item.setVisible(true);
@@ -469,8 +469,9 @@ public class Modelo_403Controller implements Initializable {
             }            
 
         } catch (Exception e) {
-            //e.printStackTrace();
-            System.out.printf("\nCausa: %s \nMensaje: %s\n Class: %s\n Localized Mensaje: %s\n" ,e.getCause(),e.getMessage(),e.getClass(),e.getLocalizedMessage());
+            e.printStackTrace();
+
+            if(App.parametrosModel.getAppDemo()) System.out.printf("\nCausa: %s \nMensaje: %s\n Class: %s\n Localized Mensaje: %s\n" ,e.getCause(),e.getMessage(),e.getClass(),e.getLocalizedMessage());
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
@@ -800,7 +801,7 @@ public class Modelo_403Controller implements Initializable {
         // Colocar en Visible o No Visibles los campos de la plantilla
 
         if( (boolean) myJson.getCuentaSinIBAN().equals("SI")){
-            System.out.println("SI: " + (String) myJson.getCuentaSinIBAN());
+            if(App.parametrosModel.getAppDemo()) System.out.println("SI: " + (String) myJson.getCuentaSinIBAN());
 
             p2_lb_codigoBic.setVisible(true);
             p2_lb_codigo_cuenta_internacional.setVisible(true);

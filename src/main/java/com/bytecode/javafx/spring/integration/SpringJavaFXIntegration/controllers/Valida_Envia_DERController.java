@@ -15,9 +15,13 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
+import javafx.util.Callback;
 import org.grecasa.ext.mw.externo.KioskoServiceClient;
 import org.grecasa.ext.mw.externo.KioskoServiceClientUtils;
 import org.grecasa.ext.mw.externo.kiosko_service.ValidarRemesaDer;
@@ -31,9 +35,14 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -44,6 +53,9 @@ import static org.comtel2000.keyboard.control.VkProperties.*;
 public class Valida_Envia_DERController implements Initializable {
     
     private ResourceBundle bundle;
+
+    private ZonedDateTime now = ZonedDateTime.now();
+    private ZonedDateTime fechaHoraLimite = now.plusHours(3).plusMinutes(30);
 
     @Autowired
     private ClienteRepository clienteRepository;
@@ -76,7 +88,7 @@ public class Valida_Envia_DERController implements Initializable {
     private ComboBox<Digic> p4_cb_clave_banco, p4_cb_clave_control, p4_cb_codigoBic, p4_cb_codigo_aba,
             p4_cb_cuenta_bancaria, p4_cb_descripcion_banco, p4_cb_email, p4_cb_identificadorBillete,
             p4_cb_modoTransporte, p4_cb_pais_banco, p4_cb_valorMedioPago,  p4_cb_fechaLimiteSalida,
-            p4_cb_cuetaiban;
+            p4_cb_cuetaiban,p4_cb_hora;
 
     @FXML
     private Label p2_lb_informacion,p2_lb_clave_banco,p2_lb_clave_control, p2_lb_codigoBic,
@@ -112,6 +124,9 @@ public class Valida_Envia_DERController implements Initializable {
     public Boolean procesoWsdl = false;
     public DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
 
+    public LocalDate date = LocalDate.now();
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -135,10 +150,16 @@ public class Valida_Envia_DERController implements Initializable {
         WsdlResponse.setVisible(false);
         WsdlTimeStamp.setVisible(false);
         p4_pane_numeroaba.setVisible(false);
+        p4_cb_fechaLimiteSalida.setVisible(false);
+
+        p4_cb_hora.setVisible(false);
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDateTime now = LocalDateTime.now();
         p4_dtp_fechaLimiteSalida.setValue(LocalDate.parse(dtf.format(now)));
+
+        //Cambiar el formato del calendario con la plantilla dayCellFactory
+        p4_dtp_fechaLimiteSalida.setDayCellFactory(dayCellFactory);
 
         iniFormDigicModoPago();
         refesh();    
@@ -150,10 +171,146 @@ public class Valida_Envia_DERController implements Initializable {
         return s.matches(regex);//returns true if input and regex matches otherwise false;
     }
 
+    static int validaFechaHora(String start_date, String end_date, String retorno)
+    {
+
+        // SimpleDateFormat converts the
+        // string format to date object
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        // Try Block
+        try {
+
+            // parse method is used to parse
+            // the text from a string to
+            // produce the date
+            Date d1 = sdf.parse(start_date);
+            Date d2 = sdf.parse(end_date);
+
+            // Calucalte time difference
+            // in milliseconds
+            long difference_In_Time = d2.getTime() - d1.getTime();
+
+            // Calucalte time difference in
+            // seconds, minutes, hours, years,
+            // and days
+            long difference_In_Seconds = (difference_In_Time  / 1000)  % 60;
+
+            long difference_In_Minutes = (difference_In_Time / (1000 * 60)) % 60;
+
+            long difference_In_Hours = (difference_In_Time / (1000 * 60 * 60)) % 24;
+
+            long difference_In_Years = (difference_In_Time / (1000l * 60 * 60 * 24 * 365));
+
+            long difference_In_Days  = (difference_In_Time / (1000 * 60 * 60 * 24))  % 365;
+
+            // Print the date difference in
+            // years, in days, in hours, in
+            // minutes, and in seconds
+
+            System.out.print(  "Difference " + "between two dates is: ");
+
+            System.out.println( difference_In_Years + " years, "
+                    + difference_In_Days + " days, "
+                    + difference_In_Hours + " hours, "
+                    + difference_In_Minutes + " minutes, "
+                    + difference_In_Seconds + " seconds");
+
+            switch (retorno) {
+                case "Y":
+                    return (int) difference_In_Years;
+                case "D":
+                    return (int) difference_In_Days;
+                case "H":
+                    return (int) difference_In_Hours;
+                case "M":
+                    return (int) difference_In_Minutes;
+                case "S":
+                    return (int) difference_In_Seconds;
+                default:
+                    return 0;
+            }
+
+        }
+
+        // Catch the Exception
+        catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return 0;
+    }
+
+
+    Callback<DatePicker, DateCell> dayCellFactory = dp -> new DateCell() {
+        @Override
+        public void updateItem(LocalDate item, boolean empty) {
+
+            super.updateItem(item, empty);
+
+            this.setDisable(false);
+            this.setBackground(null);
+            this.setTextFill(Color.BLACK);
+
+            // deshabilitar las fechas futuras
+            if (item.isAfter(LocalDate.now())) {
+                this.setDisable(true);
+            }
+
+            // deshabilitar las fechas futuras
+            if (item.isBefore(LocalDate.now())) {
+                this.setDisable(true);
+            }
+            // marcar los dias de quincena
+            int day = item.getDayOfMonth();
+            if(day == 15 || day == 30) {
+
+                Paint color = Color.RED;
+                BackgroundFill fill = new BackgroundFill(color, null, null);
+
+                this.setBackground(new Background(fill));
+                this.setTextFill(Color.WHITESMOKE);
+            }
+
+            // fines de semana en color verde
+            DayOfWeek dayweek = item.getDayOfWeek();
+            if (dayweek == DayOfWeek.SATURDAY || dayweek == DayOfWeek.SUNDAY) {
+                this.setTextFill(Color.GREEN);
+            }
+
+            if (item.isAfter(LocalDate.now())) {
+                this.setDisable(true);
+            }
+
+
+        }
+    };
+
     @FXML
     private void switchToAceptar() throws IOException {
         Boolean procesarWSDL = false;
         String sn = p4_cb_cuetaiban.getValue()+"";
+
+        // Given start Date
+
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String start_date = fechaHoraLimite.format(formatter);
+
+       //String start_date = "19-10-2022 03:10:20";
+        // Given end Date
+        String end_date = p4_dtp_fechaLimiteSalida.getValue() + " " + p4_tf_fechaLimiteSalidaHora.getText() + ":" + p4_tf_fechaLimiteSalidaMinuto.getText() + ":00";
+
+        //TODO: validar que está verificando que la fecha y hora de salida no superalas 3 horas ni es menor a o horas-
+        int resultado = validaFechaHora(start_date, end_date, "H");
+        if ( resultado > 3 || resultado < 0) {
+            PlayEmpty(p4_tf_fechaLimiteSalidaHora);
+            PlayEmpty(p4_tf_fechaLimiteSalidaMinuto);
+            procesarWSDL = true;
+            System.out.println("Fecha de salida supera las 3 horas reglamentarias");
+        }else{
+            p4_tf_fechaLimiteSalidaHora.setStyle(successStyle);
+            p4_tf_fechaLimiteSalidaMinuto.setStyle(successStyle);
+        };
 
         if (p4_tf_email.getText().isEmpty()){ PlayEmpty(p4_tf_email);procesarWSDL = true;}else{p4_tf_email.setStyle(successStyle);};
         if (p4_tf_identificadorBillete.getText().isEmpty()){ PlayEmpty(p4_tf_identificadorBillete);procesarWSDL = true;}else{p4_tf_identificadorBillete.setStyle(successStyle);};
@@ -267,7 +424,7 @@ public class Valida_Envia_DERController implements Initializable {
             WsdlTimeStamp.setText(validarRemesaDerResponse.getFechaEstado().toString());
             WsdlResponse.setText(validarRemesaDerResponse.getEstado());
 
-            updateStatusDer(valorDocumento);
+            //updateStatusDer(valorDocumento);
 
         }catch (Exception e) {
             e.printStackTrace();
@@ -276,25 +433,25 @@ public class Valida_Envia_DERController implements Initializable {
 
         //WsdlResponse.setText("KO");
 
-        if(WsdlResponse.getText().equals("ER")) {
-            p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
-            p4_lb_mensaje.setText(bundle.getString( "p4_lb_mensaje_ER"));
-        }
         if(WsdlResponse.getText().equals("RED")) {
             p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
-            p4_lb_mensaje.setText(bundle.getString( "p4_lb_mensaje_ER"));
+            p4_lb_mensaje.setText(bundle.getString( "p4_lb_mensaje_wsdl_RED"));
         }
         if(WsdlResponse.getText().equals("ER")) {
             p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
-            p4_lb_mensaje.setText(bundle.getString( "p4_lb_mensaje_ER"));
+            p4_lb_mensaje.setText(bundle.getString( "p4_lb_mensaje_wsdl_ER"));
         }
         if(WsdlResponse.getText().equals("KO")) {
             p4_rec_mensaje.setFill(Color.rgb(227, 250, 228, 1));
-            p4_lb_mensaje.setText(bundle.getString( "p4_lb_mensaje_KO"));
+            p4_lb_mensaje.setText(bundle.getString( "p4_lb_mensaje_wsdl_KO"));
         }
         if(WsdlResponse.getText().equals("OK")) {
             p4_rec_mensaje.setFill(Color.rgb(227, 250, 228, 1));
-            p4_lb_mensaje.setText(bundle.getString( "p4_lb_mensaje_OK"));
+            p4_lb_mensaje.setText(bundle.getString( "p4_lb_mensaje_wsdl_OK"));
+        }
+        if(WsdlResponse.getText().length() > 5){
+            p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
+            p4_lb_mensaje.setText(bundle.getString( "p4_lb_mensaje_wsdl_" + WsdlResponse.getText()));
         }
         
         p4_ld_wsdl_raspuesta.setVisible(true);
@@ -404,6 +561,8 @@ public class Valida_Envia_DERController implements Initializable {
 
 
     private void iniFormDigicModoPago(){
+
+
 
         p4_tf_pais_banco.textProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.length() > 2) ((StringProperty)observable).setValue(oldValue);
