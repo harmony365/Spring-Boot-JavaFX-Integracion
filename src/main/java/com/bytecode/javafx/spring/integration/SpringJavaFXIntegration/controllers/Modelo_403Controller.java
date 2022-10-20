@@ -608,7 +608,7 @@ public class Modelo_403Controller implements Initializable {
             if (!myJson.isNull("cuentaSinIBAN")){
                 p2_lb_cuentaInternacional.setText((String) myJson.get("cuentaSinIBAN"));
             }else{
-                p2_lb_cuentaInternacional.setText("NO");
+                p2_lb_cuentaInternacional.setText("SI");
             }
             
             if (!myJson.isNull("paisBanco")){
@@ -745,6 +745,7 @@ public class Modelo_403Controller implements Initializable {
         // 4. Datos Transporte
         LocalDate fechaLimiteSalida = LocalDate.parse((String) myJson.getFechaLimiteSalida(), formatter);
         p2_lb_fechaLimiteSalida.setText(fechaLimiteSalida.toString());
+        //TODO: NO SE TIENE ESA FECHA DE SALIDA
 
         // 5. Datos de medio de pago
         //if (!myJson.isNull("cuentaSinIBAN")){

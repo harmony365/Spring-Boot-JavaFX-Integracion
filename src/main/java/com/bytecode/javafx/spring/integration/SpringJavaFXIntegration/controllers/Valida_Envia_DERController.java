@@ -43,6 +43,7 @@ import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -176,7 +177,7 @@ public class Valida_Envia_DERController implements Initializable {
 
         // SimpleDateFormat converts the
         // string format to date object
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         // Try Block
         try {
 
@@ -188,7 +189,7 @@ public class Valida_Envia_DERController implements Initializable {
 
             // Calucalte time difference
             // in milliseconds
-            long difference_In_Time = d2.getTime() - d1.getTime();
+            long difference_In_Time = d1.getTime() - d2.getTime();
 
             // Calucalte time difference in
             // seconds, minutes, hours, years,
@@ -424,30 +425,33 @@ public class Valida_Envia_DERController implements Initializable {
             WsdlTimeStamp.setText(validarRemesaDerResponse.getFechaEstado().toString());
             WsdlResponse.setText(validarRemesaDerResponse.getEstado());
 
-            //updateStatusDer(valorDocumento);
 
         }catch (Exception e) {
             e.printStackTrace();
             WsdlResponse.setText("RED");
         }
 
-        //WsdlResponse.setText("KO");
+        //TODO: validar bien el cambio de estatus.
 
         if(WsdlResponse.getText().equals("RED")) {
             p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
             p4_lb_mensaje.setText(bundle.getString( "p4_lb_mensaje_wsdl_RED"));
+            DigicUpdatStatus(valorDocumento);
         }
         if(WsdlResponse.getText().equals("ER")) {
             p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
             p4_lb_mensaje.setText(bundle.getString( "p4_lb_mensaje_wsdl_ER"));
+            DigicUpdatStatus(valorDocumento);
         }
         if(WsdlResponse.getText().equals("KO")) {
             p4_rec_mensaje.setFill(Color.rgb(227, 250, 228, 1));
             p4_lb_mensaje.setText(bundle.getString( "p4_lb_mensaje_wsdl_KO"));
+            DigicUpdatStatus(valorDocumento);
         }
         if(WsdlResponse.getText().equals("OK")) {
             p4_rec_mensaje.setFill(Color.rgb(227, 250, 228, 1));
             p4_lb_mensaje.setText(bundle.getString( "p4_lb_mensaje_wsdl_OK"));
+            DigicUpdatStatus(valorDocumento);
         }
         if(WsdlResponse.getText().length() > 5){
             p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
@@ -536,33 +540,47 @@ public class Valida_Envia_DERController implements Initializable {
         p4_cb_fechaLimiteSalida.getSelectionModel().selectFirst();
         p4_cb_cuetaiban.getSelectionModel().selectFirst();
 
+        //TODO: Y otra cosilla, para rellenar los datos del transporte poner el combo de AVION, BARCO
+
     }
 
-    public Boolean updateStatusDer(String valorDocumento){
-/*
-        if(StringUtils.isBlank(valorDocumento)){
-            return false;
+    public void DigicUpdatStatus(String valordocumento) {
+
+        List<Digic> digicLis = digicRepository.findAllByValorDocumentoEstatus(valordocumento, 3);
+
+        try{
+            if(!digicLis.isEmpty()){
+
+                for (Digic digic: digicLis) {
+                    digic.setEstatus_upload(2);
+                }
+                digicRepository.saveAll(digicLis);
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
         }
 
-        List<Digic> digicLits = digicRepository.updateStatusByValorDocumento(valorDocumento);
-        //List<DigicModoPago> digicModoPagoUpdate = digicModoPagoRepository.updateStatusByValorDocumento(valorDocumento);
+        List<DigicModoPago> digicModoPagoList = digicModoPagoRepository.findAllByValorDocumentoEstatus(valordocumento, 3);
 
-        if(digicLits.size() == 0)
-            return false;
+        try{
+            if(!digicModoPagoList.isEmpty()){
 
-        Digic digic = digicLits.get(0);
+                for (DigicModoPago digicModoPago: digicModoPagoList) {
+                    digicModoPago.setEstatusUpload(2);
+                }
+                digicModoPagoRepository.saveAll(digicModoPagoList);
+            }
 
-        return (digic == null ) ? false : true;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
 
- */
-        return true;
     }
 
 
     private void iniFormDigicModoPago(){
-
-
 
         p4_tf_pais_banco.textProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.length() > 2) ((StringProperty)observable).setValue(oldValue);
@@ -762,7 +780,6 @@ public class Valida_Envia_DERController implements Initializable {
             }
         });
 
-
         p4_cb_pais_banco.getSelectionModel().selectFirst();
 
         p4_tf_pais_banco.setOnInputMethodTextChanged((e) -> {
@@ -771,7 +788,9 @@ public class Valida_Envia_DERController implements Initializable {
             }else{p4_pane_numeroaba.setVisible(false);}
         });
 
-
-
     }
+
+
+
+
 }

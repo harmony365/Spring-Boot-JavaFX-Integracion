@@ -86,8 +86,8 @@ public class PassPortLoginController  implements Initializable {
             new animatefx.animation.Shake(p3_tf_numerodocumeto).play();
             new animatefx.animation.Pulse(p3_tf_numerodocumeto).play();
 
-            App.parametrosModel.setNumeroPasaporte(p3_tf_numerodocumeto.getText().trim());
-            App.parametrosModel.setDniNifNieTieDemo(p3_tf_numerodocumeto.getText().trim());
+            App.parametrosModel.setNumeroPasaporte(p3_tf_numerodocumeto.getText().trim().toUpperCase());
+            App.parametrosModel.setDniNifNieTieDemo(p3_tf_numerodocumeto.getText().trim().toUpperCase());
            // App.parametrosModel.setNombreViajero("");
 
             UUID uuid= UUID.randomUUID();
@@ -118,7 +118,7 @@ public class PassPortLoginController  implements Initializable {
         try {
             
             
-            System.out.print("\nPasswordCode: " + passcode + "\nTime: " + System.currentTimeMillis());
+            if(App.parametrosModel.getAppDemo()) System.out.print("\nPasswordCode: " + passcode + "\nTime: " + System.currentTimeMillis());
 
             /*
              * Seteo de Campos del formulario
@@ -202,7 +202,7 @@ public class PassPortLoginController  implements Initializable {
                     ke.getCharacter().getBytes()[0] == '\n' || 
                     ke.getCharacter().getBytes()[0] == '\r') {
                 
-                    System.out.println("\nData: " + ScannerReader);
+                    if(App.parametrosModel.getAppDemo()) System.out.println("\nData: " + ScannerReader);
 
                     try {
 

@@ -6,11 +6,14 @@ import org.json.JSONObject;
 public class JsonUtils {
 
     public static Digic convertJsonToDigic(JSONObject myJson) {
+            String a;
 
             if (myJson.isNull("cuentaSinIBAN")){
                 myJson.put("cuentaSinIBAN","NO");
             }
-            
+            a = (String) myJson.get("cuentaSinIBAN");
+            if(a.length() == 0) myJson.put("cuentaSinIBAN","NO");
+
             if (myJson.isNull("paisBanco")){
                 myJson.put("paisBanco","");
             }
@@ -36,9 +39,11 @@ public class JsonUtils {
             }
 
             if (myJson.isNull("modoPago")){
-                myJson.put("modoPago","");
+                myJson.put("modoPago","CUENTA");
             }
-        
+            a = (String) myJson.get("modoPago");
+            if(a.length() == 0) myJson.put("modoPago","CUENTA");
+
             if (myJson.isNull("codigoBic")){
                 myJson.put("codigoBic","");
             }
@@ -71,14 +76,14 @@ public class JsonUtils {
             digic.setNumeroFactura((String) myJson.get("numeroFactura"));
             digic.setFechaFactura((String) myJson.get("fechaFactura"));
             digic.setFechaLimiteSalida((String) myJson.get("fechaLimiteSalida"));
-            digic.setCuentaSinIBAN((String) myJson.get("cuentaSinIBAN"));
             digic.setModoPago((String) myJson.get("modoPago"));
             digic.setEmail((String) myJson.get("email"));
             digic.setCodigoBic((String) myJson.get("codigoBic"));
             digic.setValorMedioPago((String) myJson.get("valorMedioPago"));
             digic.setClaveControl((String) myJson.get("claveControl"));
             digic.setCuentaSinIBAN((String) myJson.get("cuentaSinIBAN"));
-            digic.setNumeroABA((String) myJson.get("numeroABA"));  
+            digic.setCuentaInternacional((String) myJson.get("cuentaSinIBAN"));
+            digic.setNumeroABA((String) myJson.get("numeroABA"));
             digic.setClaveBanco((String) myJson.get("claveBanco"));
             digic.setDescInstFinanciera((String) myJson.get("descInstFinanciera"));
             digic.setPaisBanco((String) myJson.get("paisBanco"));
@@ -87,13 +92,6 @@ public class JsonUtils {
             digic.setEstatus_upload(3);
 
             //digic.setClaveUuid((String) App.UUIDProcess);
-
-                            /* 
-                0,
-                "",
-                ""
-            );
-            // */
 
         return digic;
     }

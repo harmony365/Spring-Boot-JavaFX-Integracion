@@ -69,8 +69,11 @@ public class DatabaseDerUtil {
 
             medioPagoType.setCodMedioPago(digicModoPago.getModoPago());
 
-            Boolean r = true;
-            if (digicModoPago.getCuentaSinIBAN().equals("SI")) r = false;
+            //TODO: Verificar este campo deberia ir con los valores SI ó NO
+            // NOTE: ya se verificó lo de la cuenta sin iban, es correcto el true y false.
+
+            Boolean r = false;
+            if (digicModoPago.getCuentaSinIBAN().equals("SI")) r = true;
 
             medioPagoType.setCuentaSinIBAN(r);
             medioPagoType.setValorMedioPago(digicModoPago.getValorMedioPago());
