@@ -147,24 +147,41 @@
 			<dependency>
 				<groupId>org.projectlombok</groupId>
 				<artifactId>lombok</artifactId>
-				<version>1.18.20</version>
+				<version>1.18.24</version>
 				<scope>provided</scope>
 			</dependency>
 
 		<!--A Java library for International Bank Account Number (IBAN) generation.-->
 		<!-- https://mvnrepository.com/artifact/org.iban4j/iban4j -->
-		<dependency>
-			<groupId>org.iban4j</groupId>
-			<artifactId>iban4j</artifactId>
-			<version>3.2.3-RELEASE</version>
-		</dependency>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>7.4.0</version>
-            <scope>compile</scope>
-        </dependency>
+			<dependency>
+				<groupId>org.iban4j</groupId>
+				<artifactId>iban4j</artifactId>
+				<version>3.2.3-RELEASE</version>
+			</dependency>
+			<dependency>
+				<groupId>org.testng</groupId>
+				<artifactId>testng</artifactId>
+				<version>7.4.0</version>
+				<scope>compile</scope>
+			</dependency>
 
+		<!-- Librería para el manejo de iconos en la aplicación-->
+			<dependency>
+				<groupId>org.kordamp.ikonli</groupId>
+				<artifactId>ikonli-javafx</artifactId>
+				<version>1.9.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.kordamp.ikonli</groupId>
+				<artifactId>ikonli-devicons-pack</artifactId>
+				<version>1.9.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.kordamp.ikonli</groupId>
+				<artifactId>ikonli-fontawesome-pack</artifactId>
+				<version>1.9.0</version>
+			</dependency>
+		<!--  FIN DE LIBRERIA    -->
 
     </dependencies>
 

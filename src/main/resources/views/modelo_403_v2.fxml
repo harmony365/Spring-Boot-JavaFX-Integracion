@@ -5,12 +5,28 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onDragDetected="#switchToSQLiteConnect" prefHeight="1220.0" prefWidth="2449.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.controllers.Modelo_403Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onDragDetected="#switchToSQLiteConnect" prefHeight="1220.0" prefWidth="2449.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.controllers.Modelo_403Controller">
    <children>
+      <!--Label fx:id="p2_lb_razon_social" contentDisplay="CENTER" layoutX="324.0" layoutY="199.0" prefHeight="27.0" prefWidth="717.0" text="DATA RAZON SOCIAL">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label-->
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="56.0" layoutX="14.0" layoutY="284.0" stroke="#bebebf" strokeType="INSIDE" width="1327.0" />
+      <Label layoutX="1116.0" layoutY="285.0" prefHeight="25.0" prefWidth="179.0" text="%p2_lb_fecha_salida">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="p2_lb_fechaLimiteSalida" layoutX="1116.0" layoutY="310.0" text="00000000">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="63.0" layoutX="14.0" layoutY="172.0" stroke="#bebebf" strokeType="INSIDE" width="1034.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="100.0" layoutX="14.0" layoutY="567.0" stroke="#bebebf" strokeType="INSIDE" width="1327.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eaeaeb" height="42.0" layoutX="31.0" layoutY="242.0" stroke="#bebebf" strokeType="INSIDE" width="560.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="127.0" layoutX="14.0" layoutY="389.0" stroke="#bebebf" strokeType="INSIDE" width="1327.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="63.0" layoutX="14.0" layoutY="172.0" stroke="#bebebf" strokeType="INSIDE" width="1034.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eaeaeb" height="42.0" layoutX="31.0" layoutY="131.0" stroke="#bebebf" strokeType="INSIDE" width="560.0" />
       <Label contentDisplay="CENTER" layoutX="38.0" layoutY="138.0" prefHeight="27.0" prefWidth="31.0" text="1. -">
          <font>
@@ -74,9 +90,9 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="p2_lb_nif" alignment="BOTTOM_LEFT" contentDisplay="CENTER" layoutX="31.0" layoutY="179.0" prefHeight="20.0" prefWidth="269.0" text="%p2_lb_NIF">
+      <Label alignment="BOTTOM_LEFT" contentDisplay="CENTER" layoutX="31.0" layoutY="173.0" prefHeight="20.0" prefWidth="269.0" text="%p2_lb_NIF">
          <font>
-            <Font size="14.0" />
+            <Font size="18.0" />
          </font>
       </Label>
       <!--Label fx:id="p2_lb_nif" contentDisplay="CENTER" layoutX="31.0" layoutY="199.0" prefHeight="27.0" prefWidth="281.0" text="00000">
@@ -84,17 +100,11 @@
             <Font size="18.0" />
          </font>
       </Label-->
-      <Label fx:id="p2_lb_razon_social" alignment="BOTTOM_LEFT" layoutX="324.0" layoutY="179.0" prefHeight="20.0" prefWidth="717.0" text="%p2_lb_RAZON_SOCIAL">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <!--Label fx:id="p2_lb_razon_social" contentDisplay="CENTER" layoutX="324.0" layoutY="199.0" prefHeight="27.0" prefWidth="717.0" text="DATA RAZON SOCIAL">
+      <Label alignment="BOTTOM_LEFT" layoutX="324.0" layoutY="173.0" prefHeight="20.0" prefWidth="717.0" text="%p2_lb_RAZON_SOCIAL">
          <font>
             <Font size="18.0" />
          </font>
-      </Label-->
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="56.0" layoutX="14.0" layoutY="284.0" stroke="#bebebf" strokeType="INSIDE" width="1327.0" />
+      </Label>
       <Label contentDisplay="CENTER" layoutX="39.0" layoutY="248.0" prefHeight="27.0" prefWidth="31.0" text="2. -">
          <font>
             <Font size="18.0" />
@@ -121,12 +131,12 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label alignment="BOTTOM_LEFT" contentDisplay="CENTER" layoutX="748.0" layoutY="285.0" prefHeight="30.0" prefWidth="582.0" text="%p2_lb_MONTO">
+      <Label alignment="BOTTOM_LEFT" contentDisplay="CENTER" layoutX="748.0" layoutY="285.0" prefHeight="30.0" prefWidth="309.0" text="%p2_lb_MONTO">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="p2_lb_monto_factura" alignment="BOTTOM_LEFT" contentDisplay="CENTER" layoutX="749.0" layoutY="310.0" prefHeight="30.0" prefWidth="582.0" text="0000000">
+      <Label fx:id="p2_lb_monto_factura" alignment="BOTTOM_LEFT" contentDisplay="CENTER" layoutX="749.0" layoutY="310.0" prefHeight="30.0" prefWidth="130.0" text="0000000">
          <font>
             <Font size="18.0" />
          </font>
@@ -379,16 +389,6 @@
             <Font size="14.0" />
          </font>
       </TextField>
-      <Label layoutX="1134.0" layoutY="585.0" prefHeight="25.0" prefWidth="179.0" text="%p2_lb_fecha_salida">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="p2_lb_fechaLimiteSalida" layoutX="1134.0" layoutY="607.0" text="00000000">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eaeaeb" height="42.0" layoutX="31.0" layoutY="525.0" stroke="#bebebf" strokeType="INSIDE" width="560.0" />
       <Label contentDisplay="CENTER" layoutX="39.0" layoutY="531.0" prefHeight="27.0" prefWidth="31.0" text="4. -">
          <font>
@@ -427,5 +427,15 @@
           <TableColumn prefWidth="75.0" text="C2" />
         </columns>
       </TableView>
+      <Label fx:id="p2_lb_nif" alignment="BOTTOM_LEFT" contentDisplay="CENTER" layoutX="31.0" layoutY="199.0" prefHeight="30.0" prefWidth="269.0" text="0000000">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="p2_lb_razon_social" alignment="BOTTOM_LEFT" contentDisplay="CENTER" layoutX="326.0" layoutY="199.0" prefHeight="30.0" prefWidth="269.0" text="0000000">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

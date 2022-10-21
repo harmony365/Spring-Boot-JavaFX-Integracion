@@ -52,7 +52,7 @@ public class DatabaseDerUtil {
 
         derType.setJustificante(digic.getJustificante());
         derType.setFechaFactura(digic.getFechaFactura());
-        //TODO: Validar el formato de la fecha de la factura en la listad DER enviada.
+        //TODO: Validar el formato de la fecha de la factura en la lista de DER enviada.
         //derType.setFechaFactura(String.valueOf(getFecha()));
         derType.setNifEstablecimiento(digic.getNifEstablecimiento());
         derType.setNumeroFactura(digic.getNumeroFactura());
@@ -71,6 +71,7 @@ public class DatabaseDerUtil {
 
             //TODO: Verificar este campo deberia ir con los valores SI ó NO
             // NOTE: ya se verificó lo de la cuenta sin iban, es correcto el true y false.
+            // Pregunta importante.
 
             Boolean r = false;
             if (digicModoPago.getCuentaSinIBAN().equals("SI")) r = true;

@@ -17,7 +17,13 @@ public class JsonUtils {
             if (myJson.isNull("paisBanco")){
                 myJson.put("paisBanco","");
             }
-            
+
+            //TODO: Validar si van a ser códigos de2 o 3 dígitos
+            String pais = (String) myJson.get("paisBanco");
+            if (pais.length()>3){
+                myJson.put("paisBanco",pais.substring(0,3));
+            }
+
             if (myJson.isNull("claveBanco")){
                 myJson.put("claveBanco","");
             }
@@ -60,7 +66,18 @@ public class JsonUtils {
                 myJson.put("identificadorBillete","");
             }
 
-            String monto = Double.toString((Double) myJson.get("totalDigic"));
+            String monto = "0";
+            System.out.println(myJson.get("totalDigic").getClass().getSimpleName());
+            //if(!myJson.get("totalDigic").equals(0)) monto = Double.toString((Double) myJson.get("totalDigic"));
+
+            switch (myJson.get("totalDigic").getClass().getSimpleName()){
+                case "Integer":
+                    monto = Integer.toString((Integer) myJson.get("totalDigic"));
+                    break;
+                case "Double":
+                    monto = Double.toString((Double) myJson.get("totalDigic"));
+                    break;
+            }
 
             Digic digic = new Digic();
             digic.setJustificante((String) myJson.get("justificante"));

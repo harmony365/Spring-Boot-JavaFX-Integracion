@@ -92,6 +92,9 @@ public class Valida_Envia_DERController implements Initializable {
             p4_cb_cuetaiban,p4_cb_hora;
 
     @FXML
+    private ComboBox<String> p4_cb_modoTransporteObj,p4_cb_cuetaibanObj;
+
+    @FXML
     private Label p2_lb_informacion,p2_lb_clave_banco,p2_lb_clave_control, p2_lb_codigoBic,
                   p2_lb_codigo_cuenta_internacional, p2_lb_codigo_cuenta_nacional, p2_lb_cuenta_bancaria,
                   p2_lb_datos_transporte, p2_lb_datos_viajeros, p2_lb_descripcion_banco, p2_lb_fechaLimiteSalida,
@@ -136,7 +139,7 @@ public class Valida_Envia_DERController implements Initializable {
         p4_rec_mensaje.requestFocus();
 
         //lblTitulo.setText(titulo);
-        valorDocumento = App.parametrosModel.getNumeroPasaporte();//"44303145Q";
+        valorDocumento = App.parametrosModel.getNumeroPasaporte();
         txtTelefono.getProperties().put(VK_TYPE, VK_TYPE_NUMERIC);
 
         p4_tf_codigo_aba.getProperties().put(VK_TYPE, VK_TYPE_NUMERIC);
@@ -154,6 +157,9 @@ public class Valida_Envia_DERController implements Initializable {
         p4_cb_fechaLimiteSalida.setVisible(false);
 
         p4_cb_hora.setVisible(false);
+
+        p4_cb_cuetaiban.setVisible(false);
+        p4_cb_modoTransporte.setVisible(false);
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDateTime now = LocalDateTime.now();
@@ -289,10 +295,8 @@ public class Valida_Envia_DERController implements Initializable {
     @FXML
     private void switchToAceptar() throws IOException {
         Boolean procesarWSDL = false;
-        String sn = p4_cb_cuetaiban.getValue()+"";
 
         // Given start Date
-
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String start_date = fechaHoraLimite.format(formatter);
@@ -317,6 +321,8 @@ public class Valida_Envia_DERController implements Initializable {
         if (p4_tf_identificadorBillete.getText().isEmpty()){ PlayEmpty(p4_tf_identificadorBillete);procesarWSDL = true;}else{p4_tf_identificadorBillete.setStyle(successStyle);};
         if (p4_tf_modoTransporte.getText().isEmpty()){ PlayEmpty(p4_tf_modoTransporte);procesarWSDL = true;}else{p4_tf_modoTransporte.setStyle(successStyle);};
 
+        String sn = p4_cb_cuetaibanObj.getValue()+"";
+
         if(sn.equals("SI")){
             if (p4_tf_clave_banco.getText().isEmpty()){ PlayEmpty(p4_tf_clave_banco);procesarWSDL = true;}else{p4_tf_clave_banco.setStyle(successStyle);};
             if (p4_tf_clave_control.getText().isEmpty()){ PlayEmpty(p4_tf_clave_control);procesarWSDL = true;}else{p4_tf_clave_control.setStyle(successStyle);};
@@ -331,7 +337,7 @@ public class Valida_Envia_DERController implements Initializable {
             if (p4_tf_codigo_aba.getText().length()<9){ PlayEmpty(p4_tf_codigo_aba);procesarWSDL = true;}else{p4_tf_codigo_aba.setStyle(successStyle);};
 
             try {
-                IbanUtil.validate(p4_tf_cuenta_bancaria.getText());
+               // IbanUtil.validate(p4_tf_cuenta_bancaria.getText());
 
             } catch (IbanFormatException | InvalidCheckDigitException | UnsupportedCountryException e) {
                 // invalid
@@ -431,27 +437,27 @@ public class Valida_Envia_DERController implements Initializable {
             WsdlResponse.setText("RED");
         }
 
-        //TODO: validar bien el cambio de estatus.
+        //TODO: validar bien el cambio de estatus. sólo falta ver bien cual sería la regla para los estatus ER.
 
         if(WsdlResponse.getText().equals("RED")) {
             p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
             p4_lb_mensaje.setText(bundle.getString( "p4_lb_mensaje_wsdl_RED"));
-            DigicUpdatStatus(valorDocumento);
+            DigicUpdatStatus(valorDocumento,3,2);
         }
         if(WsdlResponse.getText().equals("ER")) {
             p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
             p4_lb_mensaje.setText(bundle.getString( "p4_lb_mensaje_wsdl_ER"));
-            DigicUpdatStatus(valorDocumento);
+            DigicUpdatStatus(valorDocumento,3,3);
         }
         if(WsdlResponse.getText().equals("KO")) {
             p4_rec_mensaje.setFill(Color.rgb(227, 250, 228, 1));
             p4_lb_mensaje.setText(bundle.getString( "p4_lb_mensaje_wsdl_KO"));
-            DigicUpdatStatus(valorDocumento);
+            DigicUpdatStatus(valorDocumento,3,1);
         }
         if(WsdlResponse.getText().equals("OK")) {
             p4_rec_mensaje.setFill(Color.rgb(227, 250, 228, 1));
             p4_lb_mensaje.setText(bundle.getString( "p4_lb_mensaje_wsdl_OK"));
-            DigicUpdatStatus(valorDocumento);
+            DigicUpdatStatus(valorDocumento,3,1);
         }
         if(WsdlResponse.getText().length() > 5){
             p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
@@ -526,6 +532,9 @@ public class Valida_Envia_DERController implements Initializable {
         p4_cb_codigo_aba.setItems(FXCollections.observableArrayList(digicRepository.findAllNumeroAba(valorDocumento)));
         p4_cb_cuetaiban.setItems(FXCollections.observableArrayList(digicRepository.findAllCuentaSinIban(valorDocumento)));
 
+        p4_cb_modoTransporteObj.getItems().addAll("AVION","BARCO");
+        p4_cb_cuetaibanObj.getItems().addAll("SI","NO");
+
         p4_cb_clave_banco.getSelectionModel().selectFirst();
         p4_cb_clave_control.getSelectionModel().selectFirst();
         p4_cb_codigoBic.getSelectionModel().selectFirst();
@@ -539,20 +548,20 @@ public class Valida_Envia_DERController implements Initializable {
         p4_cb_valorMedioPago.getSelectionModel().selectFirst();
         p4_cb_fechaLimiteSalida.getSelectionModel().selectFirst();
         p4_cb_cuetaiban.getSelectionModel().selectFirst();
-
-        //TODO: Y otra cosilla, para rellenar los datos del transporte poner el combo de AVION, BARCO
+        p4_cb_modoTransporteObj.getSelectionModel().selectFirst();
+        p4_cb_cuetaibanObj.getSelectionModel().selectFirst();
 
     }
 
-    public void DigicUpdatStatus(String valordocumento) {
+    public void DigicUpdatStatus(String valordocumento, Integer estatusbuscar, Integer estatuscambiar) {
 
-        List<Digic> digicLis = digicRepository.findAllByValorDocumentoEstatus(valordocumento, 3);
+        List<Digic> digicLis = digicRepository.findAllByValorDocumentoEstatus(valordocumento, estatusbuscar);
 
         try{
             if(!digicLis.isEmpty()){
 
                 for (Digic digic: digicLis) {
-                    digic.setEstatus_upload(2);
+                    digic.setEstatus_upload(estatuscambiar);
                 }
                 digicRepository.saveAll(digicLis);
             }
@@ -582,8 +591,24 @@ public class Valida_Envia_DERController implements Initializable {
 
     private void iniFormDigicModoPago(){
 
+        /*
+            TODO:
+             para el DER 4032400003615 6958715644. el monto es un Integer 200 y no un double 200.00, y el pais del banco no es de 2 caracteres sino 3 MAU
+             para el DER 4032400003606 6958715644. y el pais del banco no es de 2 caracteres sino 3 MAU
+             Para el DER 4032400003563 42476822P arroja el error PR02
+             Para el DER 4032400004220 42476822P el modo de transporte de salida es BARCO en el documento impreso y no aparece en la información del QR
+             Para el DER 4032400003590 41780963Z el monto es un Integer 0 y no un double 0.00  arroja el error  ER
+             Para el DER 4032400004674 41780963Z
+             Para el DER 4032400003581 41780963Z
+
+
+             todo:
+              Revisar cuando se selecciona los der en el panel coloca CUENTA en el campo de modo de transporte
+              cuando se está en la ventana de envío de los DER y nos retrocedemos, la variable del valor documento se pierde.
+
+         */
         p4_tf_pais_banco.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue.length() > 2) ((StringProperty)observable).setValue(oldValue);
+            if (newValue.length() > 3) ((StringProperty)observable).setValue(oldValue);
 
             if (!newValue.matches("\\sa-zA-Z*")) {
                 p4_tf_pais_banco.setText(newValue.replaceAll("[^\\sa-zA-Z]", ""));
@@ -711,7 +736,16 @@ public class Valida_Envia_DERController implements Initializable {
             }
         });
 
-       // p4_cb_codigo_aba.setOnAction(e -> p4_tf_codigo_aba.setText(p4_cb_codigo_aba.getValue()+""));
+        p4_cb_modoTransporteObj.valueProperty().addListener(
+            new ChangeListener() {
+                @Override
+                public void changed(ObservableValue observableValue, Object o, Object t1) {
+                    p4_tf_modoTransporte.setText((String) t1);
+                }
+        });
+        p4_cb_modoTransporteObj.getSelectionModel().selectFirst();
+
+        // p4_cb_codigo_aba.setOnAction(e -> p4_tf_codigo_aba.setText(p4_cb_codigo_aba.getValue()+""));
         p4_cb_codigo_aba.valueProperty().addListener(
             new ChangeListener() {
             @Override
@@ -761,6 +795,23 @@ public class Valida_Envia_DERController implements Initializable {
                 }
             }
         });
+
+        p4_cb_cuetaibanObj.valueProperty().addListener(
+                new ChangeListener() {
+                    @Override
+                    public void changed(ObservableValue observableValue, Object o, Object t1) {
+
+                        String sn = (String) t1;
+                        if(sn.equals("NO")){
+                            p4_pane_cuentaiban.setVisible(true);
+                            p4_pane_cuentainternacional.setVisible(false);
+                        }else{
+                            p4_pane_cuentaiban.setVisible(false);
+                            p4_pane_cuentainternacional.setVisible(true);
+                        }
+                    }
+                });
+        p4_cb_cuetaibanObj.getSelectionModel().selectFirst();
 
         /*p4_cb_pais_banco.setOnAction((e) ->{
             p4_tf_pais_banco.setText(p4_cb_pais_banco.getValue()+"");
