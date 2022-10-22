@@ -1,5 +1,6 @@
 package com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.utiles;
 
+import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.App;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Digic;
 import org.json.JSONObject;
 
@@ -106,6 +107,7 @@ public class JsonUtils {
             digic.setPaisBanco((String) myJson.get("paisBanco"));
             digic.setModoTransporte((String) myJson.get("modoTransporte"));
             digic.setIdentificadorBillete((String) myJson.get("identificadorBillete"));
+            digic.setUuidProceso(App.UUIDProcess);
             digic.setEstatus_upload(3);
 
             //digic.setClaveUuid((String) App.UUIDProcess);

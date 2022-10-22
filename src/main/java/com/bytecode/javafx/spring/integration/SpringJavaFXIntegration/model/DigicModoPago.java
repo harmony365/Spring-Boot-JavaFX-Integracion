@@ -51,6 +51,8 @@ public class DigicModoPago implements Serializable {
     private String fechaUpload;
     @Column(name = "fechacreacion")
     private String fechaCreacion;
+    @Column(name = "uuidProceso")
+    private String uuidProceso;
 
     public DigicModoPago() {
     }

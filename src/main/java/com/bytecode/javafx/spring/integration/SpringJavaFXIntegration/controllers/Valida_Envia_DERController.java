@@ -507,6 +507,7 @@ public class Valida_Envia_DERController implements Initializable {
         digicModoPago.setPaisBanco(p4_tf_pais_banco.getText());
         digicModoPago.setValorDocumento(valorDocumento);
         digicModoPago.setValorMedioPago(p4_tf_valorMedioPago.getText());
+        digicModoPago.setUuidProceso(App.UUIDProcess);
 
         digicModoPago.setEstatusUpload(3);
 
@@ -605,6 +606,9 @@ public class Valida_Envia_DERController implements Initializable {
              todo:
               Revisar cuando se selecciona los der en el panel coloca CUENTA en el campo de modo de transporte
               cuando se está en la ventana de envío de los DER y nos retrocedemos, la variable del valor documento se pierde.
+
+             TODO:
+              CREAR la notificación del procesando en los procesos que quedan en espera.
 
          */
         p4_tf_pais_banco.textProperty().addListener((observable, oldValue, newValue) -> {

@@ -73,6 +73,8 @@ public class Digic implements Serializable {
     private String fechaUpload;
     @Column(name = "fecha_creacion")
     private String fechaCreacion;
+    @Column(name = "uuidProceso")
+    private String uuidProceso;
 
     public Digic() {
     }

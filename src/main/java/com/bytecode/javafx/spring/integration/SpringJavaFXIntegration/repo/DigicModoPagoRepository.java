@@ -22,6 +22,9 @@ public interface DigicModoPagoRepository extends JpaRepository<DigicModoPago, St
     @Query(value = "SELECT d FROM digicmodopago d WHERE d.valorDocumento = :valorDocumento AND d.estatusUpload = :estatus")
     List<DigicModoPago> findAllByValorDocumentoEstatus(String valorDocumento, Integer estatus);
 
+    @Modifying
+    @Query(value = "SELECT d FROM digicmodopago d WHERE d.estatusUpload = :estatus")
+    List<DigicModoPago> findAllByEstatus(Integer estatus);
 
 
 }

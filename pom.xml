@@ -80,12 +80,17 @@
 		<!-- -->
 
 		<!-- Virtual KeyBoard -->
-			<dependency>
+			<!--dependency>
 				<groupId>org.comtel2000</groupId>
 				<artifactId>fx-onscreen-keyboard</artifactId>
 				<version>11.0.2-SNAPSHOT</version>
-			</dependency>
-		
+			</dependency-->
+		<!-- https://mvnrepository.com/artifact/org.comtel2000/fx-onscreen-keyboard -->
+		<dependency>
+			<groupId>org.comtel2000</groupId>
+			<artifactId>fx-onscreen-keyboard</artifactId>
+			<version>11.0.1</version>
+		</dependency>
 
 		<!-- WSDL DER DIVA -->
 			<dependency>
