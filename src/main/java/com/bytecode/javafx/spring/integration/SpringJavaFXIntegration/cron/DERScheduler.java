@@ -1,7 +1,6 @@
 package com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.cron;
 
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.App;
-import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Digic;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.DigicModoPago;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.DigicModoPagoRepository;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.DigicRepository;
@@ -46,11 +45,12 @@ public class DERScheduler {
                 System.out.println("__________________________________________\n");
 
                 for (DigicModoPago digicmodopago: digicModoPagoLis) {
+                    System.out.println("uuidProceso: " + digicmodopago.getUuidProceso());
                     System.out.println("Valor Documento: " + digicmodopago.getValorDocumento());
-                    System.out.println("Email: " + digicmodopago.getEmail());
                     System.out.println("__________________________________________\n");
 
-                    onWsdl(digicmodopago.getValorDocumento());
+                    //onWsdl(digicmodopago.getValorDocumento());
+                    onWsdl(digicmodopago.getUuidProceso());
 
                 }
 
@@ -63,7 +63,7 @@ public class DERScheduler {
 
     }
 
-    public void onWsdl(String valorDocumento){
+    public void onWsdl(String uuidProceso){
 
         String WsdlTimeStamp = "";
         String WsdlResponse = "";
@@ -72,7 +72,7 @@ public class DERScheduler {
 
             ValidarRemesaDerResponse validarRemesaDerResponse;
 
-            ValidarRemesaDer validarRemesaDer = databaseDerUtil.getDERtoSend(valorDocumento, 2, App.parametrosModel.getKIOSKOID());
+            ValidarRemesaDer validarRemesaDer = databaseDerUtil.getDERtoSend(uuidProceso, 2, App.parametrosModel.getKIOSKOID());
             validarRemesaDerResponse = KioskoServiceClient.getInstance().validarRemesa(validarRemesaDer);
             KioskoServiceClientUtils.printResponse(validarRemesaDerResponse);
             WsdlTimeStamp = validarRemesaDerResponse.getFechaEstado().toString();
@@ -94,49 +94,12 @@ public class DERScheduler {
             // TODO: Qué hacer en el caso de que nos siga dando el Error RED ó ER o sea una respuesta de error de mas de 5 carácteres?
             //  No seteamos la variable porque está dandoel mismo Error
 
-            DigicUpdatStatus(valorDocumento,2,2);
+            databaseDerUtil.DigicUpdatStatus(uuidProceso,2,2);
             System.out.println("Respuesta WSDL -> Se encontró un error y no se pudo cambiar el estatus de la operación." );
         }
 
-        if(WsdlResponse.equals("KO")) {
-            DigicUpdatStatus(valorDocumento,2,1);
-        }
-        if(WsdlResponse.equals("OK")) {
-            DigicUpdatStatus(valorDocumento,2,1);
-        }
-
-    }
-
-    public void DigicUpdatStatus(String valordocumento, Integer estatusbuscar, Integer estatuscambiar) {
-
-        List<Digic> digicLis = digicRepository.findAllByValorDocumentoEstatus(valordocumento, estatusbuscar);
-
-        try{
-            if(!digicLis.isEmpty()){
-
-                for (Digic digic: digicLis) {
-                    digic.setEstatus_upload(estatuscambiar);
-                }
-                digicRepository.saveAll(digicLis);
-            }
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-        List<DigicModoPago> digicModoPagoList = digicModoPagoRepository.findAllByValorDocumentoEstatus(valordocumento, 3);
-
-        try{
-            if(!digicModoPagoList.isEmpty()){
-
-                for (DigicModoPago digicModoPago: digicModoPagoList) {
-                    digicModoPago.setEstatusUpload(2);
-                }
-                digicModoPagoRepository.saveAll(digicModoPagoList);
-            }
-
-        }catch (Exception e){
-            e.printStackTrace();
+        if(WsdlResponse.equals("KO") || WsdlResponse.equals("OK")) {
+            databaseDerUtil.DigicUpdatStatus(uuidProceso,2,1);
         }
 
     }

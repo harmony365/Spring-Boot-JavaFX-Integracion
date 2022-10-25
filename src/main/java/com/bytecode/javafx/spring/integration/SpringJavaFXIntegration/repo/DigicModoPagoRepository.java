@@ -14,6 +14,9 @@ public interface DigicModoPagoRepository extends JpaRepository<DigicModoPago, St
     @Query(value = "SELECT d FROM digicmodopago d WHERE d.valorDocumento = :valorDocumento")
     public List<DigicModoPago> findByValorDocumento(String valorDocumento);
 
+    @Query(value = "SELECT d FROM digicmodopago d WHERE d.uuidProceso = :uuidProceso")
+    public List<DigicModoPago> findByUuidProceso(String uuidProceso);
+
     @Modifying
     @Query(value = "UPDATE digicmodopago d SET estatusUpload = 1, fechaupload = CURRENT_TIMESTAMP WHERE d.valorDocumento = :valorDocumento")
     List<DigicModoPago> updateStatusByValorDocumento(String valorDocumento);
@@ -21,6 +24,10 @@ public interface DigicModoPagoRepository extends JpaRepository<DigicModoPago, St
     @Modifying
     @Query(value = "SELECT d FROM digicmodopago d WHERE d.valorDocumento = :valorDocumento AND d.estatusUpload = :estatus")
     List<DigicModoPago> findAllByValorDocumentoEstatus(String valorDocumento, Integer estatus);
+
+    @Modifying
+    @Query(value = "SELECT d FROM digicmodopago d WHERE d.uuidProceso = :uuidProceso AND d.estatusUpload = :estatus")
+    List<DigicModoPago> findAllByuuidProcesoEstatus(String uuidProceso, Integer estatus);
 
     @Modifying
     @Query(value = "SELECT d FROM digicmodopago d WHERE d.estatusUpload = :estatus")

@@ -33,7 +33,8 @@ public class DatabaseDerUtil {
 
         validarRemesaDer.setCodigoKiosko(kiosko);
 
-        List<Digic> digicLis = digicRepository.findAllByValorDocumentoEstatus(valorDocumento, estatus);
+        //List<Digic> digicLis = digicRepository.findAllByValorDocumentoEstatus(valorDocumento, estatus);
+        List<Digic> digicLis = digicRepository.findAllByuuidProcesoEstatus(valorDocumento, estatus);
 
         if(!digicLis.isEmpty()){
             setRemesaDerFromDigicBD(digicLis.get(0), validarRemesaDer);
@@ -64,7 +65,8 @@ public class DatabaseDerUtil {
 
     private void setMedioPagoFromBd(Digic digic, ValidarRemesaDer validarRemesaDer) {
         MedioPagoType medioPagoType = new MedioPagoType();
-        for(DigicModoPago digicModoPago : digicModoPagoRepository.findByValorDocumento(digic.getValorDocumento()))
+       // for(DigicModoPago digicModoPago : digicModoPagoRepository.findByValorDocumento(digic.getValorDocumento()))
+        for(DigicModoPago digicModoPago : digicModoPagoRepository.findByUuidProceso(digic.getUuidProceso()))
         {
 
             medioPagoType.setCodMedioPago(digicModoPago.getModoPago());
@@ -108,6 +110,43 @@ public class DatabaseDerUtil {
 
     }
 
+
+    public void DigicUpdatStatus(String valordocumento, Integer estatusbuscar, Integer estatuscambiar) {
+
+        //List<Digic> digicLis = digicRepository.findAllByValorDocumentoEstatus(valordocumento, estatusbuscar);
+        List<Digic> digicLis = digicRepository.findAllByuuidProcesoEstatus(valordocumento, estatusbuscar);
+
+        try{
+            if(!digicLis.isEmpty()){
+
+                for (Digic digic: digicLis) {
+                    digic.setEstatus_upload(estatuscambiar);
+                }
+                digicRepository.saveAll(digicLis);
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        //List<DigicModoPago> digicModoPagoList = digicModoPagoRepository.findAllByValorDocumentoEstatus(valordocumento, 3);
+        List<DigicModoPago> digicModoPagoList = digicModoPagoRepository.findAllByuuidProcesoEstatus(valordocumento, estatusbuscar);
+
+        try{
+            if(!digicModoPagoList.isEmpty()){
+
+                for (DigicModoPago digicModoPago: digicModoPagoList) {
+                    digicModoPago.setEstatusUpload(estatuscambiar);
+                }
+                digicModoPagoRepository.saveAll(digicModoPagoList);
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+    }
 
     public XMLGregorianCalendar getFecha() {
 

@@ -13,6 +13,9 @@ public interface DigicRepository extends JpaRepository<Digic, String> {
     @Query(value = "UPDATE digic d SET estatus_upload = 1, fecha_upload=CURRENT_TIMESTAMP WHERE d.valorDocumento = :valorDocumento")
     List<Digic> updateStatusByValorDocumento(String valorDocumento);
 
+    @Query(value = "UPDATE digic d SET estatus_upload = 1, fecha_upload=CURRENT_TIMESTAMP WHERE d.uuidProceso = :uuidProceso")
+    List<Digic> updateStatusByuuidProceso(String uuidProceso);
+
     @Query(value = "SELECT d FROM digic d WHERE d.justificante = :justificante")
     List<Digic> findByJustificante(String justificante);
 
@@ -20,8 +23,14 @@ public interface DigicRepository extends JpaRepository<Digic, String> {
     @Query(value = "SELECT d FROM digic d WHERE d.valorDocumento = :valorDocumento AND d.estatus_upload = :estatus")
     List<Digic> findAllByValorDocumentoEstatus(String valorDocumento, Integer estatus);
 
+    @Query(value = "SELECT d FROM digic d WHERE d.uuidProceso = :uuidProceso AND d.estatus_upload = :estatus")
+    List<Digic> findAllByuuidProcesoEstatus(String uuidProceso, Integer estatus);
+
     @Query(value = "SELECT d.justificante, d.totalDigic FROM digic d WHERE d.valorDocumento = :valorDocumento")
     List<Digic> findByValorDocumento(String valorDocumento);
+
+    @Query(value = "SELECT d.justificante, d.totalDigic FROM digic d WHERE d.uuidProceso = :uuidProceso")
+    List<Digic> findByuuidProceso(String uuidProceso);
 
     @Query(value = "SELECT DISTINCT trim(d.fechaLimiteSalida) FROM digic d WHERE d.valorDocumento = :valorDocumento AND length(trim(d.fechaLimiteSalida)) > 0 ")
     List<Digic> findAllFechaLimiteSalida(String valorDocumento);

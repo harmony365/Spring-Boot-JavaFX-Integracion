@@ -43,7 +43,6 @@ import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -140,6 +139,7 @@ public class Valida_Envia_DERController implements Initializable {
 
         //lblTitulo.setText(titulo);
         valorDocumento = App.parametrosModel.getNumeroPasaporte();
+
         txtTelefono.getProperties().put(VK_TYPE, VK_TYPE_NUMERIC);
 
         p4_tf_codigo_aba.getProperties().put(VK_TYPE, VK_TYPE_NUMERIC);
@@ -288,13 +288,18 @@ public class Valida_Envia_DERController implements Initializable {
                 this.setDisable(true);
             }
 
-
         }
     };
 
+    public class ProcesarWSDL {
+        public Boolean valor;
+    }
     @FXML
     private void switchToAceptar() throws IOException {
-        Boolean procesarWSDL = false;
+        //Boolean procesarWSDL = false;
+
+        ProcesarWSDL procesarWSDL = new ProcesarWSDL();
+        procesarWSDL.valor = false;
 
         // Given start Date
 
@@ -306,35 +311,45 @@ public class Valida_Envia_DERController implements Initializable {
         String end_date = p4_dtp_fechaLimiteSalida.getValue() + " " + p4_tf_fechaLimiteSalidaHora.getText() + ":" + p4_tf_fechaLimiteSalidaMinuto.getText() + ":00";
 
         //TODO: validar que está verificando que la fecha y hora de salida no superalas 3 horas ni es menor a o horas-
-        int resultado = validaFechaHora(start_date, end_date, "H");
-        if ( resultado > 3 || resultado < 0) {
+
+        if (p4_tf_fechaLimiteSalidaHora.getLength() > 0  && p4_tf_fechaLimiteSalidaMinuto.getLength() > 0 ) {
+            int resultado = validaFechaHora(start_date, end_date, "H");
+            if (resultado > 3 || resultado < 0) {
+                PlayEmpty(p4_tf_fechaLimiteSalidaHora);
+                PlayEmpty(p4_tf_fechaLimiteSalidaMinuto);
+                procesarWSDL.valor = true;
+                System.out.println("Fecha de salida supera las 3 horas reglamentarias");
+            } else {
+                p4_tf_fechaLimiteSalidaHora.setStyle(successStyle);
+                p4_tf_fechaLimiteSalidaMinuto.setStyle(successStyle);
+            }
+        }else{
             PlayEmpty(p4_tf_fechaLimiteSalidaHora);
             PlayEmpty(p4_tf_fechaLimiteSalidaMinuto);
-            procesarWSDL = true;
-            System.out.println("Fecha de salida supera las 3 horas reglamentarias");
-        }else{
-            p4_tf_fechaLimiteSalidaHora.setStyle(successStyle);
-            p4_tf_fechaLimiteSalidaMinuto.setStyle(successStyle);
-        };
+            procesarWSDL.valor = true;
+            System.out.println("Fecha de salida no contiene horas reglamentarias");
+        }
 
-        if (p4_tf_email.getText().isEmpty()){ PlayEmpty(p4_tf_email);procesarWSDL = true;}else{p4_tf_email.setStyle(successStyle);};
-        if (p4_tf_identificadorBillete.getText().isEmpty()){ PlayEmpty(p4_tf_identificadorBillete);procesarWSDL = true;}else{p4_tf_identificadorBillete.setStyle(successStyle);};
-        if (p4_tf_modoTransporte.getText().isEmpty()){ PlayEmpty(p4_tf_modoTransporte);procesarWSDL = true;}else{p4_tf_modoTransporte.setStyle(successStyle);};
+        VerificaEmpty(p4_tf_email,procesarWSDL);
+        VerificaEmpty(p4_tf_identificadorBillete,procesarWSDL);
+        VerificaEmpty(p4_tf_modoTransporte,procesarWSDL);
 
         String sn = p4_cb_cuetaibanObj.getValue()+"";
 
         if(sn.equals("SI")){
-            if (p4_tf_clave_banco.getText().isEmpty()){ PlayEmpty(p4_tf_clave_banco);procesarWSDL = true;}else{p4_tf_clave_banco.setStyle(successStyle);};
-            if (p4_tf_clave_control.getText().isEmpty()){ PlayEmpty(p4_tf_clave_control);procesarWSDL = true;}else{p4_tf_clave_control.setStyle(successStyle);};
-            if (p4_tf_codigoBic.getText().isEmpty()){ PlayEmpty(p4_tf_codigoBic);procesarWSDL = true;}else{p4_tf_codigoBic.setStyle(successStyle);};
-            if (p4_tf_pais_banco.getText().isEmpty()){ PlayEmpty(p4_tf_pais_banco);procesarWSDL = true;}else{p4_tf_pais_banco.setStyle(successStyle);};
-            if (p4_tf_descripcion_banco.getText().isEmpty()){ PlayEmpty(p4_tf_descripcion_banco);procesarWSDL = true;}else{p4_tf_descripcion_banco.setStyle(successStyle);};
-            if (p4_tf_cuenta_bancaria.getText().isEmpty()) { PlayEmpty(p4_tf_cuenta_bancaria); procesarWSDL = true; } else { p4_tf_cuenta_bancaria.setStyle(successStyle);};
 
-            if (!isValidLetter(p4_tf_pais_banco.getText())){PlayEmpty(p4_tf_pais_banco);procesarWSDL = true;}else{p4_tf_pais_banco.setStyle(successStyle);};
+            VerificaEmpty(p4_tf_clave_banco,procesarWSDL);
+            VerificaEmpty(p4_tf_clave_control,procesarWSDL);
+            VerificaEmpty(p4_tf_codigoBic,procesarWSDL);
+            VerificaEmpty(p4_tf_pais_banco,procesarWSDL);
+            VerificaEmpty(p4_tf_descripcion_banco,procesarWSDL);
+            VerificaEmpty(p4_tf_cuenta_bancaria,procesarWSDL);
 
-            if (p4_tf_codigo_aba.getText().isEmpty()){ PlayEmpty(p4_tf_codigo_aba);procesarWSDL = true;}else{p4_tf_codigo_aba.setStyle(successStyle);};
-            if (p4_tf_codigo_aba.getText().length()<9){ PlayEmpty(p4_tf_codigo_aba);procesarWSDL = true;}else{p4_tf_codigo_aba.setStyle(successStyle);};
+            VerificaLetra(p4_tf_pais_banco,procesarWSDL);
+
+            VerificaEmpty(p4_tf_codigo_aba,procesarWSDL);
+
+            VerificaLargo(p4_tf_codigo_aba, 9, procesarWSDL);
 
             try {
                // IbanUtil.validate(p4_tf_cuenta_bancaria.getText());
@@ -342,13 +357,14 @@ public class Valida_Envia_DERController implements Initializable {
             } catch (IbanFormatException | InvalidCheckDigitException | UnsupportedCountryException e) {
                 // invalid
                 PlayEmpty(p4_tf_cuenta_bancaria);
-                procesarWSDL = true;
+                procesarWSDL.valor = true;
             }
 
         }
 
         if(sn.equals("NO")) {
-            if (p4_tf_valorMedioPago.getText().isEmpty()){ PlayEmpty(p4_tf_valorMedioPago);procesarWSDL = true;}else{p4_tf_valorMedioPago.setStyle(successStyle);};
+            VerificaEmpty(p4_tf_valorMedioPago,procesarWSDL);
+            //if (p4_tf_valorMedioPago.getText().isEmpty()){ PlayEmpty(p4_tf_valorMedioPago);procesarWSDL.valor = true;}else{p4_tf_valorMedioPago.setStyle(successStyle);};
 
             // How to validate Iban
             try {
@@ -358,12 +374,24 @@ public class Valida_Envia_DERController implements Initializable {
             } catch (IbanFormatException | InvalidCheckDigitException | UnsupportedCountryException e) {
                 // invalid
                 PlayEmpty(p4_tf_valorMedioPago);
-                procesarWSDL = true;
+                procesarWSDL.valor = true;
             }
 
         }
 
-        if(!procesarWSDL)onWsdl();
+        if(!procesarWSDL.valor)onWsdl();
+    }
+
+    private  void  VerificaEmpty(TextField campo, ProcesarWSDL procesarWSDL){
+        if (campo.getText().isEmpty()){ PlayEmpty(campo);procesarWSDL.valor = true;}else{campo.setStyle(successStyle);};
+    }
+
+    private  void  VerificaLetra(TextField campo, ProcesarWSDL procesarWSDL){
+        if (!isValidLetter(campo.getText())){PlayEmpty(campo);procesarWSDL.valor = true;}else{campo.setStyle(successStyle);};
+    }
+
+    private  void  VerificaLargo(TextField campo, int largo,ProcesarWSDL procesarWSDL){
+        if (campo.getText().length()< largo){ PlayEmpty(campo);procesarWSDL.valor = true;}else{campo.setStyle(successStyle);};
     }
 
     private void PlayEmpty(TextField tf){
@@ -413,19 +441,9 @@ public class Valida_Envia_DERController implements Initializable {
             digicModoPagoRepository.save(getDERFromUI());
 
             ValidarRemesaDerResponse validarRemesaDerResponse;
-    /*
-            validarRemesaDerResponse  = KioskoServiceClient.getInstance().validarRemesa(DummyData.getExampleKO());
-            KioskoServiceClientUtils.printResponse(validarRemesaDerResponse);
-            WsdlTimeStamp.setText(validarRemesaDerResponse.getFechaEstado().toString());
-            WsdlResponse.setText(validarRemesaDerResponse.getEstado());
 
-            validarRemesaDerResponse = KioskoServiceClient.getInstance().validarRemesa(DummyData.getExample());
-            KioskoServiceClientUtils.printResponse(validarRemesaDerResponse);
-            WsdlTimeStamp.setText(validarRemesaDerResponse.getFechaEstado().toString());
-            WsdlResponse.setText(validarRemesaDerResponse.getEstado());
-
-    */
-            ValidarRemesaDer validarRemesaDer = databaseDerUtil.getDERtoSend(valorDocumento, 3, App.parametrosModel.getKIOSKOID());
+            //ValidarRemesaDer validarRemesaDer = databaseDerUtil.getDERtoSend(valorDocumento, 3, App.parametrosModel.getKIOSKOID());
+            ValidarRemesaDer validarRemesaDer = databaseDerUtil.getDERtoSend(App.UUIDProcess, 3, App.parametrosModel.getKIOSKOID());
             validarRemesaDerResponse = KioskoServiceClient.getInstance().validarRemesa(validarRemesaDer);
             KioskoServiceClientUtils.printResponse(validarRemesaDerResponse);
             WsdlTimeStamp.setText(validarRemesaDerResponse.getFechaEstado().toString());
@@ -442,22 +460,27 @@ public class Valida_Envia_DERController implements Initializable {
         if(WsdlResponse.getText().equals("RED")) {
             p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
             p4_lb_mensaje.setText(bundle.getString( "p4_lb_mensaje_wsdl_RED"));
-            DigicUpdatStatus(valorDocumento,3,2);
+            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess,3,2);
         }
         if(WsdlResponse.getText().equals("ER")) {
             p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
             p4_lb_mensaje.setText(bundle.getString( "p4_lb_mensaje_wsdl_ER"));
-            DigicUpdatStatus(valorDocumento,3,3);
+            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess,3,3);
+        }
+        if(WsdlResponse.getText().equals("PR02")) {
+            p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
+            p4_lb_mensaje.setText(bundle.getString( "p4_lb_mensaje_wsdl_ER"));
+            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess,3,2);
         }
         if(WsdlResponse.getText().equals("KO")) {
             p4_rec_mensaje.setFill(Color.rgb(227, 250, 228, 1));
             p4_lb_mensaje.setText(bundle.getString( "p4_lb_mensaje_wsdl_KO"));
-            DigicUpdatStatus(valorDocumento,3,1);
+            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess,3,1);
         }
         if(WsdlResponse.getText().equals("OK")) {
             p4_rec_mensaje.setFill(Color.rgb(227, 250, 228, 1));
             p4_lb_mensaje.setText(bundle.getString( "p4_lb_mensaje_wsdl_OK"));
-            DigicUpdatStatus(valorDocumento,3,1);
+            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess,3,1);
         }
         if(WsdlResponse.getText().length() > 5){
             p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
@@ -473,7 +496,6 @@ public class Valida_Envia_DERController implements Initializable {
         p2_btn_salir.requestFocus();
 
     }
-
 
     public void setFromUI(Cliente cliente) {
         txtApellido.setText(cliente.getApellido());
@@ -554,42 +576,6 @@ public class Valida_Envia_DERController implements Initializable {
 
     }
 
-    public void DigicUpdatStatus(String valordocumento, Integer estatusbuscar, Integer estatuscambiar) {
-
-        List<Digic> digicLis = digicRepository.findAllByValorDocumentoEstatus(valordocumento, estatusbuscar);
-
-        try{
-            if(!digicLis.isEmpty()){
-
-                for (Digic digic: digicLis) {
-                    digic.setEstatus_upload(estatuscambiar);
-                }
-                digicRepository.saveAll(digicLis);
-            }
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-        List<DigicModoPago> digicModoPagoList = digicModoPagoRepository.findAllByValorDocumentoEstatus(valordocumento, 3);
-
-        try{
-            if(!digicModoPagoList.isEmpty()){
-
-                for (DigicModoPago digicModoPago: digicModoPagoList) {
-                    digicModoPago.setEstatusUpload(2);
-                }
-                digicModoPagoRepository.saveAll(digicModoPagoList);
-            }
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-
-    }
-
-
     private void iniFormDigicModoPago(){
 
         /*
@@ -626,203 +612,32 @@ public class Valida_Envia_DERController implements Initializable {
             p4_tf_pais_banco.setText(newValue.toUpperCase());
         });
 
-        p4_tf_codigoBic.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.matches("\\d*")) {
-                p4_tf_codigoBic.setText(newValue.replaceAll("[^\\d]", ""));
-            }
-        });
-        p4_tf_codigo_aba.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue.length() > 9) ((StringProperty)observable).setValue(oldValue);
+        TextPropertyAddListener(p4_tf_codigoBic,0);
+        TextPropertyAddListener(p4_tf_codigo_aba,9);
+        TextPropertyAddListener(p4_tf_fechaLimiteSalidaMinuto,2);
+        TextPropertyAddListener(p4_tf_fechaLimiteSalidaHora,2);
 
-            if (!newValue.matches("\\d*")) {
-                p4_tf_codigo_aba.setText(newValue.replaceAll("[^\\d]", ""));
-            }
-        });
-
-        p4_tf_fechaLimiteSalidaMinuto.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue.length() > 2) ((StringProperty)observable).setValue(oldValue);
-
-            if (!newValue.matches("\\d*")) {
-                p4_tf_fechaLimiteSalidaMinuto.setText(newValue.replaceAll("[^\\d]", ""));
-            }
-        });
-
-        p4_tf_fechaLimiteSalidaHora.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue.length() > 2) ((StringProperty)observable).setValue(oldValue);
-
-            if (!newValue.matches("\\d*")) {
-                p4_tf_fechaLimiteSalidaHora.setText(newValue.replaceAll("[^\\d]", ""));
-            }
-        });
-
-        //p4_cb_email.setOnAction(e -> p4_tf_email.setText(p4_cb_email.getValue()+""));
-        p4_cb_email.valueProperty().addListener(
-            new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observableValue, Object o, Object t1) {
-                p4_tf_email.setText((String) t1);
-            }
-        });
-
-        //p4_cb_clave_banco.setOnAction(e -> p4_tf_clave_banco.setText(p4_cb_clave_banco.getValue()+""));
-        p4_cb_clave_banco.valueProperty().addListener(
-            new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observableValue, Object o, Object t1) {
-                p4_tf_clave_banco.setText((String) t1);
-            }
-        });
-
-        //p4_cb_clave_control.setOnAction(e -> p4_tf_clave_control.setText(p4_cb_clave_control.getValue()+""));
-        p4_cb_clave_control.valueProperty().addListener(
-            new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observableValue, Object o, Object t1) {
-                p4_tf_clave_control.setText((String) t1);
-            }
-        });
-
-        //p4_cb_codigoBic.setOnAction(e -> p4_tf_codigoBic.setText(p4_cb_codigoBic.getValue()+""));
-        p4_cb_codigoBic.valueProperty().addListener(
-            new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observableValue, Object o, Object t1) {
-                p4_tf_codigoBic.setText((String) t1);
-            }
-        });
-
-        //p4_cb_codigo_aba.setOnAction(e -> p4_tf_codigo_aba.setText(p4_cb_codigo_aba.getValue()+""));
-        p4_cb_codigo_aba.valueProperty().addListener(
-            new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observableValue, Object o, Object t1) {
-                p4_tf_codigo_aba.setText((String) t1);
-            }
-        });
-
-        /*p4_cb_cuenta_bancaria.setOnAction(e -> {
-            p4_tf_cuenta_bancaria.setText(p4_cb_cuenta_bancaria.getValue() + "");
-            p4_tf_valorMedioPago.setText(p4_cb_cuenta_bancaria.getValue() + "");
-        });*/
-        p4_cb_cuenta_bancaria.valueProperty().addListener(
-            new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observableValue, Object o, Object t1) {
-                p4_tf_cuenta_bancaria.setText((String) t1);
-                p4_tf_valorMedioPago.setText((String) t1);
-            }
-        });
-
-        //p4_cb_descripcion_banco.setOnAction(e -> p4_tf_descripcion_banco.setText(p4_cb_descripcion_banco.getValue()+""));
-        p4_cb_descripcion_banco.valueProperty().addListener(
-            new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observableValue, Object o, Object t1) {
-                p4_tf_descripcion_banco.setText((String) t1);
-            }
-        });
-
-        //p4_cb_identificadorBillete.setOnAction(e -> p4_tf_identificadorBillete.setText(p4_cb_identificadorBillete.getValue()+""));
-        p4_cb_identificadorBillete.valueProperty().addListener(
-            new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observableValue, Object o, Object t1) {
-                p4_tf_identificadorBillete.setText((String) t1);
-            }
-        });
-
-        //p4_cb_modoTransporte.setOnAction(e -> p4_tf_modoTransporte.setText(p4_cb_modoTransporte.getValue()+""));
-        p4_cb_modoTransporte.valueProperty().addListener(
-            new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observableValue, Object o, Object t1) {
-                p4_tf_modoTransporte.setText((String) t1);
-            }
-        });
-
-        p4_cb_modoTransporteObj.valueProperty().addListener(
-            new ChangeListener() {
-                @Override
-                public void changed(ObservableValue observableValue, Object o, Object t1) {
-                    p4_tf_modoTransporte.setText((String) t1);
-                }
-        });
+        ValuePropertyAddListener(p4_cb_email,p4_tf_email);
+        ValuePropertyAddListener(p4_cb_clave_banco,p4_tf_clave_banco);
+        ValuePropertyAddListener(p4_cb_clave_control,p4_tf_clave_control);
+        ValuePropertyAddListener(p4_cb_descripcion_banco,p4_tf_descripcion_banco);
+        ValuePropertyAddListener(p4_cb_identificadorBillete,p4_tf_identificadorBillete);
+        ValuePropertyAddListener(p4_cb_modoTransporte,p4_tf_modoTransporte);
+        ValuePropertyAddListener(p4_cb_codigo_aba,p4_tf_codigo_aba);
+        ValuePropertyAddListener(p4_cb_codigoBic,p4_tf_codigoBic);
+        ValuePropertyAddListener(p4_cb_modoTransporteObj,p4_tf_modoTransporte);
         p4_cb_modoTransporteObj.getSelectionModel().selectFirst();
 
-        // p4_cb_codigo_aba.setOnAction(e -> p4_tf_codigo_aba.setText(p4_cb_codigo_aba.getValue()+""));
-        p4_cb_codigo_aba.valueProperty().addListener(
-            new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observableValue, Object o, Object t1) {
-                p4_tf_codigo_aba.setText((String) t1);
-            }
-        });
-
-        /*p4_cb_valorMedioPago.setOnAction(e -> {
-            p4_tf_valorMedioPago.setText(p4_cb_valorMedioPago.getValue() + "");
-            p4_tf_cuenta_bancaria.setText(p4_cb_valorMedioPago.getValue() + "");
-        });*/
-        p4_cb_valorMedioPago.valueProperty().addListener(
-            new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observableValue, Object o, Object t1) {
-                p4_tf_valorMedioPago.setText((String) t1);
-                p4_tf_cuenta_bancaria.setText((String) t1);
-            }
-        });
+        ValuePropertyAddListener(p4_cb_cuenta_bancaria,p4_tf_cuenta_bancaria,p4_tf_valorMedioPago);
+        ValuePropertyAddListener(p4_cb_valorMedioPago,p4_tf_valorMedioPago,p4_tf_cuenta_bancaria);
 
         // TODO --> Desarrollar funcionabilidad de verificación de la fecha de salida
         //p4_cb_fechaLimiteSalida.setOnAction(e -> p4_dtp_fechaLimiteSalida.setValue(LocalDate.parse(p4_cb_fechaLimiteSalida.getValue()+"")));
 
-        /*p4_cb_cuetaiban.setOnAction((e) ->{
-            String sn = p4_cb_cuetaiban.getValue()+"";
-            if(sn.equals("NO")){
-                p4_pane_cuentaiban.setVisible(true);
-                p4_pane_cuentainternacional.setVisible(false);
-            }else{
-                p4_pane_cuentaiban.setVisible(false);
-                p4_pane_cuentainternacional.setVisible(true);
-            }
-        });*/
-        p4_cb_cuetaiban.valueProperty().addListener(
-            new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observableValue, Object o, Object t1) {
-
-                String sn = (String) t1;
-                if(sn.equals("NO")){
-                    p4_pane_cuentaiban.setVisible(true);
-                    p4_pane_cuentainternacional.setVisible(false);
-                }else{
-                    p4_pane_cuentaiban.setVisible(false);
-                    p4_pane_cuentainternacional.setVisible(true);
-                }
-            }
-        });
-
-        p4_cb_cuetaibanObj.valueProperty().addListener(
-                new ChangeListener() {
-                    @Override
-                    public void changed(ObservableValue observableValue, Object o, Object t1) {
-
-                        String sn = (String) t1;
-                        if(sn.equals("NO")){
-                            p4_pane_cuentaiban.setVisible(true);
-                            p4_pane_cuentainternacional.setVisible(false);
-                        }else{
-                            p4_pane_cuentaiban.setVisible(false);
-                            p4_pane_cuentainternacional.setVisible(true);
-                        }
-                    }
-                });
+        ValuePropertyAddListenerVisible(p4_cb_cuetaiban,p4_pane_cuentaiban,p4_pane_cuentainternacional);
+        ValuePropertyAddListenerVisible(p4_cb_cuetaibanObj,p4_pane_cuentaiban,p4_pane_cuentainternacional);
         p4_cb_cuetaibanObj.getSelectionModel().selectFirst();
 
-        /*p4_cb_pais_banco.setOnAction((e) ->{
-            p4_tf_pais_banco.setText(p4_cb_pais_banco.getValue()+"");
-            if(p4_tf_pais_banco.getText().equals("US")){
-                p4_pane_numeroaba.setVisible(true);
-            }else{p4_pane_numeroaba.setVisible(false);}
-        });*/
         p4_cb_pais_banco.valueProperty().addListener(
             new ChangeListener() {
             @Override
@@ -845,7 +660,50 @@ public class Valida_Envia_DERController implements Initializable {
 
     }
 
+    private void ValuePropertyAddListener(ComboBox cbx, TextField txf){
+        cbx.valueProperty().addListener( new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observableValue, Object o, Object t1) {
+                txf.setText((String) t1);
+            }
+        });
+    }
 
+    private void ValuePropertyAddListener(ComboBox cbx, TextField txf, TextField txf2){
+        cbx.valueProperty().addListener( new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observableValue, Object o, Object t1) {
+                txf.setText((String) t1);
+                txf2.setText((String) t1);
+            }
+        });
+    }
 
+    private void TextPropertyAddListener(TextField txf, int largo){
+        txf.textProperty().addListener((observable, oldValue, newValue) -> {
+            if(largo>0)if (newValue.length() > largo ) ((StringProperty)observable).setValue(oldValue);
+
+            if (!newValue.matches("\\d*")) {
+                txf.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
+    }
+
+    private void  ValuePropertyAddListenerVisible(ComboBox cbx, Pane pane1,Pane pane2) {
+        cbx.valueProperty().addListener( new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observableValue, Object o, Object t1) {
+
+                String sn = (String) t1;
+                if (sn.equals("NO")) {
+                    pane1.setVisible(true);
+                    pane2.setVisible(false);
+                } else {
+                    pane1.setVisible(false);
+                    pane2.setVisible(true);
+                }
+            }
+        });
+    }
 
 }
