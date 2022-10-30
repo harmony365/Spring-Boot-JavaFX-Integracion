@@ -1,32 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-
-<Pane id="pane" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.controllers.PrimaryController">
+<Pane id="pane" prefHeight="1039.0" prefWidth="1960.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.controllers.PrimaryController">
    <children>
-      <AnchorPane prefHeight="992.0" prefWidth="2112.0">
+      <AnchorPane prefHeight="1039.0" prefWidth="2014.0">
          <children>
-            <AnchorPane prefHeight="210.0" prefWidth="2112.0">
+            <AnchorPane layoutY="-8.0" prefHeight="141.0" prefWidth="2112.0">
                <children>
-                  <AnchorPane layoutX="8.0" prefHeight="209.0" prefWidth="355.0">
+                  <AnchorPane layoutX="12.0" layoutY="21.0" prefHeight="93.0" prefWidth="159.0">
                      <children>
-                        <ImageView fitHeight="191.0" fitWidth="342.0" layoutX="6.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="119.0" fitWidth="176.0" layoutX="6.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../img/Gobierno_Canarias_logo.png" />
                            </image>
                         </ImageView>
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="831.0" layoutY="1.0" prefHeight="80.0" prefWidth="1036.0" />
-                  <AnchorPane layoutX="381.0" layoutY="34.0" prefHeight="133.0" prefWidth="468.0">
+                  <AnchorPane layoutX="569.0" layoutY="19.0" prefHeight="78.0" prefWidth="1384.0">
                      <children>
-                        <ImageView fitHeight="137.0" fitWidth="553.0" layoutX="7.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="78.0" prefWidth="1384.0" text="%txt.p1.titulo" textAlignment="CENTER">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                     </children></AnchorPane>
+                  <AnchorPane layoutX="206.0" layoutY="52.0" prefHeight="80.0" prefWidth="244.0">
+                     <children>
+                        <ImageView fitHeight="80.0" fitWidth="232.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../img/ATC_logo.png" />
                            </image>
@@ -35,21 +38,26 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane layoutY="224.0" prefHeight="93.0" prefWidth="1705.0">
+            <AnchorPane layoutY="138.0" prefHeight="141.0" prefWidth="1960.0">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="22.0" layoutY="-2.0" prefHeight="94.0" prefWidth="1683.0" text="%txt.p1.titulo" textAlignment="CENTER">
+                  <Label layoutX="903.0" layoutY="69.0" prefHeight="78.0" prefWidth="722.0" text="%p1_lb_ayuda">
                      <font>
-                        <Font size="48.0" />
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="31.0" layoutY="69.0" prefHeight="78.0" prefWidth="675.0" text="%p1_lb_seleccione_idioma" textAlignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
                      </font>
                   </Label>
                </children></AnchorPane>
-            <AnchorPane layoutX="6.0" layoutY="364.0" prefHeight="675.0" prefWidth="2106.0">
+            <AnchorPane layoutY="283.0" prefHeight="756.0" prefWidth="1960.0">
                <children>
-                  <AnchorPane layoutX="256.0" layoutY="3.0" prefHeight="200.0" prefWidth="200.0">
+                  <AnchorPane layoutX="32.0" layoutY="3.0" prefHeight="150.0" prefWidth="220.0">
                      <children>
                         <Button fx:id="btn_idioma_es" alignment="TOP_LEFT" contentDisplay="RIGHT" layoutY="7.0" maxWidth="-Infinity" onAction="#switchToSP" prefHeight="107.0" prefWidth="171.0">
                            <graphic>
-                              <ImageView preserveRatio="true">
+                              <ImageView fitHeight="140.0" fitWidth="200.0" preserveRatio="true">
                                  <image>
                                     <Image url="@../img/flags/Spain.png" />
                                  </image>
@@ -58,11 +66,11 @@
                         </Button>
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="557.0" layoutY="3.0" prefHeight="200.0" prefWidth="290.0">
+                  <AnchorPane layoutX="259.0" layoutY="5.0" prefHeight="150.0" prefWidth="220.0">
                      <children>
-                        <Button fx:id="btn_idioma_en1" alignment="TOP_LEFT" contentDisplay="RIGHT" layoutX="13.0" layoutY="7.0" maxWidth="-Infinity" onAction="#switchToEN" prefHeight="107.0" prefWidth="171.0">
+                        <Button fx:id="btn_idioma_en1" alignment="TOP_LEFT" contentDisplay="RIGHT" layoutX="3.0" layoutY="4.0" maxWidth="-Infinity" onAction="#switchToEN" prefHeight="107.0" prefWidth="171.0">
                            <graphic>
-                              <ImageView preserveRatio="true">
+                              <ImageView fitHeight="140.0" fitWidth="200.0" preserveRatio="true">
                                  <image>
                                     <Image url="@../img/flags/United_Kingdom.png" />
                                  </image>
@@ -71,24 +79,11 @@
                         </Button>
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="870.0" prefHeight="200.0" prefWidth="317.0">
+                  <AnchorPane layoutX="31.0" layoutY="479.0" prefHeight="150.0" prefWidth="220.0">
                      <children>
-                        <Button fx:id="btn_idioma_zh" alignment="TOP_LEFT" contentDisplay="RIGHT" layoutX="13.0" layoutY="14.0" maxWidth="-Infinity" onAction="#switchToZH" prefHeight="191.0" prefWidth="291.0">
+                        <Button fx:id="btn_idioma_th" alignment="TOP_LEFT" contentDisplay="RIGHT" maxWidth="-Infinity" onAction="#switchToTH" prefHeight="107.0" prefWidth="171.0">
                            <graphic>
-                              <ImageView preserveRatio="true">
-                                 <image>
-                                    <Image url="@../img/flags/China.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="1188.0" layoutY="3.0" prefHeight="200.0" prefWidth="290.0">
-                     <children>
-                        <Button fx:id="btn_idioma_th" alignment="TOP_LEFT" contentDisplay="RIGHT" layoutX="13.0" layoutY="7.0" maxWidth="-Infinity" onAction="#switchToTH" prefHeight="107.0" prefWidth="171.0">
-                           <graphic>
-                              <ImageView preserveRatio="true">
+                              <ImageView fitHeight="140.0" fitWidth="200.0" preserveRatio="true">
                                  <image>
                                     <Image url="@../img/flags/Thailandia.png" />
                                  </image>
@@ -97,11 +92,11 @@
                         </Button>
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="243.0" layoutY="205.0" prefHeight="200.0" prefWidth="290.0">
+                  <AnchorPane layoutX="26.0" layoutY="164.0" prefHeight="150.0" prefWidth="176.0">
                      <children>
-                        <Button fx:id="btn_idioma_ja" alignment="TOP_LEFT" contentDisplay="RIGHT" layoutX="13.0" layoutY="7.0" maxWidth="-Infinity" onAction="#switchToJA" prefHeight="107.0" prefWidth="171.0">
+                        <Button fx:id="btn_idioma_ja" alignment="TOP_LEFT" contentDisplay="RIGHT" layoutX="7.0" layoutY="4.0" maxWidth="-Infinity" onAction="#switchToJA" prefHeight="107.0" prefWidth="171.0">
                            <graphic>
-                              <ImageView preserveRatio="true">
+                              <ImageView fitHeight="140.0" fitWidth="200.0" preserveRatio="true">
                                  <image>
                                     <Image url="@../img/flags/Japan.png" />
                                  </image>
@@ -110,11 +105,11 @@
                         </Button>
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="557.0" layoutY="205.0" prefHeight="200.0" prefWidth="290.0">
+                  <AnchorPane layoutX="261.0" layoutY="165.0" prefHeight="150.0" prefWidth="220.0">
                      <children>
-                        <Button fx:id="btn_idioma_ko" alignment="TOP_LEFT" contentDisplay="RIGHT" layoutX="13.0" layoutY="7.0" maxWidth="-Infinity" onAction="#switchToKO" prefHeight="107.0" prefWidth="171.0">
+                        <Button fx:id="btn_idioma_ko" alignment="TOP_LEFT" contentDisplay="RIGHT" layoutX="1.0" layoutY="3.0" maxWidth="-Infinity" onAction="#switchToKO" prefHeight="107.0" prefWidth="171.0">
                            <graphic>
-                              <ImageView preserveRatio="true">
+                              <ImageView fitHeight="140.0" fitWidth="200.0" preserveRatio="true">
                                  <image>
                                     <Image url="@../img/flags/Korea.png" />
                                  </image>
@@ -123,11 +118,11 @@
                         </Button>
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="870.0" layoutY="205.0" prefHeight="200.0" prefWidth="290.0">
+                  <AnchorPane layoutX="489.0" layoutY="169.0" prefHeight="150.0" prefWidth="220.0">
                      <children>
-                        <Button fx:id="btn_idioma_ru" alignment="TOP_LEFT" contentDisplay="RIGHT" layoutX="13.0" layoutY="7.0" maxWidth="-Infinity" onAction="#switchToRU" prefHeight="107.0" prefWidth="171.0">
+                        <Button fx:id="btn_idioma_ru" alignment="TOP_LEFT" contentDisplay="RIGHT" layoutX="1.0" maxWidth="-Infinity" onAction="#switchToRU" prefHeight="107.0" prefWidth="171.0">
                            <graphic>
-                              <ImageView preserveRatio="true">
+                              <ImageView fitHeight="140.0" fitWidth="200.0" preserveRatio="true">
                                  <image>
                                     <Image url="@../img/flags/russia.png" />
                                  </image>
@@ -136,11 +131,11 @@
                         </Button>
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="1188.0" layoutY="205.0" prefHeight="200.0" prefWidth="290.0">
+                  <AnchorPane layoutX="260.0" layoutY="477.0" prefHeight="150.0" prefWidth="220.0">
                      <children>
-                        <Button fx:id="btn_idioma_fr" alignment="TOP_LEFT" contentDisplay="RIGHT" layoutX="13.0" layoutY="7.0" maxWidth="-Infinity" onAction="#switchToFR" prefHeight="107.0" prefWidth="171.0">
+                        <Button fx:id="btn_idioma_fr" alignment="TOP_LEFT" contentDisplay="RIGHT" layoutX="2.0" layoutY="3.0" maxWidth="-Infinity" onAction="#switchToFR" prefHeight="107.0" prefWidth="171.0">
                            <graphic>
-                              <ImageView preserveRatio="true">
+                              <ImageView fitHeight="140.0" fitWidth="200.0" preserveRatio="true">
                                  <image>
                                     <Image url="@../img/flags/Francia.png" />
                                  </image>
@@ -149,11 +144,11 @@
                         </Button>
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="883.0" layoutY="409.0" prefHeight="200.0" prefWidth="290.0">
+                  <AnchorPane layoutX="489.0" layoutY="325.0" prefHeight="150.0" prefWidth="220.0">
                      <children>
                         <Button fx:id="btn_idioma_it" alignment="TOP_LEFT" contentDisplay="RIGHT" maxWidth="-Infinity" onAction="#switchToIT" prefHeight="107.0" prefWidth="171.0">
                            <graphic>
-                              <ImageView preserveRatio="true">
+                              <ImageView fitHeight="140.0" fitWidth="200.0" preserveRatio="true">
                                  <image>
                                     <Image url="@../img/flags/Italia.png" />
                                  </image>
@@ -162,11 +157,11 @@
                         </Button>
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="1201.0" layoutY="409.0" prefHeight="200.0" prefWidth="200.0">
+                  <AnchorPane layoutX="489.0" layoutY="481.0" prefHeight="150.0" prefWidth="220.0">
                      <children>
                         <Button fx:id="btn_idioma_ar" alignment="TOP_LEFT" contentDisplay="RIGHT" maxWidth="-Infinity" onAction="#switchToAR" prefHeight="107.0" prefWidth="171.0">
                            <graphic>
-                              <ImageView preserveRatio="true">
+                              <ImageView fitHeight="140.0" fitWidth="200.0" preserveRatio="true">
                                  <image>
                                     <Image url="@../img/flags/Arabia.png" />
                                  </image>
@@ -175,11 +170,11 @@
                         </Button>
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="256.0" layoutY="405.0" prefHeight="200.0" prefWidth="200.0">
+                  <AnchorPane layoutX="31.0" layoutY="320.0" prefHeight="150.0" prefWidth="220.0">
                      <children>
                         <Button fx:id="btn_idioma_pt" alignment="TOP_LEFT" contentDisplay="RIGHT" layoutY="4.0" maxWidth="-Infinity" onAction="#switchToPT" prefHeight="107.0" prefWidth="171.0">
                            <graphic>
-                              <ImageView preserveRatio="true">
+                              <ImageView fitHeight="140.0" fitWidth="200.0" preserveRatio="true">
                                  <image>
                                     <Image url="@../img/flags/Portugal.png" />
                                  </image>
@@ -188,17 +183,39 @@
                         </Button>
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="570.0" layoutY="405.0" prefHeight="200.0" prefWidth="200.0">
+                  <AnchorPane layoutX="261.0" layoutY="321.0" prefHeight="150.0" prefWidth="220.0">
                      <children>
-                        <Button fx:id="btn_idioma_de" alignment="TOP_LEFT" contentDisplay="RIGHT" layoutY="4.0" maxWidth="-Infinity" onAction="#switchToDE" prefHeight="107.0" prefWidth="171.0">
+                        <Button fx:id="btn_idioma_de" alignment="TOP_LEFT" contentDisplay="RIGHT" layoutX="2.0" layoutY="3.0" maxWidth="-Infinity" onAction="#switchToDE" prefHeight="107.0" prefWidth="171.0">
                            <graphic>
-                              <ImageView preserveRatio="true">
+                              <ImageView fitHeight="140.0" fitWidth="200.0" preserveRatio="true">
                                  <image>
                                     <Image url="@../img/flags/Alemania.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                         </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="489.0" layoutY="9.0" prefHeight="131.0" prefWidth="220.0">
+                     <children>
+                        <Button fx:id="btn_idioma_zh" alignment="TOP_LEFT" contentDisplay="RIGHT" layoutX="2.0" layoutY="-1.0" maxWidth="-Infinity" onAction="#switchToZH" prefHeight="107.0" prefWidth="171.0">
+                           <graphic>
+                              <ImageView fitHeight="140.0" fitWidth="200.0" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/flags/China.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="1029.0" layoutY="45.0" prefHeight="378.0" prefWidth="399.0">
+                     <children>
+                        <ImageView fitHeight="408.0" fitWidth="538.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/qr_icon.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
                </children>

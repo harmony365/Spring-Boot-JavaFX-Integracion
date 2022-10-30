@@ -4,6 +4,9 @@ import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.App;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -14,8 +17,10 @@ import java.util.ResourceBundle;
 @Component
 public class PrimaryController implements Initializable  {
 
+    private final static Logger LOGGER = LogManager.getLogger(PrimaryController.class.getName());
     //public String Segunda_Pantalla = "modelo_403_v1";
     public String Segunda_Pantalla = "/views/PassPortLogin";
+
 
     @FXML
     public void initialize() {
@@ -133,7 +138,7 @@ public class PrimaryController implements Initializable  {
     public void initialize(URL location, ResourceBundle resources) {
         // TODO Auto-generated method, no se está usando el método por ahora
         //
-        
+        LOGGER.log(Level.INFO, "User successfully logged in {}");
     }
 
 

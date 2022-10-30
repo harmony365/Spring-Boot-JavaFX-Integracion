@@ -29,8 +29,8 @@ public interface DigicRepository extends JpaRepository<Digic, String> {
     @Query(value = "SELECT d.justificante, d.totalDigic FROM digic d WHERE d.valorDocumento = :valorDocumento")
     List<Digic> findByValorDocumento(String valorDocumento);
 
-    @Query(value = "SELECT d.justificante, d.totalDigic FROM digic d WHERE d.uuidProceso = :uuidProceso")
-    List<Digic> findByuuidProceso(String uuidProceso);
+    @Query(value = "SELECT d FROM digic d WHERE d.uuidProceso = :uuidProceso")
+    List<Digic> findByuuidProceso(String uuidProceso) ;
 
     @Query(value = "SELECT DISTINCT trim(d.fechaLimiteSalida) FROM digic d WHERE d.valorDocumento = :valorDocumento AND length(trim(d.fechaLimiteSalida)) > 0 ")
     List<Digic> findAllFechaLimiteSalida(String valorDocumento);
@@ -53,9 +53,12 @@ public interface DigicRepository extends JpaRepository<Digic, String> {
     @Query(value = "SELECT DISTINCT trim(d.paisBanco) FROM digic d WHERE d.valorDocumento = :valorDocumento AND length(trim(d.paisBanco)) > 0 ")
     List<Digic> findAllPaisBanco(String valorDocumento);
 
-    @Query(value = "SELECT DISTINCT trim(d.valorMedioPago) FROM digic d WHERE d.valorDocumento = :valorDocumento AND length(trim(d.valorMedioPago)) > 0 ")
-    List<Digic> findAllValorMedioPago(String valorDocumento);
-    
+    @Query(value = "SELECT DISTINCT trim(d.valorMedioPago) FROM digic d WHERE d.valorDocumento = :valorDocumento AND length(trim(d.valorMedioPago)) > 0  AND d.cuentaSinIBAN = 'SI'")
+    List<Digic> findAllValorMedioPagoSI(String valorDocumento);
+
+    @Query(value = "SELECT DISTINCT trim(d.valorMedioPago) FROM digic d WHERE d.valorDocumento = :valorDocumento AND length(trim(d.valorMedioPago)) > 0 AND d.cuentaSinIBAN = 'NO'")
+    List<Digic> findAllValorMedioPagoNO(String valorDocumento);
+
     @Query(value = "SELECT DISTINCT trim(d.claveBanco) FROM digic d WHERE d.valorDocumento = :valorDocumento AND length(trim(d.claveBanco)) > 0 ")
     List<Digic> findAllClaveBanco(String valorDocumento);
 

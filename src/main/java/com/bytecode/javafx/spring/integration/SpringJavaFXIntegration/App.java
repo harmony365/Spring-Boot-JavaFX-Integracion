@@ -4,6 +4,7 @@ import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Para
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -288,7 +289,8 @@ public class App extends Application {
 	@Override
     public void stop() {
         System.out.println("App: stop");
-        BackGroundWonder.stop();  
+        BackGroundWonder.stop();
+        Platform.exit();
     }
 
 

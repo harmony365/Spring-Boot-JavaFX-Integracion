@@ -57,7 +57,7 @@ public class PassPortLoginController  implements Initializable {
 
     @FXML
     void switchToQRCode(ActionEvent event) {
-        p3_passaport_img.requestFocus();
+        p3_qrcode_img.requestFocus();
     }
 
     @FXML 
@@ -103,8 +103,8 @@ public class PassPortLoginController  implements Initializable {
  
     @FXML 
     private void QRcodeRead(String passcode) throws IOException {
- 
-        p3_passaport_img.requestFocus();
+
+        p3_qrcode_img.requestFocus();
 
         String 
         index_passcode=null, 
@@ -191,8 +191,8 @@ public class PassPortLoginController  implements Initializable {
         App.parametrosModel.setDniNifNieTieDemo("");
         App.parametrosModel.setNombreViajero("");
 
-        p3_passaport_img.requestFocus();
-        p3_passaport_img.setOnKeyTyped(new EventHandler<KeyEvent>() {
+        p3_qrcode_img.requestFocus();
+        p3_qrcode_img.setOnKeyTyped(new EventHandler<KeyEvent>() {
             public void handle(KeyEvent ke) {
                 //System.out.println("p2_img_barcode Key Pressed: " + ke.getText());
                 //System.out.println("p2_img_barcode Key Pressed: " + ke.getCharacter());
@@ -215,7 +215,7 @@ public class PassPortLoginController  implements Initializable {
                             alert.setTitle("Error");
                             alert.setContentText("DOCUMENTO NO VALIDO.");
                             alert.showAndWait();
-                            p3_passaport_img.requestFocus();
+                            p3_qrcode_img.requestFocus();
                         }
                     } catch (IOException e) {
 

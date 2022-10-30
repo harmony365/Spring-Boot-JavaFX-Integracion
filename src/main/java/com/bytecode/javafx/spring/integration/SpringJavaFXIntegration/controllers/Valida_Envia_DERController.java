@@ -22,6 +22,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Callback;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.grecasa.ext.mw.externo.KioskoServiceClient;
 import org.grecasa.ext.mw.externo.KioskoServiceClientUtils;
 import org.grecasa.ext.mw.externo.kiosko_service.ValidarRemesaDer;
@@ -51,7 +54,8 @@ import static org.comtel2000.keyboard.control.VkProperties.*;
 
 @Component
 public class Valida_Envia_DERController implements Initializable {
-    
+
+    private final static Logger LOGGER = LogManager.getLogger(Valida_Envia_DERController.class.getName());
     private ResourceBundle bundle;
 
     private ZonedDateTime now = ZonedDateTime.now();
@@ -108,6 +112,10 @@ public class Valida_Envia_DERController implements Initializable {
                       p4_tf_cuenta_bancaria,p4_tf_descripcion_banco,p4_tf_email,p4_tf_identificadorBillete,
                       p4_tf_modoTransporte,p4_tf_pais_banco,p4_tf_valorMedioPago, p4_tf_fechaLimiteSalida,
                       p4_tf_fechaLimiteSalidaHora, p4_tf_fechaLimiteSalidaMinuto;
+
+
+    @FXML
+    private ToggleButton p4_tgb_cuetaibanno, p4_tgb_cuetaibansi;
 
     @FXML
     private Button p2_btn_aceptar, p2_btn_salir;
@@ -395,34 +403,25 @@ public class Valida_Envia_DERController implements Initializable {
     }
 
     private void PlayEmpty(TextField tf){
-        
         System.out.println("style: " + tf.getStyle());
         tf.setStyle(errorStyle);
-        
         new animatefx.animation.Shake(tf).play();
         new animatefx.animation.Wobble(tf).play();
-
         tf.requestFocus();
-
     }
 
     @FXML 
     private void switchToAnterior() throws IOException  {
-
         Locale locale = Locale.getDefault();
-
         if (procesoWsdl){
             App.setRoot("/views/primary",locale);
-
         }else{
             App.setRoot("/views/Modelo_403_v2",locale);
         }
-
     }   
 
     @FXML
     public void onSave(){
-
         clienteRepository.save(getFromUI());
         refesh();
     }
@@ -435,7 +434,6 @@ public class Valida_Envia_DERController implements Initializable {
     public void onWsdl(){
 
         procesoWsdl = true;
-
         try {
 
             digicModoPagoRepository.save(getDERFromUI());
@@ -443,14 +441,19 @@ public class Valida_Envia_DERController implements Initializable {
             ValidarRemesaDerResponse validarRemesaDerResponse;
 
             //ValidarRemesaDer validarRemesaDer = databaseDerUtil.getDERtoSend(valorDocumento, 3, App.parametrosModel.getKIOSKOID());
+            LOGGER.log(Level.INFO, "Armando la Estructura del DER para el envío.");
             ValidarRemesaDer validarRemesaDer = databaseDerUtil.getDERtoSend(App.UUIDProcess, 3, App.parametrosModel.getKIOSKOID());
+
+            LOGGER.log(Level.INFO, "Llamando al servicio WSDL de ValidarRemesa().");
             validarRemesaDerResponse = KioskoServiceClient.getInstance().validarRemesa(validarRemesaDer);
             KioskoServiceClientUtils.printResponse(validarRemesaDerResponse);
             WsdlTimeStamp.setText(validarRemesaDerResponse.getFechaEstado().toString());
             WsdlResponse.setText(validarRemesaDerResponse.getEstado());
+            LOGGER.log(Level.INFO, "Resultado: Estado( " + validarRemesaDerResponse.getEstado() + " ) --> " + validarRemesaDerResponse.getFechaEstado().toString());
 
 
         }catch (Exception e) {
+            LOGGER.log(Level.INFO, "Ocurrio un Error de RED, time out de conexión.");
             e.printStackTrace();
             WsdlResponse.setText("RED");
         }
@@ -475,7 +478,7 @@ public class Valida_Envia_DERController implements Initializable {
         if(WsdlResponse.getText().equals("KO")) {
             p4_rec_mensaje.setFill(Color.rgb(227, 250, 228, 1));
             p4_lb_mensaje.setText(bundle.getString( "p4_lb_mensaje_wsdl_KO"));
-            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess,3,1);
+            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess,3,2);
         }
         if(WsdlResponse.getText().equals("OK")) {
             p4_rec_mensaje.setFill(Color.rgb(227, 250, 228, 1));
@@ -546,12 +549,12 @@ public class Valida_Envia_DERController implements Initializable {
         p4_cb_clave_banco.setItems(FXCollections.observableArrayList(digicRepository.findAllClaveBanco(valorDocumento)));
         p4_cb_clave_control.setItems(FXCollections.observableArrayList(digicRepository.findAllClaveControl(valorDocumento)));
         p4_cb_codigoBic.setItems(FXCollections.observableArrayList(digicRepository.findAllCodigoBic(valorDocumento)));
-        p4_cb_valorMedioPago.setItems(FXCollections.observableArrayList(digicRepository.findAllValorMedioPago(valorDocumento)));
+        p4_cb_valorMedioPago.setItems(FXCollections.observableArrayList(digicRepository.findAllValorMedioPagoNO(valorDocumento)));
         p4_cb_fechaLimiteSalida.setItems(FXCollections.observableArrayList(digicRepository.findAllFechaLimiteSalida(valorDocumento)));
         p4_cb_pais_banco.setItems(FXCollections.observableArrayList(digicRepository.findAllPaisBanco(valorDocumento)));
         p4_cb_identificadorBillete.setItems(FXCollections.observableArrayList(digicRepository.findAllIdentificadorBillete(valorDocumento)));
         p4_cb_descripcion_banco.setItems(FXCollections.observableArrayList(digicRepository.findAllDescInstFinanciera(valorDocumento)));
-        p4_cb_cuenta_bancaria.setItems(FXCollections.observableArrayList(digicRepository.findAllValorMedioPago(valorDocumento)));
+        p4_cb_cuenta_bancaria.setItems(FXCollections.observableArrayList(digicRepository.findAllValorMedioPagoSI(valorDocumento)));
         p4_cb_codigo_aba.setItems(FXCollections.observableArrayList(digicRepository.findAllNumeroAba(valorDocumento)));
         p4_cb_cuetaiban.setItems(FXCollections.observableArrayList(digicRepository.findAllCuentaSinIban(valorDocumento)));
 
@@ -638,6 +641,9 @@ public class Valida_Envia_DERController implements Initializable {
         ValuePropertyAddListenerVisible(p4_cb_cuetaibanObj,p4_pane_cuentaiban,p4_pane_cuentainternacional);
         p4_cb_cuetaibanObj.getSelectionModel().selectFirst();
 
+        ValuePropertyAddListenerVisible(p4_tgb_cuetaibanno,p4_pane_cuentaiban,p4_pane_cuentainternacional,"NO");
+        ValuePropertyAddListenerVisible(p4_tgb_cuetaibansi,p4_pane_cuentaiban,p4_pane_cuentainternacional,"SI");
+
         p4_cb_pais_banco.valueProperty().addListener(
             new ChangeListener() {
             @Override
@@ -674,7 +680,7 @@ public class Valida_Envia_DERController implements Initializable {
             @Override
             public void changed(ObservableValue observableValue, Object o, Object t1) {
                 txf.setText((String) t1);
-                txf2.setText((String) t1);
+                //txf2.setText((String) t1);
             }
         });
     }
@@ -704,6 +710,21 @@ public class Valida_Envia_DERController implements Initializable {
                 }
             }
         });
+    }
+
+    private void  ValuePropertyAddListenerVisible(ToggleButton tgb, Pane pane1,Pane pane2, String SiNo) {
+
+        tgb.selectedProperty().addListener(((observable, oldValue, newValue) -> {
+            if (SiNo.equals("NO")) {
+                pane1.setVisible(true);
+                pane2.setVisible(false);
+            } else {
+                pane1.setVisible(false);
+                pane2.setVisible(true);
+            }
+        }));
+
+
     }
 
 }

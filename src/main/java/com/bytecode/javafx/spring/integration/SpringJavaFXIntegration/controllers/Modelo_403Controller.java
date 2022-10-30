@@ -8,8 +8,12 @@ import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.utiles.Jso
 import com.google.zxing.*;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,9 +26,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import org.apache.commons.lang.StringUtils;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.grecasa.ext.mw.externo.KioskoServiceClient;
 import org.grecasa.ext.mw.externo.KioskoServiceClientUtils;
 import org.grecasa.ext.mw.externo.kiosko_service.ValidarRemesaDerResponse;
@@ -44,16 +52,18 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.List;
+import java.util.Locale;
+import java.util.Random;
+import java.util.ResourceBundle;
 
 import static org.comtel2000.keyboard.control.VkProperties.*;
+
 
 @Component
 public class Modelo_403Controller implements Initializable {
 
-    /* 
+    private final static Logger LOGGER = LogManager.getLogger(Modelo_403Controller.class.getName());/*
      * Conexion Bases de datos 
     */
         
@@ -81,6 +91,7 @@ public class Modelo_403Controller implements Initializable {
     *  Variables de la plantilla
     */
 
+
     @FXML private Button p2_btn_aceptar,  p2_btn_qr, p2_btn_salir, p2_btn_demo, p2_btn_wsdl;
 
     @FXML private Label p2_lb_justificante, p2_lb_datos_establecimiento,  p2_lb_nif,  p2_lb_razon_social,
@@ -95,13 +106,13 @@ public class Modelo_403Controller implements Initializable {
         p2_tf_identificadorBillete,
         p2_input_scanner;
     
-    @FXML
-    private Text p2_tx_info_item;
+    @FXML private Text p2_tx_info_item;
     
     @FXML private Rectangle p2_warning;
-    @FXML private AnchorPane p2_an_warning,p2_an_info_item;
+
+    @FXML private AnchorPane p2_an_warning,p2_an_info_item;;
     
-    @FXML private ImageView p2_img_barcode;
+    @FXML public ImageView p2_img_barcode;
 
     @FXML public TableView<Justificante> p2_tv_justificantes = new TableView<Justificante>();
      
@@ -110,7 +121,7 @@ public class Modelo_403Controller implements Initializable {
     @FXML public TableColumn<Justificante, String> p2_tc_listajustificantesMonto  = new TableColumn<Justificante, String>("MONTO");
 
 
-    @FXML public TableView<Digic> p2_tv_justificantesdigic = new TableView<Digic>();
+    @FXML public TableView<Digic> p2_tv_justificantesdigic ; //= new TableView<Digic>();
 
     private String ScannerReader ="";
 
@@ -150,13 +161,19 @@ public class Modelo_403Controller implements Initializable {
         }
 
 
-    }    
+    }
+    private ObservableList<Digic> data;
+
+
+    @FXML
+    private StackPane root;
 
     @FXML
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // Funcion de inicio del Controlador
         //
+
         bundle = resources;
 
         p2_tf_clave_banco.getProperties().put(VK_TYPE, VK_TYPE_NUMERIC);
@@ -193,6 +210,7 @@ public class Modelo_403Controller implements Initializable {
 
         p2_tc_listajustificantes.setCellValueFactory(new PropertyValueFactory<>("numero"));
         p2_tc_listajustificantesMonto.setCellValueFactory(new PropertyValueFactory<>("monto"));
+
 
         /*
         *   Tableview ObservableList de la tabla digic
@@ -258,6 +276,7 @@ public class Modelo_403Controller implements Initializable {
 
         p2_tv_justificantes.getSelectionModel().setCellSelectionEnabled(true);
         ObservableList selectedCells = p2_tv_justificantes.getSelectionModel().getSelectedCells();
+        //Refresh();
 
         selectedCells.addListener(new ListChangeListener() {
             @Override
@@ -327,19 +346,85 @@ public class Modelo_403Controller implements Initializable {
                 }                
             }
         });
+
+
         
     }  
 
-    
+    @FXML
+    private void RefreshTV() throws  IOException{
+
+        try {
+            List<Digic> personList = digicRepository.findByuuidProceso(App.UUIDProcess);
+            data = FXCollections.observableArrayList(personList);
+
+            TableColumn<Digic, String> justificnteColumn = new TableColumn<>("JUSTIFICANTE");
+            justificnteColumn.setCellValueFactory(new PropertyValueFactory<>("justificante"));
+
+            TableColumn<Digic, String> razonSocialColumn = new TableColumn<>("NOMBRE COMERCIAL");
+            razonSocialColumn.setCellValueFactory(new PropertyValueFactory<>("razonSocial"));
+
+            TableColumn<Digic, String> numeroFacturaColumn = new TableColumn<>("NUMERO FACTURA");
+            numeroFacturaColumn.setCellValueFactory(new PropertyValueFactory<>("numeroFactura"));
+
+            TableColumn<Digic, String> fechaFacturaColumn = new TableColumn<>("FECHA");
+            fechaFacturaColumn.setCellValueFactory(new PropertyValueFactory<>("fechaFactura"));
+
+            TableColumn<Digic, String> totalDigicColumn = new TableColumn<>("IMPORTE DIGIC");
+            totalDigicColumn.setCellValueFactory(new PropertyValueFactory<>("totalDigic"));
+
+            p2_tv_justificantesdigic.getColumns().setAll(justificnteColumn, razonSocialColumn, numeroFacturaColumn, fechaFacturaColumn, totalDigicColumn);
+            p2_tv_justificantesdigic.setItems(data);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+
+    @FXML
+    private void LoadDialog(String title, String body){
+        JFXDialogLayout content = new JFXDialogLayout();
+
+        content.setHeading(new Text(title));
+        content.setBody(new Text(body));
+
+        JFXDialog dialog = new JFXDialog(root, content, JFXDialog.DialogTransition.CENTER, false);
+        JFXButton button = new JFXButton("OK");
+        button.setButtonType(JFXButton.ButtonType.RAISED);
+        button.setStyle("-fx-background-color: #00bfff;");
+        button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                dialog.close();
+            }
+        });
+
+        content.setActions(button);
+        dialog.show();
+    }
+
     @FXML 
     private void BtnActionWsdl(ActionEvent event) throws SQLException, IOException, InvocationTargetException {
-        switchToWSDL();
+        //switchToWSDL();
 
+        LoadDialog("ESTA ES UNA PRUEBA","QUE TAL ÉSTA PRUEBA.\nsE VE MUY BIEN\nNO?");
+
+        /*Stage stage = new Stage();
+        Parent root = FXMLLoader.load(
+                Objects.requireNonNull(getClass().getResource("/views/prueba.fxml")));
+        stage.setScene(new Scene(root));
+        //stage.setTitle("My modal window");
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner( ((Node)event.getSource()).getScene().getWindow() );
+        stage.show();
+        */
     }    
 
     @FXML 
     private void switchToAnterior() throws IOException {
-
+        /*
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation Dialog");
         alert.setHeaderText("Look, a Confirmation Dialog");
@@ -352,7 +437,43 @@ public class Modelo_403Controller implements Initializable {
         } else {
             // ... user chose CANCEL or closed the dialog
         }
+*/
 
+        JFXDialogLayout content = new JFXDialogLayout();
+
+        content.setHeading(new Text("Confirmation Dialog"));
+        content.setBody(new Text("Are you ok with this?"));
+
+        JFXDialog dialog = new JFXDialog(root, content, JFXDialog.DialogTransition.CENTER, false);
+        JFXButton buttonOK = new JFXButton("OK");
+        JFXButton buttonCancel = new JFXButton("CANCEL");
+        buttonOK.setButtonType(JFXButton.ButtonType.RAISED);
+        buttonOK.setStyle("-fx-background-color: #00bfff;");
+        buttonCancel.setButtonType(JFXButton.ButtonType.RAISED);
+        buttonCancel.setStyle("-fx-background-color: #00bfff;");
+        buttonCancel.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                dialog.close();
+            }
+        });
+        buttonOK.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                dialog.close();
+
+                try {
+                    Locale locale = Locale.getDefault();
+                    App.setRoot("/views/primary",locale);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
+        content.setActions(buttonOK,buttonCancel);
+
+        dialog.show();
 
     }
 
@@ -465,7 +586,8 @@ public class Modelo_403Controller implements Initializable {
             }else{
 
                 FillPlantilla(myJson);
-                InsertItem(myJson); 
+                InsertItem(myJson);
+                RefreshTV();
             }            
 
         } catch (Exception e) {
@@ -754,6 +876,7 @@ public class Modelo_403Controller implements Initializable {
         //    p2_lb_cuentaInternacional.setText("NO");
         //}
 
+
         //if (!myJson.isNull("paisBanco")){
             p2_tf_pais_banco.setText((String) myJson.getPaisBanco());
         //}
@@ -762,9 +885,15 @@ public class Modelo_403Controller implements Initializable {
             p2_tf_clave_banco.setText((String) myJson.getClaveBanco());
        // }
 
-        //if (!myJson.isNull("valorMedioPago")){
+        if(myJson.getCuentaSinIBAN().equals("SI")) {
+            //if (!myJson.isNull("valorMedioPago")){
             p2_tf_cuenta_bancaria.setText((String) myJson.getValorMedioPago());
-        //}
+            //}
+        }else{
+            //if (!myJson.isNull("valorMedioPago")){
+            p2_tf_valorMedioPago.setText((String) myJson.getValorMedioPago());
+            //}
+        }
 
         //if (!myJson.isNull("descInstFinanciera")){
             p2_tf_descripcion_banco.setText((String) myJson.getDescInstFinanciera());
@@ -784,10 +913,6 @@ public class Modelo_403Controller implements Initializable {
 
         //if (!myJson.isNull("codigoBic")){
             p2_tf_codigoBic.setText((String) myJson.getCodigoBic());
-        //}
-
-        //if (!myJson.isNull("valorMedioPago")){
-            p2_tf_valorMedioPago.setText((String) myJson.getValorMedioPago());
         //}
 
         //if (!myJson.isNull("modoTransporte")){
@@ -882,9 +1007,8 @@ public class Modelo_403Controller implements Initializable {
             System.out.println(connection);
 
         } catch (SQLException e) {
-            Logger.getAnonymousLogger().log(
-                Level.SEVERE,
-                LocalDateTime.now() + ": Could not connect to SQLite DB at " + location);
+
+            LOGGER.log(Level.ERROR,LocalDateTime.now() + ": Could not connect to SQLite DB at " + location);
 
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText(null);
@@ -901,11 +1025,11 @@ public class Modelo_403Controller implements Initializable {
         try {
             Class.forName("org.sqlite.JDBC");
             DriverManager.registerDriver(new org.sqlite.JDBC());
-            Logger.getAnonymousLogger().log(Level.SEVERE, LocalDateTime.now() + ": Start SQLite Drivers");
+            LOGGER.log(Level.ERROR,LocalDateTime.now() + ": Start SQLite Drivers");
             System.out.println("Connect driver SQLite3");
             return true;
         } catch (ClassNotFoundException | SQLException classNotFoundException) {
-            Logger.getAnonymousLogger().log(Level.SEVERE, LocalDateTime.now() + ": Could not start SQLite Drivers");
+            LOGGER.log(Level.ERROR,LocalDateTime.now() + ": Could not start SQLite Drivers");
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
@@ -992,9 +1116,7 @@ public class Modelo_403Controller implements Initializable {
             }
 
         } catch (SQLException e) {
-            Logger.getAnonymousLogger().log(
-                    Level.SEVERE,
-                    LocalDateTime.now() + ": Could not Update from " + tableName + " because: \n" + e.toString() + "\n" + e.getMessage() + "\n" + e.getErrorCode());
+            LOGGER.log(Level.ERROR,LocalDateTime.now() + ": Could not Update from " + tableName + " because: \n" + e.toString() + "\n" + e.getMessage() + "\n" + e.getErrorCode());
 
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setHeaderText(null);
@@ -1123,9 +1245,7 @@ public class Modelo_403Controller implements Initializable {
             
 
         } catch (SQLException e) {
-            Logger.getAnonymousLogger().log(
-                    Level.SEVERE,
-                    LocalDateTime.now() + ": Could not Update from " + tableName + " because: \n" + e.toString() + "\n" + e.getMessage() + "\n" + e.getErrorCode());
+            LOGGER.log(Level.ERROR,LocalDateTime.now() + ": Could not Update from " + tableName + " because: \n" + e.toString() + "\n" + e.getMessage() + "\n" + e.getErrorCode());
 
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setHeaderText(null);

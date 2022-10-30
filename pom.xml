@@ -56,25 +56,25 @@
 			<dependency>
 				<groupId>org.openjfx</groupId>
 				<artifactId>javafx-controls</artifactId>
-				<version>${javafx.version}</version>
+				<version>19</version>
 			</dependency>
 
 			<dependency>
 				<groupId>org.openjfx</groupId>
 				<artifactId>javafx-fxml</artifactId>
-				<version>${javafx.version}</version>
+				<version>19</version>
 			</dependency>
 
 			<dependency>
 				<groupId>org.openjfx</groupId>
 				<artifactId>javafx-swing</artifactId>
-				<version>${javafx.version}</version>
+				<version>19</version>
 			</dependency>
 
 			<dependency>
 				<groupId>org.openjfx</groupId>
 				<artifactId>javafx-graphics</artifactId>
-				<version>${javafx.version}</version>
+				<version>19</version>
 				<classifier>win</classifier>
 			</dependency>        
 		<!-- -->
@@ -185,6 +185,14 @@
 				<groupId>org.kordamp.ikonli</groupId>
 				<artifactId>ikonli-fontawesome-pack</artifactId>
 				<version>1.9.0</version>
+			</dependency>
+		<!--  FIN DE LIBRERIA    -->
+
+		<!-- Librería para el manejo de Google Matirials -->
+			<dependency>
+				<groupId>com.jfoenix</groupId>
+				<artifactId>jfoenix</artifactId>
+				<version>9.0.10</version>
 			</dependency>
 		<!--  FIN DE LIBRERIA    -->
 
