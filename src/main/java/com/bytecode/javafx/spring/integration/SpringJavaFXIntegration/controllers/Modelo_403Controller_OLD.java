@@ -62,9 +62,9 @@ import static org.comtel2000.keyboard.control.VkProperties.*;
 
 
 @Component
-public class Modelo_403Controller implements Initializable {
+public class Modelo_403Controller_OLD implements Initializable {
 
-    private final static Logger LOGGER = LogManager.getLogger(Modelo_403Controller.class.getName());/*
+    private final static Logger LOGGER = LogManager.getLogger(Modelo_403Controller_OLD.class.getName());/*
      * Conexion Bases de datos 
     */
         
@@ -92,8 +92,7 @@ public class Modelo_403Controller implements Initializable {
     *  Variables de la plantilla
     */
 
-    @FXML
-    private JFXDialog p2_Dialog_Procesando;
+
     @FXML private Button p2_btn_aceptar,  p2_btn_qr, p2_btn_salir, p2_btn_demo, p2_btn_wsdl, p2_btn_add_403;
 
     @FXML private Label p2_lb_justificante, p2_lb_datos_establecimiento,  p2_lb_nif,  p2_lb_razon_social,
@@ -174,10 +173,6 @@ public class Modelo_403Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         // Funcion de inicio del Controlador
         //
-
-        p2_Dialog_Procesando.setTransitionType(JFXDialog.DialogTransition.CENTER);
-        p2_Dialog_Procesando.setOverlayClose(false);
-        p2_Dialog_Procesando.setDialogContainer(root);
 
         bundle = resources;
 
@@ -334,10 +329,10 @@ public class Modelo_403Controller implements Initializable {
 
             if(!personList.isEmpty()){
 
-                Double montoTotalDigic= 0.00;
+                Double montoTotalDigic=0.00;
 
                 for (Digic digic: personList) {
-                    montoTotalDigic = montoTotalDigic + Double.valueOf (digic.getTotalDigic());
+                    montoTotalDigic = + Double.valueOf (digic.getTotalDigic());
                 }
 
                 p2_tf_montoTotalDigic.setText(montoTotalDigic.toString());
@@ -359,60 +354,23 @@ public class Modelo_403Controller implements Initializable {
 
         content.setHeading(new Text(title));
         content.setBody(new Text(body));
-        content.setStyle("-fx-font-size: 20;");
 
         JFXDialog dialog = new JFXDialog(root, content, JFXDialog.DialogTransition.CENTER, false);
-        JFXButton button = new JFXButton(bundle.getString( "p2_btn_popup"));
+        JFXButton button = new JFXButton("OK");
         button.setButtonType(JFXButton.ButtonType.RAISED);
         button.setStyle("-fx-background-color: #00bfff;");
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 dialog.close();
-                p2_img_barcode.requestFocus();
             }
         });
 
         content.setActions(button);
         dialog.show();
-        p2_img_barcode.requestFocus();
     }
 
-
-    @FXML
-    private void LoadDialogEscanear(){
-
-        String title, body;
-
-        title = "erwrwrr" ;
-
-        body = bundle.getString( "p2_lb_popup_escanee_qr");
-
-        JFXDialogLayout content = new JFXDialogLayout();
-
-        content.setHeading(new Text(title));
-        content.setHeading(new ImageView("/img/scanearModelo403.png"));
-        content.setBody(new Text(body));
-        content.setStyle("-fx-font-size: 20;");
-
-        JFXDialog dialog = new JFXDialog(root, content, JFXDialog.DialogTransition.CENTER, false);
-        JFXButton button = new JFXButton(bundle.getString( "p2_btn_popup"));
-        button.setButtonType(JFXButton.ButtonType.RAISED);
-        button.setStyle("-fx-background-color: #00bfff;");
-        button.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                dialog.close();
-                p2_img_barcode.requestFocus();
-            }
-        });
-
-        content.setActions(button);
-        dialog.show();
-        p2_img_barcode.requestFocus();
-    }
-
-    @FXML
+    @FXML 
     private void BtnActionWsdl(ActionEvent event) throws SQLException, IOException, InvocationTargetException {
         //switchToWSDL();
 
@@ -519,7 +477,6 @@ public class Modelo_403Controller implements Initializable {
     @FXML private void switchToQRCode() throws IOException {
 
             ClearPlantilla();
-            LoadDialogEscanear();
             p2_img_barcode.requestFocus();
 
     }
@@ -534,8 +491,7 @@ public class Modelo_403Controller implements Initializable {
     }
 
     @FXML private void QRcodeRead(String qr_text, Integer index) throws IOException {
-
-        p2_Dialog_Procesando.show();
+        
         ClearPlantilla();
         p2_img_barcode.requestFocus();
   
@@ -578,42 +534,29 @@ public class Modelo_403Controller implements Initializable {
 
                 if(App.parametrosModel.getAppDemo()) System.out.print("\nfecha Limite Salida: Se encuentra caducada");
                 p2_tx_info_item.setText(bundle.getString( "p2_tx_info_fechalimite"));
-                //p2_an_info_item.setVisible(true);
-                 p2_Dialog_Procesando.close();
-                 LoadDialog("", bundle.getString( "p2_tx_info_fechalimite"));
-
-
+                p2_an_info_item.setVisible(true);
 
              }else  if ( !myJson.getString("valorDocumento").equals(p2_lb_valorDocumentoEsperado.getText())){
 
                  if(App.parametrosModel.getAppDemo()) System.out.print("\nvalorDocumento: No corresponde con el valor esperado");
                 p2_tx_info_item.setText(bundle.getString( "p2_tx_info_item2"));
-                //p2_an_info_item.setVisible(true);
-                 p2_Dialog_Procesando.close();
-                 LoadDialog("", bundle.getString( "p2_tx_info_item2"));
-
-
-             }else if (existJustificante(myJson.getString("justificante"))){
+                p2_an_info_item.setVisible(true);
+            
+            }else if (existJustificante(myJson.getString("justificante"))){
 
                  if(App.parametrosModel.getAppDemo()) System.out.print("\nreadQR: Registro ya procesado");
                 
                 p2_tx_info_item.setText(bundle.getString( "p2_tx_info_item"));                
-                //p2_an_info_item.setVisible(true);
-                 p2_Dialog_Procesando.close();
-                 LoadDialog("", bundle.getString( "p2_tx_info_item"));
+                p2_an_info_item.setVisible(true);
 
-
-             }else{
+            }else{
 
                 FillPlantilla(myJson);
                 InsertItem(myJson);
                 RefreshTV();
-                p2_Dialog_Procesando.close();
             }            
 
         } catch (Exception e) {
-
-            p2_Dialog_Procesando.close();
             e.printStackTrace();
 
             if(App.parametrosModel.getAppDemo()) System.out.printf("\nCausa: %s \nMensaje: %s\n Class: %s\n Localized Mensaje: %s\n" ,e.getCause(),e.getMessage(),e.getClass(),e.getLocalizedMessage());
@@ -1255,9 +1198,7 @@ public class Modelo_403Controller implements Initializable {
                 System.out.println("apellidosViajero: " + rs.getString("apellidosViajero"));
                 System.out.println("tipoDocumento: "    + rs.getString("tipoDocumento"));
 
-                //p2_an_info_item.setVisible(true);
-
-                LoadDialog("", bundle.getString( "p2_tx_info_item"));
+                p2_an_info_item.setVisible(true);
 
                 /* 
                 digic.add(new DIGIModel(

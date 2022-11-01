@@ -17,3 +17,7 @@
     -fx-background-size: 2400 1100;
     -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0); 
 }
+
+.table-view .column-header-background .label {
+ -fx-font-size: 12pt;
+}
