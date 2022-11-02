@@ -48,6 +48,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static org.comtel2000.keyboard.control.VkProperties.*;
 
@@ -95,7 +97,7 @@ public class Valida_Envia_DERController implements Initializable {
             p4_cb_cuetaiban,p4_cb_hora;
 
     @FXML
-    private ComboBox<String> p4_cb_modoTransporteObj,p4_cb_cuetaibanObj;
+    private ComboBox<String> p4_cb_modoTransporteObj;
 
     @FXML
     private Label p2_lb_informacion,p2_lb_clave_banco,p2_lb_clave_control, p2_lb_codigoBic,
@@ -181,6 +183,24 @@ public class Valida_Envia_DERController implements Initializable {
 
     }
 
+    public boolean isValidEmail(String email){
+        boolean validar = false;
+
+        // Patrón para validar el email
+        //Pattern pattern = Pattern
+        //        .compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+        //                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+
+        Pattern pattern = Pattern.compile("([a-z0-9]+(\\.?[a-z0-9])*)+@(([a-z]+)\\.([a-z]+))+");
+
+        Matcher mather = pattern.matcher(email);
+
+        if (mather.find() == true) {
+            validar = true;
+        }
+
+        return validar;
+    }
     public boolean isValidLetter(String s){
         String regex="[A-Za-z\\s]+";
         return s.matches(regex);//returns true if input and regex matches otherwise false;
@@ -342,9 +362,9 @@ public class Valida_Envia_DERController implements Initializable {
         VerificaEmpty(p4_tf_identificadorBillete,procesarWSDL);
         VerificaEmpty(p4_tf_modoTransporte,procesarWSDL);
 
-        String sn = p4_cb_cuetaibanObj.getValue()+"";
+        VerificaEmail(p4_tf_email,procesarWSDL);
 
-        if(sn.equals("SI")){
+        if(p4_tgb_cuetaibanno.isSelected()){
 
             VerificaEmpty(p4_tf_clave_banco,procesarWSDL);
             VerificaEmpty(p4_tf_clave_control,procesarWSDL);
@@ -370,7 +390,7 @@ public class Valida_Envia_DERController implements Initializable {
 
         }
 
-        if(sn.equals("NO")) {
+        if(p4_tgb_cuetaibansi.isSelected()) {
             VerificaEmpty(p4_tf_valorMedioPago,procesarWSDL);
             //if (p4_tf_valorMedioPago.getText().isEmpty()){ PlayEmpty(p4_tf_valorMedioPago);procesarWSDL.valor = true;}else{p4_tf_valorMedioPago.setStyle(successStyle);};
 
@@ -394,6 +414,10 @@ public class Valida_Envia_DERController implements Initializable {
         if (campo.getText().isEmpty()){ PlayEmpty(campo);procesarWSDL.valor = true;}else{campo.setStyle(successStyle);};
     }
 
+    private  void  VerificaEmail(TextField campo, ProcesarWSDL procesarWSDL){
+        if (!isValidEmail(campo.getText())){ PlayEmpty(campo);procesarWSDL.valor = true;}else{campo.setStyle(successStyle);};
+    }
+
     private  void  VerificaLetra(TextField campo, ProcesarWSDL procesarWSDL){
         if (!isValidLetter(campo.getText())){PlayEmpty(campo);procesarWSDL.valor = true;}else{campo.setStyle(successStyle);};
     }
@@ -403,7 +427,7 @@ public class Valida_Envia_DERController implements Initializable {
     }
 
     private void PlayEmpty(TextField tf){
-        System.out.println("style: " + tf.getStyle());
+        //System.out.println("style: " + tf.getStyle());
         tf.setStyle(errorStyle);
         new animatefx.animation.Shake(tf).play();
         new animatefx.animation.Wobble(tf).play();
@@ -559,7 +583,6 @@ public class Valida_Envia_DERController implements Initializable {
         p4_cb_cuetaiban.setItems(FXCollections.observableArrayList(digicRepository.findAllCuentaSinIban(valorDocumento)));
 
         p4_cb_modoTransporteObj.getItems().addAll("AVION","BARCO");
-        p4_cb_cuetaibanObj.getItems().addAll("SI","NO");
 
         p4_cb_clave_banco.getSelectionModel().selectFirst();
         p4_cb_clave_control.getSelectionModel().selectFirst();
@@ -575,7 +598,6 @@ public class Valida_Envia_DERController implements Initializable {
         p4_cb_fechaLimiteSalida.getSelectionModel().selectFirst();
         p4_cb_cuetaiban.getSelectionModel().selectFirst();
         p4_cb_modoTransporteObj.getSelectionModel().selectFirst();
-        p4_cb_cuetaibanObj.getSelectionModel().selectFirst();
 
     }
 
@@ -637,12 +659,9 @@ public class Valida_Envia_DERController implements Initializable {
         // TODO --> Desarrollar funcionabilidad de verificación de la fecha de salida
         //p4_cb_fechaLimiteSalida.setOnAction(e -> p4_dtp_fechaLimiteSalida.setValue(LocalDate.parse(p4_cb_fechaLimiteSalida.getValue()+"")));
 
-        ValuePropertyAddListenerVisible(p4_cb_cuetaiban,p4_pane_cuentaiban,p4_pane_cuentainternacional);
-        ValuePropertyAddListenerVisible(p4_cb_cuetaibanObj,p4_pane_cuentaiban,p4_pane_cuentainternacional);
-        p4_cb_cuetaibanObj.getSelectionModel().selectFirst();
-
-        ValuePropertyAddListenerVisible(p4_tgb_cuetaibanno,p4_pane_cuentaiban,p4_pane_cuentainternacional,"NO");
-        ValuePropertyAddListenerVisible(p4_tgb_cuetaibansi,p4_pane_cuentaiban,p4_pane_cuentainternacional,"SI");
+        ValuePropertyAddListenerVisible(p4_tgb_cuetaibanno,p4_tgb_cuetaibansi,p4_pane_cuentainternacional,p4_pane_cuentaiban);
+        ValuePropertyAddListenerVisible(p4_tgb_cuetaibansi,p4_tgb_cuetaibanno,p4_pane_cuentaiban,p4_pane_cuentainternacional);
+        p4_tgb_cuetaibansi.setSelected(true);
 
         p4_cb_pais_banco.valueProperty().addListener(
             new ChangeListener() {
@@ -695,36 +714,19 @@ public class Valida_Envia_DERController implements Initializable {
         });
     }
 
-    private void  ValuePropertyAddListenerVisible(ComboBox cbx, Pane pane1,Pane pane2) {
-        cbx.valueProperty().addListener( new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observableValue, Object o, Object t1) {
+    private void  ValuePropertyAddListenerVisible(ToggleButton tgbtrue, ToggleButton tgbfalse, Pane pane1,Pane pane2) {
 
-                String sn = (String) t1;
-                if (sn.equals("NO")) {
-                    pane1.setVisible(true);
-                    pane2.setVisible(false);
-                } else {
-                    pane1.setVisible(false);
-                    pane2.setVisible(true);
-                }
-            }
-        });
-    }
+        tgbtrue.selectedProperty().addListener(((observable, oldValue, newValue) -> {
 
-    private void  ValuePropertyAddListenerVisible(ToggleButton tgb, Pane pane1,Pane pane2, String SiNo) {
+            pane1.setVisible(newValue);
+            pane2.setVisible(oldValue);
+            tgbfalse.setSelected(oldValue);
 
-        tgb.selectedProperty().addListener(((observable, oldValue, newValue) -> {
-            if (SiNo.equals("NO")) {
-                pane1.setVisible(true);
-                pane2.setVisible(false);
-            } else {
-                pane1.setVisible(false);
-                pane2.setVisible(true);
-            }
         }));
 
 
     }
+
+
 
 }
