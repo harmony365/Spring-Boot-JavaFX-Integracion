@@ -199,8 +199,10 @@ public class Modelo_403Controller implements Initializable {
                 p2_lb_tipoDocumento.setText("PASAPORTE");
                 break;
             case "I" :
-                p2_lb_valorDocumento.setText(App.parametrosModel.getDniNifNieTieDemo());
-                p2_lb_valorDocumentoEsperado.setText(App.parametrosModel.getDniNifNieTieDemo());
+                p2_lb_valorDocumento.setText(App.parametrosModel.getNumeroDniNifNieTie());
+                p2_lb_valorDocumentoEsperado.setText(App.parametrosModel.getNumeroDniNifNieTie());
+                //p2_lb_valorDocumento.setText(App.parametrosModel.getDniNifNieTieDemo());
+                //p2_lb_valorDocumentoEsperado.setText(App.parametrosModel.getDniNifNieTieDemo());
                 p2_lb_tipoDocumento.setText("NIF/NIE/TIE");
                 break;
         }
@@ -257,9 +259,6 @@ public class Modelo_403Controller implements Initializable {
         //p2_tv_justificantes.getColumns().addAll(p2_tc_listajustificantes);
         //p2_tv_justificantes.getColumns().addAll(p2_tc_listajustificantesMonto);
 
-
-        p2_tv_justificantesdigic.setPlaceholder(new Label(bundle.getString( "p2_tv_Placeholder")));
-
         ClearPlantilla();
 
         p2_img_barcode.requestFocus();
@@ -295,7 +294,13 @@ public class Modelo_403Controller implements Initializable {
             }
         });
 
+        p2_tv_justificantesdigic.setPlaceholder(new Label(bundle.getString( "p2_tv_Placeholder")));
 
+        try{
+            RefreshTV();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         
     }
 
@@ -341,6 +346,7 @@ public class Modelo_403Controller implements Initializable {
                 }
 
                 p2_tf_montoTotalDigic.setText(montoTotalDigic.toString());
+                p2_btn_aceptar.setVisible(true);
             }
 
 

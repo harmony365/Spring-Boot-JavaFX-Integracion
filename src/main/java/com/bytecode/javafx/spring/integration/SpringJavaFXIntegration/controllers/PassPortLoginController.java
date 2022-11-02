@@ -87,7 +87,8 @@ public class PassPortLoginController  implements Initializable {
             new animatefx.animation.Pulse(p3_tf_numerodocumeto).play();
 
             App.parametrosModel.setNumeroPasaporte(p3_tf_numerodocumeto.getText().trim().toUpperCase());
-            App.parametrosModel.setDniNifNieTieDemo(p3_tf_numerodocumeto.getText().trim().toUpperCase());
+            App.parametrosModel.setNumeroDniNifNieTie(p3_tf_numerodocumeto.getText().trim().toUpperCase());
+            //App.parametrosModel.setDniNifNieTieDemo(p3_tf_numerodocumeto.getText().trim().toUpperCase());
            // App.parametrosModel.setNombreViajero("");
 
             UUID uuid= UUID.randomUUID();
@@ -143,7 +144,8 @@ public class PassPortLoginController  implements Initializable {
                     pais_passcode   = passcode.substring(2,5);
                     numero_passcode = passcode.substring(15, 30).replaceAll("<", " ").trim();
                     nombre_passcode = passcode.substring(60, 90).replaceAll("<<", " ").replaceAll("<", " ").trim();
-                    App.parametrosModel.setDniNifNieTieDemo(numero_passcode);
+                    App.parametrosModel.setNumeroDniNifNieTie(numero_passcode);
+                    //App.parametrosModel.setDniNifNieTieDemo(numero_passcode);
                     App.parametrosModel.setNombreViajero(nombre_passcode);
                     success = true;         
                     break;
@@ -188,7 +190,8 @@ public class PassPortLoginController  implements Initializable {
         p3_lb_numero_pasaporte.setText("");
 
         App.parametrosModel.setNumeroPasaporte("");
-        App.parametrosModel.setDniNifNieTieDemo("");
+        App.parametrosModel.setNumeroDniNifNieTie("");
+        //App.parametrosModel.setDniNifNieTieDemo("");
         App.parametrosModel.setNombreViajero("");
 
         p3_qrcode_img.requestFocus();

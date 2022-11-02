@@ -9,6 +9,7 @@ public class ParametrosModel {
     private String  QRCODEDEMO;
     private String  KIOSKOID;
     private String  NumeroPasaporte;
+    private String  NumeroDniNifNieTie;
     private String  TipoDoumento;
     private String  NombreViajero;
     private String  PasaporteDemo;
@@ -115,6 +116,14 @@ public class ParametrosModel {
 
     public void setNumeroPasaporte(String NumeroPasaporte) {
         this.NumeroPasaporte = NumeroPasaporte;
+    }
+
+    public String getNumeroDniNifNieTie() {
+        return NumeroDniNifNieTie;
+    }
+
+    public void setNumeroDniNifNieTie(String NumeroDniNifNieTie) {
+        this.NumeroDniNifNieTie = NumeroDniNifNieTie;
     }
 
     public String getWsdlUrl() {
