@@ -311,7 +311,8 @@ public class Modelo_403Controller implements Initializable {
             FillPlantilla(digic);
         }
     }
-    @FXML
+
+     @FXML
     private void RefreshTV() throws  IOException{
 
         try {

@@ -82,10 +82,10 @@ public class Valida_Envia_DERController implements Initializable {
     private ComboBox<Cliente> comboClientes;
 
     /*
-     * 
+     *
      * Nueva implementación
-     * 
-     * 
+     *
+     *
      */
     @FXML
     private Rectangle p4_rec_mensaje;
@@ -93,27 +93,27 @@ public class Valida_Envia_DERController implements Initializable {
     @FXML
     private ComboBox<Digic> p4_cb_clave_banco, p4_cb_clave_control, p4_cb_codigoBic, p4_cb_codigo_aba,
             p4_cb_cuenta_bancaria, p4_cb_descripcion_banco, p4_cb_email, p4_cb_identificadorBillete,
-            p4_cb_modoTransporte, p4_cb_pais_banco, p4_cb_valorMedioPago,  p4_cb_fechaLimiteSalida,
-            p4_cb_cuetaiban,p4_cb_hora;
+            p4_cb_modoTransporte, p4_cb_pais_banco, p4_cb_valorMedioPago, p4_cb_fechaLimiteSalida,
+            p4_cb_cuetaiban, p4_cb_hora;
 
     @FXML
     private ComboBox<String> p4_cb_modoTransporteObj;
 
     @FXML
-    private Label p2_lb_informacion,p2_lb_clave_banco,p2_lb_clave_control, p2_lb_codigoBic,
-                  p2_lb_codigo_cuenta_internacional, p2_lb_codigo_cuenta_nacional, p2_lb_cuenta_bancaria,
-                  p2_lb_datos_transporte, p2_lb_datos_viajeros, p2_lb_descripcion_banco, p2_lb_fechaLimiteSalida,
-                  p2_lb_identificadorBillete, p2_lb_medios_de_pago, p2_lb_modoTransporte, p2_lb_pais_banco, 
-                  p2_lb_valorMedioPago, p2_lb_fecha_salida,
-                  p4_lb_mensaje, p4_ld_wsdl_raspuesta, p4_ld_wsdl_TimeStamp;
+    private Label p2_lb_informacion, p2_lb_clave_banco, p2_lb_clave_control, p2_lb_codigoBic,
+            p2_lb_codigo_cuenta_internacional, p2_lb_codigo_cuenta_nacional, p2_lb_cuenta_bancaria,
+            p2_lb_datos_transporte, p2_lb_datos_viajeros, p2_lb_descripcion_banco, p2_lb_fechaLimiteSalida,
+            p2_lb_identificadorBillete, p2_lb_medios_de_pago, p2_lb_modoTransporte, p2_lb_pais_banco,
+            p2_lb_valorMedioPago, p2_lb_fecha_salida,
+            p4_lb_mensaje, p4_ld_wsdl_raspuesta, p4_ld_wsdl_TimeStamp;
     @FXML
     private DatePicker p4_dtp_fechaLimiteSalida;
 
     @FXML
-    private TextField p4_tf_clave_banco, p4_tf_clave_control,p4_tf_codigoBic,p4_tf_codigo_aba,
-                      p4_tf_cuenta_bancaria,p4_tf_descripcion_banco,p4_tf_email,p4_tf_identificadorBillete,
-                      p4_tf_modoTransporte,p4_tf_pais_banco,p4_tf_valorMedioPago, p4_tf_fechaLimiteSalida,
-                      p4_tf_fechaLimiteSalidaHora, p4_tf_fechaLimiteSalidaMinuto;
+    private TextField p4_tf_clave_banco, p4_tf_clave_control, p4_tf_codigoBic, p4_tf_codigo_aba,
+            p4_tf_cuenta_bancaria, p4_tf_descripcion_banco, p4_tf_email, p4_tf_identificadorBillete,
+            p4_tf_modoTransporte, p4_tf_pais_banco, p4_tf_valorMedioPago, p4_tf_fechaLimiteSalida,
+            p4_tf_fechaLimiteSalidaHora, p4_tf_fechaLimiteSalidaMinuto;
 
 
     @FXML
@@ -130,10 +130,10 @@ public class Valida_Envia_DERController implements Initializable {
     // Strings which hold css elements to easily re-use in the SpringJavaFxIntegrationApplicationlication
     protected
     String successMessage = String.format("-fx-text-fill: GREEN;");
-    String successStyle   = String.format("-fx-border-color: GREEN; -fx-border-width: 2; -fx-border-radius: 5;");
-    String errorMessage   = String.format("-fx-text-fill: RED;");
-    String errorStyle     = String.format("-fx-border-color: RED; -fx-border-width: 2; -fx-border-radius: 5;");
-    
+    String successStyle = String.format("-fx-border-color: GREEN; -fx-border-width: 2; -fx-border-radius: 5;");
+    String errorMessage = String.format("-fx-text-fill: RED;");
+    String errorStyle = String.format("-fx-border-color: RED; -fx-border-width: 2; -fx-border-radius: 5;");
+
     public Boolean procesoWsdl = false;
     public DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
 
@@ -179,11 +179,11 @@ public class Valida_Envia_DERController implements Initializable {
         p4_dtp_fechaLimiteSalida.setDayCellFactory(dayCellFactory);
 
         iniFormDigicModoPago();
-        refesh();    
+        refesh();
 
     }
 
-    public boolean isValidEmail(String email){
+    public boolean isValidEmail(String email) {
         boolean validar = false;
 
         // Patrón para validar el email
@@ -201,13 +201,13 @@ public class Valida_Envia_DERController implements Initializable {
 
         return validar;
     }
-    public boolean isValidLetter(String s){
-        String regex="[A-Za-z\\s]+";
+
+    public boolean isValidLetter(String s) {
+        String regex = "[A-Za-z\\s]+";
         return s.matches(regex);//returns true if input and regex matches otherwise false;
     }
 
-    static int validaFechaHora(String start_date, String end_date, String retorno)
-    {
+    static int validaFechaHora(String start_date, String end_date, String retorno) {
 
         // SimpleDateFormat converts the
         // string format to date object
@@ -228,7 +228,7 @@ public class Valida_Envia_DERController implements Initializable {
             // Calucalte time difference in
             // seconds, minutes, hours, years,
             // and days
-            long difference_In_Seconds = (difference_In_Time  / 1000)  % 60;
+            long difference_In_Seconds = (difference_In_Time / 1000) % 60;
 
             long difference_In_Minutes = (difference_In_Time / (1000 * 60)) % 60;
 
@@ -236,15 +236,15 @@ public class Valida_Envia_DERController implements Initializable {
 
             long difference_In_Years = (difference_In_Time / (1000l * 60 * 60 * 24 * 365));
 
-            long difference_In_Days  = (difference_In_Time / (1000 * 60 * 60 * 24))  % 365;
+            long difference_In_Days = (difference_In_Time / (1000 * 60 * 60 * 24)) % 365;
 
             // Print the date difference in
             // years, in days, in hours, in
             // minutes, and in seconds
 
-            System.out.print(  "Difference " + "between two dates is: ");
+            System.out.print("Difference " + "between two dates is: ");
 
-            System.out.println( difference_In_Years + " years, "
+            System.out.println(difference_In_Years + " years, "
                     + difference_In_Days + " days, "
                     + difference_In_Hours + " hours, "
                     + difference_In_Minutes + " minutes, "
@@ -297,7 +297,7 @@ public class Valida_Envia_DERController implements Initializable {
             }
             // marcar los dias de quincena
             int day = item.getDayOfMonth();
-            if(day == 15 || day == 30) {
+            if (day == 15 || day == 30) {
 
                 Paint color = Color.RED;
                 BackgroundFill fill = new BackgroundFill(color, null, null);
@@ -322,6 +322,7 @@ public class Valida_Envia_DERController implements Initializable {
     public class ProcesarWSDL {
         public Boolean valor;
     }
+
     @FXML
     private void switchToAceptar() throws IOException {
         //Boolean procesarWSDL = false;
@@ -334,13 +335,13 @@ public class Valida_Envia_DERController implements Initializable {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String start_date = fechaHoraLimite.format(formatter);
 
-       //String start_date = "19-10-2022 03:10:20";
+        //String start_date = "19-10-2022 03:10:20";
         // Given end Date
         String end_date = p4_dtp_fechaLimiteSalida.getValue() + " " + p4_tf_fechaLimiteSalidaHora.getText() + ":" + p4_tf_fechaLimiteSalidaMinuto.getText() + ":00";
 
         //TODO: validar que está verificando que la fecha y hora de salida no superalas 3 horas ni es menor a o horas-
 
-        if (p4_tf_fechaLimiteSalidaHora.getLength() > 0  && p4_tf_fechaLimiteSalidaMinuto.getLength() > 0 ) {
+        if (p4_tf_fechaLimiteSalidaHora.getLength() > 0 && p4_tf_fechaLimiteSalidaMinuto.getLength() > 0) {
             int resultado = validaFechaHora(start_date, end_date, "H");
             if (resultado > 3 || resultado < 0) {
                 PlayEmpty(p4_tf_fechaLimiteSalidaHora);
@@ -351,36 +352,36 @@ public class Valida_Envia_DERController implements Initializable {
                 p4_tf_fechaLimiteSalidaHora.setStyle(successStyle);
                 p4_tf_fechaLimiteSalidaMinuto.setStyle(successStyle);
             }
-        }else{
+        } else {
             PlayEmpty(p4_tf_fechaLimiteSalidaHora);
             PlayEmpty(p4_tf_fechaLimiteSalidaMinuto);
             procesarWSDL.valor = true;
             System.out.println("Fecha de salida no contiene horas reglamentarias");
         }
 
-        VerificaEmpty(p4_tf_email,procesarWSDL);
-        VerificaEmpty(p4_tf_identificadorBillete,procesarWSDL);
-        VerificaEmpty(p4_tf_modoTransporte,procesarWSDL);
+        VerificaEmpty(p4_tf_email, procesarWSDL);
+        VerificaEmpty(p4_tf_identificadorBillete, procesarWSDL);
+        VerificaEmpty(p4_tf_modoTransporte, procesarWSDL);
 
-        VerificaEmail(p4_tf_email,procesarWSDL);
+        VerificaEmail(p4_tf_email, procesarWSDL);
 
-        if(p4_tgb_cuetaibanno.isSelected()){
+        if (p4_tgb_cuetaibanno.isSelected()) {
 
-            VerificaEmpty(p4_tf_clave_banco,procesarWSDL);
-            VerificaEmpty(p4_tf_clave_control,procesarWSDL);
-            VerificaEmpty(p4_tf_codigoBic,procesarWSDL);
-            VerificaEmpty(p4_tf_pais_banco,procesarWSDL);
-            VerificaEmpty(p4_tf_descripcion_banco,procesarWSDL);
-            VerificaEmpty(p4_tf_cuenta_bancaria,procesarWSDL);
+            VerificaEmpty(p4_tf_clave_banco, procesarWSDL);
+            VerificaEmpty(p4_tf_clave_control, procesarWSDL);
+            VerificaEmpty(p4_tf_codigoBic, procesarWSDL);
+            VerificaEmpty(p4_tf_pais_banco, procesarWSDL);
+            VerificaEmpty(p4_tf_descripcion_banco, procesarWSDL);
+            VerificaEmpty(p4_tf_cuenta_bancaria, procesarWSDL);
 
-            VerificaLetra(p4_tf_pais_banco,procesarWSDL);
+            VerificaLetra(p4_tf_pais_banco, procesarWSDL);
 
-            VerificaEmpty(p4_tf_codigo_aba,procesarWSDL);
+            VerificaEmpty(p4_tf_codigo_aba, procesarWSDL);
 
             VerificaLargo(p4_tf_codigo_aba, 9, procesarWSDL);
 
             try {
-               // IbanUtil.validate(p4_tf_cuenta_bancaria.getText());
+                // IbanUtil.validate(p4_tf_cuenta_bancaria.getText());
 
             } catch (IbanFormatException | InvalidCheckDigitException | UnsupportedCountryException e) {
                 // invalid
@@ -390,8 +391,8 @@ public class Valida_Envia_DERController implements Initializable {
 
         }
 
-        if(p4_tgb_cuetaibansi.isSelected()) {
-            VerificaEmpty(p4_tf_valorMedioPago,procesarWSDL);
+        if (p4_tgb_cuetaibansi.isSelected()) {
+            VerificaEmpty(p4_tf_valorMedioPago, procesarWSDL);
             //if (p4_tf_valorMedioPago.getText().isEmpty()){ PlayEmpty(p4_tf_valorMedioPago);procesarWSDL.valor = true;}else{p4_tf_valorMedioPago.setStyle(successStyle);};
 
             // How to validate Iban
@@ -407,26 +408,50 @@ public class Valida_Envia_DERController implements Initializable {
 
         }
 
-        if(!procesarWSDL.valor)onWsdl();
+        if (!procesarWSDL.valor) onWsdl();
     }
 
-    private  void  VerificaEmpty(TextField campo, ProcesarWSDL procesarWSDL){
-        if (campo.getText().isEmpty()){ PlayEmpty(campo);procesarWSDL.valor = true;}else{campo.setStyle(successStyle);};
+    private void VerificaEmpty(TextField campo, ProcesarWSDL procesarWSDL) {
+        if (campo.getText().isEmpty()) {
+            PlayEmpty(campo);
+            procesarWSDL.valor = true;
+        } else {
+            campo.setStyle(successStyle);
+        }
+        ;
     }
 
-    private  void  VerificaEmail(TextField campo, ProcesarWSDL procesarWSDL){
-        if (!isValidEmail(campo.getText())){ PlayEmpty(campo);procesarWSDL.valor = true;}else{campo.setStyle(successStyle);};
+    private void VerificaEmail(TextField campo, ProcesarWSDL procesarWSDL) {
+        if (!isValidEmail(campo.getText())) {
+            PlayEmpty(campo);
+            procesarWSDL.valor = true;
+        } else {
+            campo.setStyle(successStyle);
+        }
+        ;
     }
 
-    private  void  VerificaLetra(TextField campo, ProcesarWSDL procesarWSDL){
-        if (!isValidLetter(campo.getText())){PlayEmpty(campo);procesarWSDL.valor = true;}else{campo.setStyle(successStyle);};
+    private void VerificaLetra(TextField campo, ProcesarWSDL procesarWSDL) {
+        if (!isValidLetter(campo.getText())) {
+            PlayEmpty(campo);
+            procesarWSDL.valor = true;
+        } else {
+            campo.setStyle(successStyle);
+        }
+        ;
     }
 
-    private  void  VerificaLargo(TextField campo, int largo,ProcesarWSDL procesarWSDL){
-        if (campo.getText().length()< largo){ PlayEmpty(campo);procesarWSDL.valor = true;}else{campo.setStyle(successStyle);};
+    private void VerificaLargo(TextField campo, int largo, ProcesarWSDL procesarWSDL) {
+        if (campo.getText().length() < largo) {
+            PlayEmpty(campo);
+            procesarWSDL.valor = true;
+        } else {
+            campo.setStyle(successStyle);
+        }
+        ;
     }
 
-    private void PlayEmpty(TextField tf){
+    private void PlayEmpty(TextField tf) {
         //System.out.println("style: " + tf.getStyle());
         tf.setStyle(errorStyle);
         new animatefx.animation.Shake(tf).play();
@@ -434,18 +459,18 @@ public class Valida_Envia_DERController implements Initializable {
         tf.requestFocus();
     }
 
-    @FXML 
-    private void switchToAnterior() throws IOException  {
+    @FXML
+    private void switchToAnterior() throws IOException {
         Locale locale = Locale.getDefault();
-        if (procesoWsdl){
-            App.setRoot("/views/primary",locale);
-        }else{
-            App.setRoot("/views/Modelo_403_v2",locale);
+        if (procesoWsdl) {
+            App.setRoot("/views/primary", locale);
+        } else {
+            App.setRoot("/views/Modelo_403_v2", locale);
         }
-    }   
+    }
 
     @FXML
-    public void onSave(){
+    public void onSave() {
         clienteRepository.save(getFromUI());
         refesh();
     }
@@ -455,7 +480,7 @@ public class Valida_Envia_DERController implements Initializable {
     DatabaseDerUtil databaseDerUtil;
 
     @FXML
-    public void onWsdl(){
+    public void onWsdl() {
 
         procesoWsdl = true;
         try {
@@ -476,7 +501,7 @@ public class Valida_Envia_DERController implements Initializable {
             LOGGER.log(Level.INFO, "Resultado: Estado( " + validarRemesaDerResponse.getEstado() + " ) --> " + validarRemesaDerResponse.getFechaEstado().toString());
 
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             LOGGER.log(Level.INFO, "Ocurrio un Error de RED, time out de conexión.");
             e.printStackTrace();
             WsdlResponse.setText("RED");
@@ -484,36 +509,36 @@ public class Valida_Envia_DERController implements Initializable {
 
         //TODO: validar bien el cambio de estatus. sólo falta ver bien cual sería la regla para los estatus ER.
 
-        if(WsdlResponse.getText().equals("RED")) {
+        if (WsdlResponse.getText().equals("RED")) {
             p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
-            p4_lb_mensaje.setText(bundle.getString( "p4_lb_mensaje_wsdl_RED"));
-            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess,3,2);
+            p4_lb_mensaje.setText(bundle.getString("p4_lb_mensaje_wsdl_RED"));
+            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 2);
         }
-        if(WsdlResponse.getText().equals("ER")) {
+        if (WsdlResponse.getText().equals("ER")) {
             p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
-            p4_lb_mensaje.setText(bundle.getString( "p4_lb_mensaje_wsdl_ER"));
-            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess,3,3);
+            p4_lb_mensaje.setText(bundle.getString("p4_lb_mensaje_wsdl_ER"));
+            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 3);
         }
-        if(WsdlResponse.getText().equals("PR02")) {
+        if (WsdlResponse.getText().equals("PR02")) {
             p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
-            p4_lb_mensaje.setText(bundle.getString( "p4_lb_mensaje_wsdl_ER"));
-            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess,3,2);
+            p4_lb_mensaje.setText(bundle.getString("p4_lb_mensaje_wsdl_ER"));
+            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 2);
         }
-        if(WsdlResponse.getText().equals("KO")) {
+        if (WsdlResponse.getText().equals("KO")) {
             p4_rec_mensaje.setFill(Color.rgb(227, 250, 228, 1));
-            p4_lb_mensaje.setText(bundle.getString( "p4_lb_mensaje_wsdl_KO"));
-            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess,3,2);
+            p4_lb_mensaje.setText(bundle.getString("p4_lb_mensaje_wsdl_KO"));
+            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 2);
         }
-        if(WsdlResponse.getText().equals("OK")) {
+        if (WsdlResponse.getText().equals("OK")) {
             p4_rec_mensaje.setFill(Color.rgb(227, 250, 228, 1));
-            p4_lb_mensaje.setText(bundle.getString( "p4_lb_mensaje_wsdl_OK"));
-            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess,3,1);
+            p4_lb_mensaje.setText(bundle.getString("p4_lb_mensaje_wsdl_OK"));
+            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 1);
         }
-        if(WsdlResponse.getText().length() > 5){
+        if (WsdlResponse.getText().length() > 5) {
             p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
-            p4_lb_mensaje.setText(bundle.getString( "p4_lb_mensaje_wsdl_" + WsdlResponse.getText()));
+            p4_lb_mensaje.setText(bundle.getString("p4_lb_mensaje_wsdl_" + WsdlResponse.getText()));
         }
-        
+
         p4_ld_wsdl_raspuesta.setVisible(true);
         p4_ld_wsdl_TimeStamp.setVisible(true);
         WsdlResponse.setVisible(true);
@@ -530,22 +555,22 @@ public class Valida_Envia_DERController implements Initializable {
         txtTelefono.setText(cliente.getTelefono());
     }
 
-    public Cliente getFromUI(){
+    public Cliente getFromUI() {
         Cliente cliente = new Cliente();
         cliente.setApellido(txtApellido.getText());
         cliente.setNombre(txtNombre.getText());
         cliente.setTelefono(txtTelefono.getText());
         return cliente;
     }
-    
-    public DigicModoPago getDERFromUI(){
+
+    public DigicModoPago getDERFromUI() {
         DigicModoPago digicModoPago = new DigicModoPago();
 
-        digicModoPago.setClaveBanco(p4_tf_clave_banco.getText()); 
+        digicModoPago.setClaveBanco(p4_tf_clave_banco.getText());
         digicModoPago.setClaveControl(p4_tf_clave_control.getText());
         digicModoPago.setCodigoBic(p4_tf_codigoBic.getText());
         digicModoPago.setCuentaInternacional("SI");
-        digicModoPago.setCuentaSinIBAN(p4_cb_cuetaiban.getValue()+"");
+        digicModoPago.setCuentaSinIBAN(p4_cb_cuetaiban.getValue() + "");
         digicModoPago.setDescInstFinanciera(p4_tf_descripcion_banco.getText());
         digicModoPago.setEmail(p4_tf_email.getText());
         digicModoPago.setIdentificadorBillete(p4_tf_identificadorBillete.getText());
@@ -582,7 +607,7 @@ public class Valida_Envia_DERController implements Initializable {
         p4_cb_codigo_aba.setItems(FXCollections.observableArrayList(digicRepository.findAllNumeroAba(valorDocumento)));
         p4_cb_cuetaiban.setItems(FXCollections.observableArrayList(digicRepository.findAllCuentaSinIban(valorDocumento)));
 
-        p4_cb_modoTransporteObj.getItems().addAll("AVION","BARCO");
+        p4_cb_modoTransporteObj.getItems().addAll("AVION", "BARCO");
 
         p4_cb_clave_banco.getSelectionModel().selectFirst();
         p4_cb_clave_control.getSelectionModel().selectFirst();
@@ -601,7 +626,7 @@ public class Valida_Envia_DERController implements Initializable {
 
     }
 
-    private void iniFormDigicModoPago(){
+    private void iniFormDigicModoPago() {
 
         /*
             TODO:
@@ -623,70 +648,74 @@ public class Valida_Envia_DERController implements Initializable {
 
          */
         p4_tf_pais_banco.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue.length() > 3) ((StringProperty)observable).setValue(oldValue);
+            if (newValue.length() > 3) ((StringProperty) observable).setValue(oldValue);
 
             if (!newValue.matches("\\sa-zA-Z*")) {
                 p4_tf_pais_banco.setText(newValue.replaceAll("[^\\sa-zA-Z]", ""));
             }
-            if (newValue.equals("US")){
+            if (newValue.equals("US")) {
                 p4_pane_numeroaba.setVisible(true);
-            }else{
+            } else {
                 p4_pane_numeroaba.setVisible(false);
             }
 
             p4_tf_pais_banco.setText(newValue.toUpperCase());
         });
 
-        TextPropertyAddListener(p4_tf_codigoBic,0);
-        TextPropertyAddListener(p4_tf_codigo_aba,9);
-        TextPropertyAddListener(p4_tf_fechaLimiteSalidaMinuto,2);
-        TextPropertyAddListener(p4_tf_fechaLimiteSalidaHora,2);
+        TextPropertyAddListener(p4_tf_codigoBic, 0);
+        TextPropertyAddListener(p4_tf_codigo_aba, 9);
+        TextPropertyAddListener(p4_tf_fechaLimiteSalidaMinuto, 2);
+        TextPropertyAddListener(p4_tf_fechaLimiteSalidaHora, 2);
 
-        ValuePropertyAddListener(p4_cb_email,p4_tf_email);
-        ValuePropertyAddListener(p4_cb_clave_banco,p4_tf_clave_banco);
-        ValuePropertyAddListener(p4_cb_clave_control,p4_tf_clave_control);
-        ValuePropertyAddListener(p4_cb_descripcion_banco,p4_tf_descripcion_banco);
-        ValuePropertyAddListener(p4_cb_identificadorBillete,p4_tf_identificadorBillete);
-        ValuePropertyAddListener(p4_cb_modoTransporte,p4_tf_modoTransporte);
-        ValuePropertyAddListener(p4_cb_codigo_aba,p4_tf_codigo_aba);
-        ValuePropertyAddListener(p4_cb_codigoBic,p4_tf_codigoBic);
-        ValuePropertyAddListener(p4_cb_modoTransporteObj,p4_tf_modoTransporte);
+        ValuePropertyAddListener(p4_cb_email, p4_tf_email);
+        ValuePropertyAddListener(p4_cb_clave_banco, p4_tf_clave_banco);
+        ValuePropertyAddListener(p4_cb_clave_control, p4_tf_clave_control);
+        ValuePropertyAddListener(p4_cb_descripcion_banco, p4_tf_descripcion_banco);
+        ValuePropertyAddListener(p4_cb_identificadorBillete, p4_tf_identificadorBillete);
+        ValuePropertyAddListener(p4_cb_modoTransporte, p4_tf_modoTransporte);
+        ValuePropertyAddListener(p4_cb_codigo_aba, p4_tf_codigo_aba);
+        ValuePropertyAddListener(p4_cb_codigoBic, p4_tf_codigoBic);
+        ValuePropertyAddListener(p4_cb_modoTransporteObj, p4_tf_modoTransporte);
         p4_cb_modoTransporteObj.getSelectionModel().selectFirst();
 
-        ValuePropertyAddListener(p4_cb_cuenta_bancaria,p4_tf_cuenta_bancaria,p4_tf_valorMedioPago);
-        ValuePropertyAddListener(p4_cb_valorMedioPago,p4_tf_valorMedioPago,p4_tf_cuenta_bancaria);
+        ValuePropertyAddListener(p4_cb_cuenta_bancaria, p4_tf_cuenta_bancaria, p4_tf_valorMedioPago);
+        ValuePropertyAddListener(p4_cb_valorMedioPago, p4_tf_valorMedioPago, p4_tf_cuenta_bancaria);
 
         // TODO --> Desarrollar funcionabilidad de verificación de la fecha de salida
         //p4_cb_fechaLimiteSalida.setOnAction(e -> p4_dtp_fechaLimiteSalida.setValue(LocalDate.parse(p4_cb_fechaLimiteSalida.getValue()+"")));
 
-        ValuePropertyAddListenerVisible(p4_tgb_cuetaibanno,p4_tgb_cuetaibansi,p4_pane_cuentainternacional,p4_pane_cuentaiban);
-        ValuePropertyAddListenerVisible(p4_tgb_cuetaibansi,p4_tgb_cuetaibanno,p4_pane_cuentaiban,p4_pane_cuentainternacional);
+        ValuePropertyAddListenerVisible(p4_tgb_cuetaibanno, p4_tgb_cuetaibansi, p4_pane_cuentainternacional, p4_pane_cuentaiban);
+        ValuePropertyAddListenerVisible(p4_tgb_cuetaibansi, p4_tgb_cuetaibanno, p4_pane_cuentaiban, p4_pane_cuentainternacional);
         p4_tgb_cuetaibansi.setSelected(true);
 
         p4_cb_pais_banco.valueProperty().addListener(
-            new ChangeListener() {
-            @Override
-            public void changed(ObservableValue observableValue, Object o, Object t1) {
-                String sn = (String) t1;
-                p4_tf_pais_banco.setText(sn);
-                if(sn.equals("US")){
-                    p4_pane_numeroaba.setVisible(true);
-                }else{p4_pane_numeroaba.setVisible(false);}
-            }
-        });
+                new ChangeListener() {
+                    @Override
+                    public void changed(ObservableValue observableValue, Object o, Object t1) {
+                        String sn = (String) t1;
+                        p4_tf_pais_banco.setText(sn);
+                        if (sn.equals("US")) {
+                            p4_pane_numeroaba.setVisible(true);
+                        } else {
+                            p4_pane_numeroaba.setVisible(false);
+                        }
+                    }
+                });
 
         p4_cb_pais_banco.getSelectionModel().selectFirst();
 
         p4_tf_pais_banco.setOnInputMethodTextChanged((e) -> {
-            if(p4_tf_pais_banco.getText().equals("US")){
+            if (p4_tf_pais_banco.getText().equals("US")) {
                 p4_pane_numeroaba.setVisible(true);
-            }else{p4_pane_numeroaba.setVisible(false);}
+            } else {
+                p4_pane_numeroaba.setVisible(false);
+            }
         });
 
     }
 
-    private void ValuePropertyAddListener(ComboBox cbx, TextField txf){
-        cbx.valueProperty().addListener( new ChangeListener() {
+    private void ValuePropertyAddListener(ComboBox cbx, TextField txf) {
+        cbx.valueProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observableValue, Object o, Object t1) {
                 txf.setText((String) t1);
@@ -694,8 +723,8 @@ public class Valida_Envia_DERController implements Initializable {
         });
     }
 
-    private void ValuePropertyAddListener(ComboBox cbx, TextField txf, TextField txf2){
-        cbx.valueProperty().addListener( new ChangeListener() {
+    private void ValuePropertyAddListener(ComboBox cbx, TextField txf, TextField txf2) {
+        cbx.valueProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observableValue, Object o, Object t1) {
                 txf.setText((String) t1);
@@ -704,9 +733,9 @@ public class Valida_Envia_DERController implements Initializable {
         });
     }
 
-    private void TextPropertyAddListener(TextField txf, int largo){
+    private void TextPropertyAddListener(TextField txf, int largo) {
         txf.textProperty().addListener((observable, oldValue, newValue) -> {
-            if(largo>0)if (newValue.length() > largo ) ((StringProperty)observable).setValue(oldValue);
+            if (largo > 0) if (newValue.length() > largo) ((StringProperty) observable).setValue(oldValue);
 
             if (!newValue.matches("\\d*")) {
                 txf.setText(newValue.replaceAll("[^\\d]", ""));
@@ -714,7 +743,7 @@ public class Valida_Envia_DERController implements Initializable {
         });
     }
 
-    private void  ValuePropertyAddListenerVisible(ToggleButton tgbtrue, ToggleButton tgbfalse, Pane pane1,Pane pane2) {
+    private void ValuePropertyAddListenerVisible(ToggleButton tgbtrue, ToggleButton tgbfalse, Pane pane1, Pane pane2) {
 
         tgbtrue.selectedProperty().addListener(((observable, oldValue, newValue) -> {
 
@@ -726,7 +755,6 @@ public class Valida_Envia_DERController implements Initializable {
 
 
     }
-
 
 
 }
