@@ -17,6 +17,8 @@ public class ParametrosModel {
     private Boolean AppDemo;
     private String  FechaHoy;
 
+
+
     public void ParametrosModel() {}
 
     public void ParametrosModel(
@@ -49,10 +51,8 @@ public class ParametrosModel {
         return FechaHoy;
     }
 
-    public void setFechaHoy(String FechaHoy) {
-        this.FechaHoy = FechaHoy;
-    }
-    
+    public void setFechaHoy(String FechaHoy) { this.FechaHoy = FechaHoy; }
+
 
     public Boolean getAppDemo() {
         return AppDemo;
@@ -167,7 +167,7 @@ public class ParametrosModel {
                 "\"QRPassDecoder\" : \""    + QRPassDecoder + "\" ,  " +        
                 "\"QRCODEDEMO\" : \""       + QRCODEDEMO + "\" ,  " +        
                 "\"AppDemo\" : \""          + AppDemo + "\" ,  " +        
-                "\"FechaHoy\" : \""         + FechaHoy + "\" ,  " +        
+                "\"FechaHoy\" : \""         + FechaHoy + "\" ,  " +
                 "\"KIOSKOID\" : \""         + KIOSKOID + "\" ,  " +
                 "\"NumeroPasaporte\" : \""  + NumeroPasaporte + "\" ,  " +
                 "\"TipoDoumento\" : \""     + TipoDoumento + "\" ,  " +

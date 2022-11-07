@@ -180,7 +180,6 @@ public class Valida_Envia_DERController implements Initializable {
         p4_pane_temporal.setVisible(false);
 
         p4_cb_fechaLimiteSalida.setVisible(false);
-
         p4_cb_hora.setVisible(false);
 
         p4_cb_cuetaiban.setVisible(false);
@@ -487,7 +486,6 @@ public class Valida_Envia_DERController implements Initializable {
        refesh();
    }
 
-
     @Autowired
     DatabaseDerUtil databaseDerUtil;
 
@@ -594,22 +592,43 @@ public class Valida_Envia_DERController implements Initializable {
     public DigicModoPago getDERFromUI() {
         DigicModoPago digicModoPago = new DigicModoPago();
 
-        digicModoPago.setClaveBanco(p4_tf_clave_banco.getText());
-        digicModoPago.setClaveControl(p4_tf_clave_control.getText());
-        digicModoPago.setCodigoBic(p4_tf_codigoBic.getText());
-        digicModoPago.setCuentaInternacional("SI");
-        digicModoPago.setCuentaSinIBAN(p4_cb_cuetaiban.getValue() + "");
-        digicModoPago.setDescInstFinanciera(p4_tf_descripcion_banco.getText());
+        if (p4_tgb_cuetaibanno.isSelected()) {
+
+            digicModoPago.setCuentaInternacional("SI");
+            digicModoPago.setCuentaSinIBAN("SI");
+
+            digicModoPago.setClaveBanco(p4_tf_clave_banco.getText());
+            digicModoPago.setClaveControl(p4_tf_clave_control.getText());
+            digicModoPago.setCodigoBic(p4_tf_codigoBic.getText());
+            digicModoPago.setDescInstFinanciera(p4_tf_descripcion_banco.getText());
+            digicModoPago.setNumeroABA(p4_tf_codigo_aba.getText());
+            digicModoPago.setPaisBanco(p4_tf_pais_banco.getText());
+
+        }else{
+
+            digicModoPago.setCuentaInternacional("NO");
+            digicModoPago.setCuentaSinIBAN("NO");
+
+            digicModoPago.setClaveBanco("");
+            digicModoPago.setClaveControl("");
+            digicModoPago.setCodigoBic("");
+            digicModoPago.setDescInstFinanciera("");
+            digicModoPago.setNumeroABA("");
+            digicModoPago.setPaisBanco("");
+
+        }
+
         digicModoPago.setEmail(p4_tf_email.getText());
         digicModoPago.setIdentificadorBillete(p4_tf_identificadorBillete.getText());
         //TODO: validar modo pago en el mantenimiento de validación no sale esa opción.
         digicModoPago.setModoPago("CUENTA");
         digicModoPago.setModoTransporte(p4_tf_modoTransporte.getText());
-        digicModoPago.setNumeroABA(p4_tf_codigo_aba.getText());
-        digicModoPago.setPaisBanco(p4_tf_pais_banco.getText());
+
         digicModoPago.setValorDocumento(valorDocumento);
         digicModoPago.setValorMedioPago(p4_tf_valorMedioPago.getText());
+
         digicModoPago.setUuidProceso(App.UUIDProcess);
+        digicModoPago.setFechaCreacion(now.toString());
 
         digicModoPago.setEstatusUpload(3);
 
@@ -620,24 +639,23 @@ public class Valida_Envia_DERController implements Initializable {
 
         //comboClientes.setItems(FXCollections.observableArrayList(clienteRepository.findAll()));
 
-        p4_cb_email.setItems(FXCollections.observableArrayList(digicRepository.findAllEmail(valorDocumento)));
-        p4_cb_modoTransporte.setItems(FXCollections.observableArrayList(digicRepository.findAllModoTransporte(valorDocumento)));
-        p4_cb_descripcion_banco.setItems(FXCollections.observableArrayList(digicRepository.findAllDescInstFinanciera(valorDocumento)));
-        p4_cb_clave_banco.setItems(FXCollections.observableArrayList(digicRepository.findAllClaveBanco(valorDocumento)));
-        p4_cb_clave_control.setItems(FXCollections.observableArrayList(digicRepository.findAllClaveControl(valorDocumento)));
-        p4_cb_codigoBic.setItems(FXCollections.observableArrayList(digicRepository.findAllCodigoBic(valorDocumento)));
-        p4_cb_valorMedioPago.setItems(FXCollections.observableArrayList(digicRepository.findAllValorMedioPagoNO(valorDocumento)));
-        p4_cb_fechaLimiteSalida.setItems(FXCollections.observableArrayList(digicRepository.findAllFechaLimiteSalida(valorDocumento)));
-        p4_cb_pais_banco.setItems(FXCollections.observableArrayList(digicRepository.findAllPaisBanco(valorDocumento)));
-        p4_cb_identificadorBillete.setItems(FXCollections.observableArrayList(digicRepository.findAllIdentificadorBillete(valorDocumento)));
-        p4_cb_descripcion_banco.setItems(FXCollections.observableArrayList(digicRepository.findAllDescInstFinanciera(valorDocumento)));
-        p4_cb_codigo_aba.setItems(FXCollections.observableArrayList(digicRepository.findAllNumeroAba(valorDocumento)));
-        p4_cb_cuetaiban.setItems(FXCollections.observableArrayList(digicRepository.findAllCuentaSinIban(valorDocumento)));
-        p4_cb_cuenta_bancaria.setItems(FXCollections.observableArrayList(digicRepository.findAllValorMedioPagoSI(valorDocumento)));
+        p4_cb_email.setItems(FXCollections.observableArrayList(digicRepository.findAllEmail(valorDocumento, App.UUIDProcess)));
+        p4_cb_modoTransporte.setItems(FXCollections.observableArrayList(digicRepository.findAllModoTransporte(valorDocumento, App.UUIDProcess)));
+        p4_cb_descripcion_banco.setItems(FXCollections.observableArrayList(digicRepository.findAllDescInstFinanciera(valorDocumento, App.UUIDProcess)));
+        p4_cb_clave_banco.setItems(FXCollections.observableArrayList(digicRepository.findAllClaveBanco(valorDocumento, App.UUIDProcess)));
+        p4_cb_clave_control.setItems(FXCollections.observableArrayList(digicRepository.findAllClaveControl(valorDocumento, App.UUIDProcess)));
+        p4_cb_codigoBic.setItems(FXCollections.observableArrayList(digicRepository.findAllCodigoBic(valorDocumento, App.UUIDProcess)));
+        p4_cb_valorMedioPago.setItems(FXCollections.observableArrayList(digicRepository.findAllValorMedioPagoNO(valorDocumento, App.UUIDProcess)));
+        p4_cb_fechaLimiteSalida.setItems(FXCollections.observableArrayList(digicRepository.findAllFechaLimiteSalida(valorDocumento, App.UUIDProcess)));
+        p4_cb_pais_banco.setItems(FXCollections.observableArrayList(digicRepository.findAllPaisBanco(valorDocumento, App.UUIDProcess)));
+        p4_cb_identificadorBillete.setItems(FXCollections.observableArrayList(digicRepository.findAllIdentificadorBillete(valorDocumento, App.UUIDProcess)));
+        p4_cb_descripcion_banco.setItems(FXCollections.observableArrayList(digicRepository.findAllDescInstFinanciera(valorDocumento, App.UUIDProcess)));
+        p4_cb_codigo_aba.setItems(FXCollections.observableArrayList(digicRepository.findAllNumeroAba(valorDocumento, App.UUIDProcess)));
+        p4_cb_cuetaiban.setItems(FXCollections.observableArrayList(digicRepository.findAllCuentaSinIban(valorDocumento, App.UUIDProcess)));
+        p4_cb_cuenta_bancaria.setItems(FXCollections.observableArrayList(digicRepository.findAllValorMedioPagoSI(valorDocumento, App.UUIDProcess)));
 
         //p4_cb_cuenta_bancaria.setItems(FXCollections.observableArrayList(digicRepository.findGroupByuuidProceso(App.UUIDProcess)));
-
-
+        //p4_cb_cuenta_bancaria.setConverter(new DigicConverter(p4_cb_cuenta_bancaria));
 
         p4_cb_modoTransporteObj.getItems().addAll("AVION", "BARCO");
 
@@ -695,7 +713,7 @@ public class Valida_Envia_DERController implements Initializable {
                     listo--- Actualización de Código del País. con 2 y 3 caracteres máximo.
                     listo--- Clave del banco, longitud 2
                     listo--- Número de cuenta bancaria, obligatorio de longitud máxima 18
-                    listo--- Descripción financiera de la entidad, obligatorio y de longitud máxima 20
+                    listo--- Descripción financiera de la entidad, obligatorio y de longitud máxima 20 alfanumerico.
                     listo--- Swift/BIC, obligatorio y de longitud máxima 11
                     listo--- ABA. Longitud máxima 15.
                     listo--- Las longitudes máximas no están controladas.
@@ -757,7 +775,8 @@ public class Valida_Envia_DERController implements Initializable {
         TextPropertyAddListener(p4_tf_clave_banco, 2);
 
         TextPropertyAddListener(p4_tf_cuenta_bancaria, 18);
-        TextPropertyAddListener(p4_tf_descripcion_banco, 20);
+        TextPropertyAddListener(p4_tf_descripcion_banco, 20, true);
+        TextPropertyAddListener(p4_tf_clave_control, 20, true);
         TextPropertyAddListener(p4_tf_codigoBic, 11);
 
         ValuePropertyAddListener(p4_cb_email, p4_tf_email);
@@ -882,6 +901,18 @@ public class Valida_Envia_DERController implements Initializable {
             if (!newValue.matches("\\d*")) {
                 txf.setText(newValue.replaceAll("[^\\d]", ""));
             }
+        });
+    }
+
+    private void TextPropertyAddListener(TextField txf, int largo,Boolean alfanumerico) {
+        txf.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (largo > 0) if (newValue.length() > largo) ((StringProperty) observable).setValue(oldValue);
+
+            if (!alfanumerico){
+                if (!newValue.matches("\\d*")) {
+                    txf.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+           }
         });
     }
 

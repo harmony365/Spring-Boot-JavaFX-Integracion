@@ -4,7 +4,10 @@ import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.App;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Digic;
 import org.json.JSONObject;
 
+import java.time.ZonedDateTime;
+
 public class JsonUtils {
+    private static ZonedDateTime now = ZonedDateTime.now();
 
     public static Digic convertJsonToDigic(JSONObject myJson) {
             String a;
@@ -108,6 +111,7 @@ public class JsonUtils {
             digic.setModoTransporte((String) myJson.get("modoTransporte"));
             digic.setIdentificadorBillete((String) myJson.get("identificadorBillete"));
             digic.setUuidProceso(App.UUIDProcess);
+            digic.setFechaCreacion(now.toString());
             digic.setEstatus_upload(3);
 
             //digic.setClaveUuid((String) App.UUIDProcess);
