@@ -94,6 +94,8 @@ public class Modelo_403Controller implements Initializable {
 
     @FXML
     private JFXDialog p2_Dialog_Procesando;
+
+
     @FXML private Button p2_btn_aceptar,  p2_btn_qr, p2_btn_salir, p2_btn_demo, p2_btn_wsdl, p2_btn_add_403;
 
     @FXML private Label p2_lb_justificante, p2_lb_datos_establecimiento,  p2_lb_nif,  p2_lb_razon_social,
@@ -112,7 +114,7 @@ public class Modelo_403Controller implements Initializable {
     @FXML private Rectangle p2_warning;
 
     @FXML private AnchorPane p2_an_warning,p2_an_info_item;;
-    
+
     @FXML public ImageView p2_img_barcode;
 
     @FXML public TableView<Justificante> p2_tv_justificantes = new TableView<Justificante>();
@@ -168,6 +170,7 @@ public class Modelo_403Controller implements Initializable {
 
     @FXML
     private StackPane root;
+    //@FXML private StackPane Spinner;
 
     @FXML
     @Override
@@ -179,7 +182,8 @@ public class Modelo_403Controller implements Initializable {
         p2_Dialog_Procesando.setOverlayClose(false);
         p2_Dialog_Procesando.setDialogContainer(root);
 
-        bundle = resources;
+
+      bundle = resources;
 
         p2_tf_clave_banco.getProperties().put(VK_TYPE, VK_TYPE_NUMERIC);
         p2_tf_codigo_aba.getProperties().put(VK_TYPE, VK_TYPE_NUMERIC);
@@ -543,6 +547,7 @@ public class Modelo_403Controller implements Initializable {
     @FXML private void QRcodeRead(String qr_text, Integer index) throws IOException {
 
         p2_Dialog_Procesando.show();
+
         ClearPlantilla();
         p2_img_barcode.requestFocus();
   
@@ -587,6 +592,7 @@ public class Modelo_403Controller implements Initializable {
                 p2_tx_info_item.setText(bundle.getString( "p2_tx_info_fechalimite"));
                 //p2_an_info_item.setVisible(true);
                  p2_Dialog_Procesando.close();
+
                  LoadDialog("", bundle.getString( "p2_tx_info_fechalimite"));
 
 
@@ -597,6 +603,7 @@ public class Modelo_403Controller implements Initializable {
                 p2_tx_info_item.setText(bundle.getString( "p2_tx_info_item2"));
                 //p2_an_info_item.setVisible(true);
                  p2_Dialog_Procesando.close();
+
                  LoadDialog("", bundle.getString( "p2_tx_info_item2"));
 
 
@@ -607,6 +614,7 @@ public class Modelo_403Controller implements Initializable {
                 p2_tx_info_item.setText(bundle.getString( "p2_tx_info_item"));                
                 //p2_an_info_item.setVisible(true);
                  p2_Dialog_Procesando.close();
+
                  LoadDialog("", bundle.getString( "p2_tx_info_item"));
 
 
@@ -616,11 +624,13 @@ public class Modelo_403Controller implements Initializable {
                 InsertItem(myJson);
                 RefreshTV();
                 p2_Dialog_Procesando.close();
+
             }            
 
         } catch (Exception e) {
 
             p2_Dialog_Procesando.close();
+
             e.printStackTrace();
 
             if(App.parametrosModel.getAppDemo()) System.out.printf("\nCausa: %s \nMensaje: %s\n Class: %s\n Localized Mensaje: %s\n" ,e.getCause(),e.getMessage(),e.getClass(),e.getLocalizedMessage());

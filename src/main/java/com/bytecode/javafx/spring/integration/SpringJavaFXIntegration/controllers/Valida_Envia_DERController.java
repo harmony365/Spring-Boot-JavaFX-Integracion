@@ -4,16 +4,21 @@ import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.App;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Cliente;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Digic;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.DigicModoPago;
-import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.ClienteRepository;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.DigicModoPagoRepository;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.DigicRepository;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.services.DatabaseDerUtil;
+import com.opencsv.CSVReader;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -21,6 +26,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -37,7 +45,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.io.Reader;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
@@ -47,6 +58,7 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -63,8 +75,8 @@ public class Valida_Envia_DERController implements Initializable {
     private ZonedDateTime now = ZonedDateTime.now();
     private ZonedDateTime fechaHoraLimite = now.plusHours(3).plusMinutes(30);
 
-    @Autowired
-    private ClienteRepository clienteRepository;
+   //@Autowired
+   //private ClienteRepository clienteRepository;
 
     @Autowired
     private DigicModoPagoRepository digicModoPagoRepository;
@@ -105,7 +117,7 @@ public class Valida_Envia_DERController implements Initializable {
             p2_lb_datos_transporte, p2_lb_datos_viajeros, p2_lb_descripcion_banco, p2_lb_fechaLimiteSalida,
             p2_lb_identificadorBillete, p2_lb_medios_de_pago, p2_lb_modoTransporte, p2_lb_pais_banco,
             p2_lb_valorMedioPago, p2_lb_fecha_salida,
-            p4_lb_mensaje, p4_ld_wsdl_raspuesta, p4_ld_wsdl_TimeStamp;
+            p4_lb_mensaje, p4_ld_wsdl_raspuesta, p4_ld_wsdl_TimeStamp, p4_lb_pais_banco;
     @FXML
     private DatePicker p4_dtp_fechaLimiteSalida;
 
@@ -123,7 +135,7 @@ public class Valida_Envia_DERController implements Initializable {
     private Button p2_btn_aceptar, p2_btn_salir;
 
     @FXML
-    private Pane p4_pane_numeroaba, p4_pane_cuentaiban, p4_pane_cuentainternacional;
+    private Pane p4_pane_numeroaba, p4_pane_cuentaiban, p4_pane_cuentainternacional, p4_pane_temporal;
 
     public String valorDocumento;
 
@@ -164,6 +176,9 @@ public class Valida_Envia_DERController implements Initializable {
         WsdlResponse.setVisible(false);
         WsdlTimeStamp.setVisible(false);
         p4_pane_numeroaba.setVisible(false);
+
+        p4_pane_temporal.setVisible(false);
+
         p4_cb_fechaLimiteSalida.setVisible(false);
 
         p4_cb_hora.setVisible(false);
@@ -330,6 +345,7 @@ public class Valida_Envia_DERController implements Initializable {
         ProcesarWSDL procesarWSDL = new ProcesarWSDL();
         procesarWSDL.valor = false;
 
+        /*
         // Given start Date
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -339,8 +355,8 @@ public class Valida_Envia_DERController implements Initializable {
         // Given end Date
         String end_date = p4_dtp_fechaLimiteSalida.getValue() + " " + p4_tf_fechaLimiteSalidaHora.getText() + ":" + p4_tf_fechaLimiteSalidaMinuto.getText() + ":00";
 
-        //TODO: validar que está verificando que la fecha y hora de salida no superalas 3 horas ni es menor a o horas-
 
+        //TODO: validar que está verificando que la fecha y hora de salida no superalas 3 horas ni es menor a o horas-
         if (p4_tf_fechaLimiteSalidaHora.getLength() > 0 && p4_tf_fechaLimiteSalidaMinuto.getLength() > 0) {
             int resultado = validaFechaHora(start_date, end_date, "H");
             if (resultado > 3 || resultado < 0) {
@@ -358,6 +374,7 @@ public class Valida_Envia_DERController implements Initializable {
             procesarWSDL.valor = true;
             System.out.println("Fecha de salida no contiene horas reglamentarias");
         }
+        */
 
         VerificaEmpty(p4_tf_email, procesarWSDL);
         VerificaEmpty(p4_tf_identificadorBillete, procesarWSDL);
@@ -367,17 +384,16 @@ public class Valida_Envia_DERController implements Initializable {
 
         if (p4_tgb_cuetaibanno.isSelected()) {
 
-            VerificaEmpty(p4_tf_clave_banco, procesarWSDL);
-            VerificaEmpty(p4_tf_clave_control, procesarWSDL);
+            // TODO: por ahora no se verifica
+            //  VerificaEmpty(p4_tf_clave_control, procesarWSDL);
+            //
+            if (!p4_tf_pais_banco.getText().equals("US")) VerificaEmpty(p4_tf_clave_banco, procesarWSDL);
             VerificaEmpty(p4_tf_codigoBic, procesarWSDL);
             VerificaEmpty(p4_tf_pais_banco, procesarWSDL);
             VerificaEmpty(p4_tf_descripcion_banco, procesarWSDL);
             VerificaEmpty(p4_tf_cuenta_bancaria, procesarWSDL);
-
             VerificaLetra(p4_tf_pais_banco, procesarWSDL);
-
             VerificaEmpty(p4_tf_codigo_aba, procesarWSDL);
-
             VerificaLargo(p4_tf_codigo_aba, 9, procesarWSDL);
 
             try {
@@ -417,8 +433,7 @@ public class Valida_Envia_DERController implements Initializable {
             procesarWSDL.valor = true;
         } else {
             campo.setStyle(successStyle);
-        }
-        ;
+        };
     }
 
     private void VerificaEmail(TextField campo, ProcesarWSDL procesarWSDL) {
@@ -427,8 +442,7 @@ public class Valida_Envia_DERController implements Initializable {
             procesarWSDL.valor = true;
         } else {
             campo.setStyle(successStyle);
-        }
-        ;
+        };
     }
 
     private void VerificaLetra(TextField campo, ProcesarWSDL procesarWSDL) {
@@ -437,8 +451,7 @@ public class Valida_Envia_DERController implements Initializable {
             procesarWSDL.valor = true;
         } else {
             campo.setStyle(successStyle);
-        }
-        ;
+        };
     }
 
     private void VerificaLargo(TextField campo, int largo, ProcesarWSDL procesarWSDL) {
@@ -447,8 +460,7 @@ public class Valida_Envia_DERController implements Initializable {
             procesarWSDL.valor = true;
         } else {
             campo.setStyle(successStyle);
-        }
-        ;
+        };
     }
 
     private void PlayEmpty(TextField tf) {
@@ -469,15 +481,31 @@ public class Valida_Envia_DERController implements Initializable {
         }
     }
 
-    @FXML
-    public void onSave() {
-        clienteRepository.save(getFromUI());
-        refesh();
-    }
+   @FXML
+   public void onSave() {
+       //clienteRepository.save(getFromUI());
+       refesh();
+   }
 
 
     @Autowired
     DatabaseDerUtil databaseDerUtil;
+
+    @FXML
+    public void PantallaDialogo(ActionEvent event) throws IOException {
+
+
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(
+                Objects.requireNonNull(getClass().getResource("/views/PantallaDialogo.fxml")));
+        stage.setScene(new Scene(root));
+        //stage.setTitle("My modal window");
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner( ((Node)event.getSource()).getScene().getWindow() );
+        stage.show();
+
+    }
 
     @FXML
     public void onWsdl() {
@@ -549,19 +577,19 @@ public class Valida_Envia_DERController implements Initializable {
 
     }
 
-    public void setFromUI(Cliente cliente) {
-        txtApellido.setText(cliente.getApellido());
-        txtNombre.setText(cliente.getNombre());
-        txtTelefono.setText(cliente.getTelefono());
-    }
+   //public void setFromUI(Cliente cliente) {
+   //    txtApellido.setText(cliente.getApellido());
+   //    txtNombre.setText(cliente.getNombre());
+   //    txtTelefono.setText(cliente.getTelefono());
+   //}
 
-    public Cliente getFromUI() {
-        Cliente cliente = new Cliente();
-        cliente.setApellido(txtApellido.getText());
-        cliente.setNombre(txtNombre.getText());
-        cliente.setTelefono(txtTelefono.getText());
-        return cliente;
-    }
+   //public Cliente getFromUI() {
+   //    Cliente cliente = new Cliente();
+   //    cliente.setApellido(txtApellido.getText());
+   //    cliente.setNombre(txtNombre.getText());
+   //    cliente.setTelefono(txtTelefono.getText());
+   //    return cliente;
+   //}
 
     public DigicModoPago getDERFromUI() {
         DigicModoPago digicModoPago = new DigicModoPago();
@@ -590,7 +618,7 @@ public class Valida_Envia_DERController implements Initializable {
 
     public void refesh() {
 
-        comboClientes.setItems(FXCollections.observableArrayList(clienteRepository.findAll()));
+        //comboClientes.setItems(FXCollections.observableArrayList(clienteRepository.findAll()));
 
         p4_cb_email.setItems(FXCollections.observableArrayList(digicRepository.findAllEmail(valorDocumento)));
         p4_cb_modoTransporte.setItems(FXCollections.observableArrayList(digicRepository.findAllModoTransporte(valorDocumento)));
@@ -603,9 +631,13 @@ public class Valida_Envia_DERController implements Initializable {
         p4_cb_pais_banco.setItems(FXCollections.observableArrayList(digicRepository.findAllPaisBanco(valorDocumento)));
         p4_cb_identificadorBillete.setItems(FXCollections.observableArrayList(digicRepository.findAllIdentificadorBillete(valorDocumento)));
         p4_cb_descripcion_banco.setItems(FXCollections.observableArrayList(digicRepository.findAllDescInstFinanciera(valorDocumento)));
-        p4_cb_cuenta_bancaria.setItems(FXCollections.observableArrayList(digicRepository.findAllValorMedioPagoSI(valorDocumento)));
         p4_cb_codigo_aba.setItems(FXCollections.observableArrayList(digicRepository.findAllNumeroAba(valorDocumento)));
         p4_cb_cuetaiban.setItems(FXCollections.observableArrayList(digicRepository.findAllCuentaSinIban(valorDocumento)));
+        p4_cb_cuenta_bancaria.setItems(FXCollections.observableArrayList(digicRepository.findAllValorMedioPagoSI(valorDocumento)));
+
+        //p4_cb_cuenta_bancaria.setItems(FXCollections.observableArrayList(digicRepository.findGroupByuuidProceso(App.UUIDProcess)));
+
+
 
         p4_cb_modoTransporteObj.getItems().addAll("AVION", "BARCO");
 
@@ -629,43 +661,104 @@ public class Valida_Envia_DERController implements Initializable {
     private void iniFormDigicModoPago() {
 
         /*
-            TODO:
-             para el DER 4032400003615 6958715644. el monto es un Integer 200 y no un double 200.00, y el pais del banco no es de 2 caracteres sino 3 MAU
-             para el DER 4032400003606 6958715644. y el pais del banco no es de 2 caracteres sino 3 MAU
-             Para el DER 4032400003563 42476822P arroja el error PR02
-             Para el DER 4032400004220 42476822P el modo de transporte de salida es BARCO en el documento impreso y no aparece en la información del QR
-             Para el DER 4032400003590 41780963Z el monto es un Integer 0 y no un double 0.00  arroja el error  ER
-             Para el DER 4032400004674 41780963Z
-             Para el DER 4032400003581 41780963Z
-
-
-             todo:
-              Revisar cuando se selecciona los der en el panel coloca CUENTA en el campo de modo de transporte
-              cuando se está en la ventana de envío de los DER y nos retrocedemos, la variable del valor documento se pierde.
-
              TODO:
               CREAR la notificación del procesando en los procesos que quedan en espera.
 
+             TODO:
+                listo--- Parece que se hace un lío con las cuentas, las validaciones deben ser las siguientes:
+                listo--- Validaciones de la cuenta sin IBAN:
+                listo--- Cuenta con IBAN solo debe informar el IBAN.
+                listo--- IBAN, se valida tanto para los nacionales como extranjeros.
+                listo--- Cuenta sin IBAN se necesitan los siguiente datos:
+                listo--- Código del País. Obligatorio 3 caracteres máximo. Se valida que sea un país válido existente en tablas de países.
+                listo--- Clave del banco, Obligatorio (menos para US si añade el ABA)
+                listo--- Clave de control (Opcional según país) que países, de momento es opcional
+                listo--- Número de cuenta bancaria, obligatorio
+                listo--- Descripción financiera de la entidad, obligatorio
+                listo--- Swift/BIC, obligatorio
+                listo--- ABA Es obligatorio . Solo para el país Estados Unidos.
+                listo--- US la clave del banco es opcional.
+                .
+                listo--- En la elección de la cuenta en la versión actual no está muy bien.
+                si el país es Mauritania que el código es MR, siempre lo pone con MA, y rellena el combo de países con opciones que iban en otros DER
+                y añade MAU, cuando en los justificante escaneados no hay ninguno que tenga MAU ni MA.
+                listo--- Con la cuenta sigue haciendo algo raro, porque mezcla la cuenta con iban con la cuenta sin iban, en el campo valorMedioPago,
+                listo--- .. además con los dos botones que hay de seleccionar y el combo de SI/NO creo que se hace un lío a la hora de rellenar los datos de cuenta, aunque rellene los datos de cuenta con iban, además envía el resto de campos de la cuenta sin IBAN.
+                listo--- Quitar el control de la fecha de salida y la hora, la introducen pero no se hace nada, es decir, que no se van a validar las 3 horas de antelación, la fecha de salida y la hora de salida son obligatorios pero no se hace nada con esos datos.
+                listo--- ... Hay casos en los que cuando no meto la hora de salida, me da el error que es obligatorio y se ponen los campos en rojo pero ya no acepta ningún valor, y no me deja continuar, aunque los rellene bien me sigue dando error en rojo en esos datos de la hora.
+                listo--- Estos errores te los comento para tenerlos en cuenta ya que no creo que tengan nada que ver con las pantallas y para que se intenten corregir en la nueva versión.
+                listo--- ... En cuanto a la nueva versión con las pantallas, me ha pasado lo mismo tanto con las cuentas como con la hora de salida.
+                .
+                .
+                Longitudes:
+                    listo--- Código del País. Obligatorio 3 caracteres máximo.
+                    listo--- Actualización de Código del País. con 2 y 3 caracteres máximo.
+                    listo--- Clave del banco, longitud 2
+                    listo--- Número de cuenta bancaria, obligatorio de longitud máxima 18
+                    listo--- Descripción financiera de la entidad, obligatorio y de longitud máxima 20
+                    listo--- Swift/BIC, obligatorio y de longitud máxima 11
+                    listo--- ABA. Longitud máxima 15.
+                    listo--- Las longitudes máximas no están controladas.
+
+            TODO:
+             listo--- para el DER 4032400003615 6958715644. el monto es un Integer 200 y no un double 200.00, y el pais del banco no es de 2 caracteres sino 3 MAU
+             listo--- para el DER 4032400003606 6958715644. y el pais del banco no es de 2 caracteres sino 3 MAU
+             listo--- Para el DER 4032400003563 42476822P arroja el error PR02
+             listo--- Para el DER 4032400004220 42476822P el modo de transporte de salida es BARCO en el documento impreso y no aparece en la información del QR
+             listo--- Para el DER 4032400003590 41780963Z el monto es un Integer 0 y no un double 0.00  arroja el error  ER
+             listo--- Para el DER 4032400004674 41780963Z
+             listo--- Para el DER 4032400003581 41780963Z
+
+
+             todo:
+              listo--- Revisar cuando se selecciona los der en el panel coloca CUENTA en el campo de modo de transporte
+              listo--- cuando se está en la ventana de envío de los DER y nos retrocedemos, la variable del valor documento se pierde.
+
+
+
+
          */
+
         p4_tf_pais_banco.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue.length() > 3) ((StringProperty) observable).setValue(oldValue);
+            if (newValue.length() > 3) {
+                ((StringProperty) observable).setValue(oldValue.toUpperCase());
+            }else {
 
-            if (!newValue.matches("\\sa-zA-Z*")) {
-                p4_tf_pais_banco.setText(newValue.replaceAll("[^\\sa-zA-Z]", ""));
-            }
-            if (newValue.equals("US")) {
-                p4_pane_numeroaba.setVisible(true);
-            } else {
-                p4_pane_numeroaba.setVisible(false);
+                if (!newValue.matches("\\s.*[A-Za-z].*")) {
+                    ((StringProperty) observable).setValue(newValue.toUpperCase().replaceAll("[^\\sa-zA-Z]", "").trim());
+                    //p4_tf_pais_banco.setText(newValue.replaceAll("[^\\sa-zA-Z]", ""));
+                }
+
+                if (newValue.toUpperCase().trim().equals("US")) {
+                    p4_pane_numeroaba.setVisible(true);
+                } else {
+                    p4_pane_numeroaba.setVisible(false);
+                }
+
+                //((StringProperty) observable).setValue(newValue.toUpperCase());
+                //p4_tf_pais_banco.setText(newValue.toUpperCase());
+                //p4_lb_pais_banco.setText(SeleccionarPais(newValue.toUpperCase()));
+
+                try {
+                    p4_lb_pais_banco.setText(SeleccionarPaisV2(newValue.toUpperCase()));
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+
             }
 
-            p4_tf_pais_banco.setText(newValue.toUpperCase());
         });
 
+        //TextPropertyAddListener(p4_tf_pais_banco, 3);
         TextPropertyAddListener(p4_tf_codigoBic, 0);
-        TextPropertyAddListener(p4_tf_codigo_aba, 9);
+        TextPropertyAddListener(p4_tf_codigo_aba, 15);
         TextPropertyAddListener(p4_tf_fechaLimiteSalidaMinuto, 2);
         TextPropertyAddListener(p4_tf_fechaLimiteSalidaHora, 2);
+        TextPropertyAddListener(p4_tf_clave_banco, 2);
+
+        TextPropertyAddListener(p4_tf_cuenta_bancaria, 18);
+        TextPropertyAddListener(p4_tf_descripcion_banco, 20);
+        TextPropertyAddListener(p4_tf_codigoBic, 11);
 
         ValuePropertyAddListener(p4_cb_email, p4_tf_email);
         ValuePropertyAddListener(p4_cb_clave_banco, p4_tf_clave_banco);
@@ -681,9 +774,6 @@ public class Valida_Envia_DERController implements Initializable {
         ValuePropertyAddListener(p4_cb_cuenta_bancaria, p4_tf_cuenta_bancaria, p4_tf_valorMedioPago);
         ValuePropertyAddListener(p4_cb_valorMedioPago, p4_tf_valorMedioPago, p4_tf_cuenta_bancaria);
 
-        // TODO --> Desarrollar funcionabilidad de verificación de la fecha de salida
-        //p4_cb_fechaLimiteSalida.setOnAction(e -> p4_dtp_fechaLimiteSalida.setValue(LocalDate.parse(p4_cb_fechaLimiteSalida.getValue()+"")));
-
         ValuePropertyAddListenerVisible(p4_tgb_cuetaibanno, p4_tgb_cuetaibansi, p4_pane_cuentainternacional, p4_pane_cuentaiban);
         ValuePropertyAddListenerVisible(p4_tgb_cuetaibansi, p4_tgb_cuetaibanno, p4_pane_cuentaiban, p4_pane_cuentainternacional);
         p4_tgb_cuetaibansi.setSelected(true);
@@ -694,6 +784,11 @@ public class Valida_Envia_DERController implements Initializable {
                     public void changed(ObservableValue observableValue, Object o, Object t1) {
                         String sn = (String) t1;
                         p4_tf_pais_banco.setText(sn);
+                        try {
+                            p4_lb_pais_banco.setText(SeleccionarPaisV2(sn));
+                        } catch (Exception e) {
+                            throw new RuntimeException(e);
+                        }
                         if (sn.equals("US")) {
                             p4_pane_numeroaba.setVisible(true);
                         } else {
@@ -709,6 +804,11 @@ public class Valida_Envia_DERController implements Initializable {
                 p4_pane_numeroaba.setVisible(true);
             } else {
                 p4_pane_numeroaba.setVisible(false);
+            }
+            try {
+                p4_lb_pais_banco.setText(SeleccionarPaisV2(p4_tf_pais_banco.getText()));
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
             }
         });
 
@@ -729,9 +829,51 @@ public class Valida_Envia_DERController implements Initializable {
             public void changed(ObservableValue observableValue, Object o, Object t1) {
                 txf.setText((String) t1);
                 //txf2.setText((String) t1);
+
             }
         });
     }
+
+    @FXML
+    public void comboboxEvents(ActionEvent e){
+
+        Object evt = e.getSource();
+
+        if(evt.equals(p4_cb_cuenta_bancaria)){
+            /*
+            ObservableList<Digic> list = p4_cb_cuenta_bancaria.getItems();
+            String show="";
+            for (Digic digic: list) {
+                show = show + (String) digic.getClaveBanco() + "\n";
+                show = show + (String) digic.getClaveControl() + "\n";
+                show = show + (String) digic.getDescInstFinanciera() + "\n";
+                show = show + (String) digic.getCodigoBic() + "\n";
+                show = show + (String) digic.getPaisBanco() + "\n";
+                show = show + (String) digic.getValorMedioPago() + "\n";
+            }
+            */
+            /*
+            for (int i = 0; i < list.size(); i++) {
+
+                 "    d.paisBanco," +
+            "    d.claveBanco," +
+            "    d.claveControl," +
+            "    d.codigoBic," +
+            "    d.cuentaInternacional," +
+            "    d.cuentaSinIBAN," +
+            "    d.descInstFinanciera," +
+            "    d.valorMedioPago from digic d" +
+
+                show = show + list.get(i) + "\n";
+            }
+            System.out.println(show);
+
+            System.out.println(p4_cb_cuenta_bancaria.getSelectionModel().getSelectedItem().toString());
+            */
+
+        }
+    }
+
 
     private void TextPropertyAddListener(TextField txf, int largo) {
         txf.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -756,5 +898,30 @@ public class Valida_Envia_DERController implements Initializable {
 
     }
 
+   // private static final String SAMPLE_CSV_FILE_PATH = "ISO-Codes.csv";
 
+    private String SeleccionarPaisV2(String index)  throws Exception {
+
+        String SAMPLE_CSV_FILE_PATH = "ISO-Codes.csv";
+
+        try (
+                Reader reader = Files.newBufferedReader(Paths.get(SAMPLE_CSV_FILE_PATH));
+                CSVReader csvReader = new CSVReader(reader);
+        ) {
+            // Reading Records One by One in a String array
+            String[] nextRecord;
+            while ((nextRecord = csvReader.readNext()) != null) {
+
+               //System.out.println("English-Short-Name : " + nextRecord[0]);
+               //System.out.println("Alpha-2-code : " + nextRecord[1]);
+               //System.out.println("Alpha-3-code : " + nextRecord[2]);
+               //System.out.println("Numeric-code : " + nextRecord[3]);
+               //System.out.println("Independent : " + nextRecord[4]);
+               //System.out.println("==========================");
+
+                if (nextRecord[1].equals(index) || nextRecord[2].equals(index)) return nextRecord[0].toUpperCase();
+            }
+        }
+        return "";
+    }
 }

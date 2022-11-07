@@ -2,21 +2,32 @@ package com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.utiles;
 
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Digic;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.DigicRepository;
-import javafx.fxml.Initializable;
+import javafx.application.Application;
+import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.net.URL;
 import java.util.List;
-import java.util.ResourceBundle;
 
 @SpringBootApplication
-public class proofSpringData implements Initializable {
+public class proofSpringData extends Application {
 
     @Autowired
     public DigicRepository digicRepository;
 
+    @Override
+    public void init(){
+
+    }
+
     public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage stage) throws Exception {
+        //DigicUpdatStatus("44303145Q");
+        DigicAllByuuiProceso("9cf31f0d-5e07-4281-81be-4b954ca16e17");
 
     }
 
@@ -39,8 +50,26 @@ public class proofSpringData implements Initializable {
 
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        DigicUpdatStatus("44303145Q");
+
+    public void DigicAllByuuiProceso(String uuidProceso) {
+        try{
+
+            List<Digic> digicLis = digicRepository.findByuuidProceso(uuidProceso);
+
+
+            if(!digicLis.isEmpty()){
+
+                for (Digic digic: digicLis) {
+                    //digic.setEstatus_upload(2);
+                }
+                //digicRepository.saveAll(digicLis);
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
+
+
 }

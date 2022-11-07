@@ -1,5 +1,7 @@
 package com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.utiles;
 
+import javafx.application.Application;
+import javafx.stage.Stage;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.text.DateFormat;
@@ -9,13 +11,23 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 @SpringBootApplication
-public class HotProof {
+public class HotProof extends Application {
 
     public static LocalDate date = LocalDate.now();
     //public static Date date2 = new Date.
 
-    public static void main(String[] args) {
 
+    @Override
+    public void init(){
+
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage stage) throws Exception {
        // data1();
       //diasEntreDosFechas(date, new Date("2022-10-18 23:30"));
       //diasEntreDosFechas2(date, new Date("2022-10-18 23:30"));

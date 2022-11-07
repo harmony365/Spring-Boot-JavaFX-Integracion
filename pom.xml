@@ -196,7 +196,16 @@
 			</dependency>
 		<!--  FIN DE LIBRERIA    -->
 
-    </dependencies>
+		<!-- A simple library for reading and writing CSV in Java  -->
+		<dependency>
+			<groupId>com.opencsv</groupId>
+			<artifactId>opencsv</artifactId>
+			<version>5.7.1</version>
+		</dependency>
+		<!--  FIN DE LIBRERIA    -->
+
+
+	</dependencies>
 
 	<build>
 		<plugins>

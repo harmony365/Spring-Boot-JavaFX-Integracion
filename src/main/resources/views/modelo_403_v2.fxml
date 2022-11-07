@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
-<StackPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1250.0" prefWidth="2189.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.controllers.Modelo_403Controller">
+<StackPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1250.0" prefWidth="2189.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.controllers.Modelo_403Controller">
    <children>
       <AnchorPane prefHeight="1100.0" prefWidth="2398.0" StackPane.alignment="CENTER">
       <children>
@@ -456,6 +456,7 @@
             </JFXDialogLayout>
          </children>
       </JFXDialog>
+
 
 
    </children>
