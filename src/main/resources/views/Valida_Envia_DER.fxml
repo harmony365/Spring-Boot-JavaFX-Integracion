@@ -187,12 +187,12 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Label fx:id="p2_lb_clave_banco" layoutX="24.0" layoutY="196.0" prefHeight="20.0" prefWidth="172.0" text="%p2_lb_clave_banco">
+            <Label fx:id="p2_lb_clave_banco" layoutX="24.0" layoutY="196.0" prefHeight="20.0" prefWidth="196.0" text="%p2_lb_clave_banco">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="p4_tf_clave_banco" layoutX="24.0" layoutY="220.0" prefHeight="30.0" prefWidth="69.0">
+            <TextField fx:id="p4_tf_clave_banco" layoutX="24.0" layoutY="220.0" prefHeight="30.0" prefWidth="196.0">
                <font>
                   <Font size="14.0" />
                </font>
@@ -281,23 +281,23 @@
             <ComboBox fx:id="p4_cb_hora" layoutX="468.0" layoutY="28.0" prefHeight="25.0" prefWidth="57.0" />
          </children>
       </Pane>
-      <Label fx:id="p2_lb_fecha_salida" layoutX="846.0" layoutY="225.0" prefHeight="25.0" prefWidth="179.0" text="%p2_lb_fecha_salida">
+      <Label fx:id="p2_lb_fecha_salida" layoutX="996.0" layoutY="397.0" prefHeight="25.0" prefWidth="179.0" text="%p2_lb_fecha_salida">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="p2_lb_fechaLimiteSalidaHora" layoutX="1047.0" layoutY="225.0" text="%p2_lb_fecha_salida_hora">
+      <Label fx:id="p2_lb_fechaLimiteSalidaHora" layoutX="1197.0" layoutY="397.0" text="%p2_lb_fecha_salida_hora">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="p4_tf_fechaLimiteSalidaHora" alignment="CENTER" layoutX="1047.0" layoutY="257.0" prefHeight="30.0" prefWidth="47.0" promptText="HH">
+      <TextField fx:id="p4_tf_fechaLimiteSalidaHora" alignment="CENTER" layoutX="1197.0" layoutY="429.0" prefHeight="30.0" prefWidth="47.0" promptText="HH">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <DatePicker fx:id="p4_dtp_fechaLimiteSalida" editable="false" layoutX="846.0" layoutY="256.0" prefHeight="30.0" prefWidth="179.0" promptText="YYYY/MM/DD" />
-      <TextField fx:id="p4_tf_fechaLimiteSalidaMinuto" alignment="CENTER" layoutX="1102.0" layoutY="257.0" prefHeight="30.0" prefWidth="47.0" promptText="MM">
+      <DatePicker fx:id="p4_dtp_fechaLimiteSalida" editable="false" layoutX="996.0" layoutY="428.0" prefHeight="30.0" prefWidth="179.0" promptText="YYYY/MM/DD" />
+      <TextField fx:id="p4_tf_fechaLimiteSalidaMinuto" alignment="CENTER" layoutX="1252.0" layoutY="429.0" prefHeight="30.0" prefWidth="47.0" promptText="MM">
          <font>
             <Font size="14.0" />
          </font>

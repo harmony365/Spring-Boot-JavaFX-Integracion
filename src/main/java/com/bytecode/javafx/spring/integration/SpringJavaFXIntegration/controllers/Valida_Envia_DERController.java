@@ -383,14 +383,17 @@ public class Valida_Envia_DERController implements Initializable {
             // TODO: por ahora no se verifica
             //  VerificaEmpty(p4_tf_clave_control, procesarWSDL);
             //
-            if (!p4_tf_pais_banco.getText().equals("US")) VerificaEmpty(p4_tf_clave_banco, procesarWSDL);
             VerificaEmpty(p4_tf_codigoBic, procesarWSDL);
             VerificaEmpty(p4_tf_pais_banco, procesarWSDL);
             VerificaEmpty(p4_tf_descripcion_banco, procesarWSDL);
             VerificaEmpty(p4_tf_cuenta_bancaria, procesarWSDL);
             VerificaLetra(p4_tf_pais_banco, procesarWSDL);
-            VerificaEmpty(p4_tf_codigo_aba, procesarWSDL);
-            VerificaLargo(p4_tf_codigo_aba, 9, procesarWSDL);
+
+            if (!p4_tf_pais_banco.getText().equals("US")) VerificaEmpty(p4_tf_clave_banco, procesarWSDL);
+            if (p4_tf_pais_banco.getText().equals("US")) {
+                VerificaEmpty(p4_tf_codigo_aba, procesarWSDL);
+                VerificaLargo(p4_tf_codigo_aba, 9, procesarWSDL);
+            }
 
             try {
                 // IbanUtil.validate(p4_tf_cuenta_bancaria.getText());
@@ -600,6 +603,7 @@ public class Valida_Envia_DERController implements Initializable {
             digicModoPago.setDescInstFinanciera(p4_tf_descripcion_banco.getText());
             digicModoPago.setNumeroABA(p4_tf_codigo_aba.getText());
             digicModoPago.setPaisBanco(p4_tf_pais_banco.getText());
+            digicModoPago.setValorMedioPago(p4_tf_cuenta_bancaria.getText());
 
         }else{
 
@@ -613,6 +617,8 @@ public class Valida_Envia_DERController implements Initializable {
             digicModoPago.setNumeroABA("");
             digicModoPago.setPaisBanco("");
 
+            digicModoPago.setValorMedioPago(p4_tf_valorMedioPago.getText());
+
         }
 
         digicModoPago.setEmail(p4_tf_email.getText());
@@ -622,7 +628,6 @@ public class Valida_Envia_DERController implements Initializable {
         digicModoPago.setModoTransporte(p4_tf_modoTransporte.getText());
 
         digicModoPago.setValorDocumento(valorDocumento);
-        digicModoPago.setValorMedioPago(p4_tf_valorMedioPago.getText());
 
         digicModoPago.setUuidProceso(App.UUIDProcess);
         digicModoPago.setFechaCreacion(now.toString());
@@ -769,7 +774,7 @@ public class Valida_Envia_DERController implements Initializable {
         TextPropertyAddListener(p4_tf_codigo_aba, 15);
         TextPropertyAddListener(p4_tf_fechaLimiteSalidaMinuto, 2);
         TextPropertyAddListener(p4_tf_fechaLimiteSalidaHora, 2);
-        TextPropertyAddListener(p4_tf_clave_banco, 2);
+        TextPropertyAddListener(p4_tf_clave_banco, 15);
 
         TextPropertyAddListener(p4_tf_cuenta_bancaria, 18);
         TextPropertyAddListener(p4_tf_descripcion_banco, 20, true);

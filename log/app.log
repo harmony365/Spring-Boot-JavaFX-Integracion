@@ -1441,3 +1441,877 @@ Caused by: java.lang.IllegalStateException: Toolkit not initialized
 2022-10-21 15:26:42.017  WARN 27040 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
 2022-10-21 15:28:03.602  INFO 27040 --- [JavaFX Application Thread] o.a.c.w.s.f.ReflectionServiceFactoryBean : Creating Service {http://externo.mw.ext.grecasa.org/kiosko-service/}kiosko-service from WSDL: https://sede.gobiernodecanarias.org/tributos/middlewarecaut/services/servicioKiosko?wsdl
 2022-10-21 15:28:03.924  WARN 27040 --- [JavaFX Application Thread] javax.xml.soap                           : Using deprecated META-INF/services mechanism with non-standard property: javax.xml.soap.MetaFactory. Property javax.xml.soap.SAAJMetaFactory should be used instead.
+2022-11-08 02:14:52.482  INFO 48920 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : Starting application on DESKTOP-6GDLJRV with PID 48920 (started by MSI in C:\Desarrollo\JAVA\DIVA\Spring-Boot-JavaFX-Integracion-VS)
+2022-11-08 02:14:52.485  INFO 48920 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : No active profile set, falling back to default profiles: default
+2022-11-08 02:14:53.375  INFO 48920 --- [JavaFX Application Thread] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2022-11-08 02:14:53.506  INFO 48920 --- [JavaFX Application Thread] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 119ms. Found 3 repository interfaces.
+2022-11-08 02:14:54.251  INFO 48920 --- [JavaFX Application Thread] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-11-08 02:14:54.623  INFO 48920 --- [JavaFX Application Thread] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-11-08 02:14:54.717  INFO 48920 --- [JavaFX Application Thread] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2022-11-08 02:14:54.877  INFO 48920 --- [JavaFX Application Thread] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2022-11-08 02:14:54.881  INFO 48920 --- [JavaFX Application Thread] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2022-11-08 02:14:55.167  INFO 48920 --- [JavaFX Application Thread] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2022-11-08 02:14:55.430  INFO 48920 --- [JavaFX Application Thread] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.SQLDialect
+2022-11-08 02:14:55.466  INFO 48920 --- [JavaFX Application Thread] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [2] less than 4
+2022-11-08 02:14:56.327  INFO 48920 --- [JavaFX Application Thread] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-11-08 02:14:57.090  INFO 48920 --- [JavaFX Application Thread] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2022-11-08 02:14:57.256  WARN 48920 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:14:57.257  WARN 48920 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:14:57.284  WARN 48920 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:14:57.284  WARN 48920 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:14:57.289  WARN 48920 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:14:57.290  WARN 48920 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:14:57.294  WARN 48920 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:14:57.295  WARN 48920 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:14:57.326  WARN 48920 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:14:57.326  WARN 48920 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:14:57.331  WARN 48920 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:14:57.332  WARN 48920 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:14:57.343  WARN 48920 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:14:57.344  WARN 48920 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:14:57.359  WARN 48920 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:14:57.359  WARN 48920 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:14:57.368  WARN 48920 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:14:57.369  WARN 48920 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:14:57.372  WARN 48920 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:14:57.373  WARN 48920 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:14:57.377  WARN 48920 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:14:57.378  WARN 48920 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:14:57.382  WARN 48920 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:14:57.383  WARN 48920 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:14:57.388  WARN 48920 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:14:57.388  WARN 48920 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:14:57.391  WARN 48920 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:14:57.391  WARN 48920 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:14:57.395  WARN 48920 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:14:57.395  WARN 48920 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:14:57.830  INFO 48920 --- [JavaFX Application Thread] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2022-11-08 02:14:57.868  INFO 48920 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : Started application in 6.115 seconds (JVM running for 7.564)
+2022-11-08 02:14:58.078  WARN 48920 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 02:14:58.288  INFO 48920 --- [JavaFX Application Thread] c.b.j.s.i.S.c.PrimaryController          : User successfully logged in {}
+2022-11-08 02:15:08.054  WARN 48920 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 02:16:04.107  WARN 48920 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m9s383ms153µs900ns).
+2022-11-08 02:16:53.238  INFO 48920 --- [Thread-8] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2022-11-08 02:16:53.240  INFO 48920 --- [Thread-8] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-11-08 02:16:53.244  INFO 48920 --- [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-11-08 02:16:53.251  INFO 48920 --- [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-11-08 02:17:45.870  INFO 24600 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : Starting application on DESKTOP-6GDLJRV with PID 24600 (started by MSI in C:\Desarrollo\JAVA\DIVA\Spring-Boot-JavaFX-Integracion-VS)
+2022-11-08 02:17:45.872  INFO 24600 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : No active profile set, falling back to default profiles: default
+2022-11-08 02:17:46.453  INFO 24600 --- [JavaFX Application Thread] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2022-11-08 02:17:46.575  INFO 24600 --- [JavaFX Application Thread] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 108ms. Found 3 repository interfaces.
+2022-11-08 02:17:47.126  INFO 24600 --- [JavaFX Application Thread] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-11-08 02:17:47.431  INFO 24600 --- [JavaFX Application Thread] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-11-08 02:17:47.493  INFO 24600 --- [JavaFX Application Thread] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2022-11-08 02:17:47.569  INFO 24600 --- [JavaFX Application Thread] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2022-11-08 02:17:47.570  INFO 24600 --- [JavaFX Application Thread] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2022-11-08 02:17:47.763  INFO 24600 --- [JavaFX Application Thread] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2022-11-08 02:17:47.914  INFO 24600 --- [JavaFX Application Thread] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.SQLDialect
+2022-11-08 02:17:47.941  INFO 24600 --- [JavaFX Application Thread] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [2] less than 4
+2022-11-08 02:17:48.444  INFO 24600 --- [JavaFX Application Thread] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-11-08 02:17:48.944  INFO 24600 --- [JavaFX Application Thread] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2022-11-08 02:17:49.025  WARN 24600 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:17:49.025  WARN 24600 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:17:49.064  WARN 24600 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:17:49.065  WARN 24600 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:17:49.069  WARN 24600 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:17:49.070  WARN 24600 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:17:49.074  WARN 24600 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:17:49.074  WARN 24600 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:17:49.090  WARN 24600 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:17:49.090  WARN 24600 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:17:49.096  WARN 24600 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:17:49.096  WARN 24600 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:17:49.102  WARN 24600 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:17:49.102  WARN 24600 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:17:49.112  WARN 24600 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:17:49.112  WARN 24600 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:17:49.117  WARN 24600 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:17:49.117  WARN 24600 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:17:49.121  WARN 24600 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:17:49.122  WARN 24600 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:17:49.125  WARN 24600 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:17:49.125  WARN 24600 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:17:49.128  WARN 24600 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:17:49.128  WARN 24600 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:17:49.131  WARN 24600 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:17:49.131  WARN 24600 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:17:49.135  WARN 24600 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:17:49.135  WARN 24600 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:17:49.140  WARN 24600 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:17:49.140  WARN 24600 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:17:49.508  INFO 24600 --- [JavaFX Application Thread] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2022-11-08 02:17:49.543  INFO 24600 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : Started application in 4.206 seconds (JVM running for 5.357)
+2022-11-08 02:17:49.692  WARN 24600 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 02:17:49.924  INFO 24600 --- [JavaFX Application Thread] c.b.j.s.i.S.c.PrimaryController          : User successfully logged in {}
+2022-11-08 02:17:56.180  WARN 24600 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 02:21:08.107  WARN 24600 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m20s574ms763µs700ns).
+2022-11-08 02:24:43.825  WARN 24600 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m35s718ms492µs700ns).
+2022-11-08 02:24:44.287  WARN 24600 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 02:26:41.114  WARN 24600 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 02:28:27.886  WARN 24600 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m2s746ms179µs600ns).
+2022-11-08 02:30:54.149  WARN 24600 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m56s261ms146µs).
+2022-11-08 02:31:48.593  WARN 24600 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=54s444ms341µs499ns).
+2022-11-08 02:33:57.232  WARN 24600 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m24s942ms564µs599ns).
+2022-11-08 02:38:45.487  INFO 24600 --- [Thread-6] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2022-11-08 02:38:45.492  INFO 24600 --- [Thread-6] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-11-08 02:38:45.497  INFO 24600 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-11-08 02:38:45.504  INFO 24600 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-11-08 02:38:54.951  INFO 40568 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : Starting application on DESKTOP-6GDLJRV with PID 40568 (started by MSI in C:\Desarrollo\JAVA\DIVA\Spring-Boot-JavaFX-Integracion-VS)
+2022-11-08 02:38:54.955  INFO 40568 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : No active profile set, falling back to default profiles: default
+2022-11-08 02:38:55.579  INFO 40568 --- [JavaFX Application Thread] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2022-11-08 02:38:55.685  INFO 40568 --- [JavaFX Application Thread] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 97ms. Found 3 repository interfaces.
+2022-11-08 02:38:56.254  INFO 40568 --- [JavaFX Application Thread] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-11-08 02:38:56.547  INFO 40568 --- [JavaFX Application Thread] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-11-08 02:38:56.615  INFO 40568 --- [JavaFX Application Thread] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2022-11-08 02:38:56.702  INFO 40568 --- [JavaFX Application Thread] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2022-11-08 02:38:56.704  INFO 40568 --- [JavaFX Application Thread] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2022-11-08 02:38:56.872  INFO 40568 --- [JavaFX Application Thread] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2022-11-08 02:38:57.050  INFO 40568 --- [JavaFX Application Thread] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.SQLDialect
+2022-11-08 02:38:57.110  INFO 40568 --- [JavaFX Application Thread] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [2] less than 4
+2022-11-08 02:38:57.631  INFO 40568 --- [JavaFX Application Thread] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-11-08 02:38:58.135  INFO 40568 --- [JavaFX Application Thread] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2022-11-08 02:38:58.244  WARN 40568 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:38:58.244  WARN 40568 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:38:58.270  WARN 40568 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:38:58.270  WARN 40568 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:38:58.275  WARN 40568 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:38:58.275  WARN 40568 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:38:58.279  WARN 40568 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:38:58.280  WARN 40568 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:38:58.298  WARN 40568 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:38:58.299  WARN 40568 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:38:58.302  WARN 40568 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:38:58.303  WARN 40568 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:38:58.308  WARN 40568 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:38:58.309  WARN 40568 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:38:58.317  WARN 40568 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:38:58.317  WARN 40568 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:38:58.322  WARN 40568 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:38:58.323  WARN 40568 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:38:58.326  WARN 40568 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:38:58.327  WARN 40568 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:38:58.329  WARN 40568 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:38:58.330  WARN 40568 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:38:58.333  WARN 40568 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:38:58.333  WARN 40568 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:38:58.335  WARN 40568 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:38:58.335  WARN 40568 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:38:58.339  WARN 40568 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:38:58.340  WARN 40568 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:38:58.342  WARN 40568 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:38:58.343  WARN 40568 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 02:38:58.756  INFO 40568 --- [JavaFX Application Thread] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2022-11-08 02:38:58.802  INFO 40568 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : Started application in 4.38 seconds (JVM running for 5.566)
+2022-11-08 02:38:58.974  WARN 40568 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 02:38:59.203  INFO 40568 --- [JavaFX Application Thread] c.b.j.s.i.S.c.PrimaryController          : User successfully logged in {}
+2022-11-08 02:39:05.193  WARN 40568 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 02:39:47.776  WARN 40568 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=51s128ms138µs200ns).
+2022-11-08 02:40:03.391  WARN 40568 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 02:42:05.457  WARN 40568 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 02:59:37.685  INFO 40568 --- [Thread-6] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2022-11-08 02:59:37.687  INFO 40568 --- [Thread-6] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-11-08 02:59:37.692  INFO 40568 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-11-08 02:59:37.698  INFO 40568 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-11-08 03:00:08.437  INFO 2668 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : Starting application on DESKTOP-6GDLJRV with PID 2668 (started by MSI in C:\Desarrollo\JAVA\DIVA\Spring-Boot-JavaFX-Integracion-VS)
+2022-11-08 03:00:08.440  INFO 2668 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : No active profile set, falling back to default profiles: default
+2022-11-08 03:00:09.057  INFO 2668 --- [JavaFX Application Thread] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2022-11-08 03:00:09.185  INFO 2668 --- [JavaFX Application Thread] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 118ms. Found 3 repository interfaces.
+2022-11-08 03:00:09.701  INFO 2668 --- [JavaFX Application Thread] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-11-08 03:00:10.014  INFO 2668 --- [JavaFX Application Thread] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-11-08 03:00:10.086  INFO 2668 --- [JavaFX Application Thread] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2022-11-08 03:00:10.178  INFO 2668 --- [JavaFX Application Thread] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2022-11-08 03:00:10.180  INFO 2668 --- [JavaFX Application Thread] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2022-11-08 03:00:10.356  INFO 2668 --- [JavaFX Application Thread] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2022-11-08 03:00:10.535  INFO 2668 --- [JavaFX Application Thread] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.SQLDialect
+2022-11-08 03:00:10.567  INFO 2668 --- [JavaFX Application Thread] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [2] less than 4
+2022-11-08 03:00:11.160  INFO 2668 --- [JavaFX Application Thread] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-11-08 03:00:11.671  INFO 2668 --- [JavaFX Application Thread] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2022-11-08 03:00:11.767  WARN 2668 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:00:11.767  WARN 2668 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:00:11.787  WARN 2668 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:00:11.787  WARN 2668 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:00:11.791  WARN 2668 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:00:11.792  WARN 2668 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:00:11.796  WARN 2668 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:00:11.796  WARN 2668 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:00:11.822  WARN 2668 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:00:11.822  WARN 2668 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:00:11.826  WARN 2668 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:00:11.826  WARN 2668 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:00:11.836  WARN 2668 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:00:11.837  WARN 2668 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:00:11.847  WARN 2668 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:00:11.847  WARN 2668 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:00:11.852  WARN 2668 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:00:11.852  WARN 2668 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:00:11.855  WARN 2668 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:00:11.855  WARN 2668 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:00:11.859  WARN 2668 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:00:11.860  WARN 2668 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:00:11.864  WARN 2668 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:00:11.864  WARN 2668 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:00:11.866  WARN 2668 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:00:11.866  WARN 2668 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:00:11.871  WARN 2668 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:00:11.871  WARN 2668 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:00:11.874  WARN 2668 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:00:11.875  WARN 2668 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:00:12.261  INFO 2668 --- [JavaFX Application Thread] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2022-11-08 03:00:12.300  INFO 2668 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : Started application in 4.367 seconds (JVM running for 5.554)
+2022-11-08 03:00:12.471  WARN 2668 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 03:00:12.697  INFO 2668 --- [JavaFX Application Thread] c.b.j.s.i.S.c.PrimaryController          : User successfully logged in {}
+2022-11-08 03:00:18.792  WARN 2668 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 03:01:16.800  WARN 2668 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m6s686ms69µs901ns).
+2022-11-08 03:01:21.463  WARN 2668 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 03:03:23.335  WARN 2668 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m23s239ms69µs500ns).
+2022-11-08 03:04:56.981  WARN 2668 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m33s645ms721µs900ns).
+2022-11-08 03:04:59.133  INFO 2668 --- [Thread-6] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2022-11-08 03:04:59.136  INFO 2668 --- [Thread-6] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-11-08 03:04:59.140  INFO 2668 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-11-08 03:04:59.145  INFO 2668 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-11-08 03:05:21.355  INFO 38940 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : Starting application on DESKTOP-6GDLJRV with PID 38940 (started by MSI in C:\Desarrollo\JAVA\DIVA\Spring-Boot-JavaFX-Integracion-VS)
+2022-11-08 03:05:21.359  INFO 38940 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : No active profile set, falling back to default profiles: default
+2022-11-08 03:05:21.965  INFO 38940 --- [JavaFX Application Thread] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2022-11-08 03:05:22.078  INFO 38940 --- [JavaFX Application Thread] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 106ms. Found 3 repository interfaces.
+2022-11-08 03:05:22.625  INFO 38940 --- [JavaFX Application Thread] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-11-08 03:05:22.944  INFO 38940 --- [JavaFX Application Thread] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-11-08 03:05:23.004  INFO 38940 --- [JavaFX Application Thread] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2022-11-08 03:05:23.067  INFO 38940 --- [JavaFX Application Thread] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2022-11-08 03:05:23.069  INFO 38940 --- [JavaFX Application Thread] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2022-11-08 03:05:23.253  INFO 38940 --- [JavaFX Application Thread] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2022-11-08 03:05:23.455  INFO 38940 --- [JavaFX Application Thread] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.SQLDialect
+2022-11-08 03:05:23.490  INFO 38940 --- [JavaFX Application Thread] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [2] less than 4
+2022-11-08 03:05:24.113  INFO 38940 --- [JavaFX Application Thread] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-11-08 03:05:24.615  INFO 38940 --- [JavaFX Application Thread] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2022-11-08 03:05:24.708  WARN 38940 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:05:24.709  WARN 38940 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:05:24.735  WARN 38940 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:05:24.736  WARN 38940 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:05:24.741  WARN 38940 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:05:24.741  WARN 38940 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:05:24.745  WARN 38940 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:05:24.746  WARN 38940 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:05:24.769  WARN 38940 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:05:24.770  WARN 38940 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:05:24.777  WARN 38940 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:05:24.777  WARN 38940 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:05:24.786  WARN 38940 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:05:24.786  WARN 38940 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:05:24.796  WARN 38940 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:05:24.796  WARN 38940 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:05:24.801  WARN 38940 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:05:24.801  WARN 38940 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:05:24.805  WARN 38940 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:05:24.805  WARN 38940 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:05:24.808  WARN 38940 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:05:24.808  WARN 38940 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:05:24.812  WARN 38940 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:05:24.812  WARN 38940 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:05:24.815  WARN 38940 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:05:24.815  WARN 38940 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:05:24.817  WARN 38940 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:05:24.817  WARN 38940 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:05:24.822  WARN 38940 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:05:24.822  WARN 38940 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:05:25.270  INFO 38940 --- [JavaFX Application Thread] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2022-11-08 03:05:25.316  INFO 38940 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : Started application in 4.432 seconds (JVM running for 5.548)
+2022-11-08 03:05:25.510  WARN 38940 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 03:05:25.740  INFO 38940 --- [JavaFX Application Thread] c.b.j.s.i.S.c.PrimaryController          : User successfully logged in {}
+2022-11-08 03:05:33.683  WARN 38940 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 03:06:14.174  WARN 38940 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=51s128ms442µs400ns).
+2022-11-08 03:06:19.528  WARN 38940 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 03:14:30.482  WARN 38940 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m11s449ms698µs).
+2022-11-08 03:16:48.243  INFO 38940 --- [Thread-6] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2022-11-08 03:16:48.247  INFO 38940 --- [Thread-6] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-11-08 03:16:48.252  INFO 38940 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-11-08 03:16:48.260  INFO 38940 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-11-08 03:16:58.787  INFO 45852 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : Starting application on DESKTOP-6GDLJRV with PID 45852 (started by MSI in C:\Desarrollo\JAVA\DIVA\Spring-Boot-JavaFX-Integracion-VS)
+2022-11-08 03:16:58.790  INFO 45852 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : No active profile set, falling back to default profiles: default
+2022-11-08 03:16:59.473  INFO 45852 --- [JavaFX Application Thread] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2022-11-08 03:16:59.580  INFO 45852 --- [JavaFX Application Thread] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 97ms. Found 3 repository interfaces.
+2022-11-08 03:17:00.134  INFO 45852 --- [JavaFX Application Thread] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-11-08 03:17:00.478  INFO 45852 --- [JavaFX Application Thread] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-11-08 03:17:00.561  INFO 45852 --- [JavaFX Application Thread] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2022-11-08 03:17:00.690  INFO 45852 --- [JavaFX Application Thread] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2022-11-08 03:17:00.693  INFO 45852 --- [JavaFX Application Thread] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2022-11-08 03:17:00.862  INFO 45852 --- [JavaFX Application Thread] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2022-11-08 03:17:01.034  INFO 45852 --- [JavaFX Application Thread] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.SQLDialect
+2022-11-08 03:17:01.066  INFO 45852 --- [JavaFX Application Thread] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [2] less than 4
+2022-11-08 03:17:01.615  INFO 45852 --- [JavaFX Application Thread] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-11-08 03:17:02.147  INFO 45852 --- [JavaFX Application Thread] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2022-11-08 03:17:02.236  WARN 45852 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:02.237  WARN 45852 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:02.260  WARN 45852 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:02.260  WARN 45852 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:02.265  WARN 45852 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:02.266  WARN 45852 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:02.285  WARN 45852 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:02.286  WARN 45852 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:02.303  WARN 45852 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:02.304  WARN 45852 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:02.310  WARN 45852 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:02.311  WARN 45852 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:02.318  WARN 45852 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:02.319  WARN 45852 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:02.325 ERROR 45852 --- [JavaFX Application Thread] o.h.hql.internal.ast.ErrorTracker        : line 1:10: expecting IDENT, found '*'
+2022-11-08 03:17:02.330 ERROR 45852 --- [JavaFX Application Thread] o.h.hql.internal.ast.ErrorTracker        : line 1:10: expecting IDENT, found '*'
+
+antlr.MismatchedTokenException: expecting IDENT, found '*'
+	at antlr.Parser.match(Parser.java:211) ~[antlr-2.7.7.jar:na]
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.identifier(HqlBaseParser.java:1480) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.atom(HqlBaseParser.java:3561) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.unaryExpression(HqlBaseParser.java:3401) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.multiplyExpression(HqlBaseParser.java:3273) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.additiveExpression(HqlBaseParser.java:2930) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.concatenation(HqlBaseParser.java:615) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.relationalExpression(HqlBaseParser.java:2697) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.equalityExpression(HqlBaseParser.java:2558) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.negatedExpression(HqlBaseParser.java:2522) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.logicalAndExpression(HqlBaseParser.java:2438) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.logicalOrExpression(HqlBaseParser.java:2403) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.expression(HqlBaseParser.java:2116) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.aliasedExpression(HqlBaseParser.java:2357) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.selectedPropertiesList(HqlBaseParser.java:1390) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.selectClause(HqlBaseParser.java:1300) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.selectFrom(HqlBaseParser.java:1040) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.queryRule(HqlBaseParser.java:748) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.selectStatement(HqlBaseParser.java:319) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.hql.internal.antlr.HqlBaseParser.statement(HqlBaseParser.java:198) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.parse(QueryTranslatorImpl.java:289) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:188) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.compile(QueryTranslatorImpl.java:143) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:119) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:80) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.engine.query.spi.QueryPlanCache.getHQLQueryPlan(QueryPlanCache.java:153) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.internal.AbstractSharedSessionContract.getQueryPlan(AbstractSharedSessionContract.java:595) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:704) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:103) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.orm.jpa.ExtendedEntityManagerCreator$ExtendedEntityManagerInvocationHandler.invoke(ExtendedEntityManagerCreator.java:350) ~[spring-orm-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at com.sun.proxy.$Proxy69.createQuery(Unknown Source) ~[na:na]
+	at org.springframework.data.jpa.repository.query.SimpleJpaQuery.validateQuery(SimpleJpaQuery.java:87) ~[spring-data-jpa-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at org.springframework.data.jpa.repository.query.SimpleJpaQuery.<init>(SimpleJpaQuery.java:63) ~[spring-data-jpa-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at org.springframework.data.jpa.repository.query.JpaQueryFactory.fromMethodWithQueryString(JpaQueryFactory.java:76) ~[spring-data-jpa-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at org.springframework.data.jpa.repository.query.JpaQueryFactory.fromQueryAnnotation(JpaQueryFactory.java:56) ~[spring-data-jpa-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$DeclaredQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:139) ~[spring-data-jpa-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateIfNotFoundQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:206) ~[spring-data-jpa-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$AbstractQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:79) ~[spring-data-jpa-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.lookupQuery(RepositoryFactorySupport.java:566) ~[spring-data-commons-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.lambda$mapMethodsToQuery$1(RepositoryFactorySupport.java:559) ~[spring-data-commons-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195) ~[na:na]
+	at java.base/java.util.Iterator.forEachRemaining(Iterator.java:133) ~[na:na]
+	at java.base/java.util.Collections$UnmodifiableCollection$1.forEachRemaining(Collections.java:1054) ~[na:na]
+	at java.base/java.util.Spliterators$IteratorSpliterator.forEachRemaining(Spliterators.java:1801) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474) ~[na:na]
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:913) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:578) ~[na:na]
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.mapMethodsToQuery(RepositoryFactorySupport.java:561) ~[spring-data-commons-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.lambda$new$0(RepositoryFactorySupport.java:551) ~[spring-data-commons-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at java.base/java.util.Optional.map(Optional.java:265) ~[na:na]
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.<init>(RepositoryFactorySupport.java:551) ~[spring-data-commons-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport.getRepository(RepositoryFactorySupport.java:324) ~[spring-data-commons-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.lambda$afterPropertiesSet$5(RepositoryFactoryBeanSupport.java:297) ~[spring-data-commons-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at org.springframework.data.util.Lazy.getNullable(Lazy.java:211) ~[spring-data-commons-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at org.springframework.data.util.Lazy.get(Lazy.java:94) ~[spring-data-commons-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.afterPropertiesSet(RepositoryFactoryBeanSupport.java:300) ~[spring-data-commons-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean.afterPropertiesSet(JpaRepositoryFactoryBean.java:119) ~[spring-data-jpa-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1821) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1758) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:593) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:515) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:277) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1247) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1167) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:593) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:90) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:374) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1395) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:592) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:515) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:849) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:877) ~[spring-context-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549) ~[spring-context-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:775) ~[spring-boot-2.1.3.RELEASE.jar:2.1.3.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397) ~[spring-boot-2.1.3.RELEASE.jar:2.1.3.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316) ~[spring-boot-2.1.3.RELEASE.jar:2.1.3.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1260) ~[spring-boot-2.1.3.RELEASE.jar:2.1.3.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1248) ~[spring-boot-2.1.3.RELEASE.jar:2.1.3.RELEASE]
+	at com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.App.start(App.java:141) ~[classes/:na]
+	at javafx.graphics@18.0.1/com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9(LauncherImpl.java:847) ~[javafx.graphics.jar:na]
+	at javafx.graphics@18.0.1/com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12(PlatformImpl.java:484) ~[javafx.graphics.jar:na]
+	at javafx.graphics@18.0.1/com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:457) ~[javafx.graphics.jar:na]
+	at java.base/java.security.AccessController.doPrivileged(Native Method) ~[na:na]
+	at javafx.graphics@18.0.1/com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:456) ~[javafx.graphics.jar:na]
+	at javafx.graphics@18.0.1/com.sun.glass.ui.InvokeLaterDispatcher$Future.run$$$capture(InvokeLaterDispatcher.java:96) ~[javafx.graphics.jar:na]
+	at javafx.graphics@18.0.1/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java) ~[javafx.graphics.jar:na]
+	at javafx.graphics@18.0.1/com.sun.glass.ui.win.WinApplication._runLoop(Native Method) ~[javafx.graphics.jar:na]
+	at javafx.graphics@18.0.1/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184) ~[javafx.graphics.jar:na]
+	at java.base/java.lang.Thread.run(Thread.java:829) ~[na:na]
+
+2022-11-08 03:17:02.331  WARN 45852 --- [JavaFX Application Thread] o.hibernate.hql.internal.ast.HqlParser   : HHH000203: processEqualityExpression() : No expression to process!
+2022-11-08 03:17:02.333  WARN 45852 --- [JavaFX Application Thread] s.c.a.AnnotationConfigApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'modelo_403Controller': Unsatisfied dependency expressed through field 'digicRepository'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'digicRepository': Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Validation failed for query for method public abstract java.util.List com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.DigicRepository.findGroupByuuidProceso(java.lang.String,java.lang.String)!
+2022-11-08 03:17:02.334  INFO 45852 --- [JavaFX Application Thread] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-11-08 03:17:02.335  INFO 45852 --- [JavaFX Application Thread] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-11-08 03:17:02.340  INFO 45852 --- [JavaFX Application Thread] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-11-08 03:17:02.346  INFO 45852 --- [JavaFX Application Thread] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-11-08 03:17:02.348 ERROR 45852 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'modelo_403Controller': Unsatisfied dependency expressed through field 'digicRepository'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'digicRepository': Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Validation failed for query for method public abstract java.util.List com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.DigicRepository.findGroupByuuidProceso(java.lang.String,java.lang.String)!
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:596) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:90) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:374) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1395) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:592) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:515) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:849) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:877) ~[spring-context-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:549) ~[spring-context-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:775) ~[spring-boot-2.1.3.RELEASE.jar:2.1.3.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397) ~[spring-boot-2.1.3.RELEASE.jar:2.1.3.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316) ~[spring-boot-2.1.3.RELEASE.jar:2.1.3.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1260) ~[spring-boot-2.1.3.RELEASE.jar:2.1.3.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1248) ~[spring-boot-2.1.3.RELEASE.jar:2.1.3.RELEASE]
+	at com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.App.start(App.java:141) ~[classes/:na]
+	at javafx.graphics@18.0.1/com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9(LauncherImpl.java:847) ~[javafx.graphics.jar:na]
+	at javafx.graphics@18.0.1/com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12(PlatformImpl.java:484) ~[javafx.graphics.jar:na]
+	at javafx.graphics@18.0.1/com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:457) ~[javafx.graphics.jar:na]
+	at java.base/java.security.AccessController.doPrivileged(Native Method) ~[na:na]
+	at javafx.graphics@18.0.1/com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:456) ~[javafx.graphics.jar:na]
+	at javafx.graphics@18.0.1/com.sun.glass.ui.InvokeLaterDispatcher$Future.run$$$capture(InvokeLaterDispatcher.java:96) ~[javafx.graphics.jar:na]
+	at javafx.graphics@18.0.1/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java) ~[javafx.graphics.jar:na]
+	at javafx.graphics@18.0.1/com.sun.glass.ui.win.WinApplication._runLoop(Native Method) ~[javafx.graphics.jar:na]
+	at javafx.graphics@18.0.1/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184) ~[javafx.graphics.jar:na]
+	at java.base/java.lang.Thread.run(Thread.java:829) ~[na:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'digicRepository': Invocation of init method failed; nested exception is java.lang.IllegalArgumentException: Validation failed for query for method public abstract java.util.List com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.DigicRepository.findGroupByuuidProceso(java.lang.String,java.lang.String)!
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1762) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:593) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:515) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:277) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1247) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1167) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:593) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	... 28 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Validation failed for query for method public abstract java.util.List com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.DigicRepository.findGroupByuuidProceso(java.lang.String,java.lang.String)!
+	at org.springframework.data.jpa.repository.query.SimpleJpaQuery.validateQuery(SimpleJpaQuery.java:93) ~[spring-data-jpa-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at org.springframework.data.jpa.repository.query.SimpleJpaQuery.<init>(SimpleJpaQuery.java:63) ~[spring-data-jpa-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at org.springframework.data.jpa.repository.query.JpaQueryFactory.fromMethodWithQueryString(JpaQueryFactory.java:76) ~[spring-data-jpa-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at org.springframework.data.jpa.repository.query.JpaQueryFactory.fromQueryAnnotation(JpaQueryFactory.java:56) ~[spring-data-jpa-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$DeclaredQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:139) ~[spring-data-jpa-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$CreateIfNotFoundQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:206) ~[spring-data-jpa-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at org.springframework.data.jpa.repository.query.JpaQueryLookupStrategy$AbstractQueryLookupStrategy.resolveQuery(JpaQueryLookupStrategy.java:79) ~[spring-data-jpa-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.lookupQuery(RepositoryFactorySupport.java:566) ~[spring-data-commons-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.lambda$mapMethodsToQuery$1(RepositoryFactorySupport.java:559) ~[spring-data-commons-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195) ~[na:na]
+	at java.base/java.util.Iterator.forEachRemaining(Iterator.java:133) ~[na:na]
+	at java.base/java.util.Collections$UnmodifiableCollection$1.forEachRemaining(Collections.java:1054) ~[na:na]
+	at java.base/java.util.Spliterators$IteratorSpliterator.forEachRemaining(Spliterators.java:1801) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474) ~[na:na]
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:913) ~[na:na]
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) ~[na:na]
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:578) ~[na:na]
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.mapMethodsToQuery(RepositoryFactorySupport.java:561) ~[spring-data-commons-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.lambda$new$0(RepositoryFactorySupport.java:551) ~[spring-data-commons-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at java.base/java.util.Optional.map(Optional.java:265) ~[na:na]
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$QueryExecutorMethodInterceptor.<init>(RepositoryFactorySupport.java:551) ~[spring-data-commons-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport.getRepository(RepositoryFactorySupport.java:324) ~[spring-data-commons-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.lambda$afterPropertiesSet$5(RepositoryFactoryBeanSupport.java:297) ~[spring-data-commons-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at org.springframework.data.util.Lazy.getNullable(Lazy.java:211) ~[spring-data-commons-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at org.springframework.data.util.Lazy.get(Lazy.java:94) ~[spring-data-commons-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at org.springframework.data.repository.core.support.RepositoryFactoryBeanSupport.afterPropertiesSet(RepositoryFactoryBeanSupport.java:300) ~[spring-data-commons-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at org.springframework.data.jpa.repository.support.JpaRepositoryFactoryBean.afterPropertiesSet(JpaRepositoryFactoryBean.java:119) ~[spring-data-jpa-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1821) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1758) ~[spring-beans-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	... 38 common frames omitted
+Caused by: java.lang.IllegalArgumentException: org.hibernate.hql.internal.ast.QuerySyntaxException: expecting IDENT, found '*' near line 1, column 10 [SELECT d.* from com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Digic d    WHERE d.cuentaSinIBAN = 'SI' AND d.uuidProceso = :uuidProceso AND d.valorMedioPago = :valorMedioPago    group by d.valorMedioPago]
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:138) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:181) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:188) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:713) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:103) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.orm.jpa.ExtendedEntityManagerCreator$ExtendedEntityManagerInvocationHandler.invoke(ExtendedEntityManagerCreator.java:350) ~[spring-orm-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at com.sun.proxy.$Proxy69.createQuery(Unknown Source) ~[na:na]
+	at org.springframework.data.jpa.repository.query.SimpleJpaQuery.validateQuery(SimpleJpaQuery.java:87) ~[spring-data-jpa-2.1.5.RELEASE.jar:2.1.5.RELEASE]
+	... 67 common frames omitted
+Caused by: org.hibernate.hql.internal.ast.QuerySyntaxException: expecting IDENT, found '*' near line 1, column 10 [SELECT d.* from com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Digic d    WHERE d.cuentaSinIBAN = 'SI' AND d.uuidProceso = :uuidProceso AND d.valorMedioPago = :valorMedioPago    group by d.valorMedioPago]
+	at org.hibernate.hql.internal.ast.QuerySyntaxException.convert(QuerySyntaxException.java:74) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.hql.internal.ast.ErrorTracker.throwQueryException(ErrorTracker.java:93) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.parse(QueryTranslatorImpl.java:296) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.doCompile(QueryTranslatorImpl.java:188) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.compile(QueryTranslatorImpl.java:143) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:119) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.engine.query.spi.HQLQueryPlan.<init>(HQLQueryPlan.java:80) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.engine.query.spi.QueryPlanCache.getHQLQueryPlan(QueryPlanCache.java:153) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.internal.AbstractSharedSessionContract.getQueryPlan(AbstractSharedSessionContract.java:595) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	at org.hibernate.internal.AbstractSharedSessionContract.createQuery(AbstractSharedSessionContract.java:704) ~[hibernate-core-5.3.7.Final.jar:5.3.7.Final]
+	... 75 common frames omitted
+
+2022-11-08 03:17:43.017  INFO 42788 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : Starting application on DESKTOP-6GDLJRV with PID 42788 (started by MSI in C:\Desarrollo\JAVA\DIVA\Spring-Boot-JavaFX-Integracion-VS)
+2022-11-08 03:17:43.020  INFO 42788 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : No active profile set, falling back to default profiles: default
+2022-11-08 03:17:43.594  INFO 42788 --- [JavaFX Application Thread] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2022-11-08 03:17:43.690  INFO 42788 --- [JavaFX Application Thread] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 89ms. Found 3 repository interfaces.
+2022-11-08 03:17:44.246  INFO 42788 --- [JavaFX Application Thread] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-11-08 03:17:44.536  INFO 42788 --- [JavaFX Application Thread] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-11-08 03:17:44.598  INFO 42788 --- [JavaFX Application Thread] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2022-11-08 03:17:44.669  INFO 42788 --- [JavaFX Application Thread] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2022-11-08 03:17:44.672  INFO 42788 --- [JavaFX Application Thread] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2022-11-08 03:17:44.856  INFO 42788 --- [JavaFX Application Thread] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2022-11-08 03:17:45.039  INFO 42788 --- [JavaFX Application Thread] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.SQLDialect
+2022-11-08 03:17:45.083  INFO 42788 --- [JavaFX Application Thread] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [2] less than 4
+2022-11-08 03:17:45.650  INFO 42788 --- [JavaFX Application Thread] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-11-08 03:17:46.105  INFO 42788 --- [JavaFX Application Thread] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2022-11-08 03:17:46.197  WARN 42788 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:46.197  WARN 42788 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:46.217  WARN 42788 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:46.217  WARN 42788 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:46.222  WARN 42788 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:46.222  WARN 42788 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:46.226  WARN 42788 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:46.226  WARN 42788 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:46.244  WARN 42788 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:46.244  WARN 42788 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:46.252  WARN 42788 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:46.252  WARN 42788 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:46.261  WARN 42788 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:46.262  WARN 42788 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:46.270  WARN 42788 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:46.271  WARN 42788 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:46.283  WARN 42788 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:46.283  WARN 42788 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:46.287  WARN 42788 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:46.288  WARN 42788 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:46.291  WARN 42788 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:46.291  WARN 42788 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:46.297  WARN 42788 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:46.297  WARN 42788 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:46.300  WARN 42788 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:46.300  WARN 42788 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:46.306  WARN 42788 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:46.307  WARN 42788 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:46.310  WARN 42788 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:46.310  WARN 42788 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:17:46.665  INFO 42788 --- [JavaFX Application Thread] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2022-11-08 03:17:46.704  INFO 42788 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : Started application in 4.196 seconds (JVM running for 5.249)
+2022-11-08 03:17:46.891  WARN 42788 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 03:17:47.146  INFO 42788 --- [JavaFX Application Thread] c.b.j.s.i.S.c.PrimaryController          : User successfully logged in {}
+2022-11-08 03:17:53.060  WARN 42788 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 03:18:50.649  WARN 42788 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 03:20:39.253  INFO 42788 --- [Thread-6] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2022-11-08 03:20:39.256  INFO 42788 --- [Thread-6] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-11-08 03:20:39.260  INFO 42788 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-11-08 03:20:39.264  INFO 42788 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-11-08 03:20:47.714  INFO 25056 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : Starting application on DESKTOP-6GDLJRV with PID 25056 (started by MSI in C:\Desarrollo\JAVA\DIVA\Spring-Boot-JavaFX-Integracion-VS)
+2022-11-08 03:20:47.718  INFO 25056 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : No active profile set, falling back to default profiles: default
+2022-11-08 03:20:48.340  INFO 25056 --- [JavaFX Application Thread] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2022-11-08 03:20:48.440  INFO 25056 --- [JavaFX Application Thread] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 90ms. Found 3 repository interfaces.
+2022-11-08 03:20:48.926  INFO 25056 --- [JavaFX Application Thread] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-11-08 03:20:49.220  INFO 25056 --- [JavaFX Application Thread] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-11-08 03:20:49.295  INFO 25056 --- [JavaFX Application Thread] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2022-11-08 03:20:49.374  INFO 25056 --- [JavaFX Application Thread] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2022-11-08 03:20:49.375  INFO 25056 --- [JavaFX Application Thread] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2022-11-08 03:20:49.529  INFO 25056 --- [JavaFX Application Thread] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2022-11-08 03:20:49.677  INFO 25056 --- [JavaFX Application Thread] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.SQLDialect
+2022-11-08 03:20:49.702  INFO 25056 --- [JavaFX Application Thread] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [2] less than 4
+2022-11-08 03:20:50.226  INFO 25056 --- [JavaFX Application Thread] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-11-08 03:20:50.694  INFO 25056 --- [JavaFX Application Thread] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2022-11-08 03:20:50.772  WARN 25056 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:20:50.773  WARN 25056 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:20:50.795  WARN 25056 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:20:50.796  WARN 25056 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:20:50.800  WARN 25056 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:20:50.801  WARN 25056 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:20:50.806  WARN 25056 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:20:50.806  WARN 25056 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:20:50.825  WARN 25056 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:20:50.825  WARN 25056 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:20:50.832  WARN 25056 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:20:50.833  WARN 25056 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:20:50.839  WARN 25056 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:20:50.839  WARN 25056 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:20:50.845  WARN 25056 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:20:50.846  WARN 25056 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:20:50.855  WARN 25056 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:20:50.856  WARN 25056 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:20:50.859  WARN 25056 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:20:50.860  WARN 25056 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:20:50.863  WARN 25056 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:20:50.863  WARN 25056 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:20:50.868  WARN 25056 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:20:50.868  WARN 25056 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:20:50.872  WARN 25056 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:20:50.872  WARN 25056 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:20:50.881  WARN 25056 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:20:50.881  WARN 25056 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:20:50.883  WARN 25056 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:20:50.884  WARN 25056 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 03:20:51.262  INFO 25056 --- [JavaFX Application Thread] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2022-11-08 03:20:51.298  INFO 25056 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : Started application in 4.069 seconds (JVM running for 5.237)
+2022-11-08 03:20:51.469  WARN 25056 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 03:20:51.720  INFO 25056 --- [JavaFX Application Thread] c.b.j.s.i.S.c.PrimaryController          : User successfully logged in {}
+2022-11-08 03:20:57.966  WARN 25056 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 03:22:13.661  WARN 25056 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=54s339ms227µs401ns).
+2022-11-08 03:22:23.022  WARN 25056 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 03:24:36.051  WARN 25056 --- [JavaFX Application Thread] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 5, SQLState: null
+2022-11-08 03:24:36.052 ERROR 25056 --- [JavaFX Application Thread] o.h.engine.jdbc.spi.SqlExceptionHelper   : [SQLITE_BUSY]  The database file is locked (database is locked)
+2022-11-08 03:24:36.055  INFO 25056 --- [JavaFX Application Thread] c.b.j.s.i.S.c.Valida_Envia_DERController : Ocurrio un Error de RED, time out de conexión.
+2022-11-08 03:26:28.459  WARN 25056 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 03:26:28.633  INFO 25056 --- [JavaFX Application Thread] c.b.j.s.i.S.c.PrimaryController          : User successfully logged in {}
+2022-11-08 03:26:33.072  INFO 25056 --- [Thread-6] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2022-11-08 03:26:33.076  INFO 25056 --- [Thread-6] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-11-08 03:26:33.089  INFO 25056 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-11-08 03:26:33.105  INFO 25056 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-11-08 14:22:03.213  INFO 44628 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : Starting application on DESKTOP-6GDLJRV with PID 44628 (started by MSI in C:\Desarrollo\JAVA\DIVA\Spring-Boot-JavaFX-Integracion-VS)
+2022-11-08 14:22:03.217  INFO 44628 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : No active profile set, falling back to default profiles: default
+2022-11-08 14:22:04.027  INFO 44628 --- [JavaFX Application Thread] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2022-11-08 14:22:04.152  INFO 44628 --- [JavaFX Application Thread] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 110ms. Found 3 repository interfaces.
+2022-11-08 14:22:04.747  INFO 44628 --- [JavaFX Application Thread] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-11-08 14:22:05.142  INFO 44628 --- [JavaFX Application Thread] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-11-08 14:22:05.225  INFO 44628 --- [JavaFX Application Thread] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2022-11-08 14:22:05.357  INFO 44628 --- [JavaFX Application Thread] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2022-11-08 14:22:05.361  INFO 44628 --- [JavaFX Application Thread] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2022-11-08 14:22:05.578  INFO 44628 --- [JavaFX Application Thread] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2022-11-08 14:22:05.785  INFO 44628 --- [JavaFX Application Thread] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.SQLDialect
+2022-11-08 14:22:05.815  INFO 44628 --- [JavaFX Application Thread] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [2] less than 4
+2022-11-08 14:22:06.471  INFO 44628 --- [JavaFX Application Thread] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-11-08 14:22:07.077  INFO 44628 --- [JavaFX Application Thread] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2022-11-08 14:22:07.201  WARN 44628 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 14:22:07.202  WARN 44628 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 14:22:07.230  WARN 44628 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 14:22:07.230  WARN 44628 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 14:22:07.237  WARN 44628 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 14:22:07.237  WARN 44628 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 14:22:07.249  WARN 44628 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 14:22:07.249  WARN 44628 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 14:22:07.260  WARN 44628 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 14:22:07.260  WARN 44628 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 14:22:07.269  WARN 44628 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 14:22:07.269  WARN 44628 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 14:22:07.277  WARN 44628 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 14:22:07.277  WARN 44628 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 14:22:07.306  WARN 44628 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 14:22:07.306  WARN 44628 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 14:22:07.317  WARN 44628 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 14:22:07.318  WARN 44628 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 14:22:07.326  WARN 44628 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 14:22:07.327  WARN 44628 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 14:22:07.333  WARN 44628 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 14:22:07.333  WARN 44628 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 14:22:07.337  WARN 44628 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 14:22:07.337  WARN 44628 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 14:22:07.343  WARN 44628 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 14:22:07.343  WARN 44628 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 14:22:07.352  WARN 44628 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 14:22:07.352  WARN 44628 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 14:22:07.358  WARN 44628 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 14:22:07.359  WARN 44628 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 14:22:07.755  INFO 44628 --- [JavaFX Application Thread] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2022-11-08 14:22:07.817  INFO 44628 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : Started application in 5.243 seconds (JVM running for 6.821)
+2022-11-08 14:22:08.037  WARN 44628 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 14:22:08.299  INFO 44628 --- [JavaFX Application Thread] c.b.j.s.i.S.c.PrimaryController          : User successfully logged in {}
+2022-11-08 14:22:14.611  WARN 44628 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 14:23:34.259  WARN 44628 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 14:26:09.533  WARN 44628 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 14:30:07.371  WARN 44628 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m2s122ms722µs600ns).
+2022-11-08 15:00:00.002  INFO 44628 --- [scheduling-1] c.b.j.s.i.S.cron.DERScheduler            : Scheldule task DER WSDL run: 1667916000
+2022-11-08 15:00:17.483  INFO 44628 --- [scheduling-1] o.a.c.w.s.f.ReflectionServiceFactoryBean : Creating Service {http://externo.mw.ext.grecasa.org/kiosko-service/}kiosko-service from WSDL: https://sede.gobiernodecanarias.org/tributos/middlewarecaut/services/servicioKiosko?wsdl
+2022-11-08 15:00:17.848  WARN 44628 --- [scheduling-1] javax.xml.soap                           : Using deprecated META-INF/services mechanism with non-standard property: javax.xml.soap.MetaFactory. Property javax.xml.soap.SAAJMetaFactory should be used instead.
+2022-11-08 15:00:22.423 ERROR 44628 --- [scheduling-1] c.b.j.s.i.S.cron.DERScheduler            : Respuesta WSDL -> Se encontró un error y no se pudo cambiar el estatus de la operación.
+2022-11-08 15:00:22.774  INFO 44628 --- [scheduling-1] o.a.c.w.s.f.ReflectionServiceFactoryBean : Creating Service {http://externo.mw.ext.grecasa.org/kiosko-service/}kiosko-service from WSDL: https://sede.gobiernodecanarias.org/tributos/middlewarecaut/services/servicioKiosko?wsdl
+2022-11-08 15:00:22.780  WARN 44628 --- [scheduling-1] javax.xml.soap                           : Using deprecated META-INF/services mechanism with non-standard property: javax.xml.soap.MetaFactory. Property javax.xml.soap.SAAJMetaFactory should be used instead.
+2022-11-08 15:00:23.264  WARN 44628 --- [scheduling-1] javax.xml.soap                           : Using deprecated META-INF/services mechanism with non-standard property: javax.xml.soap.MetaFactory. Property javax.xml.soap.SAAJMetaFactory should be used instead.
+2022-11-08 15:00:23.271 ERROR 44628 --- [scheduling-1] c.b.j.s.i.S.cron.DERScheduler            : Problema de TCPIP: org.apache.cxf.binding.soap.SoapFault: java.lang.NullPointerException
+2022-11-08 15:00:23.276 ERROR 44628 --- [scheduling-1] c.b.j.s.i.S.cron.DERScheduler            : Respuesta WSDL -> Se encontró un error y no se pudo cambiar el estatus de la operación.
+2022-11-08 15:10:11.108  INFO 44628 --- [Thread-6] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2022-11-08 15:10:11.114  INFO 44628 --- [Thread-6] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-11-08 15:10:11.127  INFO 44628 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-11-08 15:10:11.133  INFO 44628 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-11-08 15:11:22.577  INFO 17248 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : Starting application on DESKTOP-6GDLJRV with PID 17248 (started by MSI in C:\Desarrollo\JAVA\DIVA\Spring-Boot-JavaFX-Integracion-VS)
+2022-11-08 15:11:22.583  INFO 17248 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : No active profile set, falling back to default profiles: default
+2022-11-08 15:11:23.195  INFO 17248 --- [JavaFX Application Thread] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2022-11-08 15:11:23.320  INFO 17248 --- [JavaFX Application Thread] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 117ms. Found 3 repository interfaces.
+2022-11-08 15:11:23.858  INFO 17248 --- [JavaFX Application Thread] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-11-08 15:11:24.171  INFO 17248 --- [JavaFX Application Thread] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-11-08 15:11:24.228  INFO 17248 --- [JavaFX Application Thread] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2022-11-08 15:11:24.296  INFO 17248 --- [JavaFX Application Thread] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2022-11-08 15:11:24.297  INFO 17248 --- [JavaFX Application Thread] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2022-11-08 15:11:24.490  INFO 17248 --- [JavaFX Application Thread] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2022-11-08 15:11:24.673  INFO 17248 --- [JavaFX Application Thread] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.SQLDialect
+2022-11-08 15:11:24.698  INFO 17248 --- [JavaFX Application Thread] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [2] less than 4
+2022-11-08 15:11:25.234  INFO 17248 --- [JavaFX Application Thread] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-11-08 15:11:25.748  INFO 17248 --- [JavaFX Application Thread] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2022-11-08 15:11:25.827  WARN 17248 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:11:25.828  WARN 17248 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:11:25.854  WARN 17248 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:11:25.855  WARN 17248 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:11:25.859  WARN 17248 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:11:25.859  WARN 17248 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:11:25.862  WARN 17248 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:11:25.863  WARN 17248 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:11:25.881  WARN 17248 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:11:25.881  WARN 17248 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:11:25.889  WARN 17248 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:11:25.890  WARN 17248 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:11:25.898  WARN 17248 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:11:25.898  WARN 17248 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:11:25.903  WARN 17248 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:11:25.903  WARN 17248 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:11:25.909  WARN 17248 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:11:25.909  WARN 17248 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:11:25.911  WARN 17248 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:11:25.912  WARN 17248 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:11:25.914  WARN 17248 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:11:25.915  WARN 17248 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:11:25.918  WARN 17248 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:11:25.918  WARN 17248 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:11:25.920  WARN 17248 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:11:25.920  WARN 17248 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:11:25.924  WARN 17248 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:11:25.925  WARN 17248 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:11:25.928  WARN 17248 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:11:25.928  WARN 17248 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:11:26.291  INFO 17248 --- [JavaFX Application Thread] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2022-11-08 15:11:26.330  INFO 17248 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : Started application in 4.253 seconds (JVM running for 5.456)
+2022-11-08 15:11:26.501  WARN 17248 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 15:11:26.739  INFO 17248 --- [JavaFX Application Thread] c.b.j.s.i.S.c.PrimaryController          : User successfully logged in {}
+2022-11-08 15:12:08.366  WARN 17248 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 15:12:53.293  WARN 17248 --- [JavaFX Application Thread] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 5, SQLState: null
+2022-11-08 15:12:53.294 ERROR 17248 --- [JavaFX Application Thread] o.h.engine.jdbc.spi.SqlExceptionHelper   : [SQLITE_BUSY]  The database file is locked (database is locked)
+2022-11-08 15:13:43.392  WARN 17248 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 15:14:24.280  INFO 17248 --- [JavaFX Application Thread] c.b.j.s.i.S.c.Valida_Envia_DERController : Armando la Estructura del DER para el envío.
+2022-11-08 15:14:51.608  INFO 17248 --- [JavaFX Application Thread] c.b.j.s.i.S.c.Valida_Envia_DERController : Llamando al servicio WSDL de ValidarRemesa().
+2022-11-08 15:14:58.582  INFO 17248 --- [JavaFX Application Thread] o.a.c.w.s.f.ReflectionServiceFactoryBean : Creating Service {http://externo.mw.ext.grecasa.org/kiosko-service/}kiosko-service from WSDL: https://sede.gobiernodecanarias.org/tributos/middlewarecaut/services/servicioKiosko?wsdl
+2022-11-08 15:15:00.751  WARN 17248 --- [JavaFX Application Thread] javax.xml.soap                           : Using deprecated META-INF/services mechanism with non-standard property: javax.xml.soap.MetaFactory. Property javax.xml.soap.SAAJMetaFactory should be used instead.
+2022-11-08 15:16:38.693  WARN 17248 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m14s410ms826µs600ns).
+2022-11-08 15:16:38.697  INFO 17248 --- [JavaFX Application Thread] c.b.j.s.i.S.c.Valida_Envia_DERController : Resultado: Estado( ER ) --> 2022-11-08T14:15:21.585Z
+2022-11-08 15:16:53.977  WARN 17248 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 15:16:54.155  INFO 17248 --- [JavaFX Application Thread] c.b.j.s.i.S.c.PrimaryController          : User successfully logged in {}
+2022-11-08 15:16:56.092  WARN 17248 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 15:17:24.887  WARN 17248 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 15:17:45.703  INFO 17248 --- [JavaFX Application Thread] c.b.j.s.i.S.c.Valida_Envia_DERController : Armando la Estructura del DER para el envío.
+2022-11-08 15:17:47.202  INFO 17248 --- [JavaFX Application Thread] c.b.j.s.i.S.c.Valida_Envia_DERController : Llamando al servicio WSDL de ValidarRemesa().
+2022-11-08 15:17:47.559  INFO 17248 --- [JavaFX Application Thread] o.a.c.w.s.f.ReflectionServiceFactoryBean : Creating Service {http://externo.mw.ext.grecasa.org/kiosko-service/}kiosko-service from WSDL: https://sede.gobiernodecanarias.org/tributos/middlewarecaut/services/servicioKiosko?wsdl
+2022-11-08 15:17:47.573  WARN 17248 --- [JavaFX Application Thread] javax.xml.soap                           : Using deprecated META-INF/services mechanism with non-standard property: javax.xml.soap.MetaFactory. Property javax.xml.soap.SAAJMetaFactory should be used instead.
+2022-11-08 15:18:33.509  INFO 17248 --- [JavaFX Application Thread] c.b.j.s.i.S.c.Valida_Envia_DERController : Resultado: Estado( OK ) --> 2022-11-08T14:17:44.579Z
+2022-11-08 15:45:33.617  INFO 17248 --- [Thread-6] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2022-11-08 15:45:33.622  INFO 17248 --- [Thread-6] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-11-08 15:45:33.631  INFO 17248 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-11-08 15:45:33.635  INFO 17248 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-11-08 15:45:43.948  INFO 43040 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : Starting application on DESKTOP-6GDLJRV with PID 43040 (started by MSI in C:\Desarrollo\JAVA\DIVA\Spring-Boot-JavaFX-Integracion-VS)
+2022-11-08 15:45:43.952  INFO 43040 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : No active profile set, falling back to default profiles: default
+2022-11-08 15:45:44.561  INFO 43040 --- [JavaFX Application Thread] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2022-11-08 15:45:44.674  INFO 43040 --- [JavaFX Application Thread] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 101ms. Found 3 repository interfaces.
+2022-11-08 15:45:45.209  INFO 43040 --- [JavaFX Application Thread] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-11-08 15:45:45.511  INFO 43040 --- [JavaFX Application Thread] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-11-08 15:45:45.573  INFO 43040 --- [JavaFX Application Thread] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2022-11-08 15:45:45.654  INFO 43040 --- [JavaFX Application Thread] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2022-11-08 15:45:45.656  INFO 43040 --- [JavaFX Application Thread] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2022-11-08 15:45:45.858  INFO 43040 --- [JavaFX Application Thread] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2022-11-08 15:45:46.018  INFO 43040 --- [JavaFX Application Thread] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.SQLDialect
+2022-11-08 15:45:46.041  INFO 43040 --- [JavaFX Application Thread] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [2] less than 4
+2022-11-08 15:45:46.567  INFO 43040 --- [JavaFX Application Thread] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-11-08 15:45:47.079  INFO 43040 --- [JavaFX Application Thread] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2022-11-08 15:45:47.165  WARN 43040 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:45:47.165  WARN 43040 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:45:47.191  WARN 43040 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:45:47.191  WARN 43040 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:45:47.195  WARN 43040 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:45:47.195  WARN 43040 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:45:47.207  WARN 43040 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:45:47.208  WARN 43040 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:45:47.220  WARN 43040 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:45:47.221  WARN 43040 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:45:47.225  WARN 43040 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:45:47.225  WARN 43040 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:45:47.235  WARN 43040 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:45:47.236  WARN 43040 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:45:47.242  WARN 43040 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:45:47.243  WARN 43040 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:45:47.248  WARN 43040 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:45:47.249  WARN 43040 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:45:47.253  WARN 43040 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:45:47.253  WARN 43040 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:45:47.256  WARN 43040 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:45:47.256  WARN 43040 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:45:47.259  WARN 43040 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:45:47.259  WARN 43040 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:45:47.263  WARN 43040 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:45:47.263  WARN 43040 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:45:47.272  WARN 43040 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:45:47.273  WARN 43040 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:45:47.275  WARN 43040 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:45:47.276  WARN 43040 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-08 15:45:47.694  INFO 43040 --- [JavaFX Application Thread] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2022-11-08 15:45:47.741  INFO 43040 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : Started application in 4.285 seconds (JVM running for 5.408)
+2022-11-08 15:45:47.937  WARN 43040 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 15:45:48.233  INFO 43040 --- [JavaFX Application Thread] c.b.j.s.i.S.c.PrimaryController          : User successfully logged in {}
+2022-11-08 15:45:55.114  WARN 43040 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 15:46:34.595  WARN 43040 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 15:46:56.512  INFO 43040 --- [JavaFX Application Thread] c.b.j.s.i.S.c.Valida_Envia_DERController : Armando la Estructura del DER para el envío.
+2022-11-08 15:46:57.661  INFO 43040 --- [JavaFX Application Thread] c.b.j.s.i.S.c.Valida_Envia_DERController : Llamando al servicio WSDL de ValidarRemesa().
+2022-11-08 15:46:58.638  INFO 43040 --- [JavaFX Application Thread] o.a.c.w.s.f.ReflectionServiceFactoryBean : Creating Service {http://externo.mw.ext.grecasa.org/kiosko-service/}kiosko-service from WSDL: https://sede.gobiernodecanarias.org/tributos/middlewarecaut/services/servicioKiosko?wsdl
+2022-11-08 15:46:58.949  WARN 43040 --- [JavaFX Application Thread] javax.xml.soap                           : Using deprecated META-INF/services mechanism with non-standard property: javax.xml.soap.MetaFactory. Property javax.xml.soap.SAAJMetaFactory should be used instead.
+2022-11-08 15:47:44.772  INFO 43040 --- [JavaFX Application Thread] c.b.j.s.i.S.c.Valida_Envia_DERController : Resultado: Estado( OK ) --> 2022-11-08T14:46:56.240Z
+2022-11-08 15:48:41.554  WARN 43040 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 15:48:41.738  INFO 43040 --- [JavaFX Application Thread] c.b.j.s.i.S.c.PrimaryController          : User successfully logged in {}
+2022-11-08 15:48:43.478  WARN 43040 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 15:49:17.781  WARN 43040 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 15:49:45.448  INFO 43040 --- [JavaFX Application Thread] c.b.j.s.i.S.c.Valida_Envia_DERController : Armando la Estructura del DER para el envío.
+2022-11-08 15:49:46.003  INFO 43040 --- [JavaFX Application Thread] c.b.j.s.i.S.c.Valida_Envia_DERController : Llamando al servicio WSDL de ValidarRemesa().
+2022-11-08 15:49:46.310  INFO 43040 --- [JavaFX Application Thread] o.a.c.w.s.f.ReflectionServiceFactoryBean : Creating Service {http://externo.mw.ext.grecasa.org/kiosko-service/}kiosko-service from WSDL: https://sede.gobiernodecanarias.org/tributos/middlewarecaut/services/servicioKiosko?wsdl
+2022-11-08 15:49:46.327  WARN 43040 --- [JavaFX Application Thread] javax.xml.soap                           : Using deprecated META-INF/services mechanism with non-standard property: javax.xml.soap.MetaFactory. Property javax.xml.soap.SAAJMetaFactory should be used instead.
+2022-11-08 15:50:32.510  INFO 43040 --- [JavaFX Application Thread] c.b.j.s.i.S.c.Valida_Envia_DERController : Resultado: Estado( OK ) --> 2022-11-08T14:49:43.173Z
+2022-11-08 15:50:46.042  WARN 43040 --- [JavaFX Application Thread] javafx                                   : Loading FXML document with JavaFX API of version 19 by JavaFX runtime of version 18.0.1
+2022-11-08 15:50:46.154  INFO 43040 --- [JavaFX Application Thread] c.b.j.s.i.S.c.PrimaryController          : User successfully logged in {}
+2022-11-08 15:50:49.775  INFO 43040 --- [Thread-6] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2022-11-08 15:50:49.782  INFO 43040 --- [Thread-6] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-11-08 15:50:49.790  INFO 43040 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-11-08 15:50:49.799  INFO 43040 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
