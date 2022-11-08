@@ -56,10 +56,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -848,6 +845,43 @@ public class Valida_Envia_DERController implements Initializable {
             public void changed(ObservableValue observableValue, Object o, Object t1) {
                 txf.setText((String) t1);
                 //txf2.setText((String) t1);
+
+                List<Digic> digicLis = digicRepository.findGroupByuuidProceso(App.UUIDProcess, (String) t1);
+
+                try{
+                    if(!digicLis.isEmpty()){
+
+                        for (Digic digic: digicLis) {
+                            p4_tf_pais_banco.setText((String) digic.getPaisBanco());
+                            p4_tf_clave_banco.setText(digic.getClaveBanco()+"");
+                            p4_tf_clave_control.setText(digic.getClaveControl()+"");
+                            p4_tf_descripcion_banco.setText(digic.getDescInstFinanciera()+"");
+                            p4_tf_codigoBic.setText(digic.getCodigoBic()+"");
+                            p4_tf_codigo_aba.setText(digic.getNumeroABA()+"");
+                        }
+                    }
+
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
+
+
+
+                /*
+                ObservableList<Digic> list = p4_cb_cuenta_bancaria.getItems();
+                String show="";
+                for (Digic digic: list) {
+                    show = show + (String) digic.getClaveBanco() + "\n";
+                    show = show + (String) digic.getClaveControl() + "\n";
+                    show = show + (String) digic.getDescInstFinanciera() + "\n";
+                    show = show + (String) digic.getCodigoBic() + "\n";
+                    show = show + (String) digic.getPaisBanco() + "\n";
+                    show = show + (String) digic.getValorMedioPago() + "\n";
+                }
+                */
+
+
 
             }
         });

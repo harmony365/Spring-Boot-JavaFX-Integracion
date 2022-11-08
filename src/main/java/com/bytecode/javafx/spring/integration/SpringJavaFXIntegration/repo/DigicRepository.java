@@ -41,10 +41,14 @@ public interface DigicRepository extends JpaRepository<Digic, String> {
             "    d.cuentaSinIBAN," +
             "    d.descInstFinanciera," +
             "    d.valorMedioPago from digic d" +
-            "    WHERE d.cuentaSinIBAN = 'SI' AND d.uuidProceso = :uuidProceso" +
+            "    WHERE d.cuentaSinIBAN = 'SI' AND d.uuidProceso = :uuidProceso AND d.valorMedioPago = :valorMedioPago" +
             "    group by d.valorMedioPago")
-    List<Digic> findGroupByuuidProceso(String uuidProceso) ;
+    List<Digic> findGroupByuuidProceso1(String uuidProceso, String valorMedioPago) ;
 
+    @Query(value = "SELECT d from digic d" +
+            "    WHERE d.cuentaSinIBAN = 'SI' AND d.uuidProceso = :uuidProceso AND d.valorMedioPago = :valorMedioPago" +
+            "    group by d.valorMedioPago")
+    List<Digic> findGroupByuuidProceso(String uuidProceso, String valorMedioPago) ;
 
     @Query(value = "SELECT DISTINCT trim(d.fechaLimiteSalida) FROM digic d WHERE d.valorDocumento = :valorDocumento AND d.uuidProceso = :uuidProceso AND length(trim(d.fechaLimiteSalida)) > 0 ")
     List<Digic> findAllFechaLimiteSalida(String valorDocumento,String uuidProceso);

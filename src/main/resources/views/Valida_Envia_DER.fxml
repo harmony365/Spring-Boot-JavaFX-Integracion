@@ -197,7 +197,7 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <ComboBox fx:id="p4_cb_cuenta_bancaria" layoutX="24.0" layoutY="46.0" onAction="#comboboxEvents" prefHeight="26.0" prefWidth="196.0" visibleRowCount="7" />
+            <ComboBox fx:id="p4_cb_cuenta_bancaria" layoutX="24.0" layoutY="46.0" prefHeight="26.0" prefWidth="196.0" visibleRowCount="7" />
             <Label fx:id="p2_lb_clave_control" layoutX="24.0" layoutY="125.0" prefHeight="20.0" prefWidth="172.0" text="%p2_lb_clave_control">
                <font>
                   <Font size="14.0" />
@@ -252,7 +252,7 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <ComboBox fx:id="p4_cb_pais_banco" layoutX="234.0" layoutY="46.0" prefHeight="26.0" prefWidth="63.0" />
+            <ComboBox fx:id="p4_cb_pais_banco" layoutX="234.0" layoutY="46.0" prefHeight="26.0" prefWidth="123.0" />
             <Label fx:id="p4_lb_pais_banco" alignment="BOTTOM_LEFT" layoutX="305.0" layoutY="83.0" prefHeight="26.0" prefWidth="434.0" text="...">
                <font>
                   <Font size="14.0" />
