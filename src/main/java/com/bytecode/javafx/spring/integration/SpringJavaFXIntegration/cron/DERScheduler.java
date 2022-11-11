@@ -84,7 +84,7 @@ public class DERScheduler {
 
             ValidarRemesaDerResponse validarRemesaDerResponse;
 
-            ValidarRemesaDer validarRemesaDer = databaseDerUtil.getDERtoSend(uuidProceso, 2, App.parametrosModel.getKIOSKOID());
+            ValidarRemesaDer validarRemesaDer = databaseDerUtil.getDERtoSend(uuidProceso, 2, App.parametrosModel.getKIOSKOID(),false);
             validarRemesaDerResponse = KioskoServiceClient.getInstance().validarRemesa(validarRemesaDer);
             KioskoServiceClientUtils.printResponse(validarRemesaDerResponse);
             WsdlTimeStamp = validarRemesaDerResponse.getFechaEstado().toString();

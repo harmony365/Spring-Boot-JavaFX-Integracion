@@ -4,7 +4,11 @@ import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.App;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,11 +17,15 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.UUID;
 
@@ -251,5 +259,21 @@ public class PassPortLoginController  implements Initializable {
          
     }
 
+    @FXML
+    public void PantallaDialogo(ActionEvent event) throws IOException {
+
+
+        Stage stage = new Stage();
+
+        Parent root = FXMLLoader.load(
+                Objects.requireNonNull(getClass().getResource("/views/dialogo_validar_der.fxml")),bundle);
+        stage.setScene(new Scene(root));
+        //stage.setTitle("My modal window");
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner( ((Node)event.getSource()).getScene().getWindow() );
+        stage.show();
+
+    }
   
 }

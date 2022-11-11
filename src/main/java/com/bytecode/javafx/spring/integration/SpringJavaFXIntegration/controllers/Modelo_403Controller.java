@@ -14,7 +14,6 @@ import com.jfoenix.controls.JFXDialogLayout;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -48,8 +47,11 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
+import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.*;
+import java.text.DecimalFormat;
+import java.text.ParsePosition;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -182,8 +184,7 @@ public class Modelo_403Controller implements Initializable {
         p2_Dialog_Procesando.setOverlayClose(false);
         p2_Dialog_Procesando.setDialogContainer(root);
 
-
-      bundle = resources;
+        bundle = resources;
 
         p2_tf_clave_banco.getProperties().put(VK_TYPE, VK_TYPE_NUMERIC);
         p2_tf_codigo_aba.getProperties().put(VK_TYPE, VK_TYPE_NUMERIC);
@@ -215,20 +216,19 @@ public class Modelo_403Controller implements Initializable {
 
         p2_btn_demo.setVisible(App.parametrosModel.getAppDemo());
         p2_btn_wsdl.setVisible(App.parametrosModel.getAppDemo());
-        p2_tv_justificantesdigic.setVisible(App.parametrosModel.getAppDemo());
 
         p2_btn_aceptar.setVisible(false);
 
-        p2_tc_listajustificantes.setCellValueFactory(new PropertyValueFactory<>("numero"));
-        p2_tc_listajustificantesMonto.setCellValueFactory(new PropertyValueFactory<>("monto"));
+        //p2_tc_listajustificantes.setCellValueFactory(new PropertyValueFactory<>("numero"));
+        //p2_tc_listajustificantesMonto.setCellValueFactory(new PropertyValueFactory<>("monto"));
 
         //p2_tc_listajustificantes.setMinWidth(100);
-        p2_tv_justificantes.setPlaceholder(new Label(bundle.getString( "p2_tv_Placeholder")));
+        //p2_tv_justificantes.setPlaceholder(new Label(bundle.getString( "p2_tv_Placeholder")));
 
-        p2_tv_justificantes.getSelectionModel().setCellSelectionEnabled(true);
-        ObservableList selectedCells = p2_tv_justificantes.getSelectionModel().getSelectedCells();
+        //p2_tv_justificantes.getSelectionModel().setCellSelectionEnabled(true);
+        //ObservableList selectedCells = p2_tv_justificantes.getSelectionModel().getSelectedCells();
         //Refresh();
-
+        /*
         selectedCells.addListener(new ListChangeListener() {
             @Override
             public void onChanged(Change c) {
@@ -258,14 +258,13 @@ public class Modelo_403Controller implements Initializable {
                 }
                 
             }
-        });        
+        });     */
         
         //p2_tv_justificantes.getColumns().addAll(p2_tc_listajustificantes);
         //p2_tv_justificantes.getColumns().addAll(p2_tc_listajustificantesMonto);
 
         ClearPlantilla();
 
-        p2_img_barcode.requestFocus();
         p2_img_barcode.setOnKeyTyped(new EventHandler<KeyEvent>() {
             public void handle(KeyEvent ke) {
                 //System.out.println("p2_img_barcode Key Pressed: " + ke.getText());
@@ -298,14 +297,13 @@ public class Modelo_403Controller implements Initializable {
             }
         });
 
-        p2_tv_justificantesdigic.setPlaceholder(new Label(bundle.getString( "p2_tv_Placeholder")));
-
         try{
             RefreshTV();
+            switchToQRCode();
         }catch (Exception e){
             e.printStackTrace();
         }
-        
+
     }
 
     @FXML
@@ -323,21 +321,22 @@ public class Modelo_403Controller implements Initializable {
             List<Digic> personList = digicRepository.findByuuidProceso(App.UUIDProcess);
             data = FXCollections.observableArrayList(personList);
 
-            TableColumn<Digic, String> justificnteColumn = new TableColumn<>("JUSTIFICANTE");
+            TableColumn<Digic, String> justificnteColumn = new TableColumn<>(bundle.getString( "columna_titulo_justificante"));
             justificnteColumn.setCellValueFactory(new PropertyValueFactory<>("justificante"));
 
-            TableColumn<Digic, String> razonSocialColumn = new TableColumn<>("NOMBRE COMERCIAL");
+            TableColumn<Digic, String> razonSocialColumn = new TableColumn<>(bundle.getString( "columna_titulo_nombrecomercial"));
             razonSocialColumn.setCellValueFactory(new PropertyValueFactory<>("razonSocial"));
 
-            TableColumn<Digic, String> numeroFacturaColumn = new TableColumn<>("NUMERO FACTURA");
+            TableColumn<Digic, String> numeroFacturaColumn = new TableColumn<>(bundle.getString( "columna_titulo_numerofactura"));
             numeroFacturaColumn.setCellValueFactory(new PropertyValueFactory<>("numeroFactura"));
 
-            TableColumn<Digic, String> fechaFacturaColumn = new TableColumn<>("FECHA");
+            TableColumn<Digic, String> fechaFacturaColumn = new TableColumn<>(bundle.getString( "columna_titulo_fecha"));
             fechaFacturaColumn.setCellValueFactory(new PropertyValueFactory<>("fechaFactura"));
 
-            TableColumn<Digic, String> totalDigicColumn = new TableColumn<>("IMPORTE DIGIC");
+            TableColumn<Digic, String> totalDigicColumn = new TableColumn<>(bundle.getString( "columna_titulo_importedigic"));
             totalDigicColumn.setCellValueFactory(new PropertyValueFactory<>("totalDigic"));
 
+            p2_tv_justificantesdigic.setPlaceholder(new Label(bundle.getString( "tv_justificantesdigic_Placeholder")));
             p2_tv_justificantesdigic.getColumns().setAll(justificnteColumn, razonSocialColumn, numeroFacturaColumn, fechaFacturaColumn, totalDigicColumn);
             p2_tv_justificantesdigic.setStyle("-fx-font-size: 20;");
             p2_tv_justificantesdigic.setItems(data);
@@ -350,12 +349,10 @@ public class Modelo_403Controller implements Initializable {
                     montoTotalDigic = montoTotalDigic + Double.valueOf (digic.getTotalDigic());
                 }
 
-                p2_tf_montoTotalDigic.setText(montoTotalDigic.toString());
+                p2_tf_montoTotalDigic.setText(getTwoDecimals(montoTotalDigic));
+                //floatTxtFld(p2_tf_montoTotalDigic);
                 p2_btn_aceptar.setVisible(true);
             }
-
-
-
 
         }catch (Exception e){
             e.printStackTrace();
@@ -363,6 +360,30 @@ public class Modelo_403Controller implements Initializable {
 
     }
 
+    private static String getTwoDecimals(double value){
+        DecimalFormat df = new DecimalFormat("0.00");
+        return df.format(value);
+    }
+    public static void floatTxtFld(TextField field) {
+        DecimalFormat format = new DecimalFormat("#");
+        field.setTextFormatter(new TextFormatter<>(c -> {
+            if (c.getControlNewText().isEmpty()) {
+                return c;
+            }
+
+            ParsePosition parsePosition = new ParsePosition(0);
+            Object object = format.parse(c.getControlNewText(), parsePosition);
+
+            if ((object == null) || ((parsePosition.getIndex()) < (c.getControlNewText().length()))) {
+                return null;
+            } else {
+                if (new BigDecimal(c.getControlNewText()).scale() <= 2)
+                    return c;
+                else
+                    return null;
+            }
+        }));
+    }
 
     @FXML
     private void LoadDialog(String title, String body){
@@ -387,6 +408,7 @@ public class Modelo_403Controller implements Initializable {
         content.setActions(button);
         dialog.show();
         p2_img_barcode.requestFocus();
+
     }
 
 
@@ -395,7 +417,7 @@ public class Modelo_403Controller implements Initializable {
 
         String title, body;
 
-        title = "erwrwrr" ;
+        title = "DIALOG" ;
 
         body = bundle.getString( "p2_lb_popup_escanee_qr");
 
@@ -431,7 +453,7 @@ public class Modelo_403Controller implements Initializable {
 
         /*Stage stage = new Stage();
         Parent root = FXMLLoader.load(
-                Objects.requireNonNull(getClass().getResource("/views/prueba.fxml")));
+                Objects.requireNonNull(getClass().getResource("/views/dialogo_validar_der.fxml")));
         stage.setScene(new Scene(root));
         //stage.setTitle("My modal window");
         stage.initStyle(StageStyle.UNDECORATED);
@@ -460,8 +482,9 @@ public class Modelo_403Controller implements Initializable {
 
         JFXDialogLayout content = new JFXDialogLayout();
 
-        content.setHeading(new Text("Confirmation Dialog"));
-        content.setBody(new Text("Are you ok with this?"));
+        content.setHeading(new Text(bundle.getString( "p2_brn_anterior_dialogo_Heading")));
+        content.setBody(new Text(bundle.getString( "p2_brn_anterior_dialogo_Body")));
+        content.setStyle("-fx-font-size: 20;");
 
         JFXDialog dialog = new JFXDialog(root, content, JFXDialog.DialogTransition.CENTER, false);
         JFXButton buttonOK = new JFXButton("OK");

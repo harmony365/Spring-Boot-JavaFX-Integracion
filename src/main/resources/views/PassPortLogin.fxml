@@ -28,7 +28,7 @@
                   <Font size="30.0" />
                </font>
             </Label>
-            <Button fx:id="p3_btn_qr" mnemonicParsing="false" onAction="#switchToQRCode" prefHeight="186.0" prefWidth="188.0">
+            <Button fx:id="p3_btn_qr" mnemonicParsing="false" onAction="#switchToQRCode" prefHeight="186.0" prefWidth="188.0" >
                <graphic>
                   <ImageView fx:id="p3_qrcode_img" fitHeight="186.0" fitWidth="197.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -37,7 +37,8 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="p3_btn_demo" mnemonicParsing="false" onAction="#QRcodeRead" prefHeight="47.0" prefWidth="63.0" text="DEMO" />
+            <!--Button fx:id="p3_btn_demo" mnemonicParsing="false" onAction="#QRcodeRead" prefHeight="47.0" prefWidth="63.0" text="DEMO" /-->
+            <Button fx:id="p3_btn_demo" mnemonicParsing="false" onAction="#PantallaDialogo" prefHeight="47.0" prefWidth="63.0" text="DEMO" />
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="88.0" prefWidth="875.0" text="%p3_lb_teclee_id" textAlignment="CENTER">
                <font>
                   <Font size="24.0" />
@@ -47,7 +48,7 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="163.0" prefWidth="1022.0">
                      <children>
-                        <AnchorPane prefHeight="163.0" prefWidth="921.0">
+                        <AnchorPane onDragDetected="#switchToQRCode" prefHeight="163.0" prefWidth="921.0">
                            <children>
                               <TextField fx:id="p3_tf_numerodocumeto" alignment="CENTER" layoutX="243.0" layoutY="6.0" prefHeight="53.0" prefWidth="410.0" promptText="%p3_tf_numerodocumeto">
                                  <font>

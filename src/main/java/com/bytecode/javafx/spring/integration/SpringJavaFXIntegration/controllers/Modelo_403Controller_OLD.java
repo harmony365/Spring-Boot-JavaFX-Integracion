@@ -378,7 +378,7 @@ public class Modelo_403Controller_OLD implements Initializable {
 
         /*Stage stage = new Stage();
         Parent root = FXMLLoader.load(
-                Objects.requireNonNull(getClass().getResource("/views/prueba.fxml")));
+                Objects.requireNonNull(getClass().getResource("/views/dialogo_validar_der.fxml")));
         stage.setScene(new Scene(root));
         //stage.setTitle("My modal window");
         stage.initStyle(StageStyle.UNDECORATED);

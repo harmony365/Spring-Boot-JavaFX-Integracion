@@ -12,6 +12,7 @@ import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +21,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
@@ -46,10 +49,13 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.math.BigDecimal;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.DecimalFormat;
 import java.text.ParseException;
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -114,7 +120,7 @@ public class Valida_Envia_DERController implements Initializable {
             p2_lb_datos_transporte, p2_lb_datos_viajeros, p2_lb_descripcion_banco, p2_lb_fechaLimiteSalida,
             p2_lb_identificadorBillete, p2_lb_medios_de_pago, p2_lb_modoTransporte, p2_lb_pais_banco,
             p2_lb_valorMedioPago, p2_lb_fecha_salida,
-            p4_lb_mensaje, p4_ld_wsdl_raspuesta, p4_ld_wsdl_TimeStamp, p4_lb_pais_banco;
+            p4_lb_mensaje, p4_ld_wsdl_raspuesta, p4_ld_wsdl_TimeStamp, p4_lb_pais_banco, p4_lb_montoTotalDigic;
     @FXML
     private DatePicker p4_dtp_fechaLimiteSalida;
 
@@ -122,7 +128,7 @@ public class Valida_Envia_DERController implements Initializable {
     private TextField p4_tf_clave_banco, p4_tf_clave_control, p4_tf_codigoBic, p4_tf_codigo_aba,
             p4_tf_cuenta_bancaria, p4_tf_descripcion_banco, p4_tf_email, p4_tf_identificadorBillete,
             p4_tf_modoTransporte, p4_tf_pais_banco, p4_tf_valorMedioPago, p4_tf_fechaLimiteSalida,
-            p4_tf_fechaLimiteSalidaHora, p4_tf_fechaLimiteSalidaMinuto;
+            p4_tf_fechaLimiteSalidaHora, p4_tf_fechaLimiteSalidaMinuto,p4_tf_montoTotalDigic;
 
 
     @FXML
@@ -133,6 +139,9 @@ public class Valida_Envia_DERController implements Initializable {
 
     @FXML
     private Pane p4_pane_numeroaba, p4_pane_cuentaiban, p4_pane_cuentainternacional, p4_pane_temporal;
+
+    @FXML public TableView<Digic> p4_tv_justificantesdigic ;
+
 
     public String valorDocumento;
 
@@ -159,10 +168,8 @@ public class Valida_Envia_DERController implements Initializable {
         //lblTitulo.setText(titulo);
         valorDocumento = App.parametrosModel.getNumeroPasaporte();
 
-        txtTelefono.getProperties().put(VK_TYPE, VK_TYPE_NUMERIC);
-
         p4_tf_codigo_aba.getProperties().put(VK_TYPE, VK_TYPE_NUMERIC);
-        p4_tf_codigoBic.getProperties().put(VK_TYPE, VK_TYPE_NUMERIC);
+        p4_tf_codigoBic.getProperties().put(VK_TYPE, VK_TYPE_TEXT);
         p4_dtp_fechaLimiteSalida.getProperties().put(VK_TYPE, VK_TYPE_NUMERIC);
         p4_tf_fechaLimiteSalidaHora.getProperties().put(VK_TYPE, VK_TYPE_NUMERIC);
         p4_tf_fechaLimiteSalidaMinuto.getProperties().put(VK_TYPE, VK_TYPE_NUMERIC);
@@ -189,9 +196,94 @@ public class Valida_Envia_DERController implements Initializable {
         //Cambiar el formato del calendario con la plantilla dayCellFactory
         p4_dtp_fechaLimiteSalida.setDayCellFactory(dayCellFactory);
 
-        iniFormDigicModoPago();
-        refesh();
+        try{
+            RefreshTV();
+            iniFormDigicModoPago();
+            refesh();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
+    }
+
+    @FXML
+    void DisplaySelected(MouseEvent event) {
+        Digic digic = p4_tv_justificantesdigic.getSelectionModel().getSelectedItem();
+        if(!(digic == null)){
+           // FillPlantilla(digic);
+        }
+    }
+    @FXML
+    private void RefreshTV() throws  IOException{
+
+        ObservableList<Digic> data;
+
+        try {
+            List<Digic> personList = digicRepository.findByuuidProceso(App.UUIDProcess);
+            data = FXCollections.observableArrayList(personList);
+
+            TableColumn<Digic, String> justificnteColumn = new TableColumn<>(bundle.getString( "columna_titulo_justificante"));
+            justificnteColumn.setCellValueFactory(new PropertyValueFactory<>("justificante"));
+
+            TableColumn<Digic, String> razonSocialColumn = new TableColumn<>(bundle.getString( "columna_titulo_nombrecomercial"));
+            razonSocialColumn.setCellValueFactory(new PropertyValueFactory<>("razonSocial"));
+
+            TableColumn<Digic, String> numeroFacturaColumn = new TableColumn<>(bundle.getString( "columna_titulo_numerofactura"));
+            numeroFacturaColumn.setCellValueFactory(new PropertyValueFactory<>("numeroFactura"));
+
+            TableColumn<Digic, String> fechaFacturaColumn = new TableColumn<>(bundle.getString( "columna_titulo_fecha"));
+            fechaFacturaColumn.setCellValueFactory(new PropertyValueFactory<>("fechaFactura"));
+
+            TableColumn<Digic, String> totalDigicColumn = new TableColumn<>(bundle.getString( "columna_titulo_importedigic"));
+            totalDigicColumn.setCellValueFactory(new PropertyValueFactory<>("totalDigic"));
+
+
+            p4_tv_justificantesdigic.setPlaceholder(new Label(bundle.getString( "tv_justificantesdigic_Placeholder")));
+            p4_tv_justificantesdigic.getColumns().setAll(justificnteColumn, razonSocialColumn, numeroFacturaColumn, fechaFacturaColumn, totalDigicColumn);
+            p4_tv_justificantesdigic.setStyle("-fx-font-size: 18;");
+            p4_tv_justificantesdigic.setItems(data);
+
+            if(!personList.isEmpty()){
+
+                Double montoTotalDigic= 0.00;
+
+                for (Digic digic: personList) {
+                    montoTotalDigic = montoTotalDigic + Double.valueOf (digic.getTotalDigic());
+                }
+
+                p4_tf_montoTotalDigic.setText(getTwoDecimals(montoTotalDigic));
+
+                //floatTxtFld(p4_tf_montoTotalDigic);
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+    private static String getTwoDecimals(double value){
+        DecimalFormat df = new DecimalFormat("0.00");
+        return df.format(value);
+    }
+    public static void floatTxtFld(TextField field) {
+        DecimalFormat format = new DecimalFormat("#");
+        field.setTextFormatter(new TextFormatter<>(c -> {
+            if (c.getControlNewText().isEmpty()) {
+                return c;
+            }
+
+            ParsePosition parsePosition = new ParsePosition(0);
+            Object object = format.parse(c.getControlNewText(), parsePosition);
+
+            if ((object == null) || ((parsePosition.getIndex()) < (c.getControlNewText().length()))) {
+                return null;
+            } else {
+                if (new BigDecimal(c.getControlNewText()).scale() <= 2)
+                    return c;
+                else
+                    return null;
+            }
+        }));
     }
 
     public boolean isValidEmail(String email) {
@@ -476,7 +568,7 @@ public class Valida_Envia_DERController implements Initializable {
         if (procesoWsdl) {
             App.setRoot("/views/primary", locale);
         } else {
-            App.setRoot("/views/Modelo_403_v2", locale);
+            App.setRoot("/views/modelo_403_v2", locale);
         }
     }
 
@@ -517,7 +609,7 @@ public class Valida_Envia_DERController implements Initializable {
 
             //ValidarRemesaDer validarRemesaDer = databaseDerUtil.getDERtoSend(valorDocumento, 3, App.parametrosModel.getKIOSKOID());
             LOGGER.log(Level.INFO, "Armando la Estructura del DER para el envío.");
-            ValidarRemesaDer validarRemesaDer = databaseDerUtil.getDERtoSend(App.UUIDProcess, 3, App.parametrosModel.getKIOSKOID());
+            ValidarRemesaDer validarRemesaDer = databaseDerUtil.getDERtoSend(App.UUIDProcess, 3, App.parametrosModel.getKIOSKOID(),true);
 
             LOGGER.log(Level.INFO, "Llamando al servicio WSDL de ValidarRemesa().");
             validarRemesaDerResponse = KioskoServiceClient.getInstance().validarRemesa(validarRemesaDer);
@@ -680,65 +772,6 @@ public class Valida_Envia_DERController implements Initializable {
 
     private void iniFormDigicModoPago() {
 
-        /*
-             TODO:
-              CREAR la notificación del procesando en los procesos que quedan en espera.
-
-             TODO:
-                listo--- Parece que se hace un lío con las cuentas, las validaciones deben ser las siguientes:
-                listo--- Validaciones de la cuenta sin IBAN:
-                listo--- Cuenta con IBAN solo debe informar el IBAN.
-                listo--- IBAN, se valida tanto para los nacionales como extranjeros.
-                listo--- Cuenta sin IBAN se necesitan los siguiente datos:
-                listo--- Código del País. Obligatorio 3 caracteres máximo. Se valida que sea un país válido existente en tablas de países.
-                listo--- Clave del banco, Obligatorio (menos para US si añade el ABA)
-                listo--- Clave de control (Opcional según país) que países, de momento es opcional
-                listo--- Número de cuenta bancaria, obligatorio
-                listo--- Descripción financiera de la entidad, obligatorio
-                listo--- Swift/BIC, obligatorio
-                listo--- ABA Es obligatorio . Solo para el país Estados Unidos.
-                listo--- US la clave del banco es opcional.
-                .
-                listo--- En la elección de la cuenta en la versión actual no está muy bien.
-                si el país es Mauritania que el código es MR, siempre lo pone con MA, y rellena el combo de países con opciones que iban en otros DER
-                y añade MAU, cuando en los justificante escaneados no hay ninguno que tenga MAU ni MA.
-                listo--- Con la cuenta sigue haciendo algo raro, porque mezcla la cuenta con iban con la cuenta sin iban, en el campo valorMedioPago,
-                listo--- .. además con los dos botones que hay de seleccionar y el combo de SI/NO creo que se hace un lío a la hora de rellenar los datos de cuenta, aunque rellene los datos de cuenta con iban, además envía el resto de campos de la cuenta sin IBAN.
-                listo--- Quitar el control de la fecha de salida y la hora, la introducen pero no se hace nada, es decir, que no se van a validar las 3 horas de antelación, la fecha de salida y la hora de salida son obligatorios pero no se hace nada con esos datos.
-                listo--- ... Hay casos en los que cuando no meto la hora de salida, me da el error que es obligatorio y se ponen los campos en rojo pero ya no acepta ningún valor, y no me deja continuar, aunque los rellene bien me sigue dando error en rojo en esos datos de la hora.
-                listo--- Estos errores te los comento para tenerlos en cuenta ya que no creo que tengan nada que ver con las pantallas y para que se intenten corregir en la nueva versión.
-                listo--- ... En cuanto a la nueva versión con las pantallas, me ha pasado lo mismo tanto con las cuentas como con la hora de salida.
-                .
-                .
-                Longitudes:
-                    listo--- Código del País. Obligatorio 3 caracteres máximo.
-                    listo--- Actualización de Código del País. con 2 y 3 caracteres máximo.
-                    listo--- Clave del banco, longitud 2
-                    listo--- Número de cuenta bancaria, obligatorio de longitud máxima 18
-                    listo--- Descripción financiera de la entidad, obligatorio y de longitud máxima 20 alfanumerico.
-                    listo--- Swift/BIC, obligatorio y de longitud máxima 11
-                    listo--- ABA. Longitud máxima 15.
-                    listo--- Las longitudes máximas no están controladas.
-
-            TODO:
-             listo--- para el DER 4032400003615 6958715644. el monto es un Integer 200 y no un double 200.00, y el pais del banco no es de 2 caracteres sino 3 MAU
-             listo--- para el DER 4032400003606 6958715644. y el pais del banco no es de 2 caracteres sino 3 MAU
-             listo--- Para el DER 4032400003563 42476822P arroja el error PR02
-             listo--- Para el DER 4032400004220 42476822P el modo de transporte de salida es BARCO en el documento impreso y no aparece en la información del QR
-             listo--- Para el DER 4032400003590 41780963Z el monto es un Integer 0 y no un double 0.00  arroja el error  ER
-             listo--- Para el DER 4032400004674 41780963Z
-             listo--- Para el DER 4032400003581 41780963Z
-
-
-             todo:
-              listo--- Revisar cuando se selecciona los der en el panel coloca CUENTA en el campo de modo de transporte
-              listo--- cuando se está en la ventana de envío de los DER y nos retrocedemos, la variable del valor documento se pierde.
-
-
-
-
-         */
-
         p4_tf_pais_banco.textProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue.length() > 3) {
                 ((StringProperty) observable).setValue(oldValue.toUpperCase());
@@ -770,7 +803,6 @@ public class Valida_Envia_DERController implements Initializable {
         });
 
         //TextPropertyAddListener(p4_tf_pais_banco, 3);
-        TextPropertyAddListener(p4_tf_codigoBic, 0);
         TextPropertyAddListener(p4_tf_codigo_aba, 15);
         TextPropertyAddListener(p4_tf_fechaLimiteSalidaMinuto, 2);
         TextPropertyAddListener(p4_tf_fechaLimiteSalidaHora, 2);
@@ -778,7 +810,7 @@ public class Valida_Envia_DERController implements Initializable {
 
         TextPropertyAddListener(p4_tf_cuenta_bancaria, 18);
         TextPropertyAddListener(p4_tf_descripcion_banco, 20, true);
-        TextPropertyAddListener(p4_tf_clave_control, 20, true);
+        TextPropertyAddListener(p4_tf_clave_control, 2, true);
         TextPropertyAddListener(p4_tf_codigoBic, 11);
 
         ValuePropertyAddListener(p4_cb_email, p4_tf_email);

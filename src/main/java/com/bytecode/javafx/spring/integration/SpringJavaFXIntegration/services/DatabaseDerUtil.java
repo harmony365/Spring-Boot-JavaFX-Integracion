@@ -27,7 +27,7 @@ public class DatabaseDerUtil {
     @Autowired
     private DigicRepository digicRepository;
 
-    public ValidarRemesaDer getDERtoSend(String valorDocumento, Integer estatus, String kiosko) {
+    public ValidarRemesaDer getDERtoSend(String valorDocumento, Integer estatus, String kiosko,Boolean onLine) {
 
         ValidarRemesaDer validarRemesaDer = new ValidarRemesaDer();
 
@@ -37,7 +37,7 @@ public class DatabaseDerUtil {
         List<Digic> digicLis = digicRepository.findAllByuuidProcesoEstatus(valorDocumento, estatus);
 
         if(!digicLis.isEmpty()){
-            setRemesaDerFromDigicBD(digicLis.get(0), validarRemesaDer);
+            setRemesaDerFromDigicBD(digicLis.get(0), validarRemesaDer,onLine);
             setMedioPagoFromBd(digicLis.get(0), validarRemesaDer);
         }
 
@@ -95,10 +95,10 @@ public class DatabaseDerUtil {
 
     }
 
-    private void setRemesaDerFromDigicBD(Digic digic, ValidarRemesaDer validarRemesaDer) {
+    private void setRemesaDerFromDigicBD(Digic digic, ValidarRemesaDer validarRemesaDer,Boolean onLine) {
 
         validarRemesaDer.setMailViajero(digic.getEmail());
-        validarRemesaDer.setOnline(Boolean.TRUE);
+        validarRemesaDer.setOnline(onLine);
         validarRemesaDer.setTipoDocumento(digic.getTipoDocumento());
         validarRemesaDer.setValorTipoDocumento(digic.getValorDocumento());
         validarRemesaDer.setNombreViajero(digic.getNombreViajero());
