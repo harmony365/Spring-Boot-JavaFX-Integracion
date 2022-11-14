@@ -2,13 +2,25 @@ package com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo;
 
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Digic;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Repository
 public interface DigicRepository extends JpaRepository<Digic, String> {
+
+    @Modifying
+    @Transactional
+    //@Query(value = "delete from digic d WHERE d.uuidProceso = :uuidProceso")
+    void deleteAllByuuidProceso(String uuidProceso);
+
+    @Modifying
+    @Transactional
+    @Query(value = "delete from digic d WHERE d.estatus_upload = :estatus")
+    void deleteAllByestatusUpload(Integer estatus);
 
     @Query(value = "UPDATE digic d SET estatus_upload = 1, fecha_upload=CURRENT_TIMESTAMP WHERE d.valorDocumento = :valorDocumento AND d.uuidProceso = :uuidProceso")
     List<Digic> updateStatusByValorDocumento(String valorDocumento,String uuidProceso);
@@ -18,7 +30,6 @@ public interface DigicRepository extends JpaRepository<Digic, String> {
 
     @Query(value = "SELECT d FROM digic d WHERE d.justificante = :justificante AND d.uuidProceso = :uuidProceso")
     List<Digic> findByJustificante(String justificante,String uuidProceso);
-
 
     @Query(value = "SELECT d FROM digic d WHERE d.valorDocumento = :valorDocumento AND d.estatus_upload = :estatus")
     List<Digic> findAllByValorDocumentoEstatus(String valorDocumento, Integer estatus);

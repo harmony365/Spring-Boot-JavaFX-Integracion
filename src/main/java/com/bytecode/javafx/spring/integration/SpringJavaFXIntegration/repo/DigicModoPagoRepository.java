@@ -5,11 +5,22 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Repository
 public interface DigicModoPagoRepository extends JpaRepository<DigicModoPago, String> {
+
+    @Modifying
+    @Transactional
+    //@Query(value = "delete from digicmodopago d WHERE d.uuidProceso = :uuidProceso")
+    void deleteAllByuuidProceso(String uuidProceso);
+
+    @Modifying
+    @Transactional
+    //@Query(value = "delete from digicmodopago d WHERE d.estatusUpload = :estatus")
+    void deleteAllByestatusUpload(Integer estatus);
 
     @Query(value = "SELECT d FROM digicmodopago d WHERE d.valorDocumento = :valorDocumento")
     public List<DigicModoPago> findByValorDocumento(String valorDocumento);

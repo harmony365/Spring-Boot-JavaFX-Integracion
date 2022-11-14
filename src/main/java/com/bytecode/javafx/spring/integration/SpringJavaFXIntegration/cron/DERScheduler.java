@@ -36,6 +36,12 @@ public class DERScheduler {
     @Scheduled(cron = "${cron.expression}")
     public void scheduleTaskUsingCronExpression() {
 
+        // Elimina todos los registros que ya ha sido procesados por el wsdl
+        // para mantener las bases de datos limpias.
+        //
+        digicModoPagoRepository.deleteAllByestatusUpload(1);
+        digicRepository.deleteAllByestatusUpload(1);
+
         long now = System.currentTimeMillis()/1000;
         //System.out.println("Scheldule task DER WSDL run: " + now);
         LOGGER.log(Level.INFO, "Scheldule task DER WSDL run: " + now);

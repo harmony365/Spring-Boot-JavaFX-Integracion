@@ -31,23 +31,26 @@
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter-data-jpa</artifactId>
+				<version>2.7.5</version>
 			</dependency>
 
 			<dependency>
 				<groupId>mysql</groupId>
 				<artifactId>mysql-connector-java</artifactId>
+				<version>8.0.30</version>
 				<scope>runtime</scope>
 			</dependency>
 
 			<dependency>
 				<groupId>org.xerial</groupId>
 				<artifactId>sqlite-jdbc</artifactId>
-				<version>3.16.1</version>
+				<version>3.39.3.0</version>
 			</dependency>
 
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter-test</artifactId>
+				<version>2.7.5</version>
 				<scope>test</scope>
 			</dependency>
 		<!-- -->
@@ -104,14 +107,14 @@
 			<dependency>
 				<groupId>com.google.zxing</groupId>
 				<artifactId>core</artifactId>
-				<version>3.5.0</version>
+				<version>3.5.1</version>
 				<type>pom</type>
 			</dependency>
 			
 			<dependency>
 				<groupId>com.google.zxing</groupId>
 				<artifactId>javase</artifactId>
-				<version>3.5.0</version>
+				<version>3.5.1</version>
 			</dependency>
 
 
@@ -120,13 +123,13 @@
 			<dependency>
 				<groupId>com.google.code.gson</groupId>
 				<artifactId>gson</artifactId>
-				<version>2.9.0</version>
+				<version>2.10</version>
 				<type>jar</type>
 			</dependency>
 			<dependency>
 				<groupId>com.googlecode.json-simple</groupId>
 				<artifactId>json-simple</artifactId>
-				<version>1.1</version>
+				<version>1.1.1</version>
 			</dependency>
 			<dependency>
 				<groupId>javax.json</groupId>
@@ -136,7 +139,7 @@
 			<dependency>
 				<groupId>org.json</groupId>
 				<artifactId>json</artifactId>
-				<version>20180130</version>
+				<version>20220924</version>
 				<type>jar</type>
 			</dependency>			
 
@@ -161,12 +164,12 @@
 			<dependency>
 				<groupId>org.iban4j</groupId>
 				<artifactId>iban4j</artifactId>
-				<version>3.2.3-RELEASE</version>
+				<version>3.2.4-RELEASE</version>
 			</dependency>
 			<dependency>
 				<groupId>org.testng</groupId>
 				<artifactId>testng</artifactId>
-				<version>7.4.0</version>
+				<version>7.6.1</version>
 				<scope>compile</scope>
 			</dependency>
 
@@ -174,17 +177,17 @@
 			<dependency>
 				<groupId>org.kordamp.ikonli</groupId>
 				<artifactId>ikonli-javafx</artifactId>
-				<version>1.9.0</version>
+				<version>12.3.1</version>
 			</dependency>
 			<dependency>
 				<groupId>org.kordamp.ikonli</groupId>
 				<artifactId>ikonli-devicons-pack</artifactId>
-				<version>1.9.0</version>
+				<version>12.3.1</version>
 			</dependency>
 			<dependency>
 				<groupId>org.kordamp.ikonli</groupId>
 				<artifactId>ikonli-fontawesome-pack</artifactId>
-				<version>1.9.0</version>
+				<version>12.3.1</version>
 			</dependency>
 		<!--  FIN DE LIBRERIA    -->
 

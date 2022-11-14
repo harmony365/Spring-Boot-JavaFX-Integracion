@@ -51,8 +51,15 @@ public class DatabaseDerUtil {
     private DerType getDerTypeFromBD(Digic digic) {
         DerType derType = new DerType();
 
+        String tempFechaFactura = digic.getFechaFactura(); //---> 13/11/2022  20221113
+        tempFechaFactura = tempFechaFactura.substring(6,10) +  tempFechaFactura.substring(3,5) +  tempFechaFactura.substring(0,2) ;
+
+        String tempFechaLimiteSalida = digic.getFechaLimiteSalida(); //---> 13/11/2022  2022-11-12
+        tempFechaLimiteSalida = tempFechaLimiteSalida.substring(6,10) +  tempFechaLimiteSalida.substring(3,5) +  tempFechaLimiteSalida.substring(0,2) ;
+
         derType.setJustificante(digic.getJustificante());
-        derType.setFechaFactura(digic.getFechaFactura());
+        //derType.setFechaFactura(digic.getFechaFactura());
+        derType.setFechaFactura(tempFechaFactura);
         //TODO: Validar el formato de la fecha de la factura en la lista de DER enviada.
         //derType.setFechaFactura(String.valueOf(getFecha()));
         derType.setNifEstablecimiento(digic.getNifEstablecimiento());

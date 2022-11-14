@@ -262,6 +262,9 @@ public class PassPortLoginController  implements Initializable {
     @FXML
     public void PantallaDialogo(ActionEvent event) throws IOException {
 
+        App.MensajeValidaDER_icon   = "error";
+        App.MensajeValidaDER_error  = "1";
+        App.MensajeValidaDER_action = true;
 
         Stage stage = new Stage();
 

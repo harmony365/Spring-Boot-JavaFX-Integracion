@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
-<StackPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1250.0" prefWidth="2189.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.controllers.Modelo_403Controller">
+<StackPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1250.0" prefWidth="2189.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.controllers.Modelo_403Controller">
    <children>
       <AnchorPane prefHeight="1100.0" prefWidth="2398.0" StackPane.alignment="CENTER">
       <children>
@@ -198,6 +198,11 @@
                <Font size="18.0" />
             </font>
          </Label>
+            <Button fx:id="p2_btn_add_403" contentDisplay="CENTER" layoutX="1355.0" layoutY="777.0" mnemonicParsing="false" onAction="#switchToQRCode" prefHeight="100.0" prefWidth="309.0" text="%p2_btn_add_403" textAlignment="CENTER" textFill="#333890">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
          <Button fx:id="p2_btn_salir" layoutX="1520.0" layoutY="139.0" mnemonicParsing="false" onAction="#switchToAnterior" prefHeight="56.0" prefWidth="130.0" text="%p2_btn_anterior" textFill="#b52b2b">
             <font>
                <Font name="System Bold" size="24.0" />
@@ -433,11 +438,6 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Button fx:id="p2_btn_add_403" contentDisplay="CENTER" layoutX="1355.0" layoutY="777.0" mnemonicParsing="false" onAction="#switchToQRCode" prefHeight="100.0" prefWidth="309.0" text="%p2_btn_add_403" textAlignment="CENTER" textFill="#333890">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Button>
       </children>
          <StackPane.margin>
             <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />

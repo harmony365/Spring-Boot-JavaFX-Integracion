@@ -37,8 +37,8 @@
                   </ImageView>
                </graphic>
             </Button>
-            <!--Button fx:id="p3_btn_demo" mnemonicParsing="false" onAction="#QRcodeRead" prefHeight="47.0" prefWidth="63.0" text="DEMO" /-->
-            <Button fx:id="p3_btn_demo" mnemonicParsing="false" onAction="#PantallaDialogo" prefHeight="47.0" prefWidth="63.0" text="DEMO" />
+            <Button fx:id="p3_btn_demo" mnemonicParsing="false" onAction="#QRcodeRead" prefHeight="47.0" prefWidth="63.0" text="DEMO" />
+            <!--Button fx:id="p3_btn_demo" mnemonicParsing="false" onAction="#PantallaDialogo" prefHeight="47.0" prefWidth="63.0" text="DEMO" /-->
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="88.0" prefWidth="875.0" text="%p3_lb_teclee_id" textAlignment="CENTER">
                <font>
                   <Font size="24.0" />

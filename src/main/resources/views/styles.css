@@ -2,16 +2,17 @@
     -fx-text-fill: rgb(0, 0, 0);
 }
 
-#p1ane{
-    -fx-background-image: url("taxbg4.1.jpg");
-    -fx-background-repeat: stretch;   
-    -fx-background-size: 2400 1106;
-    -fx-background-position: center center;
-    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0); 
+#pane{
+    -fx-background-image: url("../img/background-canaryisland.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 1568 615;
+    -fx-background-color: white;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);
 }
 
 .root {
-    -fx-background-image: url("../img/taxbg4.1.jpg");
+    -fx-background-image: url("../img/background-canaryisland.png");
     -fx-background-repeat: stretch;   
     -fx-background-position: left top;
     -fx-background-size: 2400 1100;

@@ -12,7 +12,7 @@
                <children>
                   <AnchorPane layoutX="12.0" layoutY="21.0" prefHeight="93.0" prefWidth="159.0">
                      <children>
-                        <ImageView fitHeight="119.0" fitWidth="176.0" layoutX="6.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="p1_imgview_1" fitHeight="119.0" fitWidth="176.0" layoutX="6.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../img/Gobierno_Canarias_logo.png" />
                            </image>
@@ -29,7 +29,7 @@
                      </children></AnchorPane>
                   <AnchorPane layoutX="206.0" layoutY="52.0" prefHeight="80.0" prefWidth="244.0">
                      <children>
-                        <ImageView fitHeight="80.0" fitWidth="232.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="p1_imgview_2" fitHeight="80.0" fitWidth="232.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../img/ATC_logo.png" />
                            </image>
@@ -211,7 +211,7 @@
                   </AnchorPane>
                   <AnchorPane layoutX="1029.0" layoutY="45.0" prefHeight="378.0" prefWidth="399.0">
                      <children>
-                        <ImageView fitHeight="408.0" fitWidth="538.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="p1_imgview_3" fitHeight="408.0" fitWidth="538.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../img/qr_icon.png" />
                            </image>

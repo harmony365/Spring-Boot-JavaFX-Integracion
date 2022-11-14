@@ -2,8 +2,11 @@ package com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.controlle
 
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.App;
 import javafx.application.Platform;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.ImageView;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,16 +20,12 @@ import java.util.ResourceBundle;
 @Component
 public class PrimaryController implements Initializable  {
 
+    private Integer ContadorImgUno=0, ContadorImgDos=0;
+    @FXML public ImageView p1_imgview_1,p1_imgview_2,p1_imgview_3;
+
     private final static Logger LOGGER = LogManager.getLogger(PrimaryController.class.getName());
     //public String Segunda_Pantalla = "modelo_403_v1";
     public String Segunda_Pantalla = "/views/PassPortLogin";
-
-
-    @FXML
-    public void initialize() {
-        // Funcion de inicio del Controlador
-        //
-    }
 
     @FXML
     private void switchToSecondary() throws IOException {
@@ -139,6 +138,44 @@ public class PrimaryController implements Initializable  {
         // TODO Auto-generated method, no se está usando el método por ahora
         //
         LOGGER.log(Level.INFO, "User successfully logged in {}");
+
+        p1_imgview_1.setPickOnBounds(true);
+        p1_imgview_2.setPickOnBounds(true);
+        p1_imgview_3.setPickOnBounds(true);
+        p1_imgview_1.setOnMouseClicked(new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                ContadorImgUno = ContadorImgUno + 1;
+                ContadorImgDos = 0;
+            }
+        });
+        p1_imgview_2.setOnMouseClicked(new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                ContadorImgDos = ContadorImgDos + 1;
+                if(ContadorImgUno.equals(5) && ContadorImgDos.equals(2)){
+                    try {
+                        ContadorImgUno = 0;
+                        ContadorImgDos = 0;
+
+                        Locale locale = Locale.getDefault();
+                        App.setRoot("/views/ViewLogin",locale);
+
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                }
+            }
+        });
+        p1_imgview_3.setOnMouseClicked(new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                ContadorImgUno = 0;
+                ContadorImgDos = 0;
+            }
+        });
+
     }
 
 

@@ -4,10 +4,14 @@ import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.App;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Digic;
 import org.json.JSONObject;
 
+import java.time.LocalDate;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class JsonUtils {
     private static ZonedDateTime now = ZonedDateTime.now();
+    public LocalDate date = LocalDate.now();
+    public static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
 
     public static Digic convertJsonToDigic(JSONObject myJson) {
             String a;
@@ -71,7 +75,8 @@ public class JsonUtils {
             }
 
             String monto = "0";
-            System.out.println(myJson.get("totalDigic").getClass().getSimpleName());
+
+            //System.out.println(myJson.get("totalDigic").getClass().getSimpleName());
             //if(!myJson.get("totalDigic").equals(0)) monto = Double.toString((Double) myJson.get("totalDigic"));
 
             switch (myJson.get("totalDigic").getClass().getSimpleName()){
@@ -83,40 +88,51 @@ public class JsonUtils {
                     break;
             }
 
+            // CAMBIAMOS EL FORMATODE FECHA A FORAMATO ESPAÑA
+            //
+            LocalDate fechaFactura = LocalDate.parse((String) myJson.get("fechaFactura"), formatter);
+            String tempFechaFactura = fechaFactura.toString();
+            tempFechaFactura = tempFechaFactura.substring(8,10) + "/" + tempFechaFactura.substring(5,7) + "/" + tempFechaFactura.substring(0,4) ;
+
+            LocalDate fechaLimiteSalida = LocalDate.parse((String) myJson.get("fechaLimiteSalida"), formatter);
+            String tempfechaLimiteSalida = fechaLimiteSalida.toString();
+            tempfechaLimiteSalida = tempfechaLimiteSalida.substring(8,10) + "/" + tempfechaLimiteSalida.substring(5,7) + "/" + tempfechaLimiteSalida.substring(0,4) ;
+
+
             Digic digic = new Digic();
-            digic.setJustificante((String) myJson.get("justificante"));
-            digic.setTotalDigic(monto);
-            digic.setNombreViajero((String) myJson.get("nombreViajero"));
-            digic.setApellidosViajero((String) myJson.get("apellidosViajero"));
-            digic.setTipoDocumento((String) myJson.get("tipoDocumento"));
-            digic.setValorDocumento((String) myJson.get("valorDocumento"));
-            digic.setPaisExpedicion((String) myJson.get("paisExpedicion"));
-            digic.setPaisResidencia((String) myJson.get("paisResidencia"));
-            digic.setNifEstablecimiento((String) myJson.get("nifEstablecimiento"));
-            digic.setRazonSocial((String) myJson.get("razonSocial"));
-            digic.setNumeroFactura((String) myJson.get("numeroFactura"));
-            digic.setFechaFactura((String) myJson.get("fechaFactura"));
-            digic.setFechaLimiteSalida((String) myJson.get("fechaLimiteSalida"));
-            digic.setModoPago((String) myJson.get("modoPago"));
-            digic.setEmail((String) myJson.get("email"));
-            digic.setCodigoBic((String) myJson.get("codigoBic"));
-            digic.setValorMedioPago((String) myJson.get("valorMedioPago"));
-            digic.setClaveControl((String) myJson.get("claveControl"));
-            digic.setCuentaSinIBAN((String) myJson.get("cuentaSinIBAN"));
-            digic.setCuentaInternacional((String) myJson.get("cuentaSinIBAN"));
-            digic.setNumeroABA((String) myJson.get("numeroABA"));
-            digic.setClaveBanco((String) myJson.get("claveBanco"));
-            digic.setDescInstFinanciera((String) myJson.get("descInstFinanciera"));
-            digic.setPaisBanco((String) myJson.get("paisBanco"));
-            digic.setModoTransporte((String) myJson.get("modoTransporte"));
-            digic.setIdentificadorBillete((String) myJson.get("identificadorBillete"));
-            digic.setUuidProceso(App.UUIDProcess);
-            digic.setFechaCreacion(now.toString());
-            digic.setEstatus_upload(3);
+                digic.setJustificante((String) myJson.get("justificante"));
+                digic.setTotalDigic(monto);
+                digic.setNombreViajero((String) myJson.get("nombreViajero"));
+                digic.setApellidosViajero((String) myJson.get("apellidosViajero"));
+                digic.setTipoDocumento((String) myJson.get("tipoDocumento"));
+                digic.setValorDocumento((String) myJson.get("valorDocumento"));
+                digic.setPaisExpedicion((String) myJson.get("paisExpedicion"));
+                digic.setPaisResidencia((String) myJson.get("paisResidencia"));
+                digic.setNifEstablecimiento((String) myJson.get("nifEstablecimiento"));
+                digic.setRazonSocial((String) myJson.get("razonSocial"));
+                digic.setNumeroFactura((String) myJson.get("numeroFactura"));
+                digic.setFechaFactura(tempFechaFactura);
+                digic.setFechaLimiteSalida(tempfechaLimiteSalida);
+                digic.setModoPago((String) myJson.get("modoPago"));
+                digic.setEmail((String) myJson.get("email"));
+                digic.setCodigoBic((String) myJson.get("codigoBic"));
+                digic.setValorMedioPago((String) myJson.get("valorMedioPago"));
+                digic.setClaveControl((String) myJson.get("claveControl"));
+                digic.setCuentaSinIBAN((String) myJson.get("cuentaSinIBAN"));
+                digic.setCuentaInternacional((String) myJson.get("cuentaSinIBAN"));
+                digic.setNumeroABA((String) myJson.get("numeroABA"));
+                digic.setClaveBanco((String) myJson.get("claveBanco"));
+                digic.setDescInstFinanciera((String) myJson.get("descInstFinanciera"));
+                digic.setPaisBanco((String) myJson.get("paisBanco"));
+                digic.setModoTransporte((String) myJson.get("modoTransporte"));
+                digic.setIdentificadorBillete((String) myJson.get("identificadorBillete"));
+                digic.setUuidProceso(App.UUIDProcess);
+                digic.setFechaCreacion(now.toString());
+                digic.setEstatus_upload(3);
 
-            //digic.setClaveUuid((String) App.UUIDProcess);
+                //digic.setClaveUuid((String) App.UUIDProcess);
 
-        return digic;
+            return digic;
     }
 
     

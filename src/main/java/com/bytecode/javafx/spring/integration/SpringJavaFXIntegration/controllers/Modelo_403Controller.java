@@ -3,6 +3,7 @@ package com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.controlle
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.App;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Digic;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.DummyData;
+import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.DigicModoPagoRepository;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.DigicRepository;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.utiles.JsonUtils;
 import com.google.zxing.*;
@@ -11,8 +12,7 @@ import com.google.zxing.common.HybridBinarizer;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import com.opencsv.CSVReader;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -49,6 +49,8 @@ import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.*;
 import java.text.DecimalFormat;
 import java.text.ParsePosition;
@@ -67,11 +69,13 @@ import static org.comtel2000.keyboard.control.VkProperties.*;
 public class Modelo_403Controller implements Initializable {
 
     private final static Logger LOGGER = LogManager.getLogger(Modelo_403Controller.class.getName());/*
-     * Conexion Bases de datos 
+     /* Conexion Bases de datos
     */
         
     @Autowired
     private DigicRepository digicRepository;
+    @Autowired
+    private DigicModoPagoRepository digicModoPagoRepository;
 
     public String tableName = "digic_v2"; 
     public String DBLocal = "digic_v2"; 
@@ -119,11 +123,11 @@ public class Modelo_403Controller implements Initializable {
 
     @FXML public ImageView p2_img_barcode;
 
-    @FXML public TableView<Justificante> p2_tv_justificantes = new TableView<Justificante>();
+   // @FXML public TableView<Justificante> p2_tv_justificantes = new TableView<Justificante>();
      
-    @FXML public TableColumn<Justificante, String> p2_tc_listajustificantes = new TableColumn<Justificante, String>("JUSTIFICANTE");
+    //@FXML public TableColumn<Justificante, String> p2_tc_listajustificantes = new TableColumn<Justificante, String>("JUSTIFICANTE");
     
-    @FXML public TableColumn<Justificante, String> p2_tc_listajustificantesMonto  = new TableColumn<Justificante, String>("MONTO");
+    //@FXML public TableColumn<Justificante, String> p2_tc_listajustificantesMonto  = new TableColumn<Justificante, String>("MONTO");
 
 
     @FXML public TableView<Digic> p2_tv_justificantesdigic ; //= new TableView<Digic>();
@@ -131,7 +135,7 @@ public class Modelo_403Controller implements Initializable {
     private String ScannerReader ="";
 
     private ResourceBundle bundle;
-
+/*
     public class Justificante {
         private String numero;
         private String monto;
@@ -166,7 +170,7 @@ public class Modelo_403Controller implements Initializable {
         }
 
 
-    }
+    }*/
     private ObservableList<Digic> data;
 
 
@@ -299,7 +303,11 @@ public class Modelo_403Controller implements Initializable {
 
         try{
             RefreshTV();
-            switchToQRCode();
+
+            // TODO: verificar cómo hacer para que no quede ningún boton activo y no se ejecute el enter cuando hace
+            //  la lectura del scanner.
+            //switchToQRCode();
+
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -307,7 +315,7 @@ public class Modelo_403Controller implements Initializable {
     }
 
     @FXML
-    void DisplaySelected(MouseEvent event) {
+    void DisplaySelected(MouseEvent event) throws Exception {
         Digic digic = p2_tv_justificantesdigic.getSelectionModel().getSelectedItem();
         if(!(digic == null)){
             FillPlantilla(digic);
@@ -400,20 +408,27 @@ public class Modelo_403Controller implements Initializable {
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                dialog.close();
                 p2_img_barcode.requestFocus();
+                dialog.close();
             }
         });
 
         content.setActions(button);
-        dialog.show();
         p2_img_barcode.requestFocus();
+        dialog.show();
+
 
     }
 
 
     @FXML
     private void LoadDialogEscanear(){
+
+        p2_btn_add_403.setDisable(true);
+        p2_btn_salir.setDisable(true);
+        p2_btn_wsdl.setDisable(true);
+        p2_btn_demo.setDisable(true);
+        //p2_tv_justificantesdigic.setDisable(true);
 
         String title, body;
 
@@ -435,32 +450,29 @@ public class Modelo_403Controller implements Initializable {
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                dialog.close();
                 p2_img_barcode.requestFocus();
+                p2_btn_add_403.setDisable(false);
+                p2_btn_salir.setDisable(false);
+                p2_btn_wsdl.setDisable(false);
+                p2_btn_demo.setDisable(false);
+                //p2_tv_justificantesdigic.setDisable(false);
+                dialog.close();
             }
         });
 
         content.setActions(button);
-        dialog.show();
         p2_img_barcode.requestFocus();
+        dialog.show();
+
     }
+
 
     @FXML
     private void BtnActionWsdl(ActionEvent event) throws SQLException, IOException, InvocationTargetException {
         //switchToWSDL();
 
-        LoadDialog("ESTA ES UNA PRUEBA","QUE TAL ÉSTA PRUEBA.\nsE VE MUY BIEN\nNO?");
+        LoadDialog("ESTA ES UNA PRUEBA","QUE TAL ÉSTA PRUEBA.\nSE VE MUY BIEN\nNO?");
 
-        /*Stage stage = new Stage();
-        Parent root = FXMLLoader.load(
-                Objects.requireNonNull(getClass().getResource("/views/dialogo_validar_der.fxml")));
-        stage.setScene(new Scene(root));
-        //stage.setTitle("My modal window");
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initOwner( ((Node)event.getSource()).getScene().getWindow() );
-        stage.show();
-        */
     }    
 
     @FXML 
@@ -482,13 +494,13 @@ public class Modelo_403Controller implements Initializable {
 
         JFXDialogLayout content = new JFXDialogLayout();
 
-        content.setHeading(new Text(bundle.getString( "p2_brn_anterior_dialogo_Heading")));
-        content.setBody(new Text(bundle.getString( "p2_brn_anterior_dialogo_Body")));
+        content.setHeading(new Text(bundle.getString( "p2_btn_anterior_dialogo_Heading")));
+        content.setBody(new Text(bundle.getString( "p2_btn_anterior_dialogo_Body")));
         content.setStyle("-fx-font-size: 20;");
 
         JFXDialog dialog = new JFXDialog(root, content, JFXDialog.DialogTransition.CENTER, false);
-        JFXButton buttonOK = new JFXButton("OK");
-        JFXButton buttonCancel = new JFXButton("CANCEL");
+        JFXButton buttonOK = new JFXButton(bundle.getString( "p2_btn_anterior_dialogo_ok"));
+        JFXButton buttonCancel = new JFXButton(bundle.getString( "p2_btn_anterior_dialogo_cancelar"));
         buttonOK.setButtonType(JFXButton.ButtonType.RAISED);
         buttonOK.setStyle("-fx-background-color: #00bfff;");
         buttonCancel.setButtonType(JFXButton.ButtonType.RAISED);
@@ -505,6 +517,10 @@ public class Modelo_403Controller implements Initializable {
                 dialog.close();
 
                 try {
+
+                   digicRepository.deleteAllByuuidProceso(App.UUIDProcess);
+                   digicModoPagoRepository.deleteAllByuuidProceso(App.UUIDProcess);
+
                     Locale locale = Locale.getDefault();
                     App.setRoot("/views/primary",locale);
                 } catch (IOException e) {
@@ -555,6 +571,7 @@ public class Modelo_403Controller implements Initializable {
             ClearPlantilla();
             LoadDialogEscanear();
             p2_img_barcode.requestFocus();
+
 
     }
 
@@ -758,7 +775,7 @@ public class Modelo_403Controller implements Initializable {
 
     }
 
-    @FXML private void FillPlantilla(JSONObject myJson){
+    @FXML private void FillPlantilla(JSONObject myJson) throws Exception {
 
             p2_btn_aceptar.setVisible(true);
 
@@ -771,9 +788,12 @@ public class Modelo_403Controller implements Initializable {
 
 
             // 2. Datos del Viajero
+
             LocalDate fechaFactura = LocalDate.parse((String) myJson.get("fechaFactura"), formatter);
             p2_lb_numero_factura.setText((String) myJson.get("numeroFactura"));
-            p2_lb_fecha_factura.setText(fechaFactura.toString());
+            String tempFecha = fechaFactura.toString();
+            tempFecha = tempFecha.substring(8,10) + "/" + tempFecha.substring(5,7) + "/" + tempFecha.substring(0,4) ;
+            p2_lb_fecha_factura.setText(tempFecha);
             p2_lb_monto_factura.setText(myJson.get("totalDigic").toString());
 
             // 3. Datos del Viajero
@@ -781,13 +801,16 @@ public class Modelo_403Controller implements Initializable {
             p2_lb_apellidosViajero.setText((String) myJson.get("apellidosViajero"));
             p2_lb_tipoDocumento.setText((String) myJson.get("tipoDocumento"));
             p2_lb_valorDocumento.setText((String) myJson.get("valorDocumento"));
-            p2_lb_paisExpedicion.setText(SeleccionarPais((String) myJson.get("paisExpedicion")));
-            p2_lb_paisResidencia.setText(SeleccionarPais((String) myJson.get("paisResidencia")));
+            p2_lb_paisExpedicion.setText(SeleccionarPaisV2((String) myJson.get("paisExpedicion")));
+            p2_lb_paisResidencia.setText(SeleccionarPaisV2((String) myJson.get("paisResidencia")));
             p2_tf_email.setText((String) myJson.get("email"));
             
             // 4. Datos Transporte
             LocalDate fechaLimiteSalida = LocalDate.parse((String) myJson.get("fechaLimiteSalida"), formatter);
-            p2_lb_fechaLimiteSalida.setText(fechaLimiteSalida.toString());
+            tempFecha = fechaLimiteSalida.toString();
+            tempFecha = tempFecha.substring(8,10) + "/" + tempFecha.substring(5,7) + "/" + tempFecha.substring(0,4) ;
+
+            p2_lb_fechaLimiteSalida.setText(tempFecha);
 
             // 5. Datos de medio de pago
             if (!myJson.isNull("cuentaSinIBAN")){
@@ -900,7 +923,7 @@ public class Modelo_403Controller implements Initializable {
     }
 
 
-    @FXML private void FillPlantilla(Digic myJson){
+    @FXML private void FillPlantilla(Digic myJson) throws Exception {
 
         p2_btn_aceptar.setVisible(true);
 
@@ -913,9 +936,10 @@ public class Modelo_403Controller implements Initializable {
 
 
         // 2. Datos del Viajero
-        LocalDate fechaFactura = LocalDate.parse((String) myJson.getFechaFactura(), formatter);
+        //LocalDate fechaFactura = LocalDate.parse((String) myJson.getFechaFactura(), formatter);
         p2_lb_numero_factura.setText((String) myJson.getNumeroFactura());
-        p2_lb_fecha_factura.setText(fechaFactura.toString());
+        //p2_lb_fecha_factura.setText(fechaFactura.toString());
+        p2_lb_fecha_factura.setText(myJson.getFechaFactura());
         p2_lb_monto_factura.setText(myJson.getTotalDigic().toString());
 
         // 3. Datos del Viajero
@@ -923,13 +947,15 @@ public class Modelo_403Controller implements Initializable {
         p2_lb_apellidosViajero.setText((String) myJson.getApellidosViajero());
         p2_lb_tipoDocumento.setText((String) myJson.getTipoDocumento());
         p2_lb_valorDocumento.setText((String) myJson.getValorDocumento());
-        p2_lb_paisExpedicion.setText(SeleccionarPais((String) myJson.getPaisExpedicion()));
-        p2_lb_paisResidencia.setText(SeleccionarPais((String) myJson.getPaisResidencia()));
+        p2_lb_paisExpedicion.setText(SeleccionarPaisV2((String) myJson.getPaisExpedicion()));
+        p2_lb_paisResidencia.setText(SeleccionarPaisV2((String) myJson.getPaisResidencia()));
         p2_tf_email.setText((String) myJson.getEmail());
 
         // 4. Datos Transporte
-        LocalDate fechaLimiteSalida = LocalDate.parse((String) myJson.getFechaLimiteSalida(), formatter);
-        p2_lb_fechaLimiteSalida.setText(fechaLimiteSalida.toString());
+        //LocalDate fechaLimiteSalida = LocalDate.parse((String) myJson.getFechaLimiteSalida(), formatter);
+        //p2_lb_fechaLimiteSalida.setText(fechaLimiteSalida.toString());
+        p2_lb_fechaLimiteSalida.setText(myJson.getFechaLimiteSalida());
+
         //TODO: NO SE TIENE ESA FECHA DE SALIDA
 
         // 5. Datos de medio de pago
@@ -1110,8 +1136,8 @@ public class Modelo_403Controller implements Initializable {
         Digic digic = JsonUtils.convertJsonToDigic(myJson);        
         digicRepository.save(digic);
 
-        Justificante justificante = new Justificante(digic.getJustificante(), digic.getTotalDigic());
-        p2_tv_justificantes.getItems().addAll(justificante);  
+        //Justificante justificante = new Justificante(digic.getJustificante(), digic.getTotalDigic());
+        //p2_tv_justificantes.getItems().addAll(justificante);
     }
 
     @FXML
@@ -1121,12 +1147,12 @@ public class Modelo_403Controller implements Initializable {
 
         Digic digic = new Digic();
 
-        /* 
+        /*
         digic.setjustificante(p2_lb_justificante.getText());
         digic.setemail(p2_tf_email.getText());
         digic.setcodigoBic(p2_tf_codigoBic.getText());
         digic.setvalorMedioPago(p2_tf_valorMedioPago.getText());
-        
+
         digic.setclaveControl(p2_tf_clave_control.getText());
         digic.setcuentaSinIBAN(p2_lb_cuentaInternacional.getText());
         digic.setnumeroABA(p2_tf_codigo_aba.getText());
@@ -1242,8 +1268,8 @@ public class Modelo_403Controller implements Initializable {
         p2_lb_apellidosViajero.setText(digic.getapellidosViajero());
         p2_lb_tipoDocumento.setText(digic.gettipoDocumento());
         p2_lb_valorDocumento.setText(digic.getvalorDocumento());
-        p2_lb_paisExpedicion.setText(SeleccionarPais(digic.getpaisExpedicion()));
-        p2_lb_paisResidencia.setText(SeleccionarPais(digic.getpaisResidencia()));
+        p2_lb_paisExpedicion.setText(SeleccionarPaisV2(digic.getpaisExpedicion()));
+        p2_lb_paisResidencia.setText(SeleccionarPaisV2(digic.getpaisResidencia()));
         p2_tf_email.setText(digic.getemail());
         p2_lb_fechaLimiteSalida.setText(digic.getfechaLimiteSalida());
         p2_lb_cuentaInternacional.setText(digic.getcuentaSinIBAN());
@@ -1324,6 +1350,31 @@ public class Modelo_403Controller implements Initializable {
         }
         return false;
      
+    }
+
+    private String SeleccionarPaisV2(String index)  throws Exception {
+
+        String SAMPLE_CSV_FILE_PATH = "ISO-Codes.csv";
+
+        try (
+                java.io.Reader reader = Files.newBufferedReader(Paths.get(SAMPLE_CSV_FILE_PATH));
+                CSVReader csvReader = new CSVReader(reader);
+        ) {
+            // Reading Records One by One in a String array
+            String[] nextRecord;
+            while ((nextRecord = csvReader.readNext()) != null) {
+
+                //System.out.println("English-Short-Name : " + nextRecord[0]);
+                //System.out.println("Alpha-2-code : " + nextRecord[1]);
+                //System.out.println("Alpha-3-code : " + nextRecord[2]);
+                //System.out.println("Numeric-code : " + nextRecord[3]);
+                //System.out.println("Independent : " + nextRecord[4]);
+                //System.out.println("==========================");
+
+                if (nextRecord[1].equals(index) || nextRecord[2].equals(index)) return nextRecord[0].toUpperCase();
+            }
+        }
+        return "";
     }
 
     public String SeleccionarPais(String index){

@@ -59,8 +59,9 @@ public class App extends Application {
     public DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
 	public KeyBoardPopup popup;
 
-    public static String UUIDProcess;
+    public static String UUIDProcess,MensajeValidaDER_icon,MensajeValidaDER_error;
 
+    public static Boolean MensajeValidaDER_action;
     
     Timeline BackGroundWonder = new Timeline(new KeyFrame(Duration.seconds(30), new EventHandler<ActionEvent>() { 
         @Override public void handle(ActionEvent event) { 

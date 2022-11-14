@@ -427,13 +427,12 @@ public class Valida_Envia_DERController implements Initializable {
     }
 
     @FXML
-    private void switchToAceptar() throws IOException {
+    private void switchToAceptar(ActionEvent event) throws IOException {
         //Boolean procesarWSDL = false;
 
         ProcesarWSDL procesarWSDL = new ProcesarWSDL();
         procesarWSDL.valor = false;
 
-        /*
         // Given start Date
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -447,6 +446,9 @@ public class Valida_Envia_DERController implements Initializable {
         //TODO: validar que está verificando que la fecha y hora de salida no superalas 3 horas ni es menor a o horas-
         if (p4_tf_fechaLimiteSalidaHora.getLength() > 0 && p4_tf_fechaLimiteSalidaMinuto.getLength() > 0) {
             int resultado = validaFechaHora(start_date, end_date, "H");
+            // TODO: fecha embarque temporalmente no se valida tiempo sólo se valida que los campos no esten vacios.
+                resultado = 0;
+
             if (resultado > 3 || resultado < 0) {
                 PlayEmpty(p4_tf_fechaLimiteSalidaHora);
                 PlayEmpty(p4_tf_fechaLimiteSalidaMinuto);
@@ -462,7 +464,7 @@ public class Valida_Envia_DERController implements Initializable {
             procesarWSDL.valor = true;
             System.out.println("Fecha de salida no contiene horas reglamentarias");
         }
-        */
+
 
         VerificaEmpty(p4_tf_email, procesarWSDL);
         VerificaEmpty(p4_tf_identificadorBillete, procesarWSDL);
@@ -515,7 +517,7 @@ public class Valida_Envia_DERController implements Initializable {
 
         }
 
-        if (!procesarWSDL.valor) onWsdl();
+        if (!procesarWSDL.valor) onWsdl(event);
     }
 
     private void VerificaEmpty(TextField campo, ProcesarWSDL procesarWSDL) {
@@ -584,10 +586,10 @@ public class Valida_Envia_DERController implements Initializable {
     @FXML
     public void PantallaDialogo(ActionEvent event) throws IOException {
 
-
         Stage stage = new Stage();
+
         Parent root = FXMLLoader.load(
-                Objects.requireNonNull(getClass().getResource("/views/PantallaDialogo.fxml")));
+                Objects.requireNonNull(getClass().getResource("/views/dialogo_validar_der.fxml")),bundle);
         stage.setScene(new Scene(root));
         //stage.setTitle("My modal window");
         stage.initStyle(StageStyle.UNDECORATED);
@@ -598,7 +600,7 @@ public class Valida_Envia_DERController implements Initializable {
     }
 
     @FXML
-    public void onWsdl() {
+    public void onWsdl(ActionEvent event) throws IOException {
 
         procesoWsdl = true;
         try {
@@ -627,43 +629,67 @@ public class Valida_Envia_DERController implements Initializable {
 
         //TODO: validar bien el cambio de estatus. sólo falta ver bien cual sería la regla para los estatus ER.
 
+        App.MensajeValidaDER_action = true;
+
         if (WsdlResponse.getText().equals("RED")) {
             p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
             p4_lb_mensaje.setText(bundle.getString("p4_lb_mensaje_wsdl_RED"));
             databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 2);
+            App.MensajeValidaDER_icon  = "error";
+            App.MensajeValidaDER_error = "p5_lb_mensaje_RED";
+
         }
         if (WsdlResponse.getText().equals("ER")) {
             p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
             p4_lb_mensaje.setText(bundle.getString("p4_lb_mensaje_wsdl_ER"));
             databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 3);
+            App.MensajeValidaDER_icon  = "error";
+            App.MensajeValidaDER_error = "p5_lb_mensaje_ER";
+            App.MensajeValidaDER_action = false;
         }
         if (WsdlResponse.getText().equals("PR02")) {
             p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
             p4_lb_mensaje.setText(bundle.getString("p4_lb_mensaje_wsdl_ER"));
             databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 2);
+            App.MensajeValidaDER_icon  = "error";
+            App.MensajeValidaDER_error = "p5_lb_mensaje_PR02";
+
         }
         if (WsdlResponse.getText().equals("KO")) {
             p4_rec_mensaje.setFill(Color.rgb(227, 250, 228, 1));
             p4_lb_mensaje.setText(bundle.getString("p4_lb_mensaje_wsdl_KO"));
             databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 2);
+            App.MensajeValidaDER_icon  = "success";
+            App.MensajeValidaDER_error = "p5_lb_mensaje_KO";
+
         }
         if (WsdlResponse.getText().equals("OK")) {
             p4_rec_mensaje.setFill(Color.rgb(227, 250, 228, 1));
             p4_lb_mensaje.setText(bundle.getString("p4_lb_mensaje_wsdl_OK"));
             databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 1);
+            App.MensajeValidaDER_icon  = "success";
+            App.MensajeValidaDER_error = "p5_lb_mensaje_OK";
+
         }
         if (WsdlResponse.getText().length() > 5) {
             p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
             p4_lb_mensaje.setText(bundle.getString("p4_lb_mensaje_wsdl_" + WsdlResponse.getText()));
+            App.MensajeValidaDER_icon  = "error";
+            App.MensajeValidaDER_error = "p5_lb_mensaje_" + WsdlResponse.getText();
+            App.MensajeValidaDER_action = false;
         }
+
+        PantallaDialogo(event);
 
         p4_ld_wsdl_raspuesta.setVisible(true);
         p4_ld_wsdl_TimeStamp.setVisible(true);
         WsdlResponse.setVisible(true);
         WsdlTimeStamp.setVisible(true);
 
-        p2_btn_aceptar.setVisible(false);
-        p2_btn_salir.requestFocus();
+        if (App.MensajeValidaDER_action) {
+            p2_btn_aceptar.setVisible(false);
+            p2_btn_salir.requestFocus();
+        }
 
     }
 
