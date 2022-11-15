@@ -2,6 +2,7 @@ package com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.controlle
 
 
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.App;
+import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,13 +19,15 @@ public class Mantenimiento_DERController implements Initializable {
 
     @FXML
     private Button btn_salir;
+    @FXML
+    private JFXButton jfx_btn_salir;
 
     @FXML
     private void eventAction(ActionEvent event) throws IOException {
 
         Object evt = event.getSource();
 
-        if(evt.equals(btn_salir)){
+        if(evt.equals(btn_salir) || evt.equals(jfx_btn_salir)){
             Locale locale = Locale.getDefault();
             App.setRoot("/views/primary",locale);
         }
@@ -35,16 +38,9 @@ public class Mantenimiento_DERController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         // TODO Auto-generated method stub
         if(App.parametrosModel.getAppDemo()){
-
         }
 
     }
-
-
-
-
-
-
 
 
 }
