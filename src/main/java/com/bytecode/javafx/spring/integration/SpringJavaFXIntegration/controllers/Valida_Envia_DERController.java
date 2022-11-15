@@ -643,7 +643,7 @@ public class Valida_Envia_DERController implements Initializable {
             p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
             p4_lb_mensaje.setText(bundle.getString("p4_lb_mensaje_wsdl_ER"));
             databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 3);
-            App.MensajeValidaDER_icon  = "error";
+            App.MensajeValidaDER_icon  = "warning";
             App.MensajeValidaDER_error = "p5_lb_mensaje_ER";
             App.MensajeValidaDER_action = false;
         }

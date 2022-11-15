@@ -5,8 +5,6 @@
         .
 
     TODO: 10/11/2022
-        - Que en la pantalla después de meter el pasaporte aparezca ya activa la ventana modal con el texto
-          "Escanee los der de uno en uno y pulse cerrar cuando termine".
         - CREAR la notificación del procesando en los procesos que quedan en espera.
         - Siguen sin aparecer las pantallas de "procesando", donde se les dé feedback a los viajeros para que
           sepan qué esperar y si está recogiendo o no los datos o si ya puede escanear otro documento.
@@ -23,6 +21,9 @@
 
 
     TODO: 11/11/2022
+        listo--- Icono de ERROR en el resultado del DER cambiarlo a Warning.
+        listo--- Que en la pantalla después de meter el pasaporte aparezca ya activa la ventana modal con el texto
+                 "Escanee los der de uno en uno y pulse cerrar cuando termine".
         listo--- pantalla validar der activar la solicitud de fecha de embarque
         LISTO--- Pantalla 8f5e2665:
             listo--- 4.- "Datos del transporte".

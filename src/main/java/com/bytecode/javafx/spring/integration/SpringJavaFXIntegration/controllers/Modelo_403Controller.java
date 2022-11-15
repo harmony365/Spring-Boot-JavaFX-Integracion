@@ -113,7 +113,7 @@ public class Modelo_403Controller implements Initializable {
 
     @FXML private TextField p2_tf_email, p2_tf_codigoBic, p2_tf_valorMedioPago, p2_tf_clave_banco, p2_tf_clave_control,
         p2_tf_codigo_aba, p2_tf_cuenta_bancaria, p2_tf_descripcion_banco, p2_tf_pais_banco, p2_tf_modoTransporte,
-        p2_tf_identificadorBillete, p2_input_scanner, p2_tf_montoTotalDigic;
+        p2_tf_identificadorBillete, p2_input_scanner, p2_tf_montoTotalDigic,p2_img_barcode;
     
     @FXML private Text p2_tx_info_item;
     
@@ -121,7 +121,7 @@ public class Modelo_403Controller implements Initializable {
 
     @FXML private AnchorPane p2_an_warning,p2_an_info_item;;
 
-    @FXML public ImageView p2_img_barcode;
+    @FXML public ImageView p2_img_barcode1;
 
    // @FXML public TableView<Justificante> p2_tv_justificantes = new TableView<Justificante>();
      
@@ -187,6 +187,8 @@ public class Modelo_403Controller implements Initializable {
         p2_Dialog_Procesando.setTransitionType(JFXDialog.DialogTransition.CENTER);
         p2_Dialog_Procesando.setOverlayClose(false);
         p2_Dialog_Procesando.setDialogContainer(root);
+
+        p2_img_barcode.getProperties().put(VK_STATE, VK_STATE_DISABLED);
 
         bundle = resources;
 
@@ -303,10 +305,9 @@ public class Modelo_403Controller implements Initializable {
 
         try{
             RefreshTV();
+            //p2_btn_add_403.fire();
 
-            // TODO: verificar cómo hacer para que no quede ningún boton activo y no se ejecute el enter cuando hace
-            //  la lectura del scanner.
-            //switchToQRCode();
+            switchToQRCode();
 
         }catch (Exception e){
             e.printStackTrace();
@@ -423,13 +424,13 @@ public class Modelo_403Controller implements Initializable {
 
     @FXML
     private void LoadDialogEscanear(){
-
+/*
         p2_btn_add_403.setDisable(true);
         p2_btn_salir.setDisable(true);
         p2_btn_wsdl.setDisable(true);
         p2_btn_demo.setDisable(true);
         //p2_tv_justificantesdigic.setDisable(true);
-
+*/
         String title, body;
 
         title = "DIALOG" ;
@@ -447,6 +448,8 @@ public class Modelo_403Controller implements Initializable {
         JFXButton button = new JFXButton(bundle.getString( "p2_btn_popup"));
         button.setButtonType(JFXButton.ButtonType.RAISED);
         button.setStyle("-fx-background-color: #00bfff;");
+        button.setFocusTraversable(false);
+
         button.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -461,8 +464,9 @@ public class Modelo_403Controller implements Initializable {
         });
 
         content.setActions(button);
-        p2_img_barcode.requestFocus();
+
         dialog.show();
+        p2_img_barcode.requestFocus();
 
     }
 
@@ -589,6 +593,7 @@ public class Modelo_403Controller implements Initializable {
         p2_Dialog_Procesando.show();
 
         ClearPlantilla();
+        p2_img_barcode.setText("");
         p2_img_barcode.requestFocus();
   
         try {
