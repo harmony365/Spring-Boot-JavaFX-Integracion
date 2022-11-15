@@ -633,14 +633,14 @@ public class Valida_Envia_DERController implements Initializable {
 
         if (WsdlResponse.getText().equals("RED")) {
             p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
-            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_wsdl_RED"));
+            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_RED"));
             databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 2);
             App.MensajeValidaDER_icon  = "error";
             App.MensajeValidaDER_error = "p5_lb_mensaje_RED";
         }
         if (WsdlResponse.getText().equals("VF")) {
             p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
-            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_wsdl_VF"));
+            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_VF"));
             databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 3);
             App.MensajeValidaDER_icon  = "warning";
             App.MensajeValidaDER_error = "p5_lb_mensaje_VF";
@@ -648,7 +648,7 @@ public class Valida_Envia_DERController implements Initializable {
         }
         if (WsdlResponse.getText().equals("ER")) {
             p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
-            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_wsdl_ER"));
+            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_ER"));
             databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 3);
             App.MensajeValidaDER_icon  = "error";
             App.MensajeValidaDER_error = "p5_lb_mensaje_ER";
@@ -656,7 +656,7 @@ public class Valida_Envia_DERController implements Initializable {
         }
         if (WsdlResponse.getText().equals("PR02")) {
             p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
-            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_wsdl_PR02"));
+            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_PR02"));
             databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 2);
             App.MensajeValidaDER_icon  = "error";
             App.MensajeValidaDER_error = "p5_lb_mensaje_PR02";
@@ -664,7 +664,7 @@ public class Valida_Envia_DERController implements Initializable {
         }
         if (WsdlResponse.getText().equals("KO")) {
             p4_rec_mensaje.setFill(Color.rgb(227, 250, 228, 1));
-            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_wsdl_KO"));
+            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_KO"));
             databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 2);
             App.MensajeValidaDER_icon  = "error";
             App.MensajeValidaDER_error = "p5_lb_mensaje_KO";
@@ -672,7 +672,7 @@ public class Valida_Envia_DERController implements Initializable {
         }
         if (WsdlResponse.getText().equals("OK")) {
             p4_rec_mensaje.setFill(Color.rgb(227, 250, 228, 1));
-            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_wsdl_OK" + App.MensajeValidaDER_Pais));
+            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_OK"));
             databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 1);
             App.MensajeValidaDER_icon  = "success";
             App.MensajeValidaDER_error = "p5_lb_mensaje_OK";
@@ -680,7 +680,7 @@ public class Valida_Envia_DERController implements Initializable {
         }
         if (WsdlResponse.getText().length() > 5) {
             p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
-            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_wsdl_" + WsdlResponse.getText()));
+            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_" + WsdlResponse.getText()));
             App.MensajeValidaDER_icon  = "error";
             App.MensajeValidaDER_error = "p5_lb_mensaje_" + WsdlResponse.getText();
             App.MensajeValidaDER_action = false;
