@@ -1374,9 +1374,14 @@ public class Modelo_403Controller implements Initializable {
                 //System.out.println("Alpha-3-code : " + nextRecord[2]);
                 //System.out.println("Numeric-code : " + nextRecord[3]);
                 //System.out.println("Independent : " + nextRecord[4]);
+                //System.out.println("Union-Europea : " + nextRecord[5]);
                 //System.out.println("==========================");
 
-                if (nextRecord[1].equals(index) || nextRecord[2].equals(index)) return nextRecord[0].toUpperCase();
+
+                if (nextRecord[1].equals(index) || nextRecord[2].equals(index)) {
+                    App.MensajeValidaDER_Pais = nextRecord[5].toString();
+                    return nextRecord[0].toUpperCase();
+                }
             }
         }
         return "";

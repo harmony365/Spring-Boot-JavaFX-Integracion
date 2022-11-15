@@ -1,4 +1,24 @@
 
+    TODO: 15/11/2022
+        Según la respuesta del servicio aparecerán los siguientes mensajes:
+        listo--- OK y es País de UE
+        listo--- icono de ok verde
+        listo--- SU SOLICITUD HA SIDO VALIDADA. GRACIAS POR SU VISITA A LAS ISLAS CANARIAS, QUE TENGA UN BUEN VIAJE DE VUELTA A CASA.
+        listo--- OK y no es País de UE.
+        listo--- icono de ok verde
+        listo--- SU SOLICITUD QUEDA PENDIENTE DE APORTAR DOCUMENTACIÓN DE IMPORTACIÓN EN DESTINO. LE INFORMAREMOS VÍA EMAIL DEL PROCESO DE SU SOLICITUD.
+        listo--- VF.
+        listo--- icono de warning.
+        listo--- SU SOLICITUD ESTÁ SUJETA A COMPROBACIÓN FÍSICA. DIRÍJASE AL PERSONAL DE LA AGENCIA TRIBUTARIA CANARIA. LE INFORMAREMOS VÍA EMAIL DEL PROCESO DE SU SOLICITUD.
+        listo--- ER
+        listo--- icono de error rojo
+        listo--- LE INFORMAREMOS VÍA EMAIL DEL PROCESO DE SU SOLICITUD
+        listo--- KO
+        listo--- icono de error rojo
+        listo--- LE INFORMAREMOS VÍA EMAIL DEL PROCESO DE SU SOLICITUD
+
+
+
     TODO: 11/11/2022
         PANTALLA 403
         RESOLVER LA ACTIVACIÓN DE AÑADIR MODELO 403.

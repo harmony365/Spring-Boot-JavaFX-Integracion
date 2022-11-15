@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+<StackPane fx:id="root_dialog" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080" prefWidth="1920" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.controllers.dialogo_validar_derController">
+   <children>
+
+
+
+      <Pane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <ImageView fx:id="icon_img" fitHeight="190.0" fitWidth="198.0" layoutX="862.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/icon-error.png" />
+               </image>
+            </ImageView>
+            <JFXButton fx:id="p5_btn_salir" buttonType="RAISED" defaultButton="true" layoutX="835.0" layoutY="806.0" onAction="#switchToSalir" prefHeight="83.0" prefWidth="235.0" ripplerFill="#2a8330" text="%p5_btn_salir" textAlignment="CENTER" textOverrun="CLIP">
+               <effect>
+                  <ColorAdjust />
+               </effect>
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </JFXButton>
+            <Label fx:id="p5_lb_mensaje" alignment="CENTER" contentDisplay="CENTER" layoutX="484.0" layoutY="448.0" prefHeight="335.0" prefWidth="942.0" text="%p5_lb_mensaje" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font></Label>
+            <ImageView fitHeight="93.0" fitWidth="389.0" layoutX="45.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/gobiernoatc.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+
+
+   </children>
+   <opaqueInsets>
+      <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+   </opaqueInsets>
+</StackPane>

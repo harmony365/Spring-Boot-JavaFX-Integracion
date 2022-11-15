@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<Pane id="pane" prefHeight="1039.0" prefWidth="1960.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.controllers.Mantenimiento_DERController">
+   <children>
+      <AnchorPane prefHeight="1039.0" prefWidth="1960.0">
+         <children>
+            <AnchorPane layoutY="-8.0" prefHeight="150.0" prefWidth="1960.0">
+               <children>
+                  <AnchorPane layoutX="12.0" layoutY="21.0" prefHeight="93.0" prefWidth="159.0">
+                     <children>
+                        <ImageView fitHeight="101.0" fitWidth="182.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/Gobierno_Canarias_logo.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="199.0" layoutY="41.0" prefHeight="81.0" prefWidth="255.0">
+                     <children>
+                        <ImageView fitHeight="91.0" fitWidth="255.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/ATC_logo.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="519.0" layoutY="41.0" prefHeight="51.0" prefWidth="1384.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="51.0" prefWidth="1384.0" text="%txt.p1.titulo" textAlignment="CENTER">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btn_salir" layoutX="1223.0" mnemonicParsing="false" onAction="#eventAction" prefHeight="61.0" prefWidth="161.0" text="SALIR">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                     </children></AnchorPane>
+               </children>
+            </AnchorPane>
+            <JFXButton fx:id="jfx_btn_salir" buttonType="RAISED" layoutX="1741.0" layoutY="112.0" onAction="#eventAction" prefHeight="75.0" prefWidth="161.0" ripplerFill="#656bc3" text="SALIR" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
+            <TableView fx:id="tv_modopago" layoutX="14.0" layoutY="142.0" prefHeight="200.0" prefWidth="954.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="C1" />
+                <TableColumn prefWidth="75.0" text="C2" />
+              </columns>
+            </TableView>
+            <TableView fx:id="tv_digic" layoutX="14.0" layoutY="363.0" prefHeight="369.0" prefWidth="1901.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="C1" />
+                <TableColumn prefWidth="75.0" text="C2" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>

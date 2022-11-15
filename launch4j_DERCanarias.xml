@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>C:\Desarrollo\JAVA\DIVA\Spring-Boot-JavaFX-Integracion-VS\target\DERCanarias.jar</jar>
+  <outfile>C:\Desarrollo\JAVA\DIVA\Spring-Boot-JavaFX-Integracion-VS\target\DERCanarias.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir>.</chdir>
+  <priority>idle</priority>
+  <downloadUrl>http://java.com/download</downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon></icon>
+  <jre>
+    <path></path>
+    <bundledJre64Bit>false</bundledJre64Bit>
+    <bundledJreAsFallback>false</bundledJreAsFallback>
+    <minVersion>1.8.0</minVersion>
+    <maxVersion></maxVersion>
+    <jdkPreference>preferJre</jdkPreference>
+    <runtimeBits>64/32</runtimeBits>
+    <opt>--module-path &quot;C:\Program Files\Java\javafx-sdk-18.0.1\lib&quot; --add-modules ALL-MODULE-PATH</opt>
+  </jre>
+  <splash>
+    <file>C:\Desarrollo\JAVA\DIVA\Spring-Boot-JavaFX-Integracion-VS\src\main\resources\img\Gobierno_Canarias_logo.png</file>
+    <waitForWindow>true</waitForWindow>
+    <timeout>60</timeout>
+    <timeoutErr>true</timeoutErr>
+  </splash>
+</launch4jConfig>

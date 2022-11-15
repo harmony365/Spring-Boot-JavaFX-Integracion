@@ -59,7 +59,7 @@ public class App extends Application {
     public DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
 	public KeyBoardPopup popup;
 
-    public static String UUIDProcess,MensajeValidaDER_icon,MensajeValidaDER_error;
+    public static String UUIDProcess,MensajeValidaDER_icon,MensajeValidaDER_error,MensajeValidaDER_Pais;
 
     public static Boolean MensajeValidaDER_action;
     
