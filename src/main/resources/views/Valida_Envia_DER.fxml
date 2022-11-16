@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
@@ -19,9 +18,10 @@
       <Label fx:id="lblTitulo" alignment="CENTER" contentDisplay="CENTER" layoutX="1978.0" layoutY="136.0" prefHeight="27.0" prefWidth="458.0" text="%txt.p1.titulo" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS">
          <font>
             <Font name="System Bold" size="18.0" />
-         </font></Label>
-      <TextField fx:id="txtApellido" layoutX="2042.0" layoutY="270.0" />
-      <TextField fx:id="txtTelefono" layoutX="2042.0" layoutY="235.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtApellido" focusTraversable="false" layoutX="2042.0" layoutY="270.0" />
+      <TextField fx:id="txtTelefono" focusTraversable="false" layoutX="2042.0" layoutY="235.0" />
       <Button layoutX="2319.0" layoutY="241.0" mnemonicParsing="false" onAction="#onSave" text="Guardar" />
       <ComboBox fx:id="comboClientes" layoutX="1976.0" layoutY="172.0" prefHeight="25.0" prefWidth="403.0" />
       <Label fx:id="p4_ld_wsdl_raspuesta" layoutX="1374.0" layoutY="453.0" text="Respuesta:" />
@@ -114,7 +114,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="p4_tf_modoTransporte" disable="true" editable="false" layoutX="45.0" layoutY="680.0" prefHeight="30.0" prefWidth="309.0">
+      <TextField fx:id="p4_tf_modoTransporte" disable="true" editable="false" focusTraversable="false" layoutX="45.0" layoutY="680.0" prefHeight="30.0" prefWidth="309.0">
          <font>
             <Font size="14.0" />
          </font>
@@ -124,12 +124,12 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="p4_tf_identificadorBillete" layoutX="479.0" layoutY="681.0" prefHeight="30.0" prefWidth="309.0">
+      <TextField fx:id="p4_tf_identificadorBillete" focusTraversable="false" layoutX="479.0" layoutY="681.0" prefHeight="30.0" prefWidth="309.0">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtNombre" layoutX="2042.0" layoutY="299.0" />
+      <TextField fx:id="txtNombre" focusTraversable="false" layoutX="2042.0" layoutY="299.0" />
       <ComboBox fx:id="p4_cb_identificadorBillete" layoutX="478.0" layoutY="648.0" prefHeight="26.0" prefWidth="310.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eaeaeb" height="42.0" layoutX="40.0" layoutY="420.0" stroke="#bebebf" strokeType="INSIDE" width="560.0" />
       <Label contentDisplay="CENTER" layoutX="48.0" layoutY="426.0" prefHeight="30.0" prefWidth="31.0" text="3. -">
@@ -142,7 +142,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="p4_tf_email" layoutX="141.0" layoutY="515.0" prefHeight="25.0" prefWidth="302.0" promptText="mail@servicio.com">
+      <TextField fx:id="p4_tf_email" focusTraversable="false" layoutX="141.0" layoutY="515.0" prefHeight="25.0" prefWidth="302.0" promptText="mail@servicio.com">
          <font>
             <Font size="14.0" />
          </font>
@@ -166,7 +166,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="p4_tf_valorMedioPago" layoutX="40.0" layoutY="69.0" prefHeight="25.0" prefWidth="481.0">
+            <TextField fx:id="p4_tf_valorMedioPago" focusTraversable="false" layoutX="40.0" layoutY="69.0" prefHeight="25.0" prefWidth="481.0">
                <font>
                   <Font size="14.0" />
                </font>
@@ -181,7 +181,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="p4_tf_cuenta_bancaria" layoutX="24.0" layoutY="72.0" prefHeight="30.0" prefWidth="196.0">
+            <TextField fx:id="p4_tf_cuenta_bancaria" focusTraversable="false" layoutX="24.0" layoutY="72.0" prefHeight="30.0" prefWidth="196.0">
                <font>
                   <Font size="14.0" />
                </font>
@@ -191,7 +191,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="p4_tf_clave_banco" layoutX="24.0" layoutY="136.0" prefHeight="30.0" prefWidth="196.0">
+            <TextField fx:id="p4_tf_clave_banco" focusTraversable="false" layoutX="24.0" layoutY="136.0" prefHeight="30.0" prefWidth="196.0">
                <font>
                   <Font size="14.0" />
                </font>
@@ -207,12 +207,12 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="p4_tf_clave_control" layoutX="232.0" layoutY="135.0" prefHeight="30.0" prefWidth="196.0">
+            <TextField fx:id="p4_tf_clave_control" focusTraversable="false" layoutX="232.0" layoutY="135.0" prefHeight="30.0" prefWidth="196.0">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <TextField fx:id="p4_tf_descripcion_banco" layoutX="440.0" layoutY="134.0" prefHeight="30.0" prefWidth="302.0">
+            <TextField fx:id="p4_tf_descripcion_banco" focusTraversable="false" layoutX="440.0" layoutY="134.0" prefHeight="30.0" prefWidth="302.0">
                <font>
                   <Font size="14.0" />
                </font>
@@ -222,14 +222,14 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="p4_tf_codigoBic" layoutX="26.0" layoutY="200.0" prefHeight="30.0" prefWidth="196.0">
+            <TextField fx:id="p4_tf_codigoBic" focusTraversable="false" layoutX="26.0" layoutY="200.0" prefHeight="30.0" prefWidth="196.0">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
             <Pane fx:id="p4_pane_numeroaba" layoutX="224.0" layoutY="172.0" prefHeight="70.0" prefWidth="212.0">
                <children>
-                  <TextField fx:id="p4_tf_codigo_aba" layoutX="9.0" layoutY="28.0" prefHeight="30.0" prefWidth="196.0">
+                  <TextField fx:id="p4_tf_codigo_aba" focusTraversable="false" layoutX="9.0" layoutY="28.0" prefHeight="30.0" prefWidth="196.0">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -246,7 +246,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="p4_tf_pais_banco" layoutX="236.0" layoutY="35.0" prefHeight="30.0" prefWidth="63.0">
+            <TextField fx:id="p4_tf_pais_banco" focusTraversable="false" layoutX="236.0" layoutY="35.0" prefHeight="30.0" prefWidth="63.0">
                <font>
                   <Font size="14.0" />
                </font>
@@ -262,11 +262,13 @@
       <ToggleButton fx:id="p4_tgb_cuetaibansi" layoutX="478.0" layoutY="767.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="123.0" text="%p4_tgb_tipo_cuenta">
          <font>
             <Font size="14.0" />
-         </font></ToggleButton>
+         </font>
+      </ToggleButton>
       <ToggleButton fx:id="p4_tgb_cuetaibanno" layoutX="1228.0" layoutY="767.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="123.0" text="%p4_tgb_tipo_cuenta">
          <font>
             <Font size="14.0" />
-         </font></ToggleButton>
+         </font>
+      </ToggleButton>
       <Pane fx:id="p4_pane_temporal" layoutX="1676.0" layoutY="527.0" prefHeight="191.0" prefWidth="560.0">
          <children>
             <ComboBox fx:id="p4_cb_clave_banco" layoutX="33.0" layoutY="24.0" prefHeight="26.0" prefWidth="69.0" />
@@ -291,13 +293,13 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="p4_tf_fechaLimiteSalidaHora" alignment="CENTER" layoutX="1202.0" layoutY="676.0" prefHeight="30.0" prefWidth="47.0" promptText="HH">
+      <TextField fx:id="p4_tf_fechaLimiteSalidaHora" alignment="CENTER" focusTraversable="false" layoutX="1202.0" layoutY="676.0" prefHeight="30.0" prefWidth="47.0" promptText="HH">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <DatePicker fx:id="p4_dtp_fechaLimiteSalida" editable="false" layoutX="1001.0" layoutY="675.0" prefHeight="30.0" prefWidth="179.0" promptText="YYYY/MM/DD" />
-      <TextField fx:id="p4_tf_fechaLimiteSalidaMinuto" alignment="CENTER" layoutX="1257.0" layoutY="676.0" prefHeight="30.0" prefWidth="47.0" promptText="MM">
+      <DatePicker fx:id="p4_dtp_fechaLimiteSalida" editable="false" focusTraversable="false" layoutX="1001.0" layoutY="675.0" prefHeight="30.0" prefWidth="179.0" promptText="YYYY/MM/DD" />
+      <TextField fx:id="p4_tf_fechaLimiteSalidaMinuto" alignment="CENTER" focusTraversable="false" layoutX="1257.0" layoutY="676.0" prefHeight="30.0" prefWidth="47.0" promptText="MM">
          <font>
             <Font size="14.0" />
          </font>
@@ -307,7 +309,7 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <TextField fx:id="p4_tf_montoTotalDigic" alignment="CENTER" disable="true" editable="false" layoutX="1154.0" layoutY="406.0" prefHeight="30.0" prefWidth="196.0" promptText="0.00" text="0.00">
+      <TextField fx:id="p4_tf_montoTotalDigic" alignment="CENTER" disable="true" editable="false" focusTraversable="false" layoutX="1154.0" layoutY="406.0" prefHeight="30.0" prefWidth="196.0" promptText="0.00" text="0.00">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -327,5 +329,14 @@
             <Font size="14.0" />
          </font>
       </Label>
+      <StackPane fx:id="stpProcesando" prefHeight="1090.0" prefWidth="1929.0">
+         <children>
+            <ImageView fx:id="imgProcesando" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/procesando.gif" />
+               </image>
+            </ImageView>
+         </children>
+      </StackPane>
    </children>
 </AnchorPane>

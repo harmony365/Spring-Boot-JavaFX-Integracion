@@ -1,4 +1,25 @@
 
+    TODO: 10/11/2022
+        - En la propuesta que vimos, para seleccionar una cuenta sin IBAN, se selecciona por "cuenta bancaria" y
+          desde ahí se ven todas las registradas. ¿Es posible que muestre en ese apartado todas las cuentas sin IBAN
+          registradas y se seleccione pinchando encima?
+        - El teclado emergente que aparece cuando se debe cumplimentar algún dato, tapa las opciones de aceptar o cancelar
+          y se debe pulsar un botón nada intuitivo para que desaparezca.
+          ¿Es posible que al pulsar Enter desaparezca de la pantalla? O al menos,
+          que el teclado no impida visualizar las opciones para poder continuar el proceso.
+          El viajero puede estar un rato hasta dar con la tecla que lo hace desaparecer.
+        - y la mayoría de sugerencias fueron por el teclado. que sea mas grande, que con el enter y el tab pase de campo,
+          que picando fuera se cierre,....
+
+
+    TODO: 16/11/2022
+        listo--- Error BigDecimal en el campo de TotalDigic en el DER.
+
+    TODO: 10/11/2022
+        listo--- CREAR la notificación del procesando en los procesos que quedan en espera.
+        listo--- Siguen sin aparecer las pantallas de "procesando", donde se les dé feedback a los viajeros para que
+        listo---  sepan qué esperar y si está recogiendo o no los datos o si ya puede escanear otro documento.
+
     TODO: 15/11/2022
         Según la respuesta del servicio aparecerán los siguientes mensajes:
         listo--- OK y es País de UE
@@ -17,28 +38,10 @@
         listo--- icono de error rojo
         listo--- LE INFORMAREMOS VÍA EMAIL DEL PROCESO DE SU SOLICITUD
 
-
-
     TODO: 11/11/2022
-        PANTALLA 403
-        RESOLVER LA ACTIVACIÓN DE AÑADIR MODELO 403.
+        listo--- PANTALLA 403
+        listo--- RESOLVER LA ACTIVACIÓN DE AÑADIR MODELO 403.
         .
-
-    TODO: 10/11/2022
-        - CREAR la notificación del procesando en los procesos que quedan en espera.
-        - Siguen sin aparecer las pantallas de "procesando", donde se les dé feedback a los viajeros para que
-          sepan qué esperar y si está recogiendo o no los datos o si ya puede escanear otro documento.
-        - En la propuesta que vimos, para seleccionar una cuenta sin IBAN, se selecciona por "cuenta bancaria" y
-          desde ahí se ven todas las registradas. ¿Es posible que muestre en ese apartado todas las cuentas sin IBAN
-          registradas y se seleccione pinchando encima?
-        - El teclado emergente que aparece cuando se debe cumplimentar algún dato, tapa las opciones de aceptar o cancelar
-          y se debe pulsar un botón nada intuitivo para que desaparezca.
-          ¿Es posible que al pulsar Enter desaparezca de la pantalla? O al menos,
-          que el teclado no impida visualizar las opciones para poder continuar el proceso.
-          El viajero puede estar un rato hasta dar con la tecla que lo hace desaparecer.
-        - y la mayoría de sugerencias fueron por el teclado. que sea mas grande, que con el enter y el tab pase de campo,
-          que picando fuera se cierre,....
-
 
     TODO: 11/11/2022
         listo--- Icono de ERROR en el resultado del DER cambiarlo a Warning.

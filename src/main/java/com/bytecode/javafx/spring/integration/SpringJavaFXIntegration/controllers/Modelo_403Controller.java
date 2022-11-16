@@ -101,7 +101,6 @@ public class Modelo_403Controller implements Initializable {
     @FXML
     private JFXDialog p2_Dialog_Procesando;
 
-
     @FXML private Button p2_btn_aceptar,  p2_btn_qr, p2_btn_salir, p2_btn_demo, p2_btn_wsdl, p2_btn_add_403;
 
     @FXML private Label p2_lb_justificante, p2_lb_datos_establecimiento,  p2_lb_nif,  p2_lb_razon_social,
@@ -174,15 +173,22 @@ public class Modelo_403Controller implements Initializable {
     private ObservableList<Digic> data;
 
 
+    @FXML private StackPane root;
+
+    @FXML private  ImageView imgProcesando;
+    @FXML private StackPane stpProcesando;
+
     @FXML
-    private StackPane root;
-    //@FXML private StackPane Spinner;
+    private void LoadProccess(Boolean status) {
+        stpProcesando.setVisible(status);
+    }
 
     @FXML
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // Funcion de inicio del Controlador
         //
+        LoadProccess(false);
 
         p2_Dialog_Procesando.setTransitionType(JFXDialog.DialogTransition.CENTER);
         p2_Dialog_Procesando.setOverlayClose(false);
@@ -273,6 +279,7 @@ public class Modelo_403Controller implements Initializable {
 
         p2_img_barcode.setOnKeyTyped(new EventHandler<KeyEvent>() {
             public void handle(KeyEvent ke) {
+                LoadProccess(true);
                 //System.out.println("p2_img_barcode Key Pressed: " + ke.getText());
                 //System.out.println("p2_img_barcode Key Pressed: " + ke.getCharacter());
                 ScannerReader = ScannerReader + ke.getCharacter(); 
@@ -286,7 +293,7 @@ public class Modelo_403Controller implements Initializable {
                     try {
                         QRcodeRead(ScannerReader,0);
                     } catch (IOException e) {
-
+                        LoadProccess(false);
                         e.printStackTrace();
 
                         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -310,6 +317,7 @@ public class Modelo_403Controller implements Initializable {
             switchToQRCode();
 
         }catch (Exception e){
+            LoadProccess(false);
             e.printStackTrace();
         }
 
@@ -364,6 +372,7 @@ public class Modelo_403Controller implements Initializable {
             }
 
         }catch (Exception e){
+            LoadProccess(false);
             e.printStackTrace();
         }
 
@@ -401,6 +410,32 @@ public class Modelo_403Controller implements Initializable {
         content.setHeading(new Text(title));
         content.setBody(new Text(body));
         content.setStyle("-fx-font-size: 20;");
+
+        JFXDialog dialog = new JFXDialog(root, content, JFXDialog.DialogTransition.CENTER, false);
+        JFXButton button = new JFXButton(bundle.getString( "p2_btn_popup"));
+        button.setButtonType(JFXButton.ButtonType.RAISED);
+        button.setStyle("-fx-background-color: #00bfff;");
+        button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                p2_img_barcode.requestFocus();
+                dialog.close();
+            }
+        });
+
+        content.setActions(button);
+        p2_img_barcode.requestFocus();
+        dialog.show();
+
+
+    }
+
+
+    @FXML
+    private void LoadDialogProccess(){
+        JFXDialogLayout content = new JFXDialogLayout();
+
+        content.setBody(new ImageView("/img/procesando.gif"));
 
         JFXDialog dialog = new JFXDialog(root, content, JFXDialog.DialogTransition.CENTER, false);
         JFXButton button = new JFXButton(bundle.getString( "p2_btn_popup"));
@@ -528,6 +563,7 @@ public class Modelo_403Controller implements Initializable {
                     Locale locale = Locale.getDefault();
                     App.setRoot("/views/primary",locale);
                 } catch (IOException e) {
+                    LoadProccess(false);
                     throw new RuntimeException(e);
                 }
             }
@@ -590,7 +626,7 @@ public class Modelo_403Controller implements Initializable {
 
     @FXML private void QRcodeRead(String qr_text, Integer index) throws IOException {
 
-        p2_Dialog_Procesando.show();
+        LoadProccess(true);
 
         ClearPlantilla();
         p2_img_barcode.setText("");
@@ -668,13 +704,13 @@ public class Modelo_403Controller implements Initializable {
                 FillPlantilla(myJson);
                 InsertItem(myJson);
                 RefreshTV();
-                p2_Dialog_Procesando.close();
+            }
 
-            }            
+            LoadProccess(false);
 
         } catch (Exception e) {
 
-            p2_Dialog_Procesando.close();
+            LoadProccess(false);
 
             e.printStackTrace();
 
@@ -1101,7 +1137,7 @@ public class Modelo_403Controller implements Initializable {
             System.out.println(connection);
 
         } catch (SQLException e) {
-
+            LoadProccess(false);
             LOGGER.log(Level.ERROR,LocalDateTime.now() + ": Could not connect to SQLite DB at " + location);
 
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -1115,7 +1151,7 @@ public class Modelo_403Controller implements Initializable {
         return connection;
     }
 
-    private static boolean checkDrivers() {
+    private boolean checkDrivers() {
         try {
             Class.forName("org.sqlite.JDBC");
             DriverManager.registerDriver(new org.sqlite.JDBC());
@@ -1123,6 +1159,7 @@ public class Modelo_403Controller implements Initializable {
             System.out.println("Connect driver SQLite3");
             return true;
         } catch (ClassNotFoundException | SQLException classNotFoundException) {
+            LoadProccess(false);
             LOGGER.log(Level.ERROR,LocalDateTime.now() + ": Could not start SQLite Drivers");
 
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -1210,6 +1247,7 @@ public class Modelo_403Controller implements Initializable {
             }
 
         } catch (SQLException e) {
+            LoadProccess(false);
             LOGGER.log(Level.ERROR,LocalDateTime.now() + ": Could not Update from " + tableName + " because: \n" + e.toString() + "\n" + e.getMessage() + "\n" + e.getErrorCode());
 
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -1341,6 +1379,7 @@ public class Modelo_403Controller implements Initializable {
             
 
         } catch (SQLException e) {
+            LoadProccess(false);
             LOGGER.log(Level.ERROR,LocalDateTime.now() + ": Could not Update from " + tableName + " because: \n" + e.toString() + "\n" + e.getMessage() + "\n" + e.getErrorCode());
 
                     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -1385,108 +1424,6 @@ public class Modelo_403Controller implements Initializable {
             }
         }
         return "";
-    }
-
-    public String SeleccionarPais(String index){
-
-        String pais = "";
-        switch(index){
-            case "AL" : pais = "Albania (AL)"; break;
-            case "DZ" : pais = "Algeria (DZ)"; break;
-            case "BH" : pais = "Bahrain (BH)"; break;
-            case "EG" : pais = "Egypt (EG)"; break;
-            case "IQ" : pais = "Iraq (IQ)"; break;
-            case "JO" : pais = "Jordan (JO)"; break;
-            case "KW" : pais = "Kuwait (KW)"; break;
-            case "LB" : pais = "Lebanon (LB)"; break;
-            case "LY" : pais = "Libya (LY)"; break;
-            case "MA" : pais = "Morocco (MA)"; break;
-            case "OM" : pais = "Oman (OM)"; break;
-            case "QA" : pais = "Qatar (QA)"; break;
-            case "SA" : pais = "Saudi Arabia (SA)"; break;
-            case "SD" : pais = "Sudan (SD)"; break;
-            case "SY" : pais = "Syria (SY)"; break;
-            case "TN" : pais = "Tunisia (TN)"; break;
-            case "AE" : pais = "United Arab Emirates (AE)"; break;
-            case "YE" : pais = "Yemen (YE)"; break;
-            case "BY" : pais = "Belarus (BY)"; break;
-            case "BG" : pais = "Bulgaria (BG)"; break;
-            case "CN" : pais = "China (CN)"; break;
-            case "SG" : pais = "Singapore (SG)"; break;
-            case "HK" : pais = "Hong Kong (HK)"; break;
-            case "TW" : pais = "Taiwan (TW)"; break;
-            case "HR" : pais = "Croatia (HR)"; break;
-            case "CZ" : pais = "Czech Republic (CZ)"; break;
-            case "DK" : pais = "Denmark (DK)"; break;
-            case "NL" : pais = "Netherlands (NL)"; break;
-            case "AU" : pais = "Australia (AU)"; break;
-            case "IN" : pais = "India (IN)"; break;
-            case "IE" : pais = "Ireland (IE)"; break;
-            case "NZ" : pais = "New Zealand (NZ)"; break;
-            case "PH" : pais = "Philippines (PH)"; break;
-            case "ZA" : pais = "South Africa (ZA)"; break;
-            case "GB" : pais = "United Kingdom (GB)"; break;
-            case "US" : pais = "United States (US)"; break;
-            case "EE" : pais = "Estonia (EE)"; break;
-            case "FI" : pais = "Finland (FI)"; break;
-            case "BE" : pais = "Belgium (BE)"; break;
-            case "CA" : pais = "Canada (CA)"; break;
-            case "FR" : pais = "France (FR)"; break;
-            case "AT" : pais = "Austria (AT)"; break;
-            case "DE" : pais = "Germany (DE)"; break;
-            case "LU" : pais = "Luxembourg (LU)"; break;
-            case "CY" : pais = "Cyprus (CY)"; break;
-            case "GR" : pais = "Greece (GR)"; break;
-            case "IL" : pais = "Israel (IL)"; break;
-            case "HU" : pais = "Hungary (HU)"; break;
-            case "IS" : pais = "Iceland (IS)"; break;
-            case "ID" : pais = "Indonesia (ID)"; break;
-            case "IT" : pais = "Italy (IT)"; break;
-            case "CH" : pais = "Switzerland (CH)"; break;
-            case "JP" : pais = "Japan (JP";
-            case "KR" : pais = "South Korea (KR)"; break;
-            case "LV" : pais = "Latvia (LV)"; break;
-            case "LT" : pais = "Lithuania (LT)"; break;
-            case "MK" : pais = "Macedonia (MK)"; break;
-            case "MY" : pais = "Malaysia (MY)"; break;
-            case "MT" : pais = "Malta (MT)"; break;
-            case "NO" : pais = "Norway (NO)"; break;
-            case "PL" : pais = "Poland (PL)"; break;
-            case "BR" : pais = "Brazil (BR)"; break;
-            case "PT" : pais = "Portugal (PT)"; break;
-            case "RO" : pais = "Romania (RO)"; break;
-            case "RU" : pais = "Russia (RU)"; break;
-            case "BA" : pais = "Bosnia and Herzegovina (BA)"; break;
-            case "ME" : pais = "Montenegro (ME)"; break;
-            case "RS" : pais = "Serbia (RS)"; break;
-            case "SK" : pais = "Slovakia (SK)"; break;
-            case "SI" : pais = "Slovenia (SI)"; break;
-            case "AR" : pais = "Argentina (AR)"; break;
-            case "BO" : pais = "Bolivia (BO)"; break;
-            case "CL" : pais = "Chile (CL)"; break;
-            case "CO" : pais = "Colombia (CO)"; break;
-            case "CR" : pais = "Costa Rica (CR)"; break;
-            case "DO" : pais = "Dominican Republic (DO)"; break;
-            case "EC" : pais = "Ecuador (EC)"; break;
-            case "SV" : pais = "El Salvador (SV)"; break;
-            case "GT" : pais = "Guatemala (GT)"; break;
-            case "HN" : pais = "Honduras (HN)"; break;
-            case "MX" : pais = "Mexico (MX)"; break;
-            case "NI" : pais = "Nicaragua (NL)"; break;
-            case "PA" : pais = "Panama (PA)"; break;
-            case "PY" : pais = "Paraguay (PY)"; break;
-            case "PE" : pais = "Peru (PE)"; break;
-            case "PR" : pais = "Puerto Rico (PR)"; break;
-            case "ES" : pais = "Spain (ES)"; break;
-            case "UY" : pais = "Uruguay (UY)"; break;
-            case "VE" : pais = "Venezuela (VE)"; break;
-            case "SE" : pais = "Sweden (SE)"; break;
-            case "TH" : pais = "Thailand (TH)"; break;
-            case "TR" : pais = "Turkey (TR)"; break;
-            case "UA" : pais = "Ukraine (UA)"; break;
-            case "VN" : pais = "Vietnam (VN)"; break;
-        }
-        return pais;
     }
 
 }

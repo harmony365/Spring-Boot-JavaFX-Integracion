@@ -4,6 +4,7 @@ import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.App;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Digic;
 import org.json.JSONObject;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -85,6 +86,13 @@ public class JsonUtils {
                     break;
                 case "Double":
                     monto = Double.toString((Double) myJson.get("totalDigic"));
+                    break;
+                case "BigDecimal":
+                    // Creating BigDecimal object using Constructor
+                    BigDecimal bd = new BigDecimal(String.valueOf(myJson.get("totalDigic")));
+                    // Converting BigDecimal to Double using doubleValue()
+                    Double doubleObj = bd.doubleValue();
+                    monto = Double.toString((Double) doubleObj);
                     break;
             }
 

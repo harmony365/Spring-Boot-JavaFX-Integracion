@@ -459,9 +459,17 @@
       </JFXDialog>
 
 
+      <StackPane fx:id="stpProcesando" prefHeight="1156.0" prefWidth="2059.0">
+         <children>
+            <ImageView fx:id="imgProcesando" fitHeight="211.0" fitWidth="231.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/procesando.gif" />
+               </image>
+            </ImageView>
+         </children>
+      </StackPane>
+
+
 
    </children>
-   <padding>
-      <Insets bottom="30.0" left="50.0" right="30.0" top="30.0" />
-   </padding>
 </StackPane>

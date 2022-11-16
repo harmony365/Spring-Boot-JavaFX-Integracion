@@ -222,5 +222,14 @@
             </AnchorPane>
          </children>
       </AnchorPane>
+      <StackPane fx:id="stpProcesando" prefHeight="1039.0" prefWidth="1960.0">
+         <children>
+            <ImageView fx:id="imgProcesando" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/procesando.gif" />
+               </image>
+            </ImageView>
+         </children>
+      </StackPane>
    </children>
 </Pane>

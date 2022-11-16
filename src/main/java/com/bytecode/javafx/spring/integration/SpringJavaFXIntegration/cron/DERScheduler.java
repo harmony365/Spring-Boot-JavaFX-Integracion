@@ -107,19 +107,17 @@ public class DERScheduler {
         //System.out.println("Respuesta WSDL TimeStamp -> " + WsdlTimeStamp);
         LOGGER.log(Level.TRACE, "Respuesta WSDL CODE -> " + WsdlResponse + " TimeStamp -> " + WsdlTimeStamp);
 
-        //TODO: validar bien el cambio de estatus. sólo falta ver bien cual sería la regla para los estatus ER.
-
-        if(WsdlResponse.equals("KO") || WsdlResponse.equals("RED")  || WsdlResponse.equals("ER") ||
-           WsdlResponse.equals("PR02") || WsdlResponse.length() > 5) {
+        if(WsdlResponse.equals("KO") || WsdlResponse.equals("RED")  || WsdlResponse.equals("OK") ||
+           WsdlResponse.equals("VF") || WsdlResponse.equals("PR02") || WsdlResponse.length() > 5) {
             // TODO: Qué hacer en el caso de que nos siga dando el Error RED ó ER o sea una respuesta de error de mas de 5 carácteres?
-            //  No seteamos la variable porque está dandoel mismo Error
+            //  No seteamos la variable porque está dando el mismo Error
 
             databaseDerUtil.DigicUpdatStatus(uuidProceso,2,2);
             //System.out.println("Respuesta WSDL -> Se encontró un error y no se pudo cambiar el estatus de la operación." );
             LOGGER.log(Level.ERROR, "Respuesta WSDL -> Se encontró un error y no se pudo cambiar el estatus de la operación." );
         }
 
-        if(WsdlResponse.equals("OK")) {
+        if(WsdlResponse.equals("OK") || WsdlResponse.equals("IN")) {
             databaseDerUtil.DigicUpdatStatus(uuidProceso,2,1);
         }
 
