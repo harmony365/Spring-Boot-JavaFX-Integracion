@@ -227,7 +227,7 @@ public class Modelo_403Controller_OLD implements Initializable {
                     TablePosition tablePosition = (TablePosition) selectedCells.get(0);
                     Object val = tablePosition.getTableColumn().getCellData(tablePosition.getRow());
 
-                    List<Digic> digicLits = digicRepository.findByJustificante((String)val, App.UUIDProcess);
+                    List<Digic> digicLits = digicRepository.findByJustificanteuuidProceso((String)val, App.UUIDProcess);
 
                     Digic digic = digicLits.get(0);
 
@@ -577,7 +577,7 @@ public class Modelo_403Controller_OLD implements Initializable {
             return false;
         }
 
-        List<Digic> digicLits = digicRepository.findByJustificante(justificante, App.UUIDProcess);
+        List<Digic> digicLits = digicRepository.findByJustificante(justificante);
 
         if(digicLits.size() == 0)
             return false;

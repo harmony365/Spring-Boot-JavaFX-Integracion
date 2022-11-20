@@ -28,8 +28,11 @@ public interface DigicRepository extends JpaRepository<Digic, String> {
     @Query(value = "UPDATE digic d SET estatus_upload = 1, fecha_upload=CURRENT_TIMESTAMP WHERE d.uuidProceso = :uuidProceso")
     List<Digic> updateStatusByuuidProceso(String uuidProceso);
 
+    @Query(value = "SELECT d FROM digic d WHERE d.justificante = :justificante")
+    List<Digic> findByJustificante(String justificante);
+
     @Query(value = "SELECT d FROM digic d WHERE d.justificante = :justificante AND d.uuidProceso = :uuidProceso")
-    List<Digic> findByJustificante(String justificante,String uuidProceso);
+    List<Digic> findByJustificanteuuidProceso(String justificante,String uuidProceso);
 
     @Query(value = "SELECT d FROM digic d WHERE d.valorDocumento = :valorDocumento AND d.estatus_upload = :estatus")
     List<Digic> findAllByValorDocumentoEstatus(String valorDocumento, Integer estatus);

@@ -1,4 +1,16 @@
 
+    TODO: 18/11/2022
+        listo--- Digic entre paréntesis en las cabeceras de las pantallas
+        listo--- Permitir letras y número en el switch.
+        listo--- Iban pasarlo a mayúsculas
+        listo--- cambio de mensaje de error Alert por un LoadDialog()
+        listo--- Creo que con el DER en papel a veces da error al pasarlo un poco doblado. Si da error que salga un error
+                 más identificativo, "inténtelo de nuevo"
+        - Fecha salida puede ser hoy y mañana dependiendo de la hora en la que estoy escaneando, si son las 11 y media de
+            la noche y salgo a la 1 de la madrugada me debe poder dejar poner el día de mañana.
+        . crear proceso de mantenimiento en lote de los DER que quedan en el proceso cron con estatus 2
+
+
     TODO: 10/11/2022
         - En la propuesta que vimos, para seleccionar una cuenta sin IBAN, se selecciona por "cuenta bancaria" y
           desde ahí se ven todas las registradas. ¿Es posible que muestre en ese apartado todas las cuentas sin IBAN

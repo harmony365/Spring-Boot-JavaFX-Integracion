@@ -6,6 +6,7 @@ import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Digi
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.DigicModoPago;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.DigicModoPagoRepository;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.DigicRepository;
+import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.services.AsyncTask;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.services.DatabaseDerUtil;
 import com.opencsv.CSVReader;
 import javafx.beans.property.StringProperty;
@@ -517,7 +518,7 @@ public class Valida_Envia_DERController implements Initializable {
 
             // How to validate Iban
             try {
-                IbanUtil.validate(p4_tf_valorMedioPago.getText());
+                IbanUtil.validate(p4_tf_valorMedioPago.getText().toUpperCase());
                 //IbanUtil.validate("DE89 3704 0044 0532 0130 00", IbanFormat.Default);
                 // valid
             } catch (IbanFormatException | InvalidCheckDigitException | UnsupportedCountryException e) {
@@ -533,7 +534,8 @@ public class Valida_Envia_DERController implements Initializable {
 
             delay(1000, () -> {
                 try {
-                    onWsdl(event);
+                    onWsdlTask(event);
+                    //onWsdl(event);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -621,6 +623,92 @@ public class Valida_Envia_DERController implements Initializable {
     }
 
     @FXML
+    public void onWsdlTask(ActionEvent event) throws IOException {
+        procesoWsdl = true;
+
+        digicModoPagoRepository.save(getDERFromUI());
+
+        ValidarRemesaDerResponse validarRemesaDerResponse = new ValidarRemesaDerResponse();
+
+        LOGGER.log(Level.INFO, "Armando la Estructura del DER para el envío.");
+        ValidarRemesaDer validarRemesaDer = databaseDerUtil.getDERtoSend(App.UUIDProcess, 3, App.parametrosModel.getKIOSKOID(),true);
+
+        LOGGER.log(Level.INFO, "Llamando al servicio WSDL de ValidarRemesa().");
+
+        WsdlAsyncTask2 wsdlAsyncTask = new WsdlAsyncTask2(validarRemesaDerResponse,validarRemesaDer,event);
+        wsdlAsyncTask.setDaemon(false);
+        wsdlAsyncTask.execute();
+
+    }
+
+    public class WsdlAsyncTask2 extends AsyncTask {
+        private final Logger LOGGER = LogManager.getLogger(com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.services.WsdlAsyncTask.class.getName());
+        private ValidarRemesaDerResponse validarRemesaDerResponse;
+        private ValidarRemesaDer validarRemesaDer;
+        private ActionEvent event;
+        private String wsdlTimeStamp,wsdlResponse;
+
+        public WsdlAsyncTask2(ValidarRemesaDerResponse validarRemesaDerResponse, ValidarRemesaDer validarRemesaDer,ActionEvent event) {
+            this.validarRemesaDerResponse = validarRemesaDerResponse;
+            this.validarRemesaDer= validarRemesaDer;
+            this.event= event;
+        }
+
+        @Override
+        public void onPreExecute() {
+            LOGGER.log(Level.INFO,"Background Thread will start");
+        }
+
+        @Override
+        public Object doInBackground(Object[] params) {
+            LOGGER.log(Level.INFO,"Background Thread is running");
+
+            try {
+
+                LOGGER.log(Level.INFO, "Llamando al servicio WSDL de ValidarRemesa().");
+
+                validarRemesaDerResponse = KioskoServiceClient.getInstance().validarRemesa(validarRemesaDer);
+                KioskoServiceClientUtils.printResponse(validarRemesaDerResponse);
+                wsdlTimeStamp = validarRemesaDerResponse.getFechaEstado().toString();
+                wsdlResponse  = validarRemesaDerResponse.getEstado();
+                LOGGER.log(Level.INFO, "Resultado: Estado( " + validarRemesaDerResponse.getEstado() + " ) --> " + validarRemesaDerResponse.getFechaEstado().toString());
+
+            } catch (Exception e) {
+                LOGGER.log(Level.INFO, "Ocurrio un Error de RED, time out de conexión.");
+                e.printStackTrace();
+                wsdlResponse = "RED";
+            }
+
+            return null;
+        }
+
+        @Override
+        public void onPostExecute(Object params) {
+            LOGGER.log(Level.INFO,"Background Thread has stopped");
+            setMessageWsdlResponse(wsdlResponse);
+
+            try {
+                PantallaDialogo(event);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            if (App.MensajeValidaDER_action) {
+                p2_btn_aceptar.setVisible(false);
+                p2_btn_salir.requestFocus();
+            }
+
+            LoadProccess(false);
+        }
+
+        @Override
+        public void progressCallback(Object[] params) {
+            LOGGER.log(Level.INFO,"Progress " + params[0]);
+        }
+
+    }
+
+    @FXML
     public void onWsdl(ActionEvent event) throws IOException {
         procesoWsdl = true;
 
@@ -650,60 +738,7 @@ public class Valida_Envia_DERController implements Initializable {
 
         //TODO: validar bien el cambio de estatus. sólo falta ver bien cual sería la regla para los estatus ER.
 
-        App.MensajeValidaDER_action = true;
-
-        if (WsdlResponse.getText().equals("RED")) {
-            p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
-            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_RED"));
-            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 2);
-            App.MensajeValidaDER_icon  = "error";
-            App.MensajeValidaDER_error = "p5_lb_mensaje_RED";
-        }
-        if (WsdlResponse.getText().equals("VF")) {
-            p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
-            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_VF"));
-            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 1);
-            App.MensajeValidaDER_icon  = "warning";
-            App.MensajeValidaDER_error = "p5_lb_mensaje_VF";
-            App.MensajeValidaDER_action = false;
-        }
-        if (WsdlResponse.getText().equals("ER")) {
-            p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
-            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_ER"));
-            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 2);
-            App.MensajeValidaDER_icon  = "error";
-            App.MensajeValidaDER_error = "p5_lb_mensaje_ER";
-            App.MensajeValidaDER_action = false;
-        }
-        if (WsdlResponse.getText().equals("PR02")) {
-            p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
-            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_PR02"));
-            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 3);
-            App.MensajeValidaDER_icon  = "error";
-            App.MensajeValidaDER_error = "p5_lb_mensaje_PR02";
-        }
-        if (WsdlResponse.getText().equals("KO")) {
-            p4_rec_mensaje.setFill(Color.rgb(227, 250, 228, 1));
-            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_KO"));
-            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 2);
-            App.MensajeValidaDER_icon  = "error";
-            App.MensajeValidaDER_error = "p5_lb_mensaje_KO";
-        }
-        if (WsdlResponse.getText().equals("OK")) {
-            p4_rec_mensaje.setFill(Color.rgb(227, 250, 228, 1));
-            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_OK"));
-            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 1);
-            App.MensajeValidaDER_icon  = "success";
-            App.MensajeValidaDER_error = "p5_lb_mensaje_OK";
-        }
-        if (WsdlResponse.getText().length() > 5) {
-            p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
-            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_" + WsdlResponse.getText()));
-            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 3);
-            App.MensajeValidaDER_icon  = "error";
-            App.MensajeValidaDER_error = "p5_lb_mensaje_" + WsdlResponse.getText();
-            App.MensajeValidaDER_action = false;
-        }
+        setMessageWsdlResponse(WsdlResponse.getText());
 
         try {
             PantallaDialogo(event);
@@ -711,17 +746,118 @@ public class Valida_Envia_DERController implements Initializable {
             throw new RuntimeException(e);
         }
 
-        p4_ld_wsdl_raspuesta.setVisible(true);
-        p4_ld_wsdl_TimeStamp.setVisible(true);
-        WsdlResponse.setVisible(true);
-        WsdlTimeStamp.setVisible(true);
-
         if (App.MensajeValidaDER_action) {
             p2_btn_aceptar.setVisible(false);
             p2_btn_salir.requestFocus();
         }
 
         LoadProccess(false);
+    }
+
+    private void setMessageWsdlResponse(String msg){
+
+        Boolean msgAction=true;
+        Integer status=3;
+        String msgIcon="";
+        String msgPais="";
+        Color color = Color.rgb(252, 227, 227, 1);
+
+        switch (msg){
+            case "RED" :
+            case "ER" :
+            case "PR02" :
+            case "KO" :
+                status = 2;
+                msgIcon = "error";
+                color = Color.rgb(252, 227, 227, 1);
+                break;
+            case "VF" :
+                status = 1;
+                msgIcon = "warning";
+                color = Color.rgb(255, 215, 158, 1);
+                break;
+            case "OK" :
+                msgPais = App.MensajeValidaDER_Pais;
+                status = 1;
+                msgIcon = "success";
+                color = Color.rgb(227, 250, 228, 1);
+                break;
+            default:
+                if (msg.length() > 5) {
+                    status = 3;
+                    msgIcon = "error";
+                    color = Color.rgb(252, 227, 227, 1);
+                    msgAction = false;
+                }
+                break;
+
+        }
+
+        p4_rec_mensaje.setFill(color);
+        p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_" + msg + msgPais));
+        databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, status);
+        App.MensajeValidaDER_icon   = msgIcon;
+        App.MensajeValidaDER_error  = "p5_lb_mensaje_" + msg + msgPais;
+        App.MensajeValidaDER_action = msgAction;
+
+        p4_ld_wsdl_raspuesta.setVisible(true);
+        p4_ld_wsdl_TimeStamp.setVisible(true);
+        WsdlResponse.setVisible(true);
+        WsdlTimeStamp.setVisible(true);
+
+        /*
+        if (msg.equals("RED")) {
+            p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
+            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_RED"));
+            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 2);
+            App.MensajeValidaDER_icon  = "error";
+            App.MensajeValidaDER_error = "p5_lb_mensaje_RED";
+        }
+        if (msg.equals("VF")) {
+            p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
+            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_VF"));
+            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 1);
+            App.MensajeValidaDER_icon  = "warning";
+            App.MensajeValidaDER_error = "p5_lb_mensaje_VF";
+        }
+        if (msg.equals("ER")) {
+            p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
+            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_ER"));
+            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 2);
+            App.MensajeValidaDER_icon  = "error";
+            App.MensajeValidaDER_error = "p5_lb_mensaje_ER";
+        }
+        if (msg.equals("PR02")) {
+            p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
+            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_PR02"));
+            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 2);
+            App.MensajeValidaDER_icon  = "error";
+            App.MensajeValidaDER_error = "p5_lb_mensaje_PR02";
+        }
+        if (msg.equals("KO")) {
+            p4_rec_mensaje.setFill(Color.rgb(227, 250, 228, 1));
+            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_KO"));
+            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 2);
+            App.MensajeValidaDER_icon  = "error";
+            App.MensajeValidaDER_error = "p5_lb_mensaje_KO";
+        }
+        if (msg.equals("OK")) {
+            p4_rec_mensaje.setFill(Color.rgb(227, 250, 228, 1));
+            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_OK" + App.MensajeValidaDER_Pais));
+            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 1);
+            App.MensajeValidaDER_icon  = "success";
+            App.MensajeValidaDER_error = "p5_lb_mensaje_OK" + App.MensajeValidaDER_Pais;
+        }
+        if (msg.length() > 5) {
+            p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
+            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_" + WsdlResponse.getText()));
+            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 3);
+            App.MensajeValidaDER_icon  = "error";
+            App.MensajeValidaDER_error = "p5_lb_mensaje_" + WsdlResponse.getText();
+            App.MensajeValidaDER_action = false;
+        }
+        */
+
     }
 
    //public void setFromUI(Cliente cliente) {
@@ -752,7 +888,7 @@ public class Valida_Envia_DERController implements Initializable {
             digicModoPago.setDescInstFinanciera(p4_tf_descripcion_banco.getText());
             digicModoPago.setNumeroABA(p4_tf_codigo_aba.getText());
             digicModoPago.setPaisBanco(p4_tf_pais_banco.getText());
-            digicModoPago.setValorMedioPago(p4_tf_cuenta_bancaria.getText());
+            digicModoPago.setValorMedioPago(p4_tf_cuenta_bancaria.getText().toUpperCase());
 
         }else{
 
@@ -766,7 +902,7 @@ public class Valida_Envia_DERController implements Initializable {
             digicModoPago.setNumeroABA("");
             digicModoPago.setPaisBanco("");
 
-            digicModoPago.setValorMedioPago(p4_tf_valorMedioPago.getText());
+            digicModoPago.setValorMedioPago(p4_tf_valorMedioPago.getText().toUpperCase());
 
         }
 
@@ -866,9 +1002,10 @@ public class Valida_Envia_DERController implements Initializable {
         TextPropertyAddListener(p4_tf_clave_banco, 15);
 
         TextPropertyAddListener(p4_tf_cuenta_bancaria, 18);
+        TextPropertyAddListener(p4_tf_valorMedioPago, 31,true);
         TextPropertyAddListener(p4_tf_descripcion_banco, 20, true);
         TextPropertyAddListener(p4_tf_clave_control, 2, true);
-        TextPropertyAddListener(p4_tf_codigoBic, 11);
+        TextPropertyAddListener(p4_tf_codigoBic, 11,true);
 
         ValuePropertyAddListener(p4_cb_email, p4_tf_email);
         ValuePropertyAddListener(p4_cb_clave_banco, p4_tf_clave_banco);

@@ -26,8 +26,9 @@ public class PrimaryController implements Initializable  {
     private final static Logger LOGGER = LogManager.getLogger(PrimaryController.class.getName());
     //public String Segunda_Pantalla = "modelo_403_v1";
     public String Segunda_Pantalla = "/views/PassPortLogin";
+    public String Admin_Pantalla = "/views/ViewLogin";
 
-    @FXML private  ImageView imgProcesando;
+    @FXML private  ImageView imgProcesando,p1_imgview_1,p1_imgview_2,p1_imgview_3;
     @FXML private StackPane stpProcesando;
     @FXML
     private void LoadProccess(Boolean status) {
@@ -42,6 +43,26 @@ public class PrimaryController implements Initializable  {
 
         LoadProccess(false);
 
+    }
+
+    @FXML
+    private void SetCounterToCero()  {
+        ContadorImgUno=0; ContadorImgDos=0;
+    }
+
+    @FXML
+    private void SetCounterToImgUno()  {
+        ContadorImgUno=ContadorImgUno + 1;
+    }
+
+    @FXML
+    private void SetCounterToImgDos() throws IOException {
+        ContadorImgDos= ContadorImgDos + 1;
+        if(ContadorImgUno.equals(5) && ContadorImgDos.equals(3)){
+            Locale locale = new Locale("es", "ES");
+            Locale.setDefault(locale);
+            App.setRoot(Admin_Pantalla, locale);
+        }
     }
 
     @FXML

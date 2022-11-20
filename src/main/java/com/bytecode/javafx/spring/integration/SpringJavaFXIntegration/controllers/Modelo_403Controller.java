@@ -296,11 +296,7 @@ public class Modelo_403Controller implements Initializable {
                         LoadProccess(false);
                         e.printStackTrace();
 
-                        Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setHeaderText(null);
-                        alert.setTitle("Error");
-                        alert.setContentText(e.getMessage());
-                        alert.showAndWait();              
+                        LoadDialog("ERROR",  e.getClass() + "\n" + e.getMessage());
 
                     }
 
@@ -716,11 +712,15 @@ public class Modelo_403Controller implements Initializable {
 
             if(App.parametrosModel.getAppDemo()) System.out.printf("\nCausa: %s \nMensaje: %s\n Class: %s\n Localized Mensaje: %s\n" ,e.getCause(),e.getMessage(),e.getClass(),e.getLocalizedMessage());
 
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setTitle("Error");
-            alert.setContentText(e.getMessage());
-            alert.showAndWait();              
+            String respuesta;
+            if (e.getClass().equals("class org.jasypt.exceptions.EncryptionOperationNotPossibleException")){
+                respuesta =  bundle.getString( "p2_tx_info_error_lectura");
+
+            }else{
+                respuesta = String.valueOf(e.getClass());
+            }
+
+            LoadDialog("ERROR",  respuesta + "\n" + e.getMessage());
 
 
         }
@@ -732,7 +732,8 @@ public class Modelo_403Controller implements Initializable {
             return false;
         }
 
-        List<Digic> digicLits = digicRepository.findByJustificante(justificante, App.UUIDProcess);
+        //List<Digic> digicLits = digicRepository.findByJustificante(justificante, App.UUIDProcess);
+        List<Digic> digicLits = digicRepository.findByJustificante(justificante);
 
         if(digicLits.size() == 0)
             return false;
@@ -1140,11 +1141,7 @@ public class Modelo_403Controller implements Initializable {
             LoadProccess(false);
             LOGGER.log(Level.ERROR,LocalDateTime.now() + ": Could not connect to SQLite DB at " + location);
 
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setHeaderText(null);
-                alert.setTitle("Error");
-                alert.setContentText(e.getMessage());
-                alert.showAndWait();              
+            LoadDialog("ERROR",  e.getClass() + "\n" + e.getMessage());
 
             return null;
         }
@@ -1162,12 +1159,7 @@ public class Modelo_403Controller implements Initializable {
             LoadProccess(false);
             LOGGER.log(Level.ERROR,LocalDateTime.now() + ": Could not start SQLite Drivers");
 
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setTitle("Error");
-            alert.setContentText(classNotFoundException.getMessage());
-            alert.showAndWait();             
-
+            LoadDialog("ERROR", classNotFoundException.getMessage());
             return false;
         }
     }
@@ -1250,11 +1242,7 @@ public class Modelo_403Controller implements Initializable {
             LoadProccess(false);
             LOGGER.log(Level.ERROR,LocalDateTime.now() + ": Could not Update from " + tableName + " because: \n" + e.toString() + "\n" + e.getMessage() + "\n" + e.getErrorCode());
 
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setHeaderText(null);
-                    alert.setTitle("Error");
-                    alert.setContentText(e.getMessage());
-                    alert.showAndWait();              
+            LoadDialog("ERROR",  e.getClass() + "\n" + e.getMessage());
         
         }finally{
             //SelectItems_sqlite3();
@@ -1382,11 +1370,7 @@ public class Modelo_403Controller implements Initializable {
             LoadProccess(false);
             LOGGER.log(Level.ERROR,LocalDateTime.now() + ": Could not Update from " + tableName + " because: \n" + e.toString() + "\n" + e.getMessage() + "\n" + e.getErrorCode());
 
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setHeaderText(null);
-                    alert.setTitle("Error");
-                    alert.setContentText(e.getMessage());
-                    alert.showAndWait();              
+            LoadDialog("ERROR",  e.getClass() + "\n" + e.getMessage());
         
         }finally{
             //SelectItems_sqlite3();
@@ -1416,9 +1400,12 @@ public class Modelo_403Controller implements Initializable {
                 //System.out.println("Union-Europea : " + nextRecord[5]);
                 //System.out.println("==========================");
 
-
                 if (nextRecord[1].equals(index) || nextRecord[2].equals(index)) {
-                    App.MensajeValidaDER_Pais = nextRecord[5].toString();
+                    if(nextRecord[5].toString().equals("1")) {
+                        App.MensajeValidaDER_Pais = "UE";
+                    }else{
+                        App.MensajeValidaDER_Pais = "";
+                    }
                     return nextRecord[0].toUpperCase();
                 }
             }
