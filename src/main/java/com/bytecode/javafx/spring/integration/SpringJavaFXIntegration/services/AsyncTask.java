@@ -3,6 +3,8 @@ package com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.services;
 import javafx.application.Platform;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+
 
 /**
  * @author Victor Oliveira
@@ -16,7 +18,7 @@ public abstract class AsyncTask<T1, T2, T3> {
 
     public abstract void onPreExecute();
 
-    public abstract T3 doInBackground(T1... params);
+    public abstract T3 doInBackground(T1... params) throws IOException;
 
     public abstract void onPostExecute(T3 params);
 
@@ -30,7 +32,12 @@ public abstract class AsyncTask<T1, T2, T3> {
         @Override
         public void run() {
 
-            final T3 param = doInBackground(params);
+            final T3 param;
+            try {
+                param = doInBackground(params);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
 
             Platform.runLater(() -> {
                 try {

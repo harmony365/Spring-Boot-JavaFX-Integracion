@@ -26,7 +26,7 @@ Benin,BJ,BEN,204,Yes,0
 Bermuda,BM,BMU,60,NO,0
 Bhutan,BT,BTN,64,Yes,0
 Bolivia (Plurinational State of),BO,BOL,68,Yes,0
-Bonaire, Sint Eustatius and Saba,BQ,BES,535,NO,0
+Bonaire Sint Eustatius and Saba,BQ,BES,535,NO,0
 Bosnia and Herzegovina,BA,BIH,70,Yes,0
 Botswana,BW,BWA,72,Yes,0
 Bouvet Island,BV,BVT,74,NO,0
@@ -164,11 +164,11 @@ Nigeria,NG,NGA,566,Yes,0
 Niue,NU,NIU,570,NO,0
 Norfolk Island,NF,NFK,574,NO,0
 Northern Mariana Islands,MP,MNP,580,NO,0
-Norway,NO,0,NO,0R,578,Yes,0
+Norway,NO,0R,578,Yes,0
 Oman,OM,OMN,512,Yes,0
 Pakistan,PK,PAK,586,Yes,0
 Palau,PW,PLW,585,Yes,0
-Palestine, State of,PS,PSE,275,NO,0
+Palestine State of,PS,PSE,275,NO,0
 Panama,PA,PAN,591,Yes,0
 Papua New Guinea,PG,PNG,598,Yes,0
 Paraguay,PY,PRY,600,Yes,0
@@ -184,7 +184,7 @@ Romania,RO,ROU,642,Yes,1
 Russian Federation,RU,RUS,643,Yes,0
 Rwanda,RW,RWA,646,Yes,0
 Saint Barthélemy,BL,BLM,652,NO,0
-Saint Helena, Ascension and Tristan da Cunha,SH,SHN,654,NO,0
+Saint Helena Ascension and Tristan da Cunha,SH,SHN,654,NO,0
 Saint Kitts and Nevis,KN,KNA,659,Yes,0
 Saint Lucia,LC,LCA,662,Yes,0
 Saint Martin (French part),MF,MAF,663,NO,0
@@ -216,9 +216,9 @@ Swaziland,SZ,SWZ,748,Yes,0
 Sweden,SE,SWE,752,Yes,1
 Switzerland,CH,CHE,756,Yes,0
 Syrian Arab Republic,SY,SYR,760,Yes,0
-Taiwan, Province of China[a],TW,TWN,158,NO,0
+Taiwan Province of China[a],TW,TWN,158,NO,0
 Tajikistan,TJ,TJK,762,Yes,0
-Tanzania, United Republic of,TZ,TZA,834,Yes,0
+Tanzania United Republic of,TZ,TZA,834,Yes,0
 Thailand,TH,THA,764,Yes,0
 Timor-Leste,TL,TLS,626,Yes,0
 Togo,TG,TGO,768,Yes,0

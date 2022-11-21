@@ -1,11 +1,38 @@
 
+    TODO: 21/11/2022
+       [*] Proceso finalizado. Su solicitud ha sido validada. Gracias por su visita a las Islas Canarias, que tenga un
+           buen viaje de vuelta a casa.
+       [*] Proceso finalizado. Su solicitud queda pendiente de aportar documentación de importación en destino. Le
+           informaremos vía email del proceso de su solicitud. Se lo informara el estado del proceso al mail <mail>
+       [*] Proceso finalizado. Le informaremos vía email del proceso de su solicitud. Se lo informara el estado del
+           proceso al mail <mail>
+       [*] El botón "SALIR" cambiarlo por "CANCELAR SOLICITUD" y el finalizar escaneo por "CONTINUAR"
+       [*] El mensaje de fecha límite caducada cambiarlo por "Se han superado los 3 meses desde la compra, no se permite
+           la solicitud de la devolución del IGIC".
+       [*] Los idiomas en el centro y el vídeo más pequeño y en una esquina
+       [*] Cambiar el orden, primero introducción manual y la caja de texto para el número de pasaporte / DNI y luego
+           la información de la opción de escanear.
+
+
+    TODO: 21/11/2022
+       [ ] La pantallas de introducción de pasaporte, poner una foto con el DNI y el pasaporte con remarcado lo que hay
+            que pasar por el escaner.
+       [ ] En las pantallas de mensajes si sale lo de se le enviará por mail que muestre el mail a donde se le va a enviar.
+       [ ] Formato de los importes con separador de decimales , y de miles el .
+       [ ] El mensajes de que escoja una cuenta o rellene una nueva tiene que estar en la cabecera del medio de pago para
+           que afecte a los dos tipos de cuenta.
+       [ ] Revisar campos obligatorios en la opción sin iban. Permitió enviar sin clave de control ni código del banco.
+       [ ] El switch no muestra las letras. Viene del der con letras y las quita.
+       [ ] El botón seleccionar de las cuentas que funcione solo para marcar, que no marque y desmarque si vuelve a pulsar.
+       [ ] Para las Islas Caiman mostró el mensaje de ok como si fuese un país de la UE. Revisar mensajes y de donde.
+       [ ] La hora de salida tiene que ser superior a la hora actual
+       [ ] Que al entrar a la página final que salgan marcados los campos que no están rellenos y muestre un mensaje
+           "Tiene campos obligatorios sin rellenar." Los mensajes informativos en las pantallas que salgan en otro color o resaltados
+       [ ] Hacer el teclado más grande y que se cierre al pulsar enter o picar fuera en la pantalla.
+       [ ] En el calendar de la fecha de salida porque sale en rojo dos fechas?, la de hoy y otra
+
+
     TODO: 18/11/2022
-        listo--- Digic entre paréntesis en las cabeceras de las pantallas
-        listo--- Permitir letras y número en el switch.
-        listo--- Iban pasarlo a mayúsculas
-        listo--- cambio de mensaje de error Alert por un LoadDialog()
-        listo--- Creo que con el DER en papel a veces da error al pasarlo un poco doblado. Si da error que salga un error
-                 más identificativo, "inténtelo de nuevo"
         - Fecha salida puede ser hoy y mañana dependiendo de la hora en la que estoy escaneando, si son las 11 y media de
             la noche y salgo a la 1 de la madrugada me debe poder dejar poner el día de mañana.
         . crear proceso de mantenimiento en lote de los DER que quedan en el proceso cron con estatus 2
@@ -23,6 +50,13 @@
         - y la mayoría de sugerencias fueron por el teclado. que sea mas grande, que con el enter y el tab pase de campo,
           que picando fuera se cierre,....
 
+    TODO: 18/11/2022
+        listo--- Digic entre paréntesis en las cabeceras de las pantallas
+        listo--- Permitir letras y número en el switch.
+        listo--- Iban pasarlo a mayúsculas
+        listo--- cambio de mensaje de error Alert por un LoadDialog()
+        listo--- Creo que con el DER en papel a veces da error al pasarlo un poco doblado. Si da error que salga un error
+                 más identificativo, "inténtelo de nuevo"
 
     TODO: 16/11/2022
         listo--- Error BigDecimal en el campo de TotalDigic en el DER.
@@ -53,7 +87,6 @@
     TODO: 11/11/2022
         listo--- PANTALLA 403
         listo--- RESOLVER LA ACTIVACIÓN DE AÑADIR MODELO 403.
-        .
 
     TODO: 11/11/2022
         listo--- Icono de ERROR en el resultado del DER cambiarlo a Warning.
@@ -109,8 +142,8 @@
         listo--- US la clave del banco es opcional.
         .
         listo--- En la elección de la cuenta en la versión actual no está muy bien.
-        si el país es Mauritania que el código es MR, siempre lo pone con MA, y rellena el combo de países con opciones que iban en otros DER
-        y añade MAU, cuando en los justificante escaneados no hay ninguno que tenga MAU ni MA.
+        listo--- si el país es Mauritania que el código es MR, siempre lo pone con MA, y rellena el combo de países con
+                 opciones que iban en otros DER y añade MAU, cuando en los justificante escaneados no hay ninguno que tenga MAU ni MA.
         listo--- Con la cuenta sigue haciendo algo raro, porque mezcla la cuenta con iban con la cuenta sin iban, en el campo valorMedioPago,
         listo--- .. además con los dos botones que hay de seleccionar y el combo de SI/NO creo que se hace un lío a la hora de rellenar los datos de cuenta, aunque rellene los datos de cuenta con iban, además envía el resto de campos de la cuenta sin IBAN.
         listo--- Quitar el control de la fecha de salida y la hora, la introducen pero no se hace nada, es decir, que no se van a validar las 3 horas de antelación, la fecha de salida y la hora de salida son obligatorios pero no se hace nada con esos datos.

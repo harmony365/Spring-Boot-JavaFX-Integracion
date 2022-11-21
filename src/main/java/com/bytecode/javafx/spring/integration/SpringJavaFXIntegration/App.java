@@ -1,6 +1,7 @@
 package com.bytecode.javafx.spring.integration.SpringJavaFXIntegration;
 
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.ParametrosModel;
+import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.services.MantenimientoEnLoteDER;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
@@ -67,11 +68,15 @@ public class App extends Application {
         @Override public void handle(ActionEvent event) { 
 
             GetParametros();
-            //System.out.println("this is called every 30 seconds on UI thread");
 
-            /*
-             *  llamada a la funcion de envio de datos al wsdl
-             */
+            MantenimientoEnLoteDER mantenimientoEnLoteDER = null;
+            try {
+                mantenimientoEnLoteDER = new MantenimientoEnLoteDER();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            mantenimientoEnLoteDER.setDaemon(false);
+            mantenimientoEnLoteDER.execute();
         } 
     })); 
 
