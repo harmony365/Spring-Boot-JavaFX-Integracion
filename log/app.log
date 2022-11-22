@@ -1,75 +1,921 @@
-2022-11-21 14:57:53.353  INFO 33224 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : Starting application on DESKTOP-6GDLJRV with PID 33224 (started by MSI in C:\Desarrollo\JAVA\DIVA\Spring-Boot-JavaFX-Integracion-VS)
-2022-11-21 14:57:53.362  INFO 33224 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : No active profile set, falling back to default profiles: default
-2022-11-21 14:57:54.281  INFO 33224 --- [JavaFX Application Thread] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
-2022-11-21 14:57:54.405  INFO 33224 --- [JavaFX Application Thread] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 117ms. Found 3 repository interfaces.
-2022-11-21 14:57:54.965  INFO 33224 --- [JavaFX Application Thread] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2022-11-21 14:57:55.287  INFO 33224 --- [JavaFX Application Thread] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2022-11-21 14:57:55.353  INFO 33224 --- [JavaFX Application Thread] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+2022-11-22 00:00:16.264  INFO 1280 --- [Thread-167] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:00:16.269  INFO 1280 --- [Thread-167] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:00:16.269  INFO 1280 --- [Thread-167] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:00:46.268  INFO 1280 --- [Thread-168] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:00:46.268  INFO 1280 --- [Thread-168] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:00:46.269  INFO 1280 --- [Thread-168] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:00:52.208 ERROR 1280 --- [scheduling-1] c.b.j.s.i.S.cron.DERScheduler            : Respuesta WSDL -> Se encontró un error y no se pudo cambiar el estatus de la operación.
+2022-11-22 00:01:16.261  INFO 1280 --- [Thread-169] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:01:16.262  INFO 1280 --- [Thread-169] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:01:16.262  INFO 1280 --- [Thread-169] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:01:46.261  INFO 1280 --- [Thread-170] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:01:46.261  INFO 1280 --- [Thread-170] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:01:46.261  INFO 1280 --- [Thread-170] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:02:16.261  INFO 1280 --- [Thread-171] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:02:16.262  INFO 1280 --- [Thread-171] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:02:16.262  INFO 1280 --- [Thread-171] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:02:46.261  INFO 1280 --- [Thread-172] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:02:46.262  INFO 1280 --- [Thread-172] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:02:46.262  INFO 1280 --- [Thread-172] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:03:16.262  INFO 1280 --- [Thread-173] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:03:16.262  INFO 1280 --- [Thread-173] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:03:16.262  INFO 1280 --- [Thread-173] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:03:46.261  INFO 1280 --- [Thread-174] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:03:46.261  INFO 1280 --- [Thread-174] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:03:46.261  INFO 1280 --- [Thread-174] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:04:16.264  INFO 1280 --- [Thread-175] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:04:16.264  INFO 1280 --- [Thread-175] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:04:16.264  INFO 1280 --- [Thread-175] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:04:46.268  INFO 1280 --- [Thread-176] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:04:46.269  INFO 1280 --- [Thread-176] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:04:46.269  INFO 1280 --- [Thread-176] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:05:16.261  INFO 1280 --- [Thread-177] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:05:16.261  INFO 1280 --- [Thread-177] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:05:16.261  INFO 1280 --- [Thread-177] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:05:46.264  INFO 1280 --- [Thread-178] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:05:46.265  INFO 1280 --- [Thread-178] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:05:46.265  INFO 1280 --- [Thread-178] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:06:16.262  INFO 1280 --- [Thread-179] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:06:16.262  INFO 1280 --- [Thread-179] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:06:16.262  INFO 1280 --- [Thread-179] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:06:46.262  INFO 1280 --- [Thread-180] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:06:46.262  INFO 1280 --- [Thread-180] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:06:46.263  INFO 1280 --- [Thread-180] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:07:16.261  INFO 1280 --- [Thread-181] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:07:16.261  INFO 1280 --- [Thread-181] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:07:16.261  INFO 1280 --- [Thread-181] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:07:46.263  INFO 1280 --- [Thread-182] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:07:46.263  INFO 1280 --- [Thread-182] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:07:46.263  INFO 1280 --- [Thread-182] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:08:16.262  INFO 1280 --- [Thread-183] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:08:16.262  INFO 1280 --- [Thread-183] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:08:16.262  INFO 1280 --- [Thread-183] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:08:46.265  INFO 1280 --- [Thread-184] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:08:46.265  INFO 1280 --- [Thread-184] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:08:46.265  INFO 1280 --- [Thread-184] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:09:16.261  INFO 1280 --- [Thread-185] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:09:16.262  INFO 1280 --- [Thread-185] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:09:16.262  INFO 1280 --- [Thread-185] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:09:46.261  INFO 1280 --- [Thread-186] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:09:46.262  INFO 1280 --- [Thread-186] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:09:46.262  INFO 1280 --- [Thread-186] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:10:16.261  INFO 1280 --- [Thread-187] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:10:16.261  INFO 1280 --- [Thread-187] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:10:16.261  INFO 1280 --- [Thread-187] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:10:46.261  INFO 1280 --- [Thread-188] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:10:46.261  INFO 1280 --- [Thread-188] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:10:46.262  INFO 1280 --- [Thread-188] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:11:16.264  INFO 1280 --- [Thread-189] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:11:16.264  INFO 1280 --- [Thread-189] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:11:16.264  INFO 1280 --- [Thread-189] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:11:46.267  INFO 1280 --- [Thread-190] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:11:46.267  INFO 1280 --- [Thread-190] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:11:46.268  INFO 1280 --- [Thread-190] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:12:16.269  INFO 1280 --- [Thread-191] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:12:16.269  INFO 1280 --- [Thread-191] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:12:16.269  INFO 1280 --- [Thread-191] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:12:46.271  INFO 1280 --- [Thread-192] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:12:46.271  INFO 1280 --- [Thread-192] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:12:46.272  INFO 1280 --- [Thread-192] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:13:16.301  INFO 1280 --- [Thread-193] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:13:16.301  INFO 1280 --- [Thread-193] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:13:16.301  INFO 1280 --- [Thread-193] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:13:46.266  INFO 1280 --- [Thread-194] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:13:46.266  INFO 1280 --- [Thread-194] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:13:46.267  INFO 1280 --- [Thread-194] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:14:16.266  INFO 1280 --- [Thread-195] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:14:16.267  INFO 1280 --- [Thread-195] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:14:16.267  INFO 1280 --- [Thread-195] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:14:46.311  INFO 1280 --- [Thread-196] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:14:46.313  INFO 1280 --- [Thread-196] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:14:46.313  INFO 1280 --- [Thread-196] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:15:16.263  INFO 1280 --- [Thread-197] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:15:16.264  INFO 1280 --- [Thread-197] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:15:16.264  INFO 1280 --- [Thread-197] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:15:46.326  INFO 1280 --- [Thread-198] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:15:46.327  INFO 1280 --- [Thread-198] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:15:46.327  INFO 1280 --- [Thread-198] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:16:16.264  INFO 1280 --- [Thread-199] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:16:16.264  INFO 1280 --- [Thread-199] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:16:16.264  INFO 1280 --- [Thread-199] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:16:46.267  INFO 1280 --- [Thread-200] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:16:46.267  INFO 1280 --- [Thread-200] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:16:46.268  INFO 1280 --- [Thread-200] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:17:16.262  INFO 1280 --- [Thread-201] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:17:16.263  INFO 1280 --- [Thread-201] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:17:16.263  INFO 1280 --- [Thread-201] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:17:46.271  INFO 1280 --- [Thread-202] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:17:46.272  INFO 1280 --- [Thread-202] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:17:46.272  INFO 1280 --- [Thread-202] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:18:16.263  INFO 1280 --- [Thread-203] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:18:16.264  INFO 1280 --- [Thread-203] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:18:16.264  INFO 1280 --- [Thread-203] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:18:46.262  INFO 1280 --- [Thread-204] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:18:46.262  INFO 1280 --- [Thread-204] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:18:46.262  INFO 1280 --- [Thread-204] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:19:16.262  INFO 1280 --- [Thread-205] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:19:16.263  INFO 1280 --- [Thread-205] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:19:16.263  INFO 1280 --- [Thread-205] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:19:46.273  INFO 1280 --- [Thread-206] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:19:46.274  INFO 1280 --- [Thread-206] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:19:46.274  INFO 1280 --- [Thread-206] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:20:16.263  INFO 1280 --- [Thread-207] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:20:16.264  INFO 1280 --- [Thread-207] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:20:16.264  INFO 1280 --- [Thread-207] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:20:46.264  INFO 1280 --- [Thread-208] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:20:46.264  INFO 1280 --- [Thread-208] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:20:46.265  INFO 1280 --- [Thread-208] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:21:16.264  INFO 1280 --- [Thread-209] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:21:16.264  INFO 1280 --- [Thread-209] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:21:16.264  INFO 1280 --- [Thread-209] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:21:46.262  INFO 1280 --- [Thread-210] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:21:46.262  INFO 1280 --- [Thread-210] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:21:46.262  INFO 1280 --- [Thread-210] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:22:16.262  INFO 1280 --- [Thread-211] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:22:16.263  INFO 1280 --- [Thread-211] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:22:16.263  INFO 1280 --- [Thread-211] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:22:46.267  INFO 1280 --- [Thread-212] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:22:46.268  INFO 1280 --- [Thread-212] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:22:46.268  INFO 1280 --- [Thread-212] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:23:16.266  INFO 1280 --- [Thread-213] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:23:16.267  INFO 1280 --- [Thread-213] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:23:16.267  INFO 1280 --- [Thread-213] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:23:46.262  INFO 1280 --- [Thread-214] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:23:46.262  INFO 1280 --- [Thread-214] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:23:46.262  INFO 1280 --- [Thread-214] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:24:16.265  INFO 1280 --- [Thread-215] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:24:16.266  INFO 1280 --- [Thread-215] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:24:16.266  INFO 1280 --- [Thread-215] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:24:46.302  INFO 1280 --- [Thread-216] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:24:46.303  INFO 1280 --- [Thread-216] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:24:46.303  INFO 1280 --- [Thread-216] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:25:16.269  INFO 1280 --- [Thread-217] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:25:16.269  INFO 1280 --- [Thread-217] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:25:16.269  INFO 1280 --- [Thread-217] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:25:46.272  INFO 1280 --- [Thread-218] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:25:46.273  INFO 1280 --- [Thread-218] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:25:46.273  INFO 1280 --- [Thread-218] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:26:16.264  INFO 1280 --- [Thread-219] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:26:16.264  INFO 1280 --- [Thread-219] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:26:16.265  INFO 1280 --- [Thread-219] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:26:46.265  INFO 1280 --- [Thread-220] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:26:46.265  INFO 1280 --- [Thread-220] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:26:46.266  INFO 1280 --- [Thread-220] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:27:16.264  INFO 1280 --- [Thread-221] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:27:16.265  INFO 1280 --- [Thread-221] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:27:16.265  INFO 1280 --- [Thread-221] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:27:46.293  INFO 1280 --- [Thread-222] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:27:46.293  INFO 1280 --- [Thread-222] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:27:46.293  INFO 1280 --- [Thread-222] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:28:16.261  INFO 1280 --- [Thread-223] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:28:16.261  INFO 1280 --- [Thread-223] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:28:16.261  INFO 1280 --- [Thread-223] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:28:46.261  INFO 1280 --- [Thread-224] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:28:46.261  INFO 1280 --- [Thread-224] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:28:46.261  INFO 1280 --- [Thread-224] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:29:16.269  INFO 1280 --- [Thread-225] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:29:16.269  INFO 1280 --- [Thread-225] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:29:16.269  INFO 1280 --- [Thread-225] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:29:46.267  INFO 1280 --- [Thread-226] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:29:46.267  INFO 1280 --- [Thread-226] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:29:46.267  INFO 1280 --- [Thread-226] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:30:16.260  INFO 1280 --- [Thread-227] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:30:16.261  INFO 1280 --- [Thread-227] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:30:16.261  INFO 1280 --- [Thread-227] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:30:46.274  INFO 1280 --- [Thread-228] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:30:46.274  INFO 1280 --- [Thread-228] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:30:46.274  INFO 1280 --- [Thread-228] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:31:16.263  INFO 1280 --- [Thread-229] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:31:16.263  INFO 1280 --- [Thread-229] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:31:16.263  INFO 1280 --- [Thread-229] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:31:46.331  INFO 1280 --- [Thread-230] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:31:46.332  INFO 1280 --- [Thread-230] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:31:46.332  INFO 1280 --- [Thread-230] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:32:16.264  INFO 1280 --- [Thread-231] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:32:16.264  INFO 1280 --- [Thread-231] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:32:16.264  INFO 1280 --- [Thread-231] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:32:46.315  INFO 1280 --- [Thread-232] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:32:46.315  INFO 1280 --- [Thread-232] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:32:46.316  INFO 1280 --- [Thread-232] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:33:16.298  INFO 1280 --- [Thread-233] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:33:16.299  INFO 1280 --- [Thread-233] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:33:16.299  INFO 1280 --- [Thread-233] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:33:46.296  INFO 1280 --- [Thread-234] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:33:46.297  INFO 1280 --- [Thread-234] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:33:46.298  INFO 1280 --- [Thread-234] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:34:16.264  INFO 1280 --- [Thread-235] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:34:16.264  INFO 1280 --- [Thread-235] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:34:16.264  INFO 1280 --- [Thread-235] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:34:46.268  INFO 1280 --- [Thread-236] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:34:46.268  INFO 1280 --- [Thread-236] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:34:46.269  INFO 1280 --- [Thread-236] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:35:16.293  INFO 1280 --- [Thread-237] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:35:16.293  INFO 1280 --- [Thread-237] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:35:16.293  INFO 1280 --- [Thread-237] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:35:46.282  INFO 1280 --- [Thread-238] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:35:46.284  INFO 1280 --- [Thread-238] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:35:46.284  INFO 1280 --- [Thread-238] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:36:16.263  INFO 1280 --- [Thread-239] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:36:16.263  INFO 1280 --- [Thread-239] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:36:16.263  INFO 1280 --- [Thread-239] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:36:46.316  INFO 1280 --- [Thread-240] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:36:46.317  INFO 1280 --- [Thread-240] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:36:46.317  INFO 1280 --- [Thread-240] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:37:16.263  INFO 1280 --- [Thread-241] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:37:16.263  INFO 1280 --- [Thread-241] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:37:16.263  INFO 1280 --- [Thread-241] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:37:46.331  INFO 1280 --- [Thread-242] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:37:46.332  INFO 1280 --- [Thread-242] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:37:46.332  INFO 1280 --- [Thread-242] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:38:16.261  INFO 1280 --- [Thread-243] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:38:16.261  INFO 1280 --- [Thread-243] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:38:16.261  INFO 1280 --- [Thread-243] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:38:46.261  INFO 1280 --- [Thread-244] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:38:46.262  INFO 1280 --- [Thread-244] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:38:46.262  INFO 1280 --- [Thread-244] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:39:16.262  INFO 1280 --- [Thread-245] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:39:16.263  INFO 1280 --- [Thread-245] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:39:16.263  INFO 1280 --- [Thread-245] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:39:46.280  INFO 1280 --- [Thread-246] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:39:46.280  INFO 1280 --- [Thread-246] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:39:46.280  INFO 1280 --- [Thread-246] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:40:16.266  INFO 1280 --- [Thread-247] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:40:16.266  INFO 1280 --- [Thread-247] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:40:16.266  INFO 1280 --- [Thread-247] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:40:46.342  INFO 1280 --- [Thread-248] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:40:46.343  INFO 1280 --- [Thread-248] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:40:46.343  INFO 1280 --- [Thread-248] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:41:16.267  INFO 1280 --- [Thread-249] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:41:16.267  INFO 1280 --- [Thread-249] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:41:16.267  INFO 1280 --- [Thread-249] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:41:46.267  INFO 1280 --- [Thread-250] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:41:46.267  INFO 1280 --- [Thread-250] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:41:46.267  INFO 1280 --- [Thread-250] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:42:16.298  INFO 1280 --- [Thread-251] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:42:16.298  INFO 1280 --- [Thread-251] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:42:16.298  INFO 1280 --- [Thread-251] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:42:46.262  INFO 1280 --- [Thread-252] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:42:46.263  INFO 1280 --- [Thread-252] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:42:46.263  INFO 1280 --- [Thread-252] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:43:16.265  INFO 1280 --- [Thread-253] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:43:16.265  INFO 1280 --- [Thread-253] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:43:16.265  INFO 1280 --- [Thread-253] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:43:46.266  INFO 1280 --- [Thread-254] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:43:46.267  INFO 1280 --- [Thread-254] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:43:46.267  INFO 1280 --- [Thread-254] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:44:16.263  INFO 1280 --- [Thread-255] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:44:16.263  INFO 1280 --- [Thread-255] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:44:16.263  INFO 1280 --- [Thread-255] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:44:46.262  INFO 1280 --- [Thread-256] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:44:46.262  INFO 1280 --- [Thread-256] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:44:46.262  INFO 1280 --- [Thread-256] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:45:16.309  INFO 1280 --- [Thread-257] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:45:16.310  INFO 1280 --- [Thread-257] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:45:16.310  INFO 1280 --- [Thread-257] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:45:46.278  INFO 1280 --- [Thread-258] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:45:46.278  INFO 1280 --- [Thread-258] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:45:46.278  INFO 1280 --- [Thread-258] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:46:16.263  INFO 1280 --- [Thread-259] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:46:16.263  INFO 1280 --- [Thread-259] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:46:16.263  INFO 1280 --- [Thread-259] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:46:46.272  INFO 1280 --- [Thread-260] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:46:46.273  INFO 1280 --- [Thread-260] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:46:46.273  INFO 1280 --- [Thread-260] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:47:16.264  INFO 1280 --- [Thread-261] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:47:16.264  INFO 1280 --- [Thread-261] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:47:16.264  INFO 1280 --- [Thread-261] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:47:46.272  INFO 1280 --- [Thread-262] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:47:46.272  INFO 1280 --- [Thread-262] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:47:46.272  INFO 1280 --- [Thread-262] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:48:16.263  INFO 1280 --- [Thread-263] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:48:16.263  INFO 1280 --- [Thread-263] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:48:16.263  INFO 1280 --- [Thread-263] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:48:46.272  INFO 1280 --- [Thread-264] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:48:46.272  INFO 1280 --- [Thread-264] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:48:46.272  INFO 1280 --- [Thread-264] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:49:16.281  INFO 1280 --- [Thread-265] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:49:16.282  INFO 1280 --- [Thread-265] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:49:16.282  INFO 1280 --- [Thread-265] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:49:46.267  INFO 1280 --- [Thread-266] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:49:46.267  INFO 1280 --- [Thread-266] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:49:46.267  INFO 1280 --- [Thread-266] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:50:16.282  INFO 1280 --- [Thread-267] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:50:16.282  INFO 1280 --- [Thread-267] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:50:16.283  INFO 1280 --- [Thread-267] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:50:46.274  INFO 1280 --- [Thread-268] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:50:46.274  INFO 1280 --- [Thread-268] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:50:46.274  INFO 1280 --- [Thread-268] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:51:16.271  INFO 1280 --- [Thread-269] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:51:16.271  INFO 1280 --- [Thread-269] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:51:16.271  INFO 1280 --- [Thread-269] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:51:46.296  INFO 1280 --- [Thread-270] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:51:46.296  INFO 1280 --- [Thread-270] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:51:46.297  INFO 1280 --- [Thread-270] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:52:16.263  INFO 1280 --- [Thread-271] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:52:16.264  INFO 1280 --- [Thread-271] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:52:16.264  INFO 1280 --- [Thread-271] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:52:46.268  INFO 1280 --- [Thread-272] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:52:46.269  INFO 1280 --- [Thread-272] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:52:46.269  INFO 1280 --- [Thread-272] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:53:16.261  INFO 1280 --- [Thread-273] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:53:16.261  INFO 1280 --- [Thread-273] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:53:16.261  INFO 1280 --- [Thread-273] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:53:46.285  INFO 1280 --- [Thread-274] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:53:46.286  INFO 1280 --- [Thread-274] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:53:46.286  INFO 1280 --- [Thread-274] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:54:16.266  INFO 1280 --- [Thread-275] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:54:16.266  INFO 1280 --- [Thread-275] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:54:16.266  INFO 1280 --- [Thread-275] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:54:46.266  INFO 1280 --- [Thread-276] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:54:46.266  INFO 1280 --- [Thread-276] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:54:46.267  INFO 1280 --- [Thread-276] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:55:16.267  INFO 1280 --- [Thread-277] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:55:16.267  INFO 1280 --- [Thread-277] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:55:16.267  INFO 1280 --- [Thread-277] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:55:46.264  INFO 1280 --- [Thread-278] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:55:46.265  INFO 1280 --- [Thread-278] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:55:46.265  INFO 1280 --- [Thread-278] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:56:16.261  INFO 1280 --- [Thread-279] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:56:16.261  INFO 1280 --- [Thread-279] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:56:16.261  INFO 1280 --- [Thread-279] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:56:46.265  INFO 1280 --- [Thread-280] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:56:46.265  INFO 1280 --- [Thread-280] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:56:46.265  INFO 1280 --- [Thread-280] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:57:16.269  INFO 1280 --- [Thread-281] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:57:16.269  INFO 1280 --- [Thread-281] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:57:16.269  INFO 1280 --- [Thread-281] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:57:46.274  INFO 1280 --- [Thread-282] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:57:46.275  INFO 1280 --- [Thread-282] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:57:46.275  INFO 1280 --- [Thread-282] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:58:16.263  INFO 1280 --- [Thread-283] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:58:16.263  INFO 1280 --- [Thread-283] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:58:16.263  INFO 1280 --- [Thread-283] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:58:46.267  INFO 1280 --- [Thread-284] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:58:46.267  INFO 1280 --- [Thread-284] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:58:46.267  INFO 1280 --- [Thread-284] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:59:16.262  INFO 1280 --- [Thread-285] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:59:16.262  INFO 1280 --- [Thread-285] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:59:16.262  INFO 1280 --- [Thread-285] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 00:59:46.330  INFO 1280 --- [Thread-286] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 00:59:46.330  INFO 1280 --- [Thread-286] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 00:59:46.330  INFO 1280 --- [Thread-286] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:00:00.029  INFO 1280 --- [scheduling-1] c.b.j.s.i.S.cron.DERScheduler            : Scheldule task DER WSDL run: 1669075200
+2022-11-22 01:00:03.633  INFO 1280 --- [scheduling-1] o.a.c.w.s.f.ReflectionServiceFactoryBean : Creating Service {http://externo.mw.ext.grecasa.org/kiosko-service/}kiosko-service from WSDL: https://sede.gobiernodecanarias.org/tributos/middlewarecaut/services/servicioKiosko?wsdl
+2022-11-22 01:00:03.661  WARN 1280 --- [scheduling-1] javax.xml.soap                           : Using deprecated META-INF/services mechanism with non-standard property: javax.xml.soap.MetaFactory. Property javax.xml.soap.SAAJMetaFactory should be used instead.
+2022-11-22 01:00:16.263  INFO 1280 --- [Thread-287] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:00:16.263  INFO 1280 --- [Thread-287] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:00:16.263  INFO 1280 --- [Thread-287] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:00:46.264  INFO 1280 --- [Thread-288] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:00:46.265  INFO 1280 --- [Thread-288] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:00:46.265  INFO 1280 --- [Thread-288] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:00:50.807 ERROR 1280 --- [scheduling-1] c.b.j.s.i.S.cron.DERScheduler            : Respuesta WSDL -> Se encontró un error y no se pudo cambiar el estatus de la operación.
+2022-11-22 01:01:16.263  INFO 1280 --- [Thread-289] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:01:16.264  INFO 1280 --- [Thread-289] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:01:16.264  INFO 1280 --- [Thread-289] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:01:46.267  INFO 1280 --- [Thread-290] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:01:46.267  INFO 1280 --- [Thread-290] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:01:46.268  INFO 1280 --- [Thread-290] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:02:16.268  INFO 1280 --- [Thread-291] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:02:16.268  INFO 1280 --- [Thread-291] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:02:16.268  INFO 1280 --- [Thread-291] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:02:46.264  INFO 1280 --- [Thread-292] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:02:46.264  INFO 1280 --- [Thread-292] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:02:46.265  INFO 1280 --- [Thread-292] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:03:16.263  INFO 1280 --- [Thread-293] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:03:16.263  INFO 1280 --- [Thread-293] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:03:16.263  INFO 1280 --- [Thread-293] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:03:46.282  INFO 1280 --- [Thread-294] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:03:46.282  INFO 1280 --- [Thread-294] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:03:46.283  INFO 1280 --- [Thread-294] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:04:16.275  INFO 1280 --- [Thread-295] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:04:16.275  INFO 1280 --- [Thread-295] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:04:16.275  INFO 1280 --- [Thread-295] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:04:46.281  INFO 1280 --- [Thread-296] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:04:46.281  INFO 1280 --- [Thread-296] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:04:46.281  INFO 1280 --- [Thread-296] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:05:16.261  INFO 1280 --- [Thread-297] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:05:16.262  INFO 1280 --- [Thread-297] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:05:16.262  INFO 1280 --- [Thread-297] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:05:46.266  INFO 1280 --- [Thread-298] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:05:46.266  INFO 1280 --- [Thread-298] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:05:46.266  INFO 1280 --- [Thread-298] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:06:16.263  INFO 1280 --- [Thread-299] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:06:16.263  INFO 1280 --- [Thread-299] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:06:16.263  INFO 1280 --- [Thread-299] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:06:46.265  INFO 1280 --- [Thread-300] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:06:46.265  INFO 1280 --- [Thread-300] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:06:46.265  INFO 1280 --- [Thread-300] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:07:16.260  INFO 1280 --- [Thread-301] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:07:16.261  INFO 1280 --- [Thread-301] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:07:16.261  INFO 1280 --- [Thread-301] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:07:46.266  INFO 1280 --- [Thread-302] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:07:46.266  INFO 1280 --- [Thread-302] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:07:46.267  INFO 1280 --- [Thread-302] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:08:16.263  INFO 1280 --- [Thread-303] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:08:16.263  INFO 1280 --- [Thread-303] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:08:16.263  INFO 1280 --- [Thread-303] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:08:46.263  INFO 1280 --- [Thread-304] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:08:46.263  INFO 1280 --- [Thread-304] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:08:46.263  INFO 1280 --- [Thread-304] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:09:16.262  INFO 1280 --- [Thread-305] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:09:16.263  INFO 1280 --- [Thread-305] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:09:16.263  INFO 1280 --- [Thread-305] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:09:46.260  INFO 1280 --- [Thread-306] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:09:46.260  INFO 1280 --- [Thread-306] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:09:46.260  INFO 1280 --- [Thread-306] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:10:16.263  INFO 1280 --- [Thread-307] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:10:16.263  INFO 1280 --- [Thread-307] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:10:16.263  INFO 1280 --- [Thread-307] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:10:46.268  INFO 1280 --- [Thread-308] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:10:46.269  INFO 1280 --- [Thread-308] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:10:46.269  INFO 1280 --- [Thread-308] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:11:16.263  INFO 1280 --- [Thread-309] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:11:16.263  INFO 1280 --- [Thread-309] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:11:16.263  INFO 1280 --- [Thread-309] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:11:46.262  INFO 1280 --- [Thread-310] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:11:46.262  INFO 1280 --- [Thread-310] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:11:46.262  INFO 1280 --- [Thread-310] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:12:16.262  INFO 1280 --- [Thread-311] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:12:16.263  INFO 1280 --- [Thread-311] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:12:16.263  INFO 1280 --- [Thread-311] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:12:46.262  INFO 1280 --- [Thread-312] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:12:46.262  INFO 1280 --- [Thread-312] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:12:46.262  INFO 1280 --- [Thread-312] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:13:16.260  INFO 1280 --- [Thread-313] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:13:16.260  INFO 1280 --- [Thread-313] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:13:16.260  INFO 1280 --- [Thread-313] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:13:46.273  INFO 1280 --- [Thread-314] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:13:46.273  INFO 1280 --- [Thread-314] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:13:46.273  INFO 1280 --- [Thread-314] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:14:16.261  INFO 1280 --- [Thread-315] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:14:16.261  INFO 1280 --- [Thread-315] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:14:16.261  INFO 1280 --- [Thread-315] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:14:46.262  INFO 1280 --- [Thread-316] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:14:46.262  INFO 1280 --- [Thread-316] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:14:46.262  INFO 1280 --- [Thread-316] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:15:16.260  INFO 1280 --- [Thread-317] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:15:16.260  INFO 1280 --- [Thread-317] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:15:16.260  INFO 1280 --- [Thread-317] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:15:46.262  INFO 1280 --- [Thread-318] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:15:46.262  INFO 1280 --- [Thread-318] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:15:46.262  INFO 1280 --- [Thread-318] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:16:16.277  INFO 1280 --- [Thread-319] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:16:16.277  INFO 1280 --- [Thread-319] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:16:16.277  INFO 1280 --- [Thread-319] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:16:46.281  INFO 1280 --- [Thread-320] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:16:46.281  INFO 1280 --- [Thread-320] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:16:46.282  INFO 1280 --- [Thread-320] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:17:16.270  INFO 1280 --- [Thread-321] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:17:16.270  INFO 1280 --- [Thread-321] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:17:16.270  INFO 1280 --- [Thread-321] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:17:46.263  INFO 1280 --- [Thread-322] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:17:46.263  INFO 1280 --- [Thread-322] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:17:46.263  INFO 1280 --- [Thread-322] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:18:16.272  INFO 1280 --- [Thread-323] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:18:16.272  INFO 1280 --- [Thread-323] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:18:16.272  INFO 1280 --- [Thread-323] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:18:46.270  INFO 1280 --- [Thread-324] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:18:46.270  INFO 1280 --- [Thread-324] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:18:46.270  INFO 1280 --- [Thread-324] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:19:16.262  INFO 1280 --- [Thread-325] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:19:16.262  INFO 1280 --- [Thread-325] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:19:16.263  INFO 1280 --- [Thread-325] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:19:46.264  INFO 1280 --- [Thread-326] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:19:46.264  INFO 1280 --- [Thread-326] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:19:46.264  INFO 1280 --- [Thread-326] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:20:16.262  INFO 1280 --- [Thread-327] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:20:16.262  INFO 1280 --- [Thread-327] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:20:16.262  INFO 1280 --- [Thread-327] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:20:46.267  INFO 1280 --- [Thread-328] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:20:46.267  INFO 1280 --- [Thread-328] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:20:46.267  INFO 1280 --- [Thread-328] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:21:16.269  INFO 1280 --- [Thread-329] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:21:16.269  INFO 1280 --- [Thread-329] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:21:16.269  INFO 1280 --- [Thread-329] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:21:46.261  INFO 1280 --- [Thread-330] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:21:46.261  INFO 1280 --- [Thread-330] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:21:46.261  INFO 1280 --- [Thread-330] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:22:16.261  INFO 1280 --- [Thread-331] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:22:16.261  INFO 1280 --- [Thread-331] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:22:16.261  INFO 1280 --- [Thread-331] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:22:46.263  INFO 1280 --- [Thread-332] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:22:46.263  INFO 1280 --- [Thread-332] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:22:46.263  INFO 1280 --- [Thread-332] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:23:16.267  INFO 1280 --- [Thread-333] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:23:16.267  INFO 1280 --- [Thread-333] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:23:16.267  INFO 1280 --- [Thread-333] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:23:46.266  INFO 1280 --- [Thread-334] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:23:46.266  INFO 1280 --- [Thread-334] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:23:46.266  INFO 1280 --- [Thread-334] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:24:16.266  INFO 1280 --- [Thread-335] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:24:16.266  INFO 1280 --- [Thread-335] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:24:16.266  INFO 1280 --- [Thread-335] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:24:46.262  INFO 1280 --- [Thread-336] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:24:46.263  INFO 1280 --- [Thread-336] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:24:46.263  INFO 1280 --- [Thread-336] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:25:16.264  INFO 1280 --- [Thread-337] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:25:16.265  INFO 1280 --- [Thread-337] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:25:16.265  INFO 1280 --- [Thread-337] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:25:46.277  INFO 1280 --- [Thread-338] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:25:46.277  INFO 1280 --- [Thread-338] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:25:46.277  INFO 1280 --- [Thread-338] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:26:16.262  INFO 1280 --- [Thread-339] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:26:16.262  INFO 1280 --- [Thread-339] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:26:16.262  INFO 1280 --- [Thread-339] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:26:46.262  INFO 1280 --- [Thread-340] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:26:46.262  INFO 1280 --- [Thread-340] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:26:46.262  INFO 1280 --- [Thread-340] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:27:16.265  INFO 1280 --- [Thread-341] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:27:16.265  INFO 1280 --- [Thread-341] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:27:16.265  INFO 1280 --- [Thread-341] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:27:46.264  INFO 1280 --- [Thread-342] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:27:46.264  INFO 1280 --- [Thread-342] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:27:46.264  INFO 1280 --- [Thread-342] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:28:16.267  INFO 1280 --- [Thread-343] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:28:16.267  INFO 1280 --- [Thread-343] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:28:16.267  INFO 1280 --- [Thread-343] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:28:46.356  INFO 1280 --- [Thread-344] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:28:46.357  INFO 1280 --- [Thread-344] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:28:46.357  INFO 1280 --- [Thread-344] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:29:16.265  INFO 1280 --- [Thread-345] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:29:16.265  INFO 1280 --- [Thread-345] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:29:16.265  INFO 1280 --- [Thread-345] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:29:46.270  INFO 1280 --- [Thread-346] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:29:46.270  INFO 1280 --- [Thread-346] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:29:46.270  INFO 1280 --- [Thread-346] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:30:16.263  INFO 1280 --- [Thread-347] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:30:16.263  INFO 1280 --- [Thread-347] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:30:16.263  INFO 1280 --- [Thread-347] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:30:46.270  INFO 1280 --- [Thread-348] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:30:46.270  INFO 1280 --- [Thread-348] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:30:46.271  INFO 1280 --- [Thread-348] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:31:16.265  INFO 1280 --- [Thread-349] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:31:16.266  INFO 1280 --- [Thread-349] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:31:16.266  INFO 1280 --- [Thread-349] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:31:46.267  INFO 1280 --- [Thread-350] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:31:46.268  INFO 1280 --- [Thread-350] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:31:46.268  INFO 1280 --- [Thread-350] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:32:16.263  INFO 1280 --- [Thread-351] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:32:16.263  INFO 1280 --- [Thread-351] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:32:16.263  INFO 1280 --- [Thread-351] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:32:46.267  INFO 1280 --- [Thread-352] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:32:46.267  INFO 1280 --- [Thread-352] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:32:46.267  INFO 1280 --- [Thread-352] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:33:16.263  INFO 1280 --- [Thread-353] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:33:16.264  INFO 1280 --- [Thread-353] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:33:16.264  INFO 1280 --- [Thread-353] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:33:46.282  INFO 1280 --- [Thread-354] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:33:46.283  INFO 1280 --- [Thread-354] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:33:46.283  INFO 1280 --- [Thread-354] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:34:16.272  INFO 1280 --- [Thread-355] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:34:16.273  INFO 1280 --- [Thread-355] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:34:16.273  INFO 1280 --- [Thread-355] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:34:46.273  INFO 1280 --- [Thread-356] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:34:46.274  INFO 1280 --- [Thread-356] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:34:46.274  INFO 1280 --- [Thread-356] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:35:16.262  INFO 1280 --- [Thread-357] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:35:16.263  INFO 1280 --- [Thread-357] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:35:16.263  INFO 1280 --- [Thread-357] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:35:46.267  INFO 1280 --- [Thread-358] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:35:46.267  INFO 1280 --- [Thread-358] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:35:46.267  INFO 1280 --- [Thread-358] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:36:16.262  INFO 1280 --- [Thread-359] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:36:16.263  INFO 1280 --- [Thread-359] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:36:16.263  INFO 1280 --- [Thread-359] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:36:46.272  INFO 1280 --- [Thread-360] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:36:46.272  INFO 1280 --- [Thread-360] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:36:46.272  INFO 1280 --- [Thread-360] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:37:16.268  INFO 1280 --- [Thread-361] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:37:16.268  INFO 1280 --- [Thread-361] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:37:16.268  INFO 1280 --- [Thread-361] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:37:46.266  INFO 1280 --- [Thread-362] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:37:46.266  INFO 1280 --- [Thread-362] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:37:46.266  INFO 1280 --- [Thread-362] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:38:16.266  INFO 1280 --- [Thread-363] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:38:16.267  INFO 1280 --- [Thread-363] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:38:16.267  INFO 1280 --- [Thread-363] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:38:46.263  INFO 1280 --- [Thread-364] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:38:46.264  INFO 1280 --- [Thread-364] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:38:46.264  INFO 1280 --- [Thread-364] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:39:16.266  INFO 1280 --- [Thread-365] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:39:16.266  INFO 1280 --- [Thread-365] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:39:16.267  INFO 1280 --- [Thread-365] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:39:46.285  INFO 1280 --- [Thread-366] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:39:46.285  INFO 1280 --- [Thread-366] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:39:46.285  INFO 1280 --- [Thread-366] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:40:16.265  INFO 1280 --- [Thread-367] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:40:16.266  INFO 1280 --- [Thread-367] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:40:16.266  INFO 1280 --- [Thread-367] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:40:46.266  INFO 1280 --- [Thread-368] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:40:46.266  INFO 1280 --- [Thread-368] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:40:46.266  INFO 1280 --- [Thread-368] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:41:16.264  INFO 1280 --- [Thread-369] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:41:16.264  INFO 1280 --- [Thread-369] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:41:16.264  INFO 1280 --- [Thread-369] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:41:47.759  INFO 1280 --- [Thread-370] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:41:47.759  INFO 1280 --- [Thread-370] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:41:47.759  INFO 1280 --- [Thread-370] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:42:16.267  INFO 1280 --- [Thread-371] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:42:16.268  INFO 1280 --- [Thread-371] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:42:16.268  INFO 1280 --- [Thread-371] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:42:46.270  INFO 1280 --- [Thread-372] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:42:46.271  INFO 1280 --- [Thread-372] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:42:46.271  INFO 1280 --- [Thread-372] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:43:16.269  INFO 1280 --- [Thread-373] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:43:16.269  INFO 1280 --- [Thread-373] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:43:16.269  INFO 1280 --- [Thread-373] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:43:46.272  INFO 1280 --- [Thread-374] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:43:46.272  INFO 1280 --- [Thread-374] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:43:46.272  INFO 1280 --- [Thread-374] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:44:16.264  INFO 1280 --- [Thread-375] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:44:16.265  INFO 1280 --- [Thread-375] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:44:16.265  INFO 1280 --- [Thread-375] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:44:46.265  INFO 1280 --- [Thread-376] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:44:46.266  INFO 1280 --- [Thread-376] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:44:46.266  INFO 1280 --- [Thread-376] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:45:16.265  INFO 1280 --- [Thread-377] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:45:16.265  INFO 1280 --- [Thread-377] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:45:16.265  INFO 1280 --- [Thread-377] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:45:46.269  INFO 1280 --- [Thread-378] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:45:46.269  INFO 1280 --- [Thread-378] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:45:46.269  INFO 1280 --- [Thread-378] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:46:16.270  INFO 1280 --- [Thread-379] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:46:16.270  INFO 1280 --- [Thread-379] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:46:16.270  INFO 1280 --- [Thread-379] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:46:46.294  INFO 1280 --- [Thread-380] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:46:46.295  INFO 1280 --- [Thread-380] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:46:46.295  INFO 1280 --- [Thread-380] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:47:16.269  INFO 1280 --- [Thread-381] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:47:16.269  INFO 1280 --- [Thread-381] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:47:16.269  INFO 1280 --- [Thread-381] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:47:46.270  INFO 1280 --- [Thread-382] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:47:46.270  INFO 1280 --- [Thread-382] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:47:46.271  INFO 1280 --- [Thread-382] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:48:16.265  INFO 1280 --- [Thread-383] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:48:16.265  INFO 1280 --- [Thread-383] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:48:16.265  INFO 1280 --- [Thread-383] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:48:46.276  INFO 1280 --- [Thread-384] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:48:46.277  INFO 1280 --- [Thread-384] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:48:46.277  INFO 1280 --- [Thread-384] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:49:16.295  INFO 1280 --- [Thread-385] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:49:16.295  INFO 1280 --- [Thread-385] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:49:16.295  INFO 1280 --- [Thread-385] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:49:46.270  INFO 1280 --- [Thread-386] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:49:46.270  INFO 1280 --- [Thread-386] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:49:46.270  INFO 1280 --- [Thread-386] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:50:16.264  INFO 1280 --- [Thread-387] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:50:16.265  INFO 1280 --- [Thread-387] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:50:16.265  INFO 1280 --- [Thread-387] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:50:46.267  INFO 1280 --- [Thread-388] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:50:46.267  INFO 1280 --- [Thread-388] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:50:46.268  INFO 1280 --- [Thread-388] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:51:16.264  INFO 1280 --- [Thread-389] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:51:16.264  INFO 1280 --- [Thread-389] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:51:16.264  INFO 1280 --- [Thread-389] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:51:46.273  INFO 1280 --- [Thread-390] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:51:46.274  INFO 1280 --- [Thread-390] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:51:46.274  INFO 1280 --- [Thread-390] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:52:16.279  INFO 1280 --- [Thread-391] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:52:16.279  INFO 1280 --- [Thread-391] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:52:16.279  INFO 1280 --- [Thread-391] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:52:46.269  INFO 1280 --- [Thread-392] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:52:46.269  INFO 1280 --- [Thread-392] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:52:46.269  INFO 1280 --- [Thread-392] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:53:16.269  INFO 1280 --- [Thread-393] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:53:16.269  INFO 1280 --- [Thread-393] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:53:16.269  INFO 1280 --- [Thread-393] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:53:46.266  INFO 1280 --- [Thread-394] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:53:46.267  INFO 1280 --- [Thread-394] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:53:46.267  INFO 1280 --- [Thread-394] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:54:16.264  INFO 1280 --- [Thread-395] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:54:16.264  INFO 1280 --- [Thread-395] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:54:16.264  INFO 1280 --- [Thread-395] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:54:46.272  INFO 1280 --- [Thread-396] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:54:46.272  INFO 1280 --- [Thread-396] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:54:46.273  INFO 1280 --- [Thread-396] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:55:16.265  INFO 1280 --- [Thread-397] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:55:16.265  INFO 1280 --- [Thread-397] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:55:16.265  INFO 1280 --- [Thread-397] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:55:46.266  INFO 1280 --- [Thread-398] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:55:46.266  INFO 1280 --- [Thread-398] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:55:46.266  INFO 1280 --- [Thread-398] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:56:16.263  INFO 1280 --- [Thread-399] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:56:16.263  INFO 1280 --- [Thread-399] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:56:16.263  INFO 1280 --- [Thread-399] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:56:46.268  INFO 1280 --- [Thread-400] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:56:46.268  INFO 1280 --- [Thread-400] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:56:46.269  INFO 1280 --- [Thread-400] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:57:16.262  INFO 1280 --- [Thread-401] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:57:16.262  INFO 1280 --- [Thread-401] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:57:16.263  INFO 1280 --- [Thread-401] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:57:46.270  INFO 1280 --- [Thread-402] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:57:46.271  INFO 1280 --- [Thread-402] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:57:46.271  INFO 1280 --- [Thread-402] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:58:16.264  INFO 1280 --- [Thread-403] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:58:16.264  INFO 1280 --- [Thread-403] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:58:16.264  INFO 1280 --- [Thread-403] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:58:46.271  INFO 1280 --- [Thread-404] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:58:46.271  INFO 1280 --- [Thread-404] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:58:46.271  INFO 1280 --- [Thread-404] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:59:16.267  INFO 1280 --- [Thread-405] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:59:16.267  INFO 1280 --- [Thread-405] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:59:16.267  INFO 1280 --- [Thread-405] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 01:59:46.271  INFO 1280 --- [Thread-406] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 01:59:46.271  INFO 1280 --- [Thread-406] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 01:59:46.271  INFO 1280 --- [Thread-406] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:00:00.017  INFO 1280 --- [scheduling-1] c.b.j.s.i.S.cron.DERScheduler            : Scheldule task DER WSDL run: 1669078800
+2022-11-22 02:00:00.386  INFO 1280 --- [scheduling-1] o.a.c.w.s.f.ReflectionServiceFactoryBean : Creating Service {http://externo.mw.ext.grecasa.org/kiosko-service/}kiosko-service from WSDL: https://sede.gobiernodecanarias.org/tributos/middlewarecaut/services/servicioKiosko?wsdl
+2022-11-22 02:00:00.404  WARN 1280 --- [scheduling-1] javax.xml.soap                           : Using deprecated META-INF/services mechanism with non-standard property: javax.xml.soap.MetaFactory. Property javax.xml.soap.SAAJMetaFactory should be used instead.
+2022-11-22 02:00:16.265  INFO 1280 --- [Thread-407] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:00:16.266  INFO 1280 --- [Thread-407] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:00:16.266  INFO 1280 --- [Thread-407] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:00:43.342 ERROR 1280 --- [scheduling-1] c.b.j.s.i.S.cron.DERScheduler            : Respuesta WSDL -> Se encontró un error y no se pudo cambiar el estatus de la operación.
+2022-11-22 02:00:46.277  INFO 1280 --- [Thread-408] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:00:46.277  INFO 1280 --- [Thread-408] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:00:46.278  INFO 1280 --- [Thread-408] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:01:16.265  INFO 1280 --- [Thread-409] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:01:16.266  INFO 1280 --- [Thread-409] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:01:16.266  INFO 1280 --- [Thread-409] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:01:35.227  INFO 1280 --- [Thread-6] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2022-11-22 02:01:35.230  INFO 1280 --- [Thread-6] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-11-22 02:01:35.236  INFO 1280 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-11-22 02:01:35.243  INFO 1280 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-11-22 02:01:43.463  INFO 6100 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : Starting application on DESKTOP-6GDLJRV with PID 6100 (started by MSI in C:\Desarrollo\JAVA\DIVA\Spring-Boot-JavaFX-Integracion-VS)
+2022-11-22 02:01:43.467  INFO 6100 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : No active profile set, falling back to default profiles: default
+2022-11-22 02:01:44.128  INFO 6100 --- [JavaFX Application Thread] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2022-11-22 02:01:44.236  INFO 6100 --- [JavaFX Application Thread] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 99ms. Found 3 repository interfaces.
+2022-11-22 02:01:44.773  INFO 6100 --- [JavaFX Application Thread] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-11-22 02:01:45.094  INFO 6100 --- [JavaFX Application Thread] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-11-22 02:01:45.157  INFO 6100 --- [JavaFX Application Thread] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
 	name: default
 	...]
-2022-11-21 14:57:55.441  INFO 33224 --- [JavaFX Application Thread] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
-2022-11-21 14:57:55.442  INFO 33224 --- [JavaFX Application Thread] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
-2022-11-21 14:57:55.603  INFO 33224 --- [JavaFX Application Thread] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
-2022-11-21 14:57:55.765  INFO 33224 --- [JavaFX Application Thread] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.SQLDialect
-2022-11-21 14:57:55.781  INFO 33224 --- [JavaFX Application Thread] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000422: Disabling contextual LOB creation as connection was null
-2022-11-21 14:57:56.316  INFO 33224 --- [JavaFX Application Thread] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2022-11-21 14:57:56.673  INFO 33224 --- [JavaFX Application Thread] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
-2022-11-21 14:57:56.767  WARN 33224 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
-2022-11-21 14:57:56.767  WARN 33224 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
-2022-11-21 14:57:56.779  WARN 33224 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
-2022-11-21 14:57:56.780  WARN 33224 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
-2022-11-21 14:57:56.796  WARN 33224 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
-2022-11-21 14:57:56.796  WARN 33224 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
-2022-11-21 14:57:56.804  WARN 33224 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
-2022-11-21 14:57:56.804  WARN 33224 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
-2022-11-21 14:57:56.813  WARN 33224 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
-2022-11-21 14:57:56.814  WARN 33224 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
-2022-11-21 14:57:56.867  WARN 33224 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
-2022-11-21 14:57:56.867  WARN 33224 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
-2022-11-21 14:57:56.871  WARN 33224 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
-2022-11-21 14:57:56.871  WARN 33224 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
-2022-11-21 14:57:56.873  WARN 33224 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
-2022-11-21 14:57:56.874  WARN 33224 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
-2022-11-21 14:57:56.876  WARN 33224 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
-2022-11-21 14:57:56.876  WARN 33224 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
-2022-11-21 14:57:56.886  WARN 33224 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
-2022-11-21 14:57:56.887  WARN 33224 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
-2022-11-21 14:57:56.894  WARN 33224 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
-2022-11-21 14:57:56.894  WARN 33224 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
-2022-11-21 14:57:56.899  WARN 33224 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
-2022-11-21 14:57:56.899  WARN 33224 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
-2022-11-21 14:57:56.902  WARN 33224 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
-2022-11-21 14:57:56.903  WARN 33224 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
-2022-11-21 14:57:56.906  WARN 33224 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
-2022-11-21 14:57:56.906  WARN 33224 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
-2022-11-21 14:57:56.912  WARN 33224 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
-2022-11-21 14:57:56.913  WARN 33224 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
-2022-11-21 14:57:57.480  INFO 33224 --- [JavaFX Application Thread] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
-2022-11-21 14:57:57.522  INFO 33224 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : Started application in 4.698 seconds (JVM running for 5.911)
-2022-11-21 14:57:58.009  INFO 33224 --- [JavaFX Application Thread] c.b.j.s.i.S.c.PrimaryController          : User successfully logged in {}
-2022-11-21 14:58:22.683  INFO 33224 --- [Thread-8] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
-2022-11-21 14:58:22.684  INFO 33224 --- [Thread-8] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
-2022-11-21 14:58:22.684  INFO 33224 --- [Thread-8] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
-2022-11-21 14:58:52.664  INFO 33224 --- [Thread-9] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
-2022-11-21 14:58:52.665  INFO 33224 --- [Thread-9] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
-2022-11-21 14:58:52.665  INFO 33224 --- [Thread-9] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
-2022-11-21 14:59:22.723  INFO 33224 --- [Thread-10] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
-2022-11-21 14:59:22.723  INFO 33224 --- [Thread-10] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
-2022-11-21 14:59:22.724  INFO 33224 --- [Thread-10] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
-2022-11-21 14:59:52.667  INFO 33224 --- [Thread-11] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
-2022-11-21 14:59:52.668  INFO 33224 --- [Thread-11] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
-2022-11-21 14:59:52.668  INFO 33224 --- [Thread-11] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
-2022-11-21 15:00:00.055  INFO 33224 --- [scheduling-1] c.b.j.s.i.S.cron.DERScheduler            : Scheldule task DER WSDL run: 1669039200
-2022-11-21 15:00:01.139  INFO 33224 --- [scheduling-1] o.a.c.w.s.f.ReflectionServiceFactoryBean : Creating Service {http://externo.mw.ext.grecasa.org/kiosko-service/}kiosko-service from WSDL: https://sede.gobiernodecanarias.org/tributos/middlewarecaut/services/servicioKiosko?wsdl
-2022-11-21 15:00:01.494  WARN 33224 --- [scheduling-1] javax.xml.soap                           : Using deprecated META-INF/services mechanism with non-standard property: javax.xml.soap.MetaFactory. Property javax.xml.soap.SAAJMetaFactory should be used instead.
-2022-11-21 15:00:22.662  INFO 33224 --- [Thread-12] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
-2022-11-21 15:00:22.662  INFO 33224 --- [Thread-12] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
-2022-11-21 15:00:22.663  INFO 33224 --- [Thread-12] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
-2022-11-21 15:00:47.031 ERROR 33224 --- [scheduling-1] c.b.j.s.i.S.cron.DERScheduler            : Respuesta WSDL -> Se encontró un error y no se pudo cambiar el estatus de la operación.
-2022-11-21 15:00:52.664  INFO 33224 --- [Thread-13] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
-2022-11-21 15:00:52.665  INFO 33224 --- [Thread-13] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
-2022-11-21 15:00:52.665  INFO 33224 --- [Thread-13] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
-2022-11-21 15:01:20.072  INFO 33224 --- [Thread-6] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
-2022-11-21 15:01:20.074  INFO 33224 --- [Thread-6] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2022-11-21 15:01:20.076  INFO 33224 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2022-11-21 15:01:20.080  INFO 33224 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-11-22 02:01:45.254  INFO 6100 --- [JavaFX Application Thread] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.7.Final}
+2022-11-22 02:01:45.256  INFO 6100 --- [JavaFX Application Thread] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2022-11-22 02:01:45.433  INFO 6100 --- [JavaFX Application Thread] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2022-11-22 02:01:45.608  INFO 6100 --- [JavaFX Application Thread] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.SQLDialect
+2022-11-22 02:01:45.624  INFO 6100 --- [JavaFX Application Thread] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000422: Disabling contextual LOB creation as connection was null
+2022-11-22 02:01:46.168  INFO 6100 --- [JavaFX Application Thread] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-11-22 02:01:46.501  INFO 6100 --- [JavaFX Application Thread] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2022-11-22 02:01:46.575  WARN 6100 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-22 02:01:46.576  WARN 6100 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-22 02:01:46.586  WARN 6100 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-22 02:01:46.587  WARN 6100 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-22 02:01:46.604  WARN 6100 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-22 02:01:46.604  WARN 6100 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-22 02:01:46.610  WARN 6100 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-22 02:01:46.611  WARN 6100 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-22 02:01:46.622  WARN 6100 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-22 02:01:46.622  WARN 6100 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-22 02:01:46.667  WARN 6100 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-22 02:01:46.667  WARN 6100 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-22 02:01:46.670  WARN 6100 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-22 02:01:46.670  WARN 6100 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-22 02:01:46.673  WARN 6100 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-22 02:01:46.673  WARN 6100 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-22 02:01:46.675  WARN 6100 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-22 02:01:46.676  WARN 6100 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-22 02:01:46.685  WARN 6100 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-22 02:01:46.685  WARN 6100 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-22 02:01:46.690  WARN 6100 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-22 02:01:46.690  WARN 6100 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-22 02:01:46.695  WARN 6100 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-22 02:01:46.695  WARN 6100 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-22 02:01:46.697  WARN 6100 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-22 02:01:46.698  WARN 6100 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-22 02:01:46.700  WARN 6100 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-22 02:01:46.701  WARN 6100 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-22 02:01:46.706  WARN 6100 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-22 02:01:46.707  WARN 6100 --- [JavaFX Application Thread] o.h.dialect.function.TemplateRenderer    : HHH000174: Function template anticipated 4 arguments, but 1 arguments encountered
+2022-11-22 02:01:47.252  INFO 6100 --- [JavaFX Application Thread] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2022-11-22 02:01:47.309  INFO 6100 --- [JavaFX Application Thread] o.s.boot.SpringApplication               : Started application in 4.348 seconds (JVM running for 5.407)
+2022-11-22 02:01:47.768  INFO 6100 --- [JavaFX Application Thread] c.b.j.s.i.S.c.PrimaryController          : User successfully logged in {}
+2022-11-22 02:02:12.828  INFO 6100 --- [Thread-8] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:02:12.829  INFO 6100 --- [Thread-8] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:02:12.829  INFO 6100 --- [Thread-8] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:02:42.818  INFO 6100 --- [Thread-9] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:02:42.819  INFO 6100 --- [Thread-9] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:02:42.819  INFO 6100 --- [Thread-9] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:03:12.823  INFO 6100 --- [Thread-10] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:03:12.823  INFO 6100 --- [Thread-10] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:03:12.824  INFO 6100 --- [Thread-10] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:03:42.821  INFO 6100 --- [Thread-11] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:03:42.822  INFO 6100 --- [Thread-11] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:03:42.822  INFO 6100 --- [Thread-11] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:04:12.817  INFO 6100 --- [Thread-12] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:04:12.817  INFO 6100 --- [Thread-12] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:04:12.817  INFO 6100 --- [Thread-12] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:04:42.812  INFO 6100 --- [Thread-13] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:04:42.812  INFO 6100 --- [Thread-13] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:04:42.812  INFO 6100 --- [Thread-13] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:05:12.818  INFO 6100 --- [Thread-14] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:05:12.818  INFO 6100 --- [Thread-14] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:05:12.818  INFO 6100 --- [Thread-14] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:05:42.812  INFO 6100 --- [Thread-15] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:05:42.812  INFO 6100 --- [Thread-15] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:05:42.813  INFO 6100 --- [Thread-15] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:06:12.816  INFO 6100 --- [Thread-16] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:06:12.816  INFO 6100 --- [Thread-16] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:06:12.817  INFO 6100 --- [Thread-16] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:06:42.811  INFO 6100 --- [Thread-17] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:06:42.811  INFO 6100 --- [Thread-17] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:06:42.812  INFO 6100 --- [Thread-17] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:07:12.813  INFO 6100 --- [Thread-18] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:07:12.813  INFO 6100 --- [Thread-18] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:07:12.813  INFO 6100 --- [Thread-18] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:07:42.813  INFO 6100 --- [Thread-19] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:07:42.814  INFO 6100 --- [Thread-19] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:07:42.814  INFO 6100 --- [Thread-19] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:08:12.814  INFO 6100 --- [Thread-20] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:08:12.814  INFO 6100 --- [Thread-20] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:08:12.814  INFO 6100 --- [Thread-20] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:08:42.820  INFO 6100 --- [Thread-21] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:08:42.821  INFO 6100 --- [Thread-21] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:08:42.821  INFO 6100 --- [Thread-21] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:09:12.812  INFO 6100 --- [Thread-22] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:09:12.812  INFO 6100 --- [Thread-22] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:09:12.812  INFO 6100 --- [Thread-22] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:09:42.814  INFO 6100 --- [Thread-23] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:09:42.814  INFO 6100 --- [Thread-23] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:09:42.814  INFO 6100 --- [Thread-23] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:10:12.820  INFO 6100 --- [Thread-24] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:10:12.821  INFO 6100 --- [Thread-24] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:10:12.821  INFO 6100 --- [Thread-24] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:10:42.814  INFO 6100 --- [Thread-25] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:10:42.814  INFO 6100 --- [Thread-25] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:10:42.814  INFO 6100 --- [Thread-25] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:11:12.814  INFO 6100 --- [Thread-26] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:11:12.815  INFO 6100 --- [Thread-26] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:11:12.815  INFO 6100 --- [Thread-26] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:11:42.826  INFO 6100 --- [Thread-27] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:11:42.826  INFO 6100 --- [Thread-27] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:11:42.826  INFO 6100 --- [Thread-27] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:12:12.818  INFO 6100 --- [Thread-28] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:12:12.818  INFO 6100 --- [Thread-28] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:12:12.818  INFO 6100 --- [Thread-28] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:12:42.814  INFO 6100 --- [Thread-29] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:12:42.814  INFO 6100 --- [Thread-29] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:12:42.815  INFO 6100 --- [Thread-29] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:13:12.817  INFO 6100 --- [Thread-30] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:13:12.818  INFO 6100 --- [Thread-30] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:13:12.818  INFO 6100 --- [Thread-30] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:13:42.817  INFO 6100 --- [Thread-31] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:13:42.817  INFO 6100 --- [Thread-31] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:13:42.817  INFO 6100 --- [Thread-31] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:14:12.815  INFO 6100 --- [Thread-32] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:14:12.816  INFO 6100 --- [Thread-32] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:14:12.816  INFO 6100 --- [Thread-32] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:14:42.820  INFO 6100 --- [Thread-33] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:14:42.820  INFO 6100 --- [Thread-33] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:14:42.820  INFO 6100 --- [Thread-33] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:15:12.813  INFO 6100 --- [Thread-34] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:15:12.814  INFO 6100 --- [Thread-34] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:15:12.814  INFO 6100 --- [Thread-34] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:15:42.813  INFO 6100 --- [Thread-35] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:15:42.814  INFO 6100 --- [Thread-35] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:15:42.814  INFO 6100 --- [Thread-35] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:16:12.819  INFO 6100 --- [Thread-36] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:16:12.819  INFO 6100 --- [Thread-36] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:16:12.819  INFO 6100 --- [Thread-36] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:16:42.816  INFO 6100 --- [Thread-37] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:16:42.817  INFO 6100 --- [Thread-37] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:16:42.817  INFO 6100 --- [Thread-37] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:17:12.814  INFO 6100 --- [Thread-38] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:17:12.814  INFO 6100 --- [Thread-38] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:17:12.814  INFO 6100 --- [Thread-38] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:17:42.815  INFO 6100 --- [Thread-39] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:17:42.815  INFO 6100 --- [Thread-39] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:17:42.815  INFO 6100 --- [Thread-39] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:18:12.822  INFO 6100 --- [Thread-40] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:18:12.823  INFO 6100 --- [Thread-40] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:18:12.823  INFO 6100 --- [Thread-40] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:18:42.814  INFO 6100 --- [Thread-41] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:18:42.815  INFO 6100 --- [Thread-41] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:18:42.815  INFO 6100 --- [Thread-41] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:19:12.814  INFO 6100 --- [Thread-42] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:19:12.814  INFO 6100 --- [Thread-42] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:19:12.814  INFO 6100 --- [Thread-42] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:19:42.814  INFO 6100 --- [Thread-43] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:19:42.814  INFO 6100 --- [Thread-43] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:19:42.815  INFO 6100 --- [Thread-43] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:20:12.813  INFO 6100 --- [Thread-44] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:20:12.814  INFO 6100 --- [Thread-44] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:20:12.814  INFO 6100 --- [Thread-44] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:20:42.814  INFO 6100 --- [Thread-45] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:20:42.814  INFO 6100 --- [Thread-45] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:20:42.815  INFO 6100 --- [Thread-45] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:21:12.816  INFO 6100 --- [Thread-46] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:21:12.817  INFO 6100 --- [Thread-46] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:21:12.817  INFO 6100 --- [Thread-46] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:21:42.831  INFO 6100 --- [Thread-47] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:21:42.832  INFO 6100 --- [Thread-47] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:21:42.832  INFO 6100 --- [Thread-47] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:22:12.850  INFO 6100 --- [Thread-48] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:22:12.850  INFO 6100 --- [Thread-48] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:22:12.850  INFO 6100 --- [Thread-48] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:22:42.812  INFO 6100 --- [Thread-49] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035903 Actualizado a estatus: 1
+2022-11-22 02:22:42.813  INFO 6100 --- [Thread-49] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035902 Actualizado a estatus: 1
+2022-11-22 02:22:42.813  INFO 6100 --- [Thread-49] c.b.j.s.i.S.s.MantenimientoEnLoteDER     : Justificante: 40324000035904 Actualizado a estatus: 1
+2022-11-22 02:23:01.443  INFO 6100 --- [Thread-6] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'taskScheduler'
+2022-11-22 02:23:01.448  INFO 6100 --- [Thread-6] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-11-22 02:23:01.455  INFO 6100 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-11-22 02:23:01.461  INFO 6100 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

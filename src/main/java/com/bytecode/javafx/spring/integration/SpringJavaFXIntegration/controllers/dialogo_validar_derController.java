@@ -56,7 +56,9 @@ public class dialogo_validar_derController implements Initializable  {
 
         icon_img.setImage(new Image(getClass().getResourceAsStream("/img/icon-" + App.MensajeValidaDER_icon + ".png")));
 
-        p5_lb_mensaje.setText(bundle.getString(App.MensajeValidaDER_error));
+        String mensaje = bundle.getString(App.MensajeValidaDER_error).replace("<EMAIL>", "( " + App.MensajeValidaDER_email + " )");
+        //p5_lb_mensaje.setText(bundle.getString(App.MensajeValidaDER_error));
+        p5_lb_mensaje.setText(mensaje);
 
     }
     @FXML

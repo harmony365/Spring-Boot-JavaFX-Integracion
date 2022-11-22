@@ -25,12 +25,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -274,7 +271,7 @@ public class Valida_Envia_DERController implements Initializable {
 
     }
     private static String getTwoDecimals(double value){
-        DecimalFormat df = new DecimalFormat("0.00");
+        DecimalFormat df = new DecimalFormat("0,00");
         return df.format(value);
     }
     public static void floatTxtFld(TextField field) {
@@ -410,7 +407,9 @@ public class Valida_Envia_DERController implements Initializable {
             if (item.isBefore(LocalDate.now())) {
                 this.setDisable(true);
             }
+
             // marcar los dias de quincena
+            /*
             int day = item.getDayOfMonth();
             if (day == 15 || day == 30) {
 
@@ -420,6 +419,7 @@ public class Valida_Envia_DERController implements Initializable {
                 this.setBackground(new Background(fill));
                 this.setTextFill(Color.WHITESMOKE);
             }
+            */
 
             // fines de semana en color verde
             DayOfWeek dayweek = item.getDayOfWeek();
@@ -459,9 +459,10 @@ public class Valida_Envia_DERController implements Initializable {
         if (p4_tf_fechaLimiteSalidaHora.getLength() > 0 && p4_tf_fechaLimiteSalidaMinuto.getLength() > 0) {
             int resultado = validaFechaHora(start_date, end_date, "H");
             // TODO: fecha embarque temporalmente no se valida tiempo sólo se valida que los campos no esten vacios.
-                resultado = 0;
+            //resultado = 0;
 
-            if (resultado > 3 || resultado < 0) {
+            //if (resultado > 3 || resultado < 0) {
+            if (resultado < 0) {
                 PlayEmpty(p4_tf_fechaLimiteSalidaHora);
                 PlayEmpty(p4_tf_fechaLimiteSalidaMinuto);
                 procesarWSDL.valor = true;
@@ -685,7 +686,7 @@ public class Valida_Envia_DERController implements Initializable {
         @Override
         public void onPostExecute(Object params) {
             LOGGER.log(Level.INFO,"Background Thread has stopped");
-            setMessageWsdlResponse(wsdlResponse);
+            setMessageWsdlResponse(wsdlResponse,wsdlTimeStamp);
 
             try {
                 PantallaDialogo(event);
@@ -738,7 +739,7 @@ public class Valida_Envia_DERController implements Initializable {
 
         //TODO: validar bien el cambio de estatus. sólo falta ver bien cual sería la regla para los estatus ER.
 
-        setMessageWsdlResponse(WsdlResponse.getText());
+        setMessageWsdlResponse(WsdlResponse.getText(), WsdlTimeStamp.getText());
 
         try {
             PantallaDialogo(event);
@@ -754,7 +755,7 @@ public class Valida_Envia_DERController implements Initializable {
         LoadProccess(false);
     }
 
-    private void setMessageWsdlResponse(String msg){
+    private void setMessageWsdlResponse(String msg, String TStamp){
 
         Boolean msgAction=true;
         Integer status=3;
@@ -768,7 +769,7 @@ public class Valida_Envia_DERController implements Initializable {
             case "PR02" :
             case "KO" :
                 status = 2;
-                msgIcon = "error";
+                msgIcon = "null";
                 color = Color.rgb(252, 227, 227, 1);
                 break;
             case "VF" :
@@ -802,61 +803,10 @@ public class Valida_Envia_DERController implements Initializable {
 
         p4_ld_wsdl_raspuesta.setVisible(true);
         p4_ld_wsdl_TimeStamp.setVisible(true);
+        WsdlResponse.setText(msg);
+        WsdlTimeStamp.setText(TStamp);
         WsdlResponse.setVisible(true);
         WsdlTimeStamp.setVisible(true);
-
-        /*
-        if (msg.equals("RED")) {
-            p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
-            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_RED"));
-            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 2);
-            App.MensajeValidaDER_icon  = "error";
-            App.MensajeValidaDER_error = "p5_lb_mensaje_RED";
-        }
-        if (msg.equals("VF")) {
-            p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
-            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_VF"));
-            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 1);
-            App.MensajeValidaDER_icon  = "warning";
-            App.MensajeValidaDER_error = "p5_lb_mensaje_VF";
-        }
-        if (msg.equals("ER")) {
-            p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
-            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_ER"));
-            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 2);
-            App.MensajeValidaDER_icon  = "error";
-            App.MensajeValidaDER_error = "p5_lb_mensaje_ER";
-        }
-        if (msg.equals("PR02")) {
-            p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
-            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_PR02"));
-            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 2);
-            App.MensajeValidaDER_icon  = "error";
-            App.MensajeValidaDER_error = "p5_lb_mensaje_PR02";
-        }
-        if (msg.equals("KO")) {
-            p4_rec_mensaje.setFill(Color.rgb(227, 250, 228, 1));
-            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_KO"));
-            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 2);
-            App.MensajeValidaDER_icon  = "error";
-            App.MensajeValidaDER_error = "p5_lb_mensaje_KO";
-        }
-        if (msg.equals("OK")) {
-            p4_rec_mensaje.setFill(Color.rgb(227, 250, 228, 1));
-            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_OK" + App.MensajeValidaDER_Pais));
-            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 1);
-            App.MensajeValidaDER_icon  = "success";
-            App.MensajeValidaDER_error = "p5_lb_mensaje_OK" + App.MensajeValidaDER_Pais;
-        }
-        if (msg.length() > 5) {
-            p4_rec_mensaje.setFill(Color.rgb(252, 227, 227, 1));
-            p4_lb_mensaje.setText(bundle.getString("p5_lb_mensaje_" + WsdlResponse.getText()));
-            databaseDerUtil.DigicUpdatStatus(App.UUIDProcess, 3, 3);
-            App.MensajeValidaDER_icon  = "error";
-            App.MensajeValidaDER_error = "p5_lb_mensaje_" + WsdlResponse.getText();
-            App.MensajeValidaDER_action = false;
-        }
-        */
 
     }
 
@@ -1021,8 +971,25 @@ public class Valida_Envia_DERController implements Initializable {
         ValuePropertyAddListener(p4_cb_cuenta_bancaria, p4_tf_cuenta_bancaria, p4_tf_valorMedioPago);
         ValuePropertyAddListener(p4_cb_valorMedioPago, p4_tf_valorMedioPago, p4_tf_cuenta_bancaria);
 
-        ValuePropertyAddListenerVisible(p4_tgb_cuetaibanno, p4_tgb_cuetaibansi, p4_pane_cuentainternacional, p4_pane_cuentaiban);
-        ValuePropertyAddListenerVisible(p4_tgb_cuetaibansi, p4_tgb_cuetaibanno, p4_pane_cuentaiban, p4_pane_cuentainternacional);
+        //ValuePropertyAddListenerVisible(p4_tgb_cuetaibanno, p4_tgb_cuetaibansi, p4_pane_cuentainternacional, p4_pane_cuentaiban);
+        //ValuePropertyAddListenerVisible(p4_tgb_cuetaibansi, p4_tgb_cuetaibanno, p4_pane_cuentaiban, p4_pane_cuentainternacional);
+
+        p4_tgb_cuetaibansi.selectedProperty().addListener(((observable, oldValue, newValue) -> {
+
+            p4_pane_cuentaiban.setVisible(true);
+            p4_pane_cuentainternacional.setVisible(false);
+            p4_tgb_cuetaibanno.setSelected(false);
+
+        }));
+
+        p4_tgb_cuetaibanno.selectedProperty().addListener(((observable, oldValue, newValue) -> {
+
+            p4_pane_cuentainternacional.setVisible(true);
+            p4_pane_cuentaiban.setVisible(false);
+            p4_tgb_cuetaibansi.setSelected(false);
+
+        }));
+
         p4_tgb_cuetaibansi.setSelected(true);
 
         p4_cb_pais_banco.valueProperty().addListener(
@@ -1058,6 +1025,8 @@ public class Valida_Envia_DERController implements Initializable {
                 throw new RuntimeException(ex);
             }
         });
+
+        App.MensajeValidaDER_email = p4_tf_email.getText();
 
     }
 

@@ -75,8 +75,8 @@ public class DERScheduler {
 
 
         }catch (Exception e){
-            e.printStackTrace();
-            LOGGER.log(Level.ERROR, "Error Encontrado: " + e.getCause());
+            //e.printStackTrace();
+            LOGGER.log(Level.ERROR, "Error Encontrado: " +  e.getClass() + ": " + e.getCause());
         }
 
     }
@@ -98,7 +98,7 @@ public class DERScheduler {
 
 
         }catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             WsdlResponse ="RED";
             LOGGER.log(Level.ERROR, "Problema de TCPIP: " + e.getCause());
         }

@@ -9,7 +9,7 @@
    <children>
       <VBox fx:id="containerLeft" alignment="CENTER" prefHeight="702.0" prefWidth="942.0" HBox.hgrow="ALWAYS">
          <children>
-            <HBox prefHeight="239.0" prefWidth="981.0">
+            <HBox prefHeight="190.0" prefWidth="981.0">
                <children>
                   <ImageView fx:id="p3_logo_img1" fitHeight="141.0" fitWidth="224.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -27,29 +27,62 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="163.0" prefWidth="1022.0">
                      <children>
-                        <AnchorPane onDragDetected="#switchToQRCode" prefHeight="199.0" prefWidth="926.0">
+                        <AnchorPane onDragDetected="#switchToQRCode" prefHeight="258.0" prefWidth="921.0">
                            <children>
-                              <!--Button fx:id="p3_btn_demo" mnemonicParsing="false" onAction="#PantallaDialogo" prefHeight="47.0" prefWidth="63.0" text="DEMO" /-->
-                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="11.0" layoutY="-11.0" prefHeight="88.0" prefWidth="875.0" text="%p3_lb_teclee_id" textAlignment="CENTER">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="p3_tf_numerodocumeto" alignment="CENTER" layoutX="243.0" layoutY="6.0" prefHeight="53.0" prefWidth="410.0" promptText="%p3_tf_numerodocumeto">
-                                 <font>
-                                    <Font name="System Bold" size="18.0" />
-                                 </font>
-                              </TextField>
-                              <Button fx:id="p3_btn_aceptar" layoutX="196.0" layoutY="113.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchToAceptar" prefHeight="44.0" prefWidth="242.0" text="%p3_btn_aceptar">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Button>
-                              <Button fx:id="p3_btn_cancelar" layoutX="484.0" layoutY="113.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchToAnterior" prefHeight="16.0" prefWidth="242.0" text="%p3_btn_cancelar">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Button>
+                              <VBox alignment="CENTER" prefHeight="369.0" prefWidth="921.0">
+                                 <children>
+                                    <!--Button fx:id="p3_btn_demo" mnemonicParsing="false" onAction="#PantallaDialogo" prefHeight="47.0" prefWidth="63.0" text="DEMO" /-->
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="88.0" prefWidth="926.0" text="%p3_lb_teclee_id" textAlignment="CENTER">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <HBox alignment="CENTER" prefHeight="43.0" prefWidth="921.0">
+                                       <children>
+                                          <Label fx:id="p3_lb_numero_pasaporte" alignment="CENTER" contentDisplay="CENTER" prefHeight="35.0" prefWidth="433.0" text="ZAB0003540" textAlignment="CENTER">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="p3_lb_nombre" alignment="BOTTOM_LEFT" contentDisplay="CENTER" prefHeight="73.0" prefWidth="433.0" text="MARK FORD MARK">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <TextField fx:id="p3_tf_numerodocumeto" alignment="CENTER" prefHeight="53.0" prefWidth="410.0" promptText="%p3_tf_numerodocumeto">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label fx:id="p3_passaporte13" alignment="CENTER" contentDisplay="CENTER" prefHeight="53.0" prefWidth="135.0" textAlignment="CENTER" wrapText="true">
+                                       <font>
+                                          <Font size="30.0" />
+                                       </font>
+                                    </Label>
+                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="872.0">
+                                       <children>
+                                          <Button fx:id="p3_btn_aceptar" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchToAceptar" prefHeight="97.0" prefWidth="276.0" text="%p3_btn_aceptar">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Button>
+                                          <Label fx:id="p3_passaporte1" alignment="CENTER" contentDisplay="CENTER" prefHeight="53.0" prefWidth="135.0" textAlignment="CENTER" wrapText="true">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                          </Label>
+                                          <Button fx:id="p3_btn_cancelar" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchToAnterior" prefHeight="97.0" prefWidth="276.0" text="%p3_btn_cancelar">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                    </HBox>
+                                    <Button fx:id="p3_btn_demo" mnemonicParsing="false" onAction="#QRcodeRead" prefHeight="47.0" prefWidth="63.0" text="DEMO" />
+                                 </children>
+                              </VBox>
                            </children>
                         </AnchorPane>
                      </children>
@@ -57,6 +90,11 @@
                   <VBox alignment="CENTER" prefHeight="112.0" prefWidth="921.0">
                      <children>
                         <Label fx:id="p3_passaporte" alignment="CENTER" contentDisplay="CENTER" prefHeight="89.0" prefWidth="939.0" text="%p3_passaporte" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="p3_passaporte11" alignment="CENTER" contentDisplay="CENTER" prefHeight="53.0" prefWidth="921.0" textAlignment="CENTER" wrapText="true">
                            <font>
                               <Font size="30.0" />
                            </font>
@@ -70,16 +108,6 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Label fx:id="p3_lb_numero_pasaporte" alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="393.0" text="ZAB0003540" textAlignment="CENTER">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="p3_lb_nombre" alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="393.0" text="MARK FORD MARK" textAlignment="CENTER">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
                      </children>
                   </VBox>
                </children>
@@ -87,7 +115,6 @@
                   <Insets left="30.0" right="30.0" />
                </VBox.margin>
             </VBox>
-            <Button fx:id="p3_btn_demo" mnemonicParsing="false" onAction="#QRcodeRead" prefHeight="47.0" prefWidth="63.0" text="DEMO" />
          </children>
       </VBox>
    </children>
