@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="ab5f4b9d-cfbe-4143-b614-d3b65ff930ce" activeEnvironment="Default environment" name="MW-EXTERNO-KIOSKO-NUEVO" resourceRoot="${projectDir}" soapui-version="5.7.0" abortOnError="false" runType="SEQUENTIAL" encryptionMode="Not encrypted" updated="3.41.0 2022-09-19T08:10:57Z" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="7c85d625-df5c-47e5-a137-9bc404c7c9fc" wsaVersion="NONE" name="kiosko-serviceSOAP" type="wsdl" bindingName="{http://externo.mw.ext.grecasa.org/kiosko-service/}kiosko-serviceSOAP" soapVersion="1_1" anonymous="optional" definition="http://localhost:8081/middleware-externo-caut/services/servicioKiosko?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8081/middleware-externo-caut/services/servicioKiosko?wsdl"><con:part><con:url>http://localhost:8081/middleware-externo-caut/services/servicioKiosko?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="kiosko-service" targetNamespace="http://externo.mw.ext.grecasa.org/kiosko-service/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://externo.mw.ext.grecasa.org/kiosko-service/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://externo.mw.ext.grecasa.org/kiosko-service/">
+      <xsd:element name="ValidarRemesaDer">
+        <xsd:complexType>
+          <xsd:annotation>
+            <xsd:documentation>Número de factura</xsd:documentation>
+          </xsd:annotation>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="tipoDocumento" type="xsd:string">
+              <xsd:annotation>
+                <xsd:documentation>Tipo de documento, NIF, NIE o PASAPORTE</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="valorTipoDocumento" type="xsd:string">
+              <xsd:annotation>
+                <xsd:documentation>Valor del NIF, NIE o PASAPORTE según el tipo de documento.</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="nombreViajero" type="xsd:string">
+              <xsd:annotation>
+                <xsd:documentation>Nombre del viajero.</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="apellidosViajero" type="xsd:string">
+              <xsd:annotation>
+                <xsd:documentation>Apellidos del viajero.</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="paisExpedicion" type="xsd:string">
+              <xsd:annotation>
+                <xsd:documentation>Pais de expedición del documento.</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="paisResidencia" type="xsd:string">
+              <xsd:annotation>
+                <xsd:documentation>Pais de residencia del viajero.</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="unbounded" minOccurs="1" name="derListKiosko" type="tns:DerType">
+              <xsd:annotation>
+                <xsd:documentation>Lista de der presentados por el viajero.</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="medioPago" type="tns:MedioPagoType">
+              <xsd:annotation>
+                <xsd:documentation>Datos de la forma de pago.</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="mailViajero" type="xsd:string">
+              <xsd:annotation>
+                <xsd:documentation>Mail del viajero.</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="codigoKiosko" type="xsd:string">
+              <xsd:annotation>
+                <xsd:documentation>Código del Kioko.</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="online" type="xsd:boolean">
+              <xsd:annotation>
+                <xsd:documentation>true, se ha intentado en el momento de
+      						pasar los der al kiosko y se le muestra la
+      						respuesa al usuario. false, es un
+      						reintento por falta de conexión y no está
+      						el viajero esperando.</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="fechaSolicitud" type="xsd:dateTime">
+              <xsd:annotation>
+                <xsd:documentation>Fecha en la que se crea la solicitud.</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="fechaEnvioSolicitud" type="xsd:dateTime">
+              <xsd:annotation>
+                <xsd:documentation>Fecha en la que se envía la solicitud.</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ValidarRemesaDerResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="estado" type="xsd:string">
+              <xsd:annotation>
+                <xsd:documentation>Codigo de validación del envío
+OK, remesa validada correctamente
+KO, Remesa de der no validados.
+VF, Necesario pasar por vigilancia fiscal.</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="1" name="fechaEstado" type="xsd:dateTime">
+              <xsd:annotation>
+                <xsd:documentation>Fecha del estado.</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="unbounded" minOccurs="1" name="derListResponse" type="tns:ValidarDerResponse">
+              <xsd:annotation>
+                <xsd:documentation>Estado de cada der.</xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="MedioPagoType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="1" name="codMedioPago" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>Código del medio de pago. Actualmente solo
+      					CUENTA.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="1" minOccurs="1" name="cuentaSinIBAN" type="xsd:boolean">
+            <xsd:annotation>
+              <xsd:documentation>Posibles valores: SI, cuenta internacional, se
+      					debe informar IBAN en valorMediopago, el
+      					SWIFT/BIC y la dirección sucursal NO,
+      					nacional, solo se informa el IBAN en
+      					valorMedioPago. los campos BIC y
+      					direccionSucursa no se informan.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="1" minOccurs="1" name="valorMedioPago" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>Valor del medio de pago (valor del IBAN).</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="BIC" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>Valor del SWIFT/BIC para transferencias
+      					internacionales.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="descInstFinanciera" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>Dirección de la sucursal para transferencias
+      					internacionales.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="paisBanco" type="xsd:string"/>
+          <xsd:element name="claveBanco" type="xsd:string"/>
+          <xsd:element name="claveControl" type="xsd:string"/>
+          <xsd:element name="numeroABA" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DerType">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="1" name="justificante" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>Código único que identifica el DER.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="1" minOccurs="1" name="totalDigic" type="xsd:decimal">
+            <xsd:annotation>
+              <xsd:documentation>Total del importe del igic asociado al der.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="1" minOccurs="1" name="numeroFactura" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>Número de factura asociada al DER.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="1" minOccurs="1" name="fechaFactura" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>Fecha de la factura.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="1" minOccurs="1" name="nifEstablecimiento" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>Nif del establecimiento.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="1" minOccurs="1" name="razonSocial" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>Rason social del establecimiento.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="DerResponse">
+        <xsd:sequence>
+          <xsd:element name="idDer" type="xsd:string"/>
+          <xsd:element name="estado" type="xsd:string"/>
+          <xsd:element name="fechaEstado" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ValidarDerResponse">
+        <xsd:sequence>
+          <xsd:element maxOccurs="1" minOccurs="1" name="justificante" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>Número de justificante que identifica al DER</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="1" minOccurs="1" name="estado" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>Estado del der
+OK. Der válido
+KO. Der invalido.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="1" minOccurs="1" name="fechaEstado" type="xsd:dateTime">
+            <xsd:annotation>
+              <xsd:documentation>Fecha del estado.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element maxOccurs="1" minOccurs="0" name="codigoErrores" type="xsd:string">
+            <xsd:annotation>
+              <xsd:documentation>Lista de codigos de errores que se han generado al validar el der.</xsd:documentation>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="getVersion" type="xsd:string"></xsd:element>
+      <xsd:element name="getVersionResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getVersionRequest">
+    <wsdl:part element="tns:getVersion" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getVersionResponse">
+    <wsdl:part element="tns:getVersionResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ValidarRemesaDerResponse">
+    <wsdl:part element="tns:ValidarRemesaDerResponse" name="parameters">
+      <wsdl:documentation>Respuesta de la petición</wsdl:documentation>
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ValidarRemesaDerRequest">
+    <wsdl:part element="tns:ValidarRemesaDer" name="parameters">
+      <wsdl:documentation>Objeto que contiene los datos de la petición.</wsdl:documentation>
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="kioskoService">
+    <wsdl:operation name="ValidarRemesaDer">
+      <wsdl:input message="tns:ValidarRemesaDerRequest"></wsdl:input>
+      <wsdl:output message="tns:ValidarRemesaDerResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="kiosko-serviceSOAP" type="tns:kioskoService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ValidarRemesaDer">
+      <soap:operation soapAction="http://externo.mw.ext.grecasa.org/kiosko-service/ValidarRemesaDer"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="kiosko-service">
+    <wsdl:port binding="tns:kiosko-serviceSOAP" name="kiosko-serviceSOAP">
+      <soap:address location="http://localhost:8081/middleware-externo-caut/services/servicioKiosko"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8081/middleware-externo-caut/services/servicioKiosko</con:endpoint><con:endpoint>https://sede.gobiernodecanarias.org/tributos/middlewarecaut/services/servicioKiosko</con:endpoint></con:endpoints><con:operation id="c155c79d-16b3-405b-8789-eb30646d01a4" isOneWay="false" action="http://externo.mw.ext.grecasa.org/kiosko-service/ValidarRemesaDer" name="ValidarRemesaDer" bindingOperationName="ValidarRemesaDer" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f54eb4a7-8ece-4cb3-ae30-37c3e1c2f22d" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sede.gobiernodecanarias.org/tributos/middlewarecaut/services/servicioKiosko</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:kios="http://externo.mw.ext.grecasa.org/kiosko-service/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <kios:ValidarRemesaDer>
+         <tipoDocumento>PASAPORTE</tipoDocumento>
+         <valorTipoDocumento>2AB000254AAF</valorTipoDocumento>
+         <nombreViajero>CHRISTIAN ALBERTO</nombreViajero>
+         <apellidosViajero>GEUSCH GESSELLSCHAFT-BERATUNG</apellidosViajero>
+         <paisExpedicion>GS</paisExpedicion>
+         <paisResidencia>QU</paisResidencia>
+         <!--1 or more repetitions:-->
+         <derListKiosko>
+            <justificante>4032400002705</justificante>
+            <totalDigic>130.14</totalDigic>
+            <numeroFactura>2022/0711</numeroFactura>
+            <fechaFactura>20220715</fechaFactura>
+            <nifEstablecimiento>44303145Q</nifEstablecimiento>
+            <razonSocial>Mario Rodriguez Reyes</razonSocial>
+         </derListKiosko>
+         <medioPago>
+            <codMedioPago>CUENTA</codMedioPago>
+            <cuentaSinIBAN>false</cuentaSinIBAN>
+            <valorMedioPago>ES7921000813610123456789</valorMedioPago>
+            <BIC/>
+            <descInstFinanciera/>
+            <paisBanco/>
+            <claveBanco/>
+            <claveControl/>
+            <numeroABA/>
+         </medioPago>
+         <mailViajero>ejimenez@asistacanarias.org</mailViajero>
+         <codigoKiosko>9S716U722600ZL2000094</codigoKiosko>
+         <online>true</online>
+         <fechaSolicitud>2022-07-15T15:07:38.6875000-05:00</fechaSolicitud>
+         <fechaEnvioSolicitud>2022-07-15T15:07:38.6875000-05:00</fechaEnvioSolicitud>
+      </kios:ValidarRemesaDer>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>No Authorization</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:addedBasicAuthenticationTypes>NTLM</con:addedBasicAuthenticationTypes><con:addedBasicAuthenticationTypes>SPNEGO/Kerberos</con:addedBasicAuthenticationTypes><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://externo.mw.ext.grecasa.org/kiosko-service/ValidarRemesaDer"/><con:wsrmConfig version="1.2"/></con:call><con:call id="aefb8817-42de-4f59-835f-4be087cc9bd1" name="Request 2"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://sede.gobiernodecanarias.org/tributos/middlewarecaut/services/servicioKiosko</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:kios="http://externo.mw.ext.grecasa.org/kiosko-service/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <kios:ValidarRemesaDer>
+         <tipoDocumento>PASAPORTE</tipoDocumento>
+         <valorTipoDocumento>2AB000254AAF</valorTipoDocumento>
+         <nombreViajero>CHRISTIAN ALBERTO</nombreViajero>
+         <apellidosViajero>GEUSCH GESSELLSCHAFT-BERATUNG</apellidosViajero>
+         <paisExpedicion>GS</paisExpedicion>
+         <paisResidencia>QU</paisResidencia>
+         <!--1 or more repetitions:-->
+         <derListKiosko>
+            <justificante>4032400002705</justificante>
+            <totalDigic>130.14</totalDigic>
+            <numeroFactura>2022/0711</numeroFactura>
+            <fechaFactura>20220715</fechaFactura>
+            <nifEstablecimiento>44303145Q</nifEstablecimiento>
+            <razonSocial>Mario Rodriguez Reyes</razonSocial>
+         </derListKiosko>
+         <derListKiosko>
+            <justificante>4032400001944</justificante>
+            <totalDigic>266.22</totalDigic>
+            <numeroFactura>2022/037</numeroFactura>
+            <fechaFactura>20220623</fechaFactura>
+            <nifEstablecimiento>44303145Q</nifEstablecimiento>
+            <razonSocial>MRR</razonSocial>
+         </derListKiosko>         
+         <medioPago>
+            <codMedioPago>CUENTA</codMedioPago>
+            <cuentaSinIBAN>false</cuentaSinIBAN>
+            <valorMedioPago>ES7921000813610123456789</valorMedioPago>
+            <BIC/>
+            <descInstFinanciera/>
+            <paisBanco/>
+            <claveBanco/>
+            <claveControl/>
+            <numeroABA/>
+         </medioPago>
+         <mailViajero>ejimenez@asistacanarias.org</mailViajero>
+         <codigoKiosko>9S716U722600ZL2000094</codigoKiosko>
+         <online>true</online>
+         <fechaSolicitud>2022-07-15T15:07:38.6875000-05:00</fechaSolicitud>
+         <fechaEnvioSolicitud>2022-07-15T15:07:38.6875000-05:00</fechaEnvioSolicitud>
+      </kios:ValidarRemesaDer>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>No Authorization</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:addedBasicAuthenticationTypes>NTLM</con:addedBasicAuthenticationTypes><con:addedBasicAuthenticationTypes>SPNEGO/Kerberos</con:addedBasicAuthenticationTypes><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://externo.mw.ext.grecasa.org/kiosko-service/ValidarRemesaDer"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:endpointStrategy xsi:type="con:DefaultEndpointStrategy" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:endpoint mode="COMPLEMENT" outgoingWss="clave">http://localhost:8081/middleware-externo-caut/services/servicioKiosko</con:endpoint><con:endpoint mode="COMPLEMENT" outgoingWss="clave">https://sede.gobiernodecanarias.org/tributos/middlewarecaut/services/servicioKiosko</con:endpoint></con:endpointStrategy><con:properties/><con:wssContainer><con:crypto><con:id>truststore_ws_atc_pre.jks</con:id><con:source>sede.gobcan.es.crt</con:source><con:password>changeit</con:password><con:type>KEYSTORE</con:type></con:crypto><con:outgoing><con:name>clave</con:name><con:entry type="Username" username="kiosko" password="vbfCa7qfOhXisEt1y0QbAA=="><con:configuration><addCreated>true</addCreated><addNonce>true</addNonce><passwordType>PasswordText</passwordType></con:configuration></con:entry><con:entry type="Signature" username="ws-pre.atc.gobiernodecanarias.net (cibercentro2019)" password="changeit"><con:configuration><crypto>truststore_ws_atc_pre.jks</crypto><keyIdentifierType>1</keyIdentifierType><signatureAlgorithm/><signatureCanonicalization/><useSingleCert>true</useSingleCert><prependSignature>false</prependSignature><digestAlgorithm/><customTokenValueType/><customTokenId/></con:configuration></con:entry><con:usePredefinedOrder>false</con:usePredefinedOrder></con:outgoing></con:wssContainer><con:databaseConnectionContainer/><con:jmsConnectionContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:reporting><con:xmlTemplates/><con:parameters/></con:reporting><con:sensitiveInformation/><con:authRepository/><con:tags/></con:soapui-project>

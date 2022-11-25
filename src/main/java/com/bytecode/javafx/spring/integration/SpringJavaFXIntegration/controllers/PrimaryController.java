@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
@@ -19,9 +18,7 @@ import java.util.ResourceBundle;
 @Component
 public class PrimaryController implements Initializable  {
 
-
     private Integer ContadorImgUno=0, ContadorImgDos=0;
-
 
     private final static Logger LOGGER = LogManager.getLogger(PrimaryController.class.getName());
     //public String Segunda_Pantalla = "modelo_403_v1";

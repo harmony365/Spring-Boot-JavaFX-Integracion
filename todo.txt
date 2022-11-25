@@ -62,7 +62,6 @@
        [*] El switch no muestra las letras. Viene del der con letras y las quita.
        [*] Inclusión del error 06E800 Autoliquidación duplicada. No se permite la presentación
 
-
     TODO: 21/11/2022
         [] - Pantalla 3: Localizar una imagen más representativa, que se parezca más al formato del kiosco o a un lector
              de QR. Además, esta imagen no deberá permanecer tras el primer escaneo.

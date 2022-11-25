@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://externo.mw.ext.grecasa.org/kiosko-service/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="kiosko-service" targetNamespace="http://externo.mw.ext.grecasa.org/kiosko-service/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://externo.mw.ext.grecasa.org/kiosko-service/">
+      <xsd:element name="ValidarRemesaDer">
+      	<xsd:complexType>
+                    <xsd:annotation>
+                    	<xsd:documentation>Número de factura</xsd:documentation>
+                    </xsd:annotation>
+                    <xsd:sequence>
+                        <xsd:element name="tipoDocumento" type="xsd:string" maxOccurs="1" minOccurs="1">
+                            <xsd:annotation>
+                            	<xsd:documentation>Tipo de documento, NIF, NIE o PASAPORTE</xsd:documentation>
+                            </xsd:annotation>
+      			</xsd:element>
+                        <xsd:element name="valorTipoDocumento" type="xsd:string" maxOccurs="1" minOccurs="1">
+                            <xsd:annotation>
+                            	<xsd:documentation>Valor del NIF, NIE o PASAPORTE según el tipo de documento. </xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="nombreViajero" type="xsd:string" maxOccurs="1" minOccurs="1">
+                        	<xsd:annotation>
+                        		<xsd:documentation>Nombre del viajero.</xsd:documentation>
+                        	</xsd:annotation></xsd:element>
+      			<xsd:element name="apellidosViajero"
+      				type="xsd:string" maxOccurs="1" minOccurs="1">
+                            <xsd:annotation>
+                            	<xsd:documentation>Apellidos del viajero.</xsd:documentation>
+                            </xsd:annotation>
+      			</xsd:element>
+
+
+                        <xsd:element name="paisExpedicion" type="xsd:string" maxOccurs="1" minOccurs="1">
+                        	<xsd:annotation>
+                        		<xsd:documentation>Pais de expedición del documento.</xsd:documentation>
+                        	</xsd:annotation></xsd:element>
+                        <xsd:element name="paisResidencia"
+      				type="xsd:string" maxOccurs="1" minOccurs="1">
+                            <xsd:annotation>
+                            	<xsd:documentation>Pais de residencia del viajero.</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+
+      			<xsd:element name="derListKiosko" type="tns:DerType"
+      				maxOccurs="unbounded" minOccurs="1" >
+      				<xsd:annotation>
+      					<xsd:documentation>Lista de der presentados por el viajero.</xsd:documentation>
+      				</xsd:annotation></xsd:element>
+      			<xsd:element name="medioPago" type="tns:MedioPagoType"
+      				maxOccurs="1" minOccurs="1">
+                            <xsd:annotation>
+                            	<xsd:documentation>Datos de la forma de pago.</xsd:documentation>
+                            </xsd:annotation>
+      			</xsd:element>
+      			<xsd:element name="mailViajero" type="xsd:string"
+      				maxOccurs="1" minOccurs="1">
+                            <xsd:annotation>
+                            	<xsd:documentation>Mail del viajero.</xsd:documentation>
+                            </xsd:annotation>
+      			</xsd:element>
+      			<xsd:element name="codigoKiosko" type="xsd:string"
+      				maxOccurs="1" minOccurs="1">
+      				<xsd:annotation>
+      					<xsd:documentation>Código del Kioko.
+      					</xsd:documentation>
+      				</xsd:annotation>
+      			</xsd:element>
+      			<xsd:element name="online" type="xsd:boolean" maxOccurs="1" minOccurs="1">
+      				<xsd:annotation>
+      					<xsd:documentation>
+      						true, se ha intentado en el momento de
+      						pasar los der al kiosko y se le muestra la
+      						respuesa al usuario. false, es un
+      						reintento por falta de conexión y no está
+      						el viajero esperando.
+      					</xsd:documentation>
+      				</xsd:annotation>
+      			</xsd:element>
+      			<xsd:element name="fechaSolicitud"
+      				type="xsd:dateTime" maxOccurs="1" minOccurs="1">
+                            <xsd:annotation>
+                            	<xsd:documentation>Fecha en la que se crea la solicitud.</xsd:documentation>
+                            </xsd:annotation>
+      			</xsd:element>
+      			<xsd:element name="fechaEnvioSolicitud" type="xsd:dateTime" maxOccurs="1" minOccurs="1">
+      				<xsd:annotation>
+      					<xsd:documentation>Fecha en la que se envía la solicitud. </xsd:documentation>
+      				</xsd:annotation></xsd:element>
+      		</xsd:sequence>
+
+
+
+
+
+      	</xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ValidarRemesaDerResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+
+          	<xsd:element name="estado" type="xsd:string" maxOccurs="1"
+          		minOccurs="1">
+                            <xsd:annotation>
+                            	<xsd:documentation>Codigo de validación del envío
+OK, remesa validada correctamente
+KO, Remesa de der no validados.
+VF, Necesario pasar por vigilancia fiscal.</xsd:documentation>
+                            </xsd:annotation>
+          	</xsd:element>
+          	<xsd:element name="fechaEstado" type="xsd:dateTime" maxOccurs="1" minOccurs="1">
+          		<xsd:annotation>
+          			<xsd:documentation>Fecha del estado.</xsd:documentation>
+          		</xsd:annotation></xsd:element>
+          	<xsd:element name="derListResponse"
+          		type="tns:ValidarDerResponse" maxOccurs="unbounded"
+          		minOccurs="1">
+                            <xsd:annotation>
+                            	<xsd:documentation>Estado de cada der.</xsd:documentation>
+                            </xsd:annotation>
+          	</xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    
+      <xsd:complexType name="MedioPagoType">
+      	<xsd:sequence>
+      		<xsd:element name="codMedioPago" type="xsd:string"
+      			maxOccurs="1" minOccurs="1">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Código del medio de pago. Actualmente solo
+      					CUENTA.
+      				</xsd:documentation>
+      			</xsd:annotation>
+      		</xsd:element>
+      		<xsd:element name="cuentaSinIBAN" type="xsd:boolean"
+      			maxOccurs="1" minOccurs="1">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Posibles valores: SI, cuenta internacional, se
+      					debe informar IBAN en valorMediopago, el
+      					SWIFT/BIC y la dirección sucursal NO,
+      					nacional, solo se informa el IBAN en
+      					valorMedioPago. los campos BIC y
+      					direccionSucursa no se informan.
+      				</xsd:documentation>
+      			</xsd:annotation>
+      		</xsd:element>
+      		<xsd:element name="valorMedioPago" type="xsd:string"
+      			maxOccurs="1" minOccurs="1">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Valor del medio de pago (valor del IBAN).
+      				</xsd:documentation>
+      			</xsd:annotation>
+      		</xsd:element>
+
+      		<xsd:element name="BIC" type="xsd:string">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Valor del SWIFT/BIC para transferencias
+      					internacionales.
+      				</xsd:documentation>
+      			</xsd:annotation>
+      		</xsd:element>
+      		<xsd:element name="descInstFinanciera"
+      			type="xsd:string">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Dirección de la sucursal para transferencias
+      					internacionales.
+      				</xsd:documentation>
+      			</xsd:annotation>
+      		</xsd:element>
+      		<xsd:element name="paisBanco" type="xsd:string"></xsd:element>
+      		<xsd:element name="claveBanco" type="xsd:string"></xsd:element>
+      		<xsd:element name="claveControl" type="xsd:string"></xsd:element>
+      		<xsd:element name="numeroABA" type="xsd:string"></xsd:element>
+      	</xsd:sequence>
+
+
+
+
+
+      </xsd:complexType>
+    
+      <xsd:complexType name="DerType">
+      	<xsd:sequence>
+
+      		<xsd:element name="justificante" type="xsd:string" maxOccurs="1" minOccurs="1">
+      			<xsd:annotation>
+      				<xsd:documentation>Código único que identifica el DER.</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="totalDigic" type="xsd:decimal"
+      			maxOccurs="1" minOccurs="1">
+      			<xsd:annotation>
+      				<xsd:documentation>
+      					Total del importe del igic asociado al der.
+      				</xsd:documentation>
+      			</xsd:annotation>
+      		</xsd:element>
+
+
+
+
+
+
+      		<xsd:element name="numeroFactura" type="xsd:string" maxOccurs="1" minOccurs="1">
+      			<xsd:annotation>
+      				<xsd:documentation>Número de factura asociada al DER.</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      		<xsd:element name="fechaFactura" type="xsd:string" maxOccurs="1" minOccurs="1">
+      			<xsd:annotation>
+      				<xsd:documentation>Fecha de la factura.</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+
+      		<xsd:element name="nifEstablecimiento"
+      			type="xsd:string" maxOccurs="1" minOccurs="1">
+                        <xsd:annotation>
+                        	<xsd:documentation>Nif del establecimiento.</xsd:documentation>
+                        </xsd:annotation>
+      		</xsd:element>
+      		<xsd:element name="razonSocial" type="xsd:string" maxOccurs="1" minOccurs="1">
+      			<xsd:annotation>
+      				<xsd:documentation>Rason social del establecimiento.</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="DerResponse">
+      	<xsd:sequence>
+      		<xsd:element name="idDer" type="xsd:string"></xsd:element>
+      		<xsd:element name="estado" type="xsd:string"></xsd:element>
+
+      		<xsd:element name="fechaEstado" type="xsd:string"></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+    
+      <xsd:complexType name="ValidarDerResponse">
+      	<xsd:sequence>
+      		<xsd:element name="justificante" type="xsd:string" maxOccurs="1"
+      			minOccurs="1">
+                        <xsd:annotation>
+                        	<xsd:documentation>Número de justificante que identifica al DER</xsd:documentation>
+                        </xsd:annotation>
+      		</xsd:element>
+      		<xsd:element name="estado" type="xsd:string" maxOccurs="1"
+      			minOccurs="1">
+                        <xsd:annotation>
+                        	<xsd:documentation>Estado del der
+OK. Der válido
+KO. Der invalido.
+
+</xsd:documentation>
+                        </xsd:annotation>
+      		</xsd:element>
+      		<xsd:element name="fechaEstado" type="xsd:dateTime"
+      			maxOccurs="1" minOccurs="1">
+                        <xsd:annotation>
+                        	<xsd:documentation>Fecha del estado.</xsd:documentation>
+                        </xsd:annotation>
+      		</xsd:element>
+
+      		<xsd:element name="codigoErrores" type="xsd:string" maxOccurs="1" minOccurs="0">
+      			<xsd:annotation>
+      				<xsd:documentation>Lista de codigos de errores que se han generado al validar el der.</xsd:documentation>
+      			</xsd:annotation></xsd:element>
+      	</xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="getVersion" type="xsd:string">
+      </xsd:element>
+      <xsd:element name="getVersionResponse">
+      	<xsd:complexType>
+      		<xsd:sequence>
+
+      			<xsd:element name="out" type="xsd:string"></xsd:element>
+      		</xsd:sequence>
+      	</xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ValidarRemesaDerRequest">
+    <wsdl:part element="tns:ValidarRemesaDer" name="parameters">
+    	<wsdl:documentation>Objeto que contiene los datos de la petición.
+</wsdl:documentation></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ValidarRemesaDerResponse">
+    <wsdl:part element="tns:ValidarRemesaDerResponse" name="parameters">
+    	<wsdl:documentation>Respuesta de la petición</wsdl:documentation></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getVersionRequest">
+  	<wsdl:part name="parameters" element="tns:getVersion"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getVersionResponse">
+  	<wsdl:part name="parameters" element="tns:getVersionResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="kioskoService">
+    <wsdl:operation name="ValidarRemesaDer">
+      <wsdl:input message="tns:ValidarRemesaDerRequest"/>
+      <wsdl:output message="tns:ValidarRemesaDerResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="kiosko-serviceSOAP" type="tns:kioskoService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ValidarRemesaDer">
+      <soap:operation soapAction="http://externo.mw.ext.grecasa.org/kiosko-service/ValidarRemesaDer"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="kiosko-service">
+    <wsdl:port binding="tns:kiosko-serviceSOAP" name="kiosko-serviceSOAP">
+      <soap:address location="https:/sede.gobcan.org/tributos/kioskoService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

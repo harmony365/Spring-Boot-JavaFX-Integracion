@@ -151,9 +151,10 @@ public class Valida_Envia_DERController implements Initializable {
     // Strings which hold css elements to easily re-use in the SpringJavaFxIntegrationApplicationlication
     protected
     String successMessage = "-fx-text-fill: GREEN;";
-    String successStyle = "-fx-border-color: GREEN; -fx-border-width: 2; -fx-border-radius: 5;";
-    String errorMessage = "-fx-text-fill: RED;";
-    String errorStyle = "-fx-border-color: RED; -fx-border-width: 2; -fx-border-radius: 5;";
+    String successStyle   = "-fx-border-color: GREEN; -fx-border-width: 2; -fx-border-radius: 5;";
+    String originalStyle  = "-fx-border-color: GRAY; -fx-border-width: 1; -fx-border-radius: 2;";
+    String errorMessage   = "-fx-text-fill: RED;";
+    String errorStyle     = "-fx-border-color: RED; -fx-border-width: 2; -fx-border-radius: 5;";
 
     public Boolean procesoWsdl = false;
     public DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
@@ -524,10 +525,12 @@ public class Valida_Envia_DERController implements Initializable {
             VerificaEmpty(p4_tf_cuenta_bancaria, procesarWSDL);
             VerificaLetra(p4_tf_pais_banco, procesarWSDL);
 
-            if (!p4_tf_pais_banco.getText().equals("US")) VerificaEmpty(p4_tf_clave_banco, procesarWSDL);
             if (p4_tf_pais_banco.getText().equals("US")) {
+                p4_tf_clave_banco.setStyle(originalStyle);
                 VerificaEmpty(p4_tf_codigo_aba, procesarWSDL);
                 VerificaLargo(p4_tf_codigo_aba, 9, procesarWSDL);
+            }else{
+                VerificaEmpty(p4_tf_clave_banco, procesarWSDL);
             }
 
             try {
@@ -563,6 +566,7 @@ public class Valida_Envia_DERController implements Initializable {
     }
 
     private void VerificaEmpty(TextField campo, ProcesarWSDL procesarWSDL) {
+        campo.setStyle(originalStyle);
         if (campo.getText().isEmpty()) {
             PlayEmpty(campo);
             procesarWSDL.valor = true;
@@ -572,6 +576,7 @@ public class Valida_Envia_DERController implements Initializable {
     }
 
     private void VerificaEmail(TextField campo, ProcesarWSDL procesarWSDL) {
+        campo.setStyle(originalStyle);
         if (!isValidEmail(campo.getText())) {
             PlayEmpty(campo);
             procesarWSDL.valor = true;
@@ -581,6 +586,7 @@ public class Valida_Envia_DERController implements Initializable {
     }
 
     private void VerificaLetra(TextField campo, ProcesarWSDL procesarWSDL) {
+        campo.setStyle(originalStyle);
         if (!isValidLetter(campo.getText())) {
             PlayEmpty(campo);
             procesarWSDL.valor = true;
@@ -590,6 +596,7 @@ public class Valida_Envia_DERController implements Initializable {
     }
 
     private void VerificaLargo(TextField campo, int largo, ProcesarWSDL procesarWSDL) {
+        campo.setStyle(originalStyle);
         if (campo.getText().length() < largo) {
             PlayEmpty(campo);
             procesarWSDL.valor = true;
@@ -805,11 +812,34 @@ public class Valida_Envia_DERController implements Initializable {
                 color = Color.rgb(227, 250, 228, 1);
                 break;
             default:
-                if (msg.length() > 5) {
-                    status = 3;
-                    msgIcon = "error";
-                    color = Color.rgb(252, 227, 227, 1);
-                    msgAction = false;
+
+                ArrayList<String> MaginErrores = new ArrayList<>();
+                // Le agregamos datos
+                MaginErrores.add("06E028");
+                MaginErrores.add("06E004");
+                MaginErrores.add("06E800");
+                MaginErrores.add("06E857");
+                MaginErrores.add("06E856");
+                MaginErrores.add("06E157");
+                MaginErrores.add("06E570");
+                MaginErrores.add("06E566");
+                MaginErrores.add("ERDO07");
+                MaginErrores.add("ERDO09");
+                MaginErrores.add("ERDO10");
+
+                boolean existe = MaginErrores.contains(msg);
+                if (existe) {
+                    if (msg.length() > 5) {
+                        status = 3;
+                        msgIcon = "error";
+                        color = Color.rgb(252, 227, 227, 1);
+                        msgAction = false;
+                    }
+                }else{
+                    msg     = "NODEFINIDO";
+                    status  = 2;
+                    msgIcon = "null";
+                    color   = Color.rgb(252, 227, 227, 1);
                 }
                 break;
 
@@ -947,8 +977,11 @@ public class Valida_Envia_DERController implements Initializable {
                 }
 
                 if (newValue.toUpperCase().trim().equals("US")) {
+                    p4_tf_clave_banco.setStyle(originalStyle);
+                    p4_tf_codigo_aba.setStyle(errorStyle);
                     p4_pane_numeroaba.setVisible(true);
                 } else {
+                    p4_tf_clave_banco.setStyle(errorStyle);
                     p4_pane_numeroaba.setVisible(false);
                 }
 
@@ -992,18 +1025,16 @@ public class Valida_Envia_DERController implements Initializable {
         ValuePropertyAddListener(p4_cb_cuenta_bancaria, p4_tf_cuenta_bancaria, p4_tf_valorMedioPago);
         ValuePropertyAddListener(p4_cb_valorMedioPago, p4_tf_valorMedioPago, p4_tf_cuenta_bancaria);
 
-        ChangeListener<Toggle> cLt = new ChangeListener<Toggle>(){
-            public void changed(ObservableValue<? extends Toggle> ov, Toggle toggle, Toggle new_toggle){
+        ChangeListener<Toggle> cLt = (ov, toggle, new_toggle) -> {
 
-                if (new_toggle.equals(p4_tgb_cuetaibansi)){
-                    p4_pane_cuentaiban.setVisible(true);
-                    p4_pane_cuentainternacional.setVisible(false);
-                    p4_tgb_cuetaibanno.setSelected(false);
-                }else{
-                    p4_pane_cuentainternacional.setVisible(true);
-                    p4_pane_cuentaiban.setVisible(false);
-                    p4_tgb_cuetaibansi.setSelected(false);
-                }
+            if (new_toggle.equals(p4_tgb_cuetaibansi)){
+                p4_pane_cuentaiban.setVisible(true);
+                p4_pane_cuentainternacional.setVisible(false);
+                p4_tgb_cuetaibanno.setSelected(false);
+            }else{
+                p4_pane_cuentainternacional.setVisible(true);
+                p4_pane_cuentaiban.setVisible(false);
+                p4_tgb_cuetaibansi.setSelected(false);
             }
         };
 
