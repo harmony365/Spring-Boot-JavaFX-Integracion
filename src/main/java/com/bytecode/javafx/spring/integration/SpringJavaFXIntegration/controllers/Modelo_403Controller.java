@@ -594,14 +594,14 @@ public class Modelo_403Controller implements Initializable {
         App.setRoot("/views/Valida_Envia_DER",locale);
 
     }
-
+/*
     @FXML
     private void switchToSQLiteConnect() throws IOException, SQLException, ClassNotFoundException {
         //Locale locale = Locale.getDefault();
         //App.setRoot("secondary",locale);
         SQLiteConnect();
     }
-
+*/
     @FXML private void switchToQRCode() throws IOException {
 
             ClearPlantilla();
@@ -1119,13 +1119,14 @@ public class Modelo_403Controller implements Initializable {
      *  Conexion SQLite3
      * 
      */
+    /*
     @FXML
     public void SQLiteConnect() throws SQLException, ClassNotFoundException {
         checkDrivers();    //check for driver errors
         Connection connection = connect(DBLocal);
 
     }
-
+*/
     private Connection connect(String location) throws ClassNotFoundException {
        
         Class.forName("org.sqlite.JDBC");
@@ -1147,7 +1148,7 @@ public class Modelo_403Controller implements Initializable {
         }
         return connection;
     }
-
+/*
     private boolean checkDrivers() {
         try {
             Class.forName("org.sqlite.JDBC");
@@ -1163,7 +1164,7 @@ public class Modelo_403Controller implements Initializable {
             return false;
         }
     }
-
+*/
 
     public void InsertItem(JSONObject myJson) throws SQLException, ClassNotFoundException {
 
@@ -1318,7 +1319,7 @@ public class Modelo_403Controller implements Initializable {
         //*/
 
     }
-    
+
     public void refesh() {
         //comboClientes.setItems(FXCollections.observableArrayList(clienteRepository.findAll()));
     }
@@ -1333,7 +1334,7 @@ public class Modelo_403Controller implements Initializable {
 
         String sql = "SELECT * FROM " + tableName + "  WHERE justificante = ? ";
 
-        try (Connection connection = connect(DBLocal);) {
+        try (Connection connection = connect(DBLocal)) {
             /*
              * setear los parametros del where
              */

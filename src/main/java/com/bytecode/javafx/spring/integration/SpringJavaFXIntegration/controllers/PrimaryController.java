@@ -39,7 +39,7 @@ public class PrimaryController implements Initializable  {
     public void initialize(URL location, ResourceBundle resources) {
         // TODO Auto-generated method, no se está usando el método por ahora
         //
-        LOGGER.log(Level.INFO, "User successfully logged in {}");
+        //LOGGER.log(Level.INFO, "User successfully logged in {}");
 
         LoadProccess(false);
 

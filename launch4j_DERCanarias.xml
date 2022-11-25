@@ -22,7 +22,7 @@
     <maxVersion></maxVersion>
     <jdkPreference>preferJre</jdkPreference>
     <runtimeBits>64/32</runtimeBits>
-    <opt>--module-path &quot;C:\Program Files\Java\javafx-sdk-18.0.1\lib&quot; --add-modules ALL-MODULE-PATH</opt>
+    <opt>--module-path &quot;C:\Program Files\Java\javafx-sdk-19\lib&quot; --add-modules ALL-MODULE-PATH</opt>
   </jre>
   <splash>
     <file>C:\Desarrollo\JAVA\DIVA\Spring-Boot-JavaFX-Integracion-VS\src\main\resources\img\Gobierno_Canarias_logo.png</file>

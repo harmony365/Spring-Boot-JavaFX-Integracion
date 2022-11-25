@@ -466,14 +466,14 @@ public class Modelo_403Controller_OLD implements Initializable {
         App.setRoot("/views/Valida_Envia_DER",locale);
 
     }
-
+/*
     @FXML
     private void switchToSQLiteConnect() throws IOException, SQLException, ClassNotFoundException {
         //Locale locale = Locale.getDefault();
         //App.setRoot("secondary",locale);
         SQLiteConnect();
     }
-
+*/
     @FXML private void switchToQRCode() throws IOException {
 
             ClearPlantilla();
@@ -954,13 +954,14 @@ public class Modelo_403Controller_OLD implements Initializable {
      *  Conexion SQLite3
      * 
      */
+    /*
     @FXML
     public void SQLiteConnect() throws SQLException, ClassNotFoundException {
         checkDrivers();    //check for driver errors
         Connection connection = connect(DBLocal);
 
     }
-
+*/
     private Connection connect(String location) throws ClassNotFoundException {
        
         Class.forName("org.sqlite.JDBC");
@@ -986,7 +987,7 @@ public class Modelo_403Controller_OLD implements Initializable {
         }
         return connection;
     }
-
+/*
     private static boolean checkDrivers() {
         try {
             Class.forName("org.sqlite.JDBC");
@@ -1006,7 +1007,7 @@ public class Modelo_403Controller_OLD implements Initializable {
             return false;
         }
     }
-
+*/
 
     public void InsertItem(JSONObject myJson) throws SQLException, ClassNotFoundException {
 

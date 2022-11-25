@@ -76,8 +76,8 @@ public class Valida_Envia_DERController implements Initializable {
     private final static Logger LOGGER = LogManager.getLogger(Valida_Envia_DERController.class.getName());
     private ResourceBundle bundle;
 
-    private ZonedDateTime now = ZonedDateTime.now();
-    private ZonedDateTime fechaHoraLimite = now.plusHours(3).plusMinutes(30);
+    private final ZonedDateTime now = ZonedDateTime.now();
+    private final ZonedDateTime fechaHoraLimite = now.plusHours(3).plusMinutes(30);
 
    //@Autowired
    //private ClienteRepository clienteRepository;
@@ -134,6 +134,8 @@ public class Valida_Envia_DERController implements Initializable {
 
     @FXML
     private ToggleButton p4_tgb_cuetaibanno, p4_tgb_cuetaibansi;
+    @FXML
+    ToggleGroup group = new ToggleGroup();
 
     @FXML
     private Button p2_btn_aceptar, p2_btn_salir;
@@ -148,13 +150,14 @@ public class Valida_Envia_DERController implements Initializable {
 
     // Strings which hold css elements to easily re-use in the SpringJavaFxIntegrationApplicationlication
     protected
-    String successMessage = String.format("-fx-text-fill: GREEN;");
-    String successStyle = String.format("-fx-border-color: GREEN; -fx-border-width: 2; -fx-border-radius: 5;");
-    String errorMessage = String.format("-fx-text-fill: RED;");
-    String errorStyle = String.format("-fx-border-color: RED; -fx-border-width: 2; -fx-border-radius: 5;");
+    String successMessage = "-fx-text-fill: GREEN;";
+    String successStyle = "-fx-border-color: GREEN; -fx-border-width: 2; -fx-border-radius: 5;";
+    String errorMessage = "-fx-text-fill: RED;";
+    String errorStyle = "-fx-border-color: RED; -fx-border-width: 2; -fx-border-radius: 5;";
 
     public Boolean procesoWsdl = false;
     public DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+    public ProcesarWSDL procesarWSDL = new ProcesarWSDL();
 
     public LocalDate date = LocalDate.now();
 
@@ -169,10 +172,14 @@ public class Valida_Envia_DERController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         LoadProccess(false);
         procesoWsdl = false;
         bundle = resources;
         p4_rec_mensaje.requestFocus();
+
+        p4_tgb_cuetaibanno.setToggleGroup(group);
+        p4_tgb_cuetaibansi.setToggleGroup(group);
 
         //lblTitulo.setText(titulo);
         valorDocumento = App.parametrosModel.getNumeroPasaporte();
@@ -209,6 +216,8 @@ public class Valida_Envia_DERController implements Initializable {
             RefreshTV();
             iniFormDigicModoPago();
             refesh();
+            procesarWSDL.valor = false;
+            onVerificaEmpty(procesarWSDL,true);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -271,7 +280,7 @@ public class Valida_Envia_DERController implements Initializable {
 
     }
     private static String getTwoDecimals(double value){
-        DecimalFormat df = new DecimalFormat("0,00");
+        DecimalFormat df = new DecimalFormat("0.00");
         return df.format(value);
     }
     public static void floatTxtFld(TextField field) {
@@ -307,7 +316,7 @@ public class Valida_Envia_DERController implements Initializable {
 
         Matcher mather = pattern.matcher(email);
 
-        if (mather.find() == true) {
+        if (mather.find()) {
             validar = true;
         }
 
@@ -403,7 +412,7 @@ public class Valida_Envia_DERController implements Initializable {
                 this.setDisable(true);
             }
 
-            // deshabilitar las fechas futuras
+            // deshabilitar las fechas pasadas
             if (item.isBefore(LocalDate.now())) {
                 this.setDisable(true);
             }
@@ -442,8 +451,27 @@ public class Valida_Envia_DERController implements Initializable {
     private void switchToAceptar(ActionEvent event) throws IOException {
         //Boolean procesarWSDL = false;
 
-        ProcesarWSDL procesarWSDL = new ProcesarWSDL();
         procesarWSDL.valor = false;
+
+        App.MensajeValidaDER_email = p4_tf_email.getText();
+
+        onVerificaEmpty(procesarWSDL,false);
+
+        if (!procesarWSDL.valor) {
+            LoadProccess(true);
+
+            delay(1000, () -> {
+                try {
+                    onWsdlTask(event);
+                    //onWsdl(event);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+        }
+    }
+
+    private void onVerificaEmpty(ProcesarWSDL procesarWSDL, Boolean global){
 
         // Given start Date
 
@@ -453,7 +481,6 @@ public class Valida_Envia_DERController implements Initializable {
         //String start_date = "19-10-2022 03:10:20";
         // Given end Date
         String end_date = p4_dtp_fechaLimiteSalida.getValue() + " " + p4_tf_fechaLimiteSalidaHora.getText() + ":" + p4_tf_fechaLimiteSalidaMinuto.getText() + ":00";
-
 
         //TODO: validar que está verificando que la fecha y hora de salida no superalas 3 horas ni es menor a o horas-
         if (p4_tf_fechaLimiteSalidaHora.getLength() > 0 && p4_tf_fechaLimiteSalidaMinuto.getLength() > 0) {
@@ -485,7 +512,8 @@ public class Valida_Envia_DERController implements Initializable {
 
         VerificaEmail(p4_tf_email, procesarWSDL);
 
-        if (p4_tgb_cuetaibanno.isSelected()) {
+        //if (p4_tgb_cuetaibanno.isSelected() || global) {
+        if (p4_pane_cuentainternacional.isVisible() || global) {
 
             // TODO: por ahora no se verifica
             //  VerificaEmpty(p4_tf_clave_control, procesarWSDL);
@@ -513,7 +541,8 @@ public class Valida_Envia_DERController implements Initializable {
 
         }
 
-        if (p4_tgb_cuetaibansi.isSelected()) {
+        //if (p4_tgb_cuetaibansi.isSelected()  || global) {
+        if (p4_pane_cuentaiban.isVisible()  || global) {
             VerificaEmpty(p4_tf_valorMedioPago, procesarWSDL);
             //if (p4_tf_valorMedioPago.getText().isEmpty()){ PlayEmpty(p4_tf_valorMedioPago);procesarWSDL.valor = true;}else{p4_tf_valorMedioPago.setStyle(successStyle);};
 
@@ -530,18 +559,7 @@ public class Valida_Envia_DERController implements Initializable {
 
         }
 
-        if (!procesarWSDL.valor) {
-            LoadProccess(true);
 
-            delay(1000, () -> {
-                try {
-                    onWsdlTask(event);
-                    //onWsdl(event);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            });
-        }
     }
 
     private void VerificaEmpty(TextField campo, ProcesarWSDL procesarWSDL) {
@@ -675,7 +693,10 @@ public class Valida_Envia_DERController implements Initializable {
                 LOGGER.log(Level.INFO, "Resultado: Estado( " + validarRemesaDerResponse.getEstado() + " ) --> " + validarRemesaDerResponse.getFechaEstado().toString());
 
             } catch (Exception e) {
-                LOGGER.log(Level.INFO, "Ocurrio un Error de RED, time out de conexión.");
+                LOGGER.log(Level.ERROR, "Ocurrio un Error de RED, time out de conexión.");
+                LOGGER.log(Level.ERROR, "Class: " + e.getClass());
+                LOGGER.log(Level.ERROR, "Message: " + e.getMessage());
+                LOGGER.log(Level.ERROR, "Cause: " + e.getCause());
                 e.printStackTrace();
                 wsdlResponse = "RED";
             }
@@ -971,24 +992,22 @@ public class Valida_Envia_DERController implements Initializable {
         ValuePropertyAddListener(p4_cb_cuenta_bancaria, p4_tf_cuenta_bancaria, p4_tf_valorMedioPago);
         ValuePropertyAddListener(p4_cb_valorMedioPago, p4_tf_valorMedioPago, p4_tf_cuenta_bancaria);
 
-        //ValuePropertyAddListenerVisible(p4_tgb_cuetaibanno, p4_tgb_cuetaibansi, p4_pane_cuentainternacional, p4_pane_cuentaiban);
-        //ValuePropertyAddListenerVisible(p4_tgb_cuetaibansi, p4_tgb_cuetaibanno, p4_pane_cuentaiban, p4_pane_cuentainternacional);
+        ChangeListener<Toggle> cLt = new ChangeListener<Toggle>(){
+            public void changed(ObservableValue<? extends Toggle> ov, Toggle toggle, Toggle new_toggle){
 
-        p4_tgb_cuetaibansi.selectedProperty().addListener(((observable, oldValue, newValue) -> {
+                if (new_toggle.equals(p4_tgb_cuetaibansi)){
+                    p4_pane_cuentaiban.setVisible(true);
+                    p4_pane_cuentainternacional.setVisible(false);
+                    p4_tgb_cuetaibanno.setSelected(false);
+                }else{
+                    p4_pane_cuentainternacional.setVisible(true);
+                    p4_pane_cuentaiban.setVisible(false);
+                    p4_tgb_cuetaibansi.setSelected(false);
+                }
+            }
+        };
 
-            p4_pane_cuentaiban.setVisible(true);
-            p4_pane_cuentainternacional.setVisible(false);
-            p4_tgb_cuetaibanno.setSelected(false);
-
-        }));
-
-        p4_tgb_cuetaibanno.selectedProperty().addListener(((observable, oldValue, newValue) -> {
-
-            p4_pane_cuentainternacional.setVisible(true);
-            p4_pane_cuentaiban.setVisible(false);
-            p4_tgb_cuetaibansi.setSelected(false);
-
-        }));
+        group.selectedToggleProperty().addListener(cLt);
 
         p4_tgb_cuetaibansi.setSelected(true);
 
@@ -1025,8 +1044,6 @@ public class Valida_Envia_DERController implements Initializable {
                 throw new RuntimeException(ex);
             }
         });
-
-        App.MensajeValidaDER_email = p4_tf_email.getText();
 
     }
 
@@ -1156,7 +1173,7 @@ public class Valida_Envia_DERController implements Initializable {
 
             pane1.setVisible(newValue);
             pane2.setVisible(oldValue);
-            tgbfalse.setSelected(oldValue);
+            //tgbfalse.setSelected(oldValue);
 
         }));
 

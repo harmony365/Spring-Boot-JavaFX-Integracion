@@ -1,21 +1,22 @@
 
+
     TODO: 21/11/2022
-       [*] Proceso finalizado. Su solicitud ha sido validada. Gracias por su visita a las Islas Canarias, que tenga un
-           buen viaje de vuelta a casa.
-       [*] Proceso finalizado. Su solicitud queda pendiente de aportar documentación de importación en destino. Le
-           informaremos vía email del proceso de su solicitud. Se lo informara el estado del proceso al mail <mail>
-       [*] Proceso finalizado. Le informaremos vía email del proceso de su solicitud. Se lo informara el estado del
-           proceso al mail <mail>
-       [*] El botón "SALIR" cambiarlo por "CANCELAR SOLICITUD" y el finalizar escaneo por "CONTINUAR"
-       [*] El mensaje de fecha límite caducada cambiarlo por "Se han superado los 3 meses desde la compra, no se permite
-           la solicitud de la devolución del IGIC".
-       [*] Los idiomas en el centro y el vídeo más pequeño y en una esquina
-       [*] Cambiar el orden, primero introducción manual y la caja de texto para el número de pasaporte / DNI y luego
-           la información de la opción de escanear.
-       [*] En las pantallas de mensajes para el error y el mensaje de warnig (codigo VF)
-       [*] Proceso finalizado. Le informaremos al mail <mail del viajero> del proceso de su solicitud. Y quitar el icono del aspa rojo.
-       [*] Su solicitud está sujeta a comprobación física. Diríjase al personal de la Agencia Tributaria Canaria.
-           Le informaremos al mail <mail del viajero> del proceso de su solicitud.
+       [*] - Proceso finalizado. Su solicitud ha sido validada. Gracias por su visita a las Islas Canarias, que tenga un
+             buen viaje de vuelta a casa.
+       [*] - Proceso finalizado. Su solicitud queda pendiente de aportar documentación de importación en destino. Le
+             informaremos vía email del proceso de su solicitud. Se lo informara el estado del proceso al mail <mail>
+       [*] - Proceso finalizado. Le informaremos vía email del proceso de su solicitud. Se lo informara el estado del
+             proceso al mail <mail>
+       [*] - El botón "SALIR" cambiarlo por "CANCELAR SOLICITUD" y el finalizar escaneo por "CONTINUAR"
+       [*] - El mensaje de fecha límite caducada cambiarlo por "Se han superado los 3 meses desde la compra, no se permite
+             la solicitud de la devolución del IGIC".
+       [*] - Los idiomas en el centro y el vídeo más pequeño y en una esquina
+       [*] - Cambiar el orden, primero introducción manual y la caja de texto para el número de pasaporte / DNI y luego
+             la información de la opción de escanear.
+       [*] - En las pantallas de mensajes para el error y el mensaje de warnig (codigo VF)
+       [*] - Proceso finalizado. Le informaremos al mail <mail del viajero> del proceso de su solicitud. Y quitar el icono del aspa rojo.
+       [*] - Su solicitud está sujeta a comprobación física. Diríjase al personal de la Agencia Tributaria Canaria.
+             Le informaremos al mail <mail del viajero> del proceso de su solicitud.
        [*] - Cuando no pase la validación de los 3 meses, poner como mensaje "Han transcurrido más de 3 meses desde su compra;
              no procede devolución por este importe".
        [*] - Cuando el resultado de la presentación sea ausencia de conexión con M@gin o un error de M@gin no subsanable por
@@ -48,41 +49,33 @@
        [*] - Pantalla 6: al pulsar en el botón "Seleccionar" de las cuentas, si se pulsa en la parte de códigos de cuentas
        [*] - Pantalla 6: En el calendario, desmarcar los días en rojo..
        [*] - Sustituir <EMAIL> por el email del viajero.
+       [*] - Pantalla 5: debe sombrear en rojo todos los campos obligatorios que estén vacíos (antes de dar al botón finalizar).
+       [*] - Poner la nota de selección de cuenta en la casilla de al lado de "5.- Medio de Pago", es decir, encima de
+             las columnas de cuentas IBAN o sin IBAN. Poner esta nota y el aviso importante de campos obligatorios en letra color rojo.
+       [*] - Para las Islas Caiman mostró el mensaje de ok como si fuese un país de la UE. Revisar mensajes y de donde.
+               NOTA: EL MENSAJE ESTÁ BIEN PORQUE ESTÁ RETORNANDO UN CÓDIGO DE ERROR DE RED Y ESO NO TIENE FORMATO POR PAÍSES DE LA COMUNIDAD
+       [*] - Pantalla 2: En la parte de escaneo, eliminar el dibujo de la pantalla y poner la imagen de un DNI y de un
+             pasaporte, marcando con un recuadro rojo la parte del documento que tiene que escanear.
+       [*] Revisar campos obligatorios en la opción sin iban. Permitió enviar sin clave de control ni código del banco.
+               listo--- Clave del banco (obligatorio excepto EEUU, longitud 15). Alfanumérico
+               listo--- Clave de control (opcional según país, longitud 2). Alfanumérico, de momento es opcional.
+       [*] El switch no muestra las letras. Viene del der con letras y las quita.
+       [*] Inclusión del error 06E800 Autoliquidación duplicada. No se permite la presentación
+
 
     TODO: 21/11/2022
-        [] - Pantalla 2: En la parte de escaneo, eliminar el dibujo de la pantalla y poner la imagen de un DNI y de un
-             pasaporte, marcando con un recuadro rojo la parte del documento que tiene que escanear.
-        .
         [] - Pantalla 3: Localizar una imagen más representativa, que se parezca más al formato del kiosco o a un lector
              de QR. Además, esta imagen no deberá permanecer tras el primer escaneo.
         .
-        [] - Pantalla 5: debe sombrear en rojo todos los campos obligatorios que estén vacíos (antes de dar al botón finalizar).
-             Poner la nota de selección de cuenta en la casilla de al lado de "5.- Medio de Pago", es decir, encima de
-             las columnas de cuentas IBAN o sin IBAN. Poner esta nota y el aviso importante de campos obligatorios en letra color rojo.
-        .
-        [] - Pantalla 6: La fecha de salida debe ser el día en curso o el siguiente.
-
-    TODO: 21/11/2022
-       [] La pantallas de introducción de pasaporte, poner una foto con el DNI y el pasaporte con remarcado lo que hay
-            que pasar por el escaner.
-       [] En las pantallas de mensajes si sale lo de se le enviará por mail que muestre el mail a donde se le va a enviar.
-       [] Formato de los importes con separador de decimales , y de miles el .
-       [] El mensajes de que escoja una cuenta o rellene una nueva tiene que estar en la cabecera del medio de pago para
-           que afecte a los dos tipos de cuenta.
-       [] Revisar campos obligatorios en la opción sin iban. Permitió enviar sin clave de control ni código del banco.
-       [] El switch no muestra las letras. Viene del der con letras y las quita.
-       [] El botón seleccionar de las cuentas que funcione solo para marcar, que no marque y desmarque si vuelve a pulsar.
-       [] Para las Islas Caiman mostró el mensaje de ok como si fuese un país de la UE. Revisar mensajes y de donde.
-       [] La hora de salida tiene que ser superior a la hora actual
-       [] Que al entrar a la página final que salgan marcados los campos que no están rellenos y muestre un mensaje
-           "Tiene campos obligatorios sin rellenar." Los mensajes informativos en las pantallas que salgan en otro color o resaltados
-       [] Hacer el teclado más grande y que se cierre al pulsar enter o picar fuera en la pantalla.
-       [] En el calendar de la fecha de salida porque sale en rojo dos fechas?, la de hoy y otra
-
-
-    TODO: 18/11/2022
         [] - Fecha salida puede ser hoy y mañana dependiendo de la hora en la que estoy escaneando, si son las 11 y media de
             la noche y salgo a la 1 de la madrugada me debe poder dejar poner el día de mañana.
+
+
+    TODO: 21/11/2022
+       [] Formato de los importes con separador de decimales , y de miles el .
+       [] Hacer el teclado más grande y que se cierre al pulsar enter o picar fuera en la pantalla.
+
+    TODO: 18/11/2022
         [] . crear proceso de mantenimiento en lote de los DER que quedan en el proceso cron con estatus 2
 
 

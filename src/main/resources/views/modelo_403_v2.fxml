@@ -3,11 +3,19 @@
 <?import com.jfoenix.controls.JFXDialog?>
 <?import com.jfoenix.controls.JFXDialogLayout?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
 <StackPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1200.0" prefWidth="2139.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.controllers.Modelo_403Controller">
    <children>
       <AnchorPane prefHeight="1106.0" prefWidth="2029.0" StackPane.alignment="CENTER_LEFT">
@@ -199,17 +207,17 @@
                <Font size="18.0" />
             </font>
          </Label>
-            <Button fx:id="p2_btn_add_403" contentDisplay="CENTER" focusTraversable="false" layoutX="1355.0" layoutY="777.0" mnemonicParsing="false" onAction="#switchToQRCode" prefHeight="100.0" prefWidth="309.0" text="%p2_btn_add_403" textAlignment="CENTER" textFill="#333890">
+            <Button fx:id="p2_btn_add_403" contentDisplay="CENTER" focusTraversable="false" layoutX="1351.0" layoutY="782.0" mnemonicParsing="false" onAction="#switchToQRCode" prefHeight="100.0" prefWidth="309.0" text="%p2_btn_add_403" textAlignment="CENTER" textFill="#333890">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
-         <Button fx:id="p2_btn_salir" focusTraversable="false" layoutX="1520.0" layoutY="139.0" mnemonicParsing="false" onAction="#switchToAnterior" prefHeight="56.0" prefWidth="130.0" text="%p2_btn_anterior" textFill="#b52b2b">
+         <Button fx:id="p2_btn_salir" focusTraversable="false" layoutX="1348.0" layoutY="130.0" mnemonicParsing="false" onAction="#switchToAnterior" prefHeight="109.0" prefWidth="302.0" text="%p2_btn_anterior" textFill="#b52b2b">
             <font>
                <Font name="System Bold" size="24.0" />
             </font>
          </Button>
-         <Button fx:id="p2_btn_aceptar" contentDisplay="CENTER" focusTraversable="false" layoutX="1355.0" layoutY="889.0" mnemonicParsing="false" onAction="#switchToAceptar" prefHeight="100.0" prefWidth="309.0" text="%p2_btn_secundary" textAlignment="CENTER" textFill="#2b802c">
+         <Button fx:id="p2_btn_aceptar" contentDisplay="CENTER" focusTraversable="false" layoutX="1351.0" layoutY="894.0" mnemonicParsing="false" onAction="#switchToAceptar" prefHeight="100.0" prefWidth="309.0" text="%p2_btn_secundary" textAlignment="CENTER" textFill="#2b802c">
             <font>
                <Font size="24.0" />
             </font>
@@ -459,7 +467,7 @@
       </JFXDialog>
 
 
-      <StackPane fx:id="stpProcesando" prefHeight="1156.0" prefWidth="2059.0">
+      <StackPane fx:id="stpProcesando" prefHeight="1156.0" prefWidth="2059.0" visible="false">
          <children>
             <ImageView fx:id="imgProcesando" fitHeight="211.0" fitWidth="231.0" pickOnBounds="true" preserveRatio="true">
                <image>

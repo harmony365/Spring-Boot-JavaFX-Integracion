@@ -40,13 +40,12 @@
 				<version>8.0.30</version>
 				<scope>runtime</scope>
 			</dependency>
-
+			<!-- org.xerial NO ACTUALIZAR LA VERSION DE 3.25.2 CON ESA ES QUE FUNCIONA -->
 			<dependency>
 				<groupId>org.xerial</groupId>
 				<artifactId>sqlite-jdbc</artifactId>
-				<version>3.39.3.0</version>
+				<version>3.25.2</version>
 			</dependency>
-
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter-test</artifactId>
@@ -79,7 +78,7 @@
 				<artifactId>javafx-graphics</artifactId>
 				<version>19</version>
 				<classifier>win</classifier>
-			</dependency>        
+			</dependency>
 		<!-- -->
 
 		<!-- Virtual KeyBoard -->
@@ -110,7 +109,7 @@
 				<version>3.5.1</version>
 				<type>pom</type>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>com.google.zxing</groupId>
 				<artifactId>javase</artifactId>
@@ -141,7 +140,7 @@
 				<artifactId>json</artifactId>
 				<version>20220924</version>
 				<type>jar</type>
-			</dependency>			
+			</dependency>
 
 		<!-- Animación de objetos en el formulario -->
         	<!-- https://mvnrepository.com/artifact/io.github.typhon0/AnimateFX -->
@@ -210,18 +209,29 @@
 	</dependencies>
 
 	<build>
+		<finalName>DERCanarias-${project.version}</finalName>
 		<plugins>
-		
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.4.1</version>
 				<executions>
 					<execution>
+						<phase>package</phase>
 						<goals>
 							<goal>shade</goal>
 						</goals>
@@ -230,7 +240,12 @@
 							<transformers>
 								<transformer implementation=
 													 "org.apache.maven.plugins.shade.resources.ManifestResourceTransformer">
-									<mainClass>${start-class}</mainClass>
+									<!--mainClass>${start-class}</mainClass-->
+									<manifestEntries>
+										<Main-Class>${start-class}</Main-Class>
+										<Build-Number>1.2.3</Build-Number>
+									</manifestEntries>
+
 								</transformer>
 							</transformers>
 						</configuration>
