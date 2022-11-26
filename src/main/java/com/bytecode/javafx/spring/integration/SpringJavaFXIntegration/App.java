@@ -1,6 +1,7 @@
 package com.bytecode.javafx.spring.integration.SpringJavaFXIntegration;
 
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.ParametrosModel;
+import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.DigicRepository;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.services.MantenimientoEnLoteDER;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -14,7 +15,6 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.SceneAntialiasing;
-import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
@@ -23,6 +23,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.comtel2000.keyboard.control.DefaultLayer;
 import org.comtel2000.keyboard.control.KeyBoardPopup;
 import org.comtel2000.keyboard.control.KeyBoardPopupBuilder;
@@ -51,6 +54,8 @@ public class App extends Application {
 	//public static Stage;
 
     private static Scene scene;
+    private Locale locale;
+
     String  Teclas="";
     public static JSONObject parametros;
     public static ParametrosModel parametrosModel = new ParametrosModel();
@@ -63,13 +68,17 @@ public class App extends Application {
     public static String UUIDProcess,MensajeValidaDER_icon,MensajeValidaDER_error,MensajeValidaDER_Pais,MensajeValidaDER_email;
 
     public static Boolean MensajeValidaDER_action;
-    
-    Timeline BackGroundWonder = new Timeline(new KeyFrame(Duration.seconds(30), new EventHandler<ActionEvent>() { 
-        @Override public void handle(ActionEvent event) { 
+
+    private final static Logger LOGGER = LogManager.getLogger(App.class.getName());
+
+    Timeline BackGroundWonder = new Timeline(new KeyFrame(Duration.seconds(30), new EventHandler<ActionEvent>() {
+
+        @Override public void handle(ActionEvent event) {
 
             GetParametros();
 
             MantenimientoEnLoteDER mantenimientoEnLoteDER = null;
+
             try {
                 mantenimientoEnLoteDER = new MantenimientoEnLoteDER();
             } catch (IOException e) {
@@ -77,13 +86,15 @@ public class App extends Application {
             }
             mantenimientoEnLoteDER.setDaemon(false);
             mantenimientoEnLoteDER.execute();
+
+
         } 
     })); 
 
     @Override
     public void init() {
         System.out.println("App: init");
-
+        DigicRepository digicRepository;
         BackGroundWonder.setCycleCount(Timeline.INDEFINITE); 
         BackGroundWonder.play();        
     }
@@ -127,14 +138,8 @@ public class App extends Application {
             );
 
         } catch (IOException | ParseException e) {
-
             e.printStackTrace();
-
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setTitle("Error");
-            alert.setContentText(e.getLocalizedMessage());
-            alert.showAndWait();    
+            LOGGER.log(Level.ERROR, e.getClass() + " : " + e.getMessage());
         }
 
         //System.out.println("Parametros: " + parametrosModel.toString() + "\n");
@@ -163,7 +168,7 @@ public class App extends Application {
         final ObservableList<Image> icons = primaryStage.getIcons();
         icons.add(new Image("/icons/favicon-128x128x32.png"));
 
-        Locale locale = Locale.getDefault();
+        locale = Locale.getDefault();
         //Locale locale = new Locale("es", "ES");
         //Locale.setDefault(locale);
 
@@ -201,17 +206,11 @@ public class App extends Application {
                 System.out.println("KeyCombination.CONTROL_DOWN + : " + event.toString());
                 try {
                     //App.setRoot("mantenimiento_der_v1", locale);
-                    App.setRoot("views/ViewLogin", locale);
+                    App.setRoot("/views/ViewLogin", locale);
 
                 } catch (IOException e) {
-
                     e.printStackTrace();
-
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setHeaderText(null);
-                    alert.setTitle("Error");
-                    alert.setContentText(e.getLocalizedMessage());
-                    alert.showAndWait();
+                    LOGGER.log(Level.ERROR, e.getClass() + " : " + e.getMessage());
                 }
 
             }
@@ -245,12 +244,9 @@ public class App extends Application {
 
         });
 
-
-
 		primaryStage.setMaximized(true);
         primaryStage.setFullScreen(true);
         //stage.setResizable(false);
-
 
         //KeyBoardPopup popup = KeyBoardPopupBuilder.create().initLocale(locale).build();
         popup = KeyBoardPopupBuilder.create().initLocale(locale).build();

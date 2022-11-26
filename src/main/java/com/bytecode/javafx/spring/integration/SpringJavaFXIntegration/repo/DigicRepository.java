@@ -28,6 +28,9 @@ public interface DigicRepository extends JpaRepository<Digic, String> {
     @Query(value = "UPDATE digic d SET estatus_upload = 1, fecha_upload=CURRENT_TIMESTAMP WHERE d.uuidProceso = :uuidProceso")
     List<Digic> updateStatusByuuidProceso(String uuidProceso);
 
+    @Query(value = "UPDATE digic d SET d.estatus_upload = :estatus WHERE d.justificante = :justificante")
+    void updateEstatusUploadByJustificante(String justificante, String estatus);
+
     @Query(value = "SELECT d FROM digic d WHERE d.justificante = :justificante")
     List<Digic> findByJustificante(String justificante);
 
@@ -102,12 +105,11 @@ public interface DigicRepository extends JpaRepository<Digic, String> {
 
     @Query(value = "SELECT DISTINCT trim(d.cuentaInternacional) FROM digic d WHERE d.valorDocumento = :valorDocumento AND d.uuidProceso = :uuidProceso AND length(trim(d.cuentaInternacional)) > 0 ")
     List<Digic> findAllCuentaInternacional(String valorDocumento,String uuidProceso);
-   
+
     @Query(value = "SELECT DISTINCT trim(d.cuentaSinIBAN) FROM digic d WHERE d.valorDocumento = :valorDocumento AND d.uuidProceso = :uuidProceso AND length(trim(d.cuentaSinIBAN)) > 0 ")
     List<Digic> findAllCuentaSinIban(String valorDocumento,String uuidProceso);
 
     @Query(value = "SELECT DISTINCT trim(d.numeroABA) FROM digic d WHERE d.valorDocumento = :valorDocumento AND d.uuidProceso = :uuidProceso AND length(trim(d.numeroABA)) > 0 ")
     List<Digic> findAllNumeroAba(String valorDocumento,String uuidProceso);
-
 
 }

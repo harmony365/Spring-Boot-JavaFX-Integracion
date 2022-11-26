@@ -62,6 +62,9 @@
        [*] El switch no muestra las letras. Viene del der con letras y las quita.
        [*] Inclusión del error 06E800 Autoliquidación duplicada. No se permite la presentación
 
+   TODO: 18/11/2022
+       [*] . crear proceso de mantenimiento en lote de los DER que quedan en el proceso cron con estatus 2
+
     TODO: 21/11/2022
         [] - Pantalla 3: Localizar una imagen más representativa, que se parezca más al formato del kiosco o a un lector
              de QR. Además, esta imagen no deberá permanecer tras el primer escaneo.
@@ -73,10 +76,6 @@
     TODO: 21/11/2022
        [] Formato de los importes con separador de decimales , y de miles el .
        [] Hacer el teclado más grande y que se cierre al pulsar enter o picar fuera en la pantalla.
-
-    TODO: 18/11/2022
-        [] . crear proceso de mantenimiento en lote de los DER que quedan en el proceso cron con estatus 2
-
 
     TODO: 10/11/2022
         [] - En la propuesta que vimos, para seleccionar una cuenta sin IBAN, se selecciona por "cuenta bancaria" y
