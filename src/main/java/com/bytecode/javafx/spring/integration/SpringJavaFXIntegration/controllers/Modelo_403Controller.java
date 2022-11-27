@@ -5,6 +5,7 @@ import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.Digi
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.DummyData;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.DigicModoPagoRepository;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.DigicRepository;
+import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.utiles.FormattedBigDecimalValueFactory;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.utiles.JsonUtils;
 import com.google.zxing.*;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
@@ -29,6 +30,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.util.Callback;
 import org.apache.commons.lang.StringUtils;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -118,7 +120,7 @@ public class Modelo_403Controller implements Initializable {
     
     @FXML private Rectangle p2_warning;
 
-    @FXML private AnchorPane p2_an_warning,p2_an_info_item;;
+    @FXML private AnchorPane p2_an_warning,p2_an_info_item;
 
     @FXML public ImageView p2_img_barcode1;
 
@@ -327,6 +329,26 @@ public class Modelo_403Controller implements Initializable {
         }
     }
 
+    public interface AbstractConvertCellFactory<E, T> extends Callback<TableColumn<E, T>, TableCell<E, T>> {
+
+        @Override
+        default TableCell<E, T> call(TableColumn<E, T> param) {
+            return new TableCell<E, T>() {
+                @Override
+                protected void updateItem(T item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (item == null || empty) {
+                        setText(null);
+                    } else {
+                        setText(convert(item));
+                    }
+                }
+            };
+        }
+
+        String convert(T value);
+    }
+
      @FXML
     private void RefreshTV() throws  IOException{
 
@@ -347,7 +369,8 @@ public class Modelo_403Controller implements Initializable {
             fechaFacturaColumn.setCellValueFactory(new PropertyValueFactory<>("fechaFactura"));
 
             TableColumn<Digic, String> totalDigicColumn = new TableColumn<>(bundle.getString( "columna_titulo_importedigic"));
-            totalDigicColumn.setCellValueFactory(new PropertyValueFactory<>("totalDigic"));
+            //totalDigicColumn.setCellValueFactory(new PropertyValueFactory<Digic, BigDecimal>("totalDigic"));
+            totalDigicColumn.setCellValueFactory(new FormattedBigDecimalValueFactory<Digic>("totalDigic", "##,##0.00"));
 
             p2_tv_justificantesdigic.setPlaceholder(new Label(bundle.getString( "tv_justificantesdigic_Placeholder")));
             p2_tv_justificantesdigic.getColumns().setAll(justificnteColumn, razonSocialColumn, numeroFacturaColumn, fechaFacturaColumn, totalDigicColumn);
@@ -375,11 +398,11 @@ public class Modelo_403Controller implements Initializable {
     }
 
     private static String getTwoDecimals(double value){
-        DecimalFormat df = new DecimalFormat("0.00");
+        DecimalFormat df = new DecimalFormat("##,##0.00");
         return df.format(value);
     }
     public static void floatTxtFld(TextField field) {
-        DecimalFormat format = new DecimalFormat("#");
+        DecimalFormat format = new DecimalFormat("##,##0.00");
         field.setTextFormatter(new TextFormatter<>(c -> {
             if (c.getControlNewText().isEmpty()) {
                 return c;
@@ -650,13 +673,16 @@ public class Modelo_403Controller implements Initializable {
                 Integer n = rand.nextInt(5);
                 String  ns = myJson.getString("justificante");
                 String  as = myJson.getString("apellidosViajero");
+                Double  bb = rand.nextDouble();
 
-                ns = ns + n.toString();
-                as = as + " " + n.toString();
+                ns = ns + n;
+                as = as + " " + n;
 
                 myJson.put("justificante",ns);
                 myJson.put("apellidosViajero",as);
-                
+                myJson.put("totalDigic", 1000 + n + bb);
+
+
             }
 
             /*
@@ -671,8 +697,6 @@ public class Modelo_403Controller implements Initializable {
                  p2_Dialog_Procesando.close();
 
                  LoadDialog("", bundle.getString( "p2_tx_info_fechalimite"));
-
-
 
              }else  if ( !myJson.getString("valorDocumento").equals(p2_lb_valorDocumentoEsperado.getText())){
 
@@ -836,7 +860,8 @@ public class Modelo_403Controller implements Initializable {
             String tempFecha = fechaFactura.toString();
             tempFecha = tempFecha.substring(8,10) + "/" + tempFecha.substring(5,7) + "/" + tempFecha.substring(0,4) ;
             p2_lb_fecha_factura.setText(tempFecha);
-            p2_lb_monto_factura.setText(myJson.get("totalDigic").toString());
+           // p2_lb_monto_factura.setText(myJson.get("totalDigic").toString());
+            p2_lb_monto_factura.setText(getTwoDecimals(myJson.getDouble("totalDigic")));
 
             // 3. Datos del Viajero
             p2_lb_nombreViajero.setText((String) myJson.get("nombreViajero"));
@@ -982,7 +1007,7 @@ public class Modelo_403Controller implements Initializable {
         p2_lb_numero_factura.setText((String) myJson.getNumeroFactura());
         //p2_lb_fecha_factura.setText(fechaFactura.toString());
         p2_lb_fecha_factura.setText(myJson.getFechaFactura());
-        p2_lb_monto_factura.setText(myJson.getTotalDigic().toString());
+        p2_lb_monto_factura.setText(getTwoDecimals(Double.valueOf(myJson.getTotalDigic())));
 
         // 3. Datos del Viajero
         p2_lb_nombreViajero.setText((String) myJson.getNombreViajero());
@@ -1214,7 +1239,7 @@ public class Modelo_403Controller implements Initializable {
 
         String sql = "SELECT * FROM " + tableName ;
 
-        try (Connection connection = connect(DBLocal);) {
+        try (Connection connection = connect(DBLocal)) {
             /*
              * setear los parametros del where
              */
@@ -1387,7 +1412,7 @@ public class Modelo_403Controller implements Initializable {
 
         try (
                 java.io.Reader reader = Files.newBufferedReader(Paths.get(SAMPLE_CSV_FILE_PATH));
-                CSVReader csvReader = new CSVReader(reader);
+                CSVReader csvReader = new CSVReader(reader)
         ) {
             // Reading Records One by One in a String array
             String[] nextRecord;

@@ -65,6 +65,9 @@
    TODO: 18/11/2022
        [*] . crear proceso de mantenimiento en lote de los DER que quedan en el proceso cron con estatus 2
 
+   TODO: 21/11/2022
+       [*] Formato de los importes con separador de decimales , y de miles el .
+
     TODO: 21/11/2022
         [] - Pantalla 3: Localizar una imagen más representativa, que se parezca más al formato del kiosco o a un lector
              de QR. Además, esta imagen no deberá permanecer tras el primer escaneo.
@@ -72,9 +75,7 @@
         [] - Fecha salida puede ser hoy y mañana dependiendo de la hora en la que estoy escaneando, si son las 11 y media de
             la noche y salgo a la 1 de la madrugada me debe poder dejar poner el día de mañana.
 
-
     TODO: 21/11/2022
-       [] Formato de los importes con separador de decimales , y de miles el .
        [] Hacer el teclado más grande y que se cierre al pulsar enter o picar fuera en la pantalla.
 
     TODO: 10/11/2022

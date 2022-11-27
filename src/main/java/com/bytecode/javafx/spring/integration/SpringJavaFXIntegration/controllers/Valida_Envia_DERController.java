@@ -8,6 +8,7 @@ import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.Digic
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.DigicRepository;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.services.AsyncTask;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.services.DatabaseDerUtil;
+import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.utiles.FormattedBigDecimalValueFactory;
 import com.opencsv.CSVReader;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
@@ -254,7 +255,8 @@ public class Valida_Envia_DERController implements Initializable {
             fechaFacturaColumn.setCellValueFactory(new PropertyValueFactory<>("fechaFactura"));
 
             TableColumn<Digic, String> totalDigicColumn = new TableColumn<>(bundle.getString( "columna_titulo_importedigic"));
-            totalDigicColumn.setCellValueFactory(new PropertyValueFactory<>("totalDigic"));
+            //totalDigicColumn.setCellValueFactory(new PropertyValueFactory<>("totalDigic"));
+            totalDigicColumn.setCellValueFactory(new FormattedBigDecimalValueFactory<Digic>("totalDigic", "##,##0.00"));
 
 
             p4_tv_justificantesdigic.setPlaceholder(new Label(bundle.getString( "tv_justificantesdigic_Placeholder")));
@@ -281,7 +283,7 @@ public class Valida_Envia_DERController implements Initializable {
 
     }
     private static String getTwoDecimals(double value){
-        DecimalFormat df = new DecimalFormat("0.00");
+        DecimalFormat df = new DecimalFormat("##,##0.00");
         return df.format(value);
     }
     public static void floatTxtFld(TextField field) {
@@ -612,6 +614,8 @@ public class Valida_Envia_DERController implements Initializable {
         new animatefx.animation.Wobble(tf).play();
         tf.requestFocus();
     }
+
+
 
     @FXML
     private void switchToAnterior() throws IOException {
