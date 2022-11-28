@@ -14,12 +14,10 @@ public class ParametrosModel {
     private String  NombreViajero;
     private String  PasaporteDemo;
     private String  DniNifNieTieDemo;
+    private String  GuiaQR;
     private Boolean AppDemo;
     private String  FechaHoy;
 
-
-
-    public void ParametrosModel() {}
 
     public void ParametrosModel(
         String WsdlUrl,
@@ -30,6 +28,7 @@ public class ParametrosModel {
         String KIOSKOID,
         String PasaporteDemo,
         String DniNifNieTieDemo,
+        String GuiaQR,
         Boolean AppDemo,
         String FechaHoy
         ){
@@ -42,10 +41,18 @@ public class ParametrosModel {
             this.KIOSKOID         = KIOSKOID;
             this.PasaporteDemo    = PasaporteDemo;
             this.DniNifNieTieDemo = DniNifNieTieDemo;
+            this.GuiaQR           = GuiaQR;
             this.AppDemo          = AppDemo;
             this.FechaHoy         = FechaHoy;
 
     }
+
+    public String getGuiaQR() {
+        return GuiaQR;
+    }
+
+    public void setGuiaQR(String GuiaQR) { this.GuiaQR = GuiaQR; }
+
 
     public String getFechaHoy() {
         return FechaHoy;

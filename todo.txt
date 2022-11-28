@@ -1,4 +1,32 @@
 
+    TODO: 28/11/2022
+        [] - Pantalla 2: cambiar el foco del campo del nie y nit a la imagen.
+
+    TODO: 21/11/2022
+        [] - Pantalla 3: Localizar una imagen más representativa, que se parezca más al formato del kiosco o a un lector
+             de QR. Además, esta imagen no deberá permanecer tras el primer escaneo.
+
+    TODO: 21/11/2022
+       [] Hacer el teclado más grande y que se cierre al pulsar enter o picar fuera en la pantalla.
+
+    TODO: 10/11/2022
+        [] - En la propuesta que vimos, para seleccionar una cuenta sin IBAN, se selecciona por "cuenta bancaria" y
+          desde ahí se ven todas las registradas. ¿Es posible que muestre en ese apartado todas las cuentas sin IBAN
+          registradas y se seleccione pinchando encima?
+        [] - El teclado emergente que aparece cuando se debe cumplimentar algún dato, tapa las opciones de aceptar o cancelar
+          y se debe pulsar un botón nada intuitivo para que desaparezca.
+          ¿Es posible que al pulsar Enter desaparezca de la pantalla? O al menos,
+          que el teclado no impida visualizar las opciones para poder continuar el proceso.
+          El viajero puede estar un rato hasta dar con la tecla que lo hace desaparecer.
+        [] - y la mayoría de sugerencias fueron por el teclado. que sea mas grande, que con el enter y el tab pase de campo,
+          que picando fuera se cierre,....
+
+
+    TODO: 28/11/2022
+        [*] - Pantalla 1: crear un QR dinámico que lea la información del archivo de parametros para la información de
+              la guía del proceso de la presentación del DER.
+        [*] - Pantalla 2: Separar las imagenes del pasaporte y el DNI.
+        [*] - Solventado el error del llamado a los métodos JPA de spring.
 
     TODO: 21/11/2022
        [*] - Proceso finalizado. Su solicitud ha sido validada. Gracias por su visita a las Islas Canarias, que tenga un
@@ -57,8 +85,8 @@
        [*] - Pantalla 2: En la parte de escaneo, eliminar el dibujo de la pantalla y poner la imagen de un DNI y de un
              pasaporte, marcando con un recuadro rojo la parte del documento que tiene que escanear.
        [*] Revisar campos obligatorios en la opción sin iban. Permitió enviar sin clave de control ni código del banco.
-               listo--- Clave del banco (obligatorio excepto EEUU, longitud 15). Alfanumérico
-               listo--- Clave de control (opcional según país, longitud 2). Alfanumérico, de momento es opcional.
+               [*] - Clave del banco (obligatorio excepto EEUU, longitud 15). Alfanumérico
+               [*] - Clave de control (opcional según país, longitud 2). Alfanumérico, de momento es opcional.
        [*] El switch no muestra las letras. Viene del der con letras y las quita.
        [*] Inclusión del error 06E800 Autoliquidación duplicada. No se permite la presentación
 
@@ -67,154 +95,136 @@
 
    TODO: 21/11/2022
        [*] Formato de los importes con separador de decimales , y de miles el .
-
-    TODO: 21/11/2022
-        [] - Pantalla 3: Localizar una imagen más representativa, que se parezca más al formato del kiosco o a un lector
-             de QR. Además, esta imagen no deberá permanecer tras el primer escaneo.
-        .
-        [] - Fecha salida puede ser hoy y mañana dependiendo de la hora en la que estoy escaneando, si son las 11 y media de
+       .
+       [*] - Fecha salida puede ser hoy y mañana dependiendo de la hora en la que estoy escaneando, si son las 11 y media de
             la noche y salgo a la 1 de la madrugada me debe poder dejar poner el día de mañana.
 
-    TODO: 21/11/2022
-       [] Hacer el teclado más grande y que se cierre al pulsar enter o picar fuera en la pantalla.
-
-    TODO: 10/11/2022
-        [] - En la propuesta que vimos, para seleccionar una cuenta sin IBAN, se selecciona por "cuenta bancaria" y
-          desde ahí se ven todas las registradas. ¿Es posible que muestre en ese apartado todas las cuentas sin IBAN
-          registradas y se seleccione pinchando encima?
-        [] - El teclado emergente que aparece cuando se debe cumplimentar algún dato, tapa las opciones de aceptar o cancelar
-          y se debe pulsar un botón nada intuitivo para que desaparezca.
-          ¿Es posible que al pulsar Enter desaparezca de la pantalla? O al menos,
-          que el teclado no impida visualizar las opciones para poder continuar el proceso.
-          El viajero puede estar un rato hasta dar con la tecla que lo hace desaparecer.
-        [] - y la mayoría de sugerencias fueron por el teclado. que sea mas grande, que con el enter y el tab pase de campo,
-          que picando fuera se cierre,....
 
     TODO: 18/11/2022
-        listo--- Digic entre paréntesis en las cabeceras de las pantallas
-        listo--- Permitir letras y número en el switch.
-        listo--- Iban pasarlo a mayúsculas
-        listo--- cambio de mensaje de error Alert por un LoadDialog()
-        listo--- Creo que con el DER en papel a veces da error al pasarlo un poco doblado. Si da error que salga un error
+        [*] - Digic entre paréntesis en las cabeceras de las pantallas
+        [*] - Permitir letras y número en el switch.
+        [*] - Iban pasarlo a mayúsculas
+        [*] - cambio de mensaje de error Alert por un LoadDialog()
+        [*] - Creo que con el DER en papel a veces da error al pasarlo un poco doblado. Si da error que salga un error
                  más identificativo, "inténtelo de nuevo"
 
     TODO: 16/11/2022
-        listo--- Error BigDecimal en el campo de TotalDigic en el DER.
+        [*] - Error BigDecimal en el campo de TotalDigic en el DER.
 
     TODO: 10/11/2022
-        listo--- CREAR la notificación del procesando en los procesos que quedan en espera.
-        listo--- Siguen sin aparecer las pantallas de "procesando", donde se les dé feedback a los viajeros para que
-        listo---  sepan qué esperar y si está recogiendo o no los datos o si ya puede escanear otro documento.
+        [*] - CREAR la notificación del procesando en los procesos que quedan en espera.
+        [*] - Siguen sin aparecer las pantallas de "procesando", donde se les dé feedback a los viajeros para que
+        [*] -  sepan qué esperar y si está recogiendo o no los datos o si ya puede escanear otro documento.
 
     TODO: 15/11/2022
         Según la respuesta del servicio aparecerán los siguientes mensajes:
-        listo--- OK y es País de UE
-        listo--- icono de ok verde
-        listo--- SU SOLICITUD HA SIDO VALIDADA. GRACIAS POR SU VISITA A LAS ISLAS CANARIAS, QUE TENGA UN BUEN VIAJE DE VUELTA A CASA.
-        listo--- OK y no es País de UE.
-        listo--- icono de ok verde
-        listo--- SU SOLICITUD QUEDA PENDIENTE DE APORTAR DOCUMENTACIÓN DE IMPORTACIÓN EN DESTINO. LE INFORMAREMOS VÍA EMAIL DEL PROCESO DE SU SOLICITUD.
-        listo--- VF.
-        listo--- icono de warning.
-        listo--- SU SOLICITUD ESTÁ SUJETA A COMPROBACIÓN FÍSICA. DIRÍJASE AL PERSONAL DE LA AGENCIA TRIBUTARIA CANARIA. LE INFORMAREMOS VÍA EMAIL DEL PROCESO DE SU SOLICITUD.
-        listo--- ER
-        listo--- icono de error rojo
-        listo--- LE INFORMAREMOS VÍA EMAIL DEL PROCESO DE SU SOLICITUD
-        listo--- KO
-        listo--- icono de error rojo
-        listo--- LE INFORMAREMOS VÍA EMAIL DEL PROCESO DE SU SOLICITUD
+        [*] - OK y es País de UE
+        [*] - icono de ok verde
+        [*] - SU SOLICITUD HA SIDO VALIDADA. GRACIAS POR SU VISITA A LAS ISLAS CANARIAS, QUE TENGA UN BUEN VIAJE DE VUELTA A CASA.
+        [*] - OK y no es País de UE.
+        [*] - icono de ok verde
+        [*] - SU SOLICITUD QUEDA PENDIENTE DE APORTAR DOCUMENTACIÓN DE IMPORTACIÓN EN DESTINO. LE INFORMAREMOS VÍA EMAIL DEL PROCESO DE SU SOLICITUD.
+        [*] - VF.
+        [*] - icono de warning.
+        [*] - SU SOLICITUD ESTÁ SUJETA A COMPROBACIÓN FÍSICA. DIRÍJASE AL PERSONAL DE LA AGENCIA TRIBUTARIA CANARIA. LE INFORMAREMOS VÍA EMAIL DEL PROCESO DE SU SOLICITUD.
+        [*] - ER
+        [*] - icono de error rojo
+        [*] - LE INFORMAREMOS VÍA EMAIL DEL PROCESO DE SU SOLICITUD
+        [*] - KO
+        [*] - icono de error rojo
+        [*] - LE INFORMAREMOS VÍA EMAIL DEL PROCESO DE SU SOLICITUD
 
     TODO: 11/11/2022
-        listo--- PANTALLA 403
-        listo--- RESOLVER LA ACTIVACIÓN DE AÑADIR MODELO 403.
+        [*] - PANTALLA 403
+        [*] - RESOLVER LA ACTIVACIÓN DE AÑADIR MODELO 403.
 
     TODO: 11/11/2022
-        listo--- Icono de ERROR en el resultado del DER cambiarlo a Warning.
-        listo--- Que en la pantalla después de meter el pasaporte aparezca ya activa la ventana modal con el texto
+        [*] - Icono de ERROR en el resultado del DER cambiarlo a Warning.
+        [*] - Que en la pantalla después de meter el pasaporte aparezca ya activa la ventana modal con el texto
                  "Escanee los der de uno en uno y pulse cerrar cuando termine".
-        listo--- pantalla validar der activar la solicitud de fecha de embarque
-        LISTO--- Pantalla 8f5e2665:
-            listo--- 4.- "Datos del transporte".
-            listo--- Dar formato correcto a la fecha.
-        LISTO--- Pantalla 63bf590c:
-            listo--- "... para tener una guía" (falta la u).
-            listo--- Las fechas en formato español (dd-MM-aaaa)
-        LISTO--- Pantalla d5ebb9bf:
-            LISTO--- 1.- "Datos del establecimiento de venta"
-            LISTO--- 2.- "Datos de la factura".
-            LISTO--- 3.- Datos del viajero: "tipo de documento", "nº de documento", "país de expedición".
-            LISTO--- número factura (falta tilde)
-            listo--- Dar formato español a la fecha.
+        [*] - pantalla validar der activar la solicitud de fecha de embarque
+        [*] - Pantalla 8f5e2665:
+            [*] - 4.- "Datos del transporte".
+            [*] - Dar formato correcto a la fecha.
+        [*] - Pantalla 63bf590c:
+            [*] - "... para tener una guía" (falta la u).
+            [*] - Las fechas en formato español (dd-MM-aaaa)
+        [*] - Pantalla d5ebb9bf:
+            [*] - 1.- "Datos del establecimiento de venta"
+            [*] - 2.- "Datos de la factura".
+            [*] - 3.- Datos del viajero: "tipo de documento", "nº de documento", "país de expedición".
+            [*] - número factura (falta tilde)
+            [*] - Dar formato español a la fecha.
 
     TODO: 10/11/2022
-        LISTO--- Capturas de pantalla de cada paso para validarlas.
-        listo--- El switch/bic alfanumérico.
-        listo--- La clave de control es de dos dígitos (alfanumérico)
-        listo--- En las cuentas sin IBAN poner los campos en el mismo orden que en el DER, excepto la cuenta bancaria que sirve de selector que si va al principio.
-        listo--- Añadir un texto encima de la caja de las cuentas que indique "Seleccione una cuenta o rellene una nueva".
-        listo--- La pantalla donde se deben seleccionar los datos definitivos no es intuitiva: poner una indicación de "Seleccione en el desplegable una cuenta con IBAN o sin IBAN o introduzca una nueva cuenta".
-        listo--- Sigue habiendo un punto crítico para empezar a escanear el primer DER: no es intuitivo. Como acordamos, después de la pantalla de identificación del viajero, poner la pantalla con imagen para empezar a escanear y que el literal sea: "Escanee uno a uno los QR de los Modelos 403 en la parte inferior de la máquina". Esta pantalla debe saltar automáticamente, sin necesidad de presionar el botón de "Añadir Modelo 403+".
-        listo--- Revisar las longitudes de los campos de las cuentas sin IBAN: se siguen detectando errores en este sentido. Se observa que la clave de control permite más dígitos que los definidos.
-        listo--- En las cuentas sin IBAN, en el supuesto de introducirla manualmente, el campo de SWIFT/BIC está como numérico, cuando está definido que sea alfanumérico.
-        listo--- las longitudes de los campos de la cuenta sin iban son:
-        listo--- País del banco (obligatorio, longitud 3)Generalmente son longitud 2. SefLogic ha decidido dejarlo abierto a longitud 3. Alfanumérico
-        listo--- Clave del banco (obligatorio excepto EEUU, longitud 15). Alfanumérico
-        listo--- Cuenta bancaria (obligatorio, longitud 18). Alfanumérico
-        listo--- Clave de control (opcional según país, longitud 2). Alfanumérico, de momento es opcional.
-        listo--- Descripción de institución financiera (obligatorio, longitud 20). Alfanumérico
-        listo--- SWIFT/BIC (obligatorio, longitud 11). Alfanumérico
-        listo--- Número ABA (obligatorio EEUU, longitud 15). Alfanumérico
+        [*] - Capturas de pantalla de cada paso para validarlas.
+        [*] - El switch/bic alfanumérico.
+        [*] - La clave de control es de dos dígitos (alfanumérico)
+        [*] - En las cuentas sin IBAN poner los campos en el mismo orden que en el DER, excepto la cuenta bancaria que sirve de selector que si va al principio.
+        [*] - Añadir un texto encima de la caja de las cuentas que indique "Seleccione una cuenta o rellene una nueva".
+        [*] - La pantalla donde se deben seleccionar los datos definitivos no es intuitiva: poner una indicación de "Seleccione en el desplegable una cuenta con IBAN o sin IBAN o introduzca una nueva cuenta".
+        [*] - Sigue habiendo un punto crítico para empezar a escanear el primer DER: no es intuitivo. Como acordamos, después de la pantalla de identificación del viajero, poner la pantalla con imagen para empezar a escanear y que el literal sea: "Escanee uno a uno los QR de los Modelos 403 en la parte inferior de la máquina". Esta pantalla debe saltar automáticamente, sin necesidad de presionar el botón de "Añadir Modelo 403+".
+        [*] - Revisar las longitudes de los campos de las cuentas sin IBAN: se siguen detectando errores en este sentido. Se observa que la clave de control permite más dígitos que los definidos.
+        [*] - En las cuentas sin IBAN, en el supuesto de introducirla manualmente, el campo de SWIFT/BIC está como numérico, cuando está definido que sea alfanumérico.
+        [*] - las longitudes de los campos de la cuenta sin iban son:
+        [*] - País del banco (obligatorio, longitud 3)Generalmente son longitud 2. SefLogic ha decidido dejarlo abierto a longitud 3. Alfanumérico
+        [*] - Clave del banco (obligatorio excepto EEUU, longitud 15). Alfanumérico
+        [*] - Cuenta bancaria (obligatorio, longitud 18). Alfanumérico
+        [*] - Clave de control (opcional según país, longitud 2). Alfanumérico, de momento es opcional.
+        [*] - Descripción de institución financiera (obligatorio, longitud 20). Alfanumérico
+        [*] - SWIFT/BIC (obligatorio, longitud 11). Alfanumérico
+        [*] - Número ABA (obligatorio EEUU, longitud 15). Alfanumérico
 
 
     TODO:
-        listo--- Parece que se hace un lío con las cuentas, las validaciones deben ser las siguientes:
-        listo--- Validaciones de la cuenta sin IBAN:
-        listo--- Cuenta con IBAN solo debe informar el IBAN.
-        listo--- IBAN, se valida tanto para los nacionales como extranjeros.
-        listo--- Cuenta sin IBAN se necesitan los siguiente datos:
-        listo--- Código del País. Obligatorio 3 caracteres máximo. Se valida que sea un país válido existente en tablas de países.
-        listo--- Clave del banco, Obligatorio (menos para US si añade el ABA)
-        listo--- Clave de control (Opcional según país) que países, de momento es opcional
-        listo--- Número de cuenta bancaria, obligatorio
-        listo--- Descripción financiera de la entidad, obligatorio
-        listo--- Swift/BIC, obligatorio
-        listo--- ABA Es obligatorio . Solo para el país Estados Unidos.
-        listo--- US la clave del banco es opcional.
+        [*] - Parece que se hace un lío con las cuentas, las validaciones deben ser las siguientes:
+        [*] - Validaciones de la cuenta sin IBAN:
+        [*] - Cuenta con IBAN solo debe informar el IBAN.
+        [*] - IBAN, se valida tanto para los nacionales como extranjeros.
+        [*] - Cuenta sin IBAN se necesitan los siguiente datos:
+        [*] - Código del País. Obligatorio 3 caracteres máximo. Se valida que sea un país válido existente en tablas de países.
+        [*] - Clave del banco, Obligatorio (menos para US si añade el ABA)
+        [*] - Clave de control (Opcional según país) que países, de momento es opcional
+        [*] - Número de cuenta bancaria, obligatorio
+        [*] - Descripción financiera de la entidad, obligatorio
+        [*] - Swift/BIC, obligatorio
+        [*] - ABA Es obligatorio . Solo para el país Estados Unidos.
+        [*] - US la clave del banco es opcional.
         .
-        listo--- En la elección de la cuenta en la versión actual no está muy bien.
-        listo--- si el país es Mauritania que el código es MR, siempre lo pone con MA, y rellena el combo de países con
+        [*] - En la elección de la cuenta en la versión actual no está muy bien.
+        [*] - si el país es Mauritania que el código es MR, siempre lo pone con MA, y rellena el combo de países con
                  opciones que iban en otros DER y añade MAU, cuando en los justificante escaneados no hay ninguno que tenga MAU ni MA.
-        listo--- Con la cuenta sigue haciendo algo raro, porque mezcla la cuenta con iban con la cuenta sin iban, en el campo valorMedioPago,
-        listo--- .. además con los dos botones que hay de seleccionar y el combo de SI/NO creo que se hace un lío a la hora de rellenar los datos de cuenta, aunque rellene los datos de cuenta con iban, además envía el resto de campos de la cuenta sin IBAN.
-        listo--- Quitar el control de la fecha de salida y la hora, la introducen pero no se hace nada, es decir, que no se van a validar las 3 horas de antelación, la fecha de salida y la hora de salida son obligatorios pero no se hace nada con esos datos.
-        listo--- ... Hay casos en los que cuando no meto la hora de salida, me da el error que es obligatorio y se ponen los campos en rojo pero ya no acepta ningún valor, y no me deja continuar, aunque los rellene bien me sigue dando error en rojo en esos datos de la hora.
-        listo--- Estos errores te los comento para tenerlos en cuenta ya que no creo que tengan nada que ver con las pantallas y para que se intenten corregir en la nueva versión.
-        listo--- ... En cuanto a la nueva versión con las pantallas, me ha pasado lo mismo tanto con las cuentas como con la hora de salida.
+        [*] - Con la cuenta sigue haciendo algo raro, porque mezcla la cuenta con iban con la cuenta sin iban, en el campo valorMedioPago,
+        [*] - .. además con los dos botones que hay de seleccionar y el combo de SI/NO creo que se hace un lío a la hora de rellenar los datos de cuenta, aunque rellene los datos de cuenta con iban, además envía el resto de campos de la cuenta sin IBAN.
+        [*] - Quitar el control de la fecha de salida y la hora, la introducen pero no se hace nada, es decir, que no se van a validar las 3 horas de antelación, la fecha de salida y la hora de salida son obligatorios pero no se hace nada con esos datos.
+        [*] - ... Hay casos en los que cuando no meto la hora de salida, me da el error que es obligatorio y se ponen los campos en rojo pero ya no acepta ningún valor, y no me deja continuar, aunque los rellene bien me sigue dando error en rojo en esos datos de la hora.
+        [*] - Estos errores te los comento para tenerlos en cuenta ya que no creo que tengan nada que ver con las pantallas y para que se intenten corregir en la nueva versión.
+        [*] - ... En cuanto a la nueva versión con las pantallas, me ha pasado lo mismo tanto con las cuentas como con la hora de salida.
         .
         .
         Longitudes:
-            listo--- Código del País. Obligatorio 3 caracteres máximo.
-            listo--- Actualización de Código del País. con 2 y 3 caracteres máximo.
-            listo--- Clave del banco, longitud 2
-            listo--- Número de cuenta bancaria, obligatorio de longitud máxima 18
-            listo--- Descripción financiera de la entidad, obligatorio y de longitud máxima 20 alfanumerico.
-            listo--- Swift/BIC, obligatorio y de longitud máxima 11
-            listo--- ABA. Longitud máxima 15.
-            listo--- Las longitudes máximas no están controladas.
+            [*] - Código del País. Obligatorio 3 caracteres máximo.
+            [*] - Actualización de Código del País. con 2 y 3 caracteres máximo.
+            [*] - Clave del banco, longitud 2
+            [*] - Número de cuenta bancaria, obligatorio de longitud máxima 18
+            [*] - Descripción financiera de la entidad, obligatorio y de longitud máxima 20 alfanumerico.
+            [*] - Swift/BIC, obligatorio y de longitud máxima 11
+            [*] - ABA. Longitud máxima 15.
+            [*] - Las longitudes máximas no están controladas.
 
     TODO:
-        listo--- para el DER 4032400003615 6958715644. el monto es un Integer 200 y no un double 200.00, y el pais del banco no es de 2 caracteres sino 3 MAU
-        listo--- para el DER 4032400003606 6958715644. y el pais del banco no es de 2 caracteres sino 3 MAU
-        listo--- Para el DER 4032400003563 42476822P arroja el error PR02
-        listo--- Para el DER 4032400004220 42476822P el modo de transporte de salida es BARCO en el documento impreso y no aparece en la información del QR
-        listo--- Para el DER 4032400003590 41780963Z el monto es un Integer 0 y no un double 0.00  arroja el error  ER
-        listo--- Para el DER 4032400004674 41780963Z
-        listo--- Para el DER 4032400003581 41780963Z
+        [*] - para el DER 4032400003615 6958715644. el monto es un Integer 200 y no un double 200.00, y el pais del banco no es de 2 caracteres sino 3 MAU
+        [*] - para el DER 4032400003606 6958715644. y el pais del banco no es de 2 caracteres sino 3 MAU
+        [*] - Para el DER 4032400003563 42476822P arroja el error PR02
+        [*] - Para el DER 4032400004220 42476822P el modo de transporte de salida es BARCO en el documento impreso y no aparece en la información del QR
+        [*] - Para el DER 4032400003590 41780963Z el monto es un Integer 0 y no un double 0.00  arroja el error  ER
+        [*] - Para el DER 4032400004674 41780963Z
+        [*] - Para el DER 4032400003581 41780963Z
 
 
     TODO:
-        listo--- Revisar cuando se selecciona los der en el panel coloca CUENTA en el campo de modo de transporte
-        listo--- cuando se está en la ventana de envío de los DER y nos retrocedemos, la variable del valor documento se pierde.
+        [*] - Revisar cuando se selecciona los der en el panel coloca CUENTA en el campo de modo de transporte
+        [*] - cuando se está en la ventana de envío de los DER y nos retrocedemos, la variable del valor documento se pierde.
 
 
 

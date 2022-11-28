@@ -1,0 +1,23 @@
+pkix path building failed sun.security.provider.certpath.suncertpathbuilderexception
+
+Just import your proxy's certificate into all utilized instances of "cacerts" keystores.
+
+You likely have a proxy which is intercepting (via MITM) your traffic. Locate your network's certificate: In a browser,
+navigate to "https://www.google.com" hit F12, go to certificates/security and get the top most certificate...
+Export it to MyCertificate.cer (base64 encoded). This process is different for each OS and Browser.
+If you're on a linux/mac something like echo -n | openssl s_client -connect google.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > /tmp/MyCertificate.cer
+should get the certificate for you in a terminal (assuming you have your distributions net-utils package installed).
+In a terminal, navigate to your Jetbrains installation (whichever IDE it is doesn't matter). Inside of the base folder
+navigate to the folder "jre64" or "jre32" or "jre" -> "lib" -> "security"
+Copy over MyCertificate.cer into the security folder. (mv /tmp/MyCertificate.cer)
+Type "keytool -keystore cacerts -importcert -alias MyCertificate -file MyCertificate.cer" without quotes.
+
+Use the default password of "changeit" (Without quotes, obviously.)
+
+When prompted to trust the certificate type "yes" (Without quotes...). Hit enter.
+
+Restart the IDE in question and it should now function normally. Repeat this process for all java (including jdk)
+installations and jetbrains tools just to be safe. The relative path is the same regardless: jre -> lib -> security
+If keytool is not found, you're probably on windows so try
+"%JAVA_HOME%/jre/bin/keytool" -keystore cacerts -importcert -alias MyCertificate -file MyCertificate.cer
+Otherwise, locate your keytool in wherever you have java installed or use the one in "jre(64|32)?" -> "bin"

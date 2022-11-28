@@ -528,7 +528,6 @@ public class Modelo_403Controller implements Initializable {
     @FXML
     private void BtnActionWsdl(ActionEvent event) throws SQLException, IOException, InvocationTargetException {
         //switchToWSDL();
-
         LoadDialog("ESTA ES UNA PRUEBA","QUE TAL ÉSTA PRUEBA.\nSE VE MUY BIEN\nNO?");
 
     }    

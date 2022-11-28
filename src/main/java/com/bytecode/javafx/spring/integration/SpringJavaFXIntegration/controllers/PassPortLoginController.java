@@ -58,6 +58,7 @@ public class PassPortLoginController  implements Initializable {
     @FXML
     private TextField p3_tf_numerodocumeto;
 
+
     @FXML
     void eventAction(ActionEvent event) {
 
@@ -180,7 +181,7 @@ public class PassPortLoginController  implements Initializable {
             alert.setHeaderText(null);
             alert.setTitle("Error");
             alert.setContentText(e.getMessage());
-            alert.showAndWait();              
+            alert.showAndWait();
 
 
         }
@@ -202,7 +203,6 @@ public class PassPortLoginController  implements Initializable {
         //App.parametrosModel.setDniNifNieTieDemo("");
         App.parametrosModel.setNombreViajero("");
 
-        p3_qrcode_img.requestFocus();
         p3_qrcode_img.setOnKeyTyped(new EventHandler<KeyEvent>() {
             public void handle(KeyEvent ke) {
                 //System.out.println("p2_img_barcode Key Pressed: " + ke.getText());
@@ -236,17 +236,21 @@ public class PassPortLoginController  implements Initializable {
                         alert.setHeaderText(null);
                         alert.setTitle("Error");
                         alert.setContentText(e.getMessage());
-                        alert.showAndWait();              
+                        alert.showAndWait();
 
                     }
 
                     ScannerReader="";
+                    p3_qrcode_img.requestFocus();
     
                 }                
             }
         });
 
+        p3_qrcode_img.requestFocus();
 
+        ActionEvent event = new ActionEvent();
+        switchToQRCode(event);
 
     }  
 

@@ -45,6 +45,7 @@ import org.iban4j.IbanFormatException;
 import org.iban4j.IbanUtil;
 import org.iban4j.InvalidCheckDigitException;
 import org.iban4j.UnsupportedCountryException;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -79,6 +80,7 @@ public class Valida_Envia_DERController implements Initializable {
 
     private final ZonedDateTime now = ZonedDateTime.now();
     private final ZonedDateTime fechaHoraLimite = now.plusHours(3).plusMinutes(30);
+    private final ZonedDateTime fechaHoraLimiteNow = now.plusHours(0).plusMinutes(0);
 
    //@Autowired
    //private ClienteRepository clienteRepository;
@@ -331,7 +333,7 @@ public class Valida_Envia_DERController implements Initializable {
         return s.matches(regex);//returns true if input and regex matches otherwise false;
     }
 
-    static int validaFechaHora(String start_date, String end_date, String retorno) {
+    public static int validaFechaHora(String start_date, String end_date, String now_date, String retorno) {
 
         // SimpleDateFormat converts the
         // string format to date object
@@ -344,9 +346,16 @@ public class Valida_Envia_DERController implements Initializable {
             // produce the date
             Date d1 = sdf.parse(start_date);
             Date d2 = sdf.parse(end_date);
+            Date d3 = sdf.parse(now_date);
 
             // Calucalte time difference
             // in milliseconds
+            long difference_out_Time = d2.getTime() - d3.getTime() ;
+            long difference_out_Hours = (difference_out_Time / (1000 * 60 * 60)) % 24;
+            if( ((int) difference_out_Hours) < 0){
+                return (int) difference_out_Hours;
+            }
+
             long difference_In_Time = d1.getTime() - d2.getTime();
 
             // Calucalte time difference in
@@ -366,6 +375,7 @@ public class Valida_Envia_DERController implements Initializable {
             // years, in days, in hours, in
             // minutes, and in seconds
 
+            /*
             System.out.print("Difference " + "between two dates is: ");
 
             System.out.println(difference_In_Years + " years, "
@@ -373,8 +383,9 @@ public class Valida_Envia_DERController implements Initializable {
                     + difference_In_Hours + " hours, "
                     + difference_In_Minutes + " minutes, "
                     + difference_In_Seconds + " seconds");
+            */
 
-            switch (retorno) {
+            switch (retorno.toUpperCase()) {
                 case "Y":
                     return (int) difference_In_Years;
                 case "D":
@@ -411,8 +422,20 @@ public class Valida_Envia_DERController implements Initializable {
             this.setTextFill(Color.BLACK);
 
             // deshabilitar las fechas futuras
+
             if (item.isAfter(LocalDate.now())) {
-                this.setDisable(true);
+                Integer i = validaFechaHora(item.toString()+" 00:00:00",LocalDate.now().toString()+" 00:00:00",LocalDate.now().toString()+" 00:00:00","d");
+                if(i.equals(1)){
+                    DateTime dt = new DateTime();  // current time
+                    int hours = dt.getHourOfDay();
+                    if(hours>=22){
+                        this.setDisable(false);
+                    }else{
+                        this.setDisable(true);
+                    }
+                }else{
+                    this.setDisable(true);
+                };
             }
 
             // deshabilitar las fechas pasadas
@@ -437,10 +460,6 @@ public class Valida_Envia_DERController implements Initializable {
             DayOfWeek dayweek = item.getDayOfWeek();
             if (dayweek == DayOfWeek.SATURDAY || dayweek == DayOfWeek.SUNDAY) {
                 this.setTextFill(Color.GREEN);
-            }
-
-            if (item.isAfter(LocalDate.now())) {
-                this.setDisable(true);
             }
 
         }
@@ -480,6 +499,7 @@ public class Valida_Envia_DERController implements Initializable {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String start_date = fechaHoraLimite.format(formatter);
+        String now_date = fechaHoraLimiteNow.format(formatter);
 
         //String start_date = "19-10-2022 03:10:20";
         // Given end Date
@@ -487,7 +507,7 @@ public class Valida_Envia_DERController implements Initializable {
 
         //TODO: validar que está verificando que la fecha y hora de salida no superalas 3 horas ni es menor a o horas-
         if (p4_tf_fechaLimiteSalidaHora.getLength() > 0 && p4_tf_fechaLimiteSalidaMinuto.getLength() > 0) {
-            int resultado = validaFechaHora(start_date, end_date, "H");
+            int resultado = validaFechaHora(start_date, end_date, now_date,"H");
             // TODO: fecha embarque temporalmente no se valida tiempo sólo se valida que los campos no esten vacios.
             //resultado = 0;
 
@@ -496,7 +516,7 @@ public class Valida_Envia_DERController implements Initializable {
                 PlayEmpty(p4_tf_fechaLimiteSalidaHora);
                 PlayEmpty(p4_tf_fechaLimiteSalidaMinuto);
                 procesarWSDL.valor = true;
-                System.out.println("Fecha de salida supera las 3 horas reglamentarias");
+                //System.out.println("Fecha de salida supera las 3 horas reglamentarias");
             } else {
                 p4_tf_fechaLimiteSalidaHora.setStyle(successStyle);
                 p4_tf_fechaLimiteSalidaMinuto.setStyle(successStyle);

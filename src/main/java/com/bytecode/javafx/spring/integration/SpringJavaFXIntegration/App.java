@@ -3,6 +3,13 @@ package com.bytecode.javafx.spring.integration.SpringJavaFXIntegration;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.model.ParametrosModel;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.repo.DigicRepository;
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.services.MantenimientoEnLoteDER;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
@@ -36,15 +43,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.ResourceBundle;
-
 
 @SpringBootApplication
 public class App extends Application {
@@ -77,6 +82,14 @@ public class App extends Application {
 
             GetParametros();
 
+            try {
+                GenerarGuiaQR();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } catch (WriterException e) {
+                throw new RuntimeException(e);
+            }
+
             MantenimientoEnLoteDER mantenimientoEnLoteDER = null;
 
             try {
@@ -103,6 +116,30 @@ public class App extends Application {
 		
 		launch(args);
 	}
+
+    public void  GenerarGuiaQR() throws IOException, WriterException {
+        //data that we want to store in the QR code
+        String str= parametrosModel.getGuiaQR();
+        //path where we want to get QR Code
+        String path = "GuiaQR.png";
+        //Encoding charset to be used
+        String charset = "UTF-8";
+        Map<EncodeHintType, ErrorCorrectionLevel> hashMap = new HashMap<EncodeHintType, ErrorCorrectionLevel>();
+        //generates QR code with Low level(L) error correction capability
+        hashMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+        //invoking the user-defined method that creates the QR code
+        generateQRcode(str, path, charset, hashMap, 200, 200);//increase or decrease height and width accodingly
+        //prints if the QR code is generated
+        //System.out.println("QR Code created successfully.");
+
+    };
+    public static void generateQRcode(String data, String path, String charset, Map map, int h, int w) throws WriterException, IOException
+    {
+        //the BitMatrix class represents the 2D matrix of bits
+        //MultiFormatWriter is a factory class that finds the appropriate Writer subclass for the BarcodeFormat requested and encodes the barcode with the supplied contents.
+        BitMatrix matrix = new MultiFormatWriter().encode(new String(data.getBytes(charset), charset), BarcodeFormat.QR_CODE, w, h);
+        MatrixToImageWriter.writeToFile(matrix, path.substring(path.lastIndexOf('.') + 1), new File(path));
+    }
 
     public void GetParametros(){
         // parsing file "Parametros.json"
@@ -133,6 +170,7 @@ public class App extends Application {
                 (String) MachineID,
                 (String) parametros.get("PasaporteDemo"),
                 (String) parametros.get("DniNifNieTieDemo"),
+                (String) parametros.get("GuiaQR"),
                 (Boolean) parametros.get("AppDemo"),
                 (String) date.format(formatter)
             );
@@ -161,6 +199,13 @@ public class App extends Application {
 
 
         GetParametros();
+        try {
+            GenerarGuiaQR();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (WriterException e) {
+            throw new RuntimeException(e);
+        }
 
         String cpuUUI = parametrosModel.getKIOSKOID();
 
