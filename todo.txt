@@ -1,11 +1,4 @@
 
-    TODO: 28/11/2022
-        [] - Pantalla 2: cambiar el foco del campo del nie y nit a la imagen.
-
-    TODO: 21/11/2022
-        [] - Pantalla 3: Localizar una imagen más representativa, que se parezca más al formato del kiosco o a un lector
-             de QR. Además, esta imagen no deberá permanecer tras el primer escaneo.
-
     TODO: 21/11/2022
        [] Hacer el teclado más grande y que se cierre al pulsar enter o picar fuera en la pantalla.
 
@@ -21,6 +14,12 @@
         [] - y la mayoría de sugerencias fueron por el teclado. que sea mas grande, que con el enter y el tab pase de campo,
           que picando fuera se cierre,....
 
+    TODO: 21/11/2022
+        [*] - Pantalla 3: Localizar una imagen más representativa, que se parezca más al formato del kiosco o a un lector
+             de QR.
+
+    TODO: 21/11/2022
+        [*] - Pantalla 3: Ventana modal de escanear documento de DER esta imagen no deberá permanecer tras el primer escaneo.
 
     TODO: 28/11/2022
         [*] - Pantalla 1: crear un QR dinámico que lea la información del archivo de parametros para la información de
@@ -42,7 +41,8 @@
        [*] - Cambiar el orden, primero introducción manual y la caja de texto para el número de pasaporte / DNI y luego
              la información de la opción de escanear.
        [*] - En las pantallas de mensajes para el error y el mensaje de warnig (codigo VF)
-       [*] - Proceso finalizado. Le informaremos al mail <mail del viajero> del proceso de su solicitud. Y quitar el icono del aspa rojo.
+       [*] - Proceso finalizado. Le informaremos al mail <mail del viajero> del proceso de su solicitud. Y quitar el
+             icono del aspa rojo.
        [*] - Su solicitud está sujeta a comprobación física. Diríjase al personal de la Agencia Tributaria Canaria.
              Le informaremos al mail <mail del viajero> del proceso de su solicitud.
        [*] - Cuando no pase la validación de los 3 meses, poner como mensaje "Han transcurrido más de 3 meses desde su compra;
@@ -67,11 +67,13 @@
              la Agencia Tributaria Canaria. Le informaremos al email xxxxxx del proceso de su solicitud". Debe aparecer
              el email que ha confirmado.
        [*] - Pantalla inicial: Sustituir el literal "lea el QR para tener una guía de la devolución del IGIC" por
-             "Si desea una guía del proceso de solicitud de devolución del IGIC, escanee el siguiente código QR con su teléfono móvil".
+             "Si desea una guía del proceso de solicitud de devolución del IGIC, escanee el siguiente código QR con su
+             teléfono móvil".
        [*] - Pantalla 2: Invertir el orden: cambiar los literales "Puede introducir su documento de identidad" y debajo
              "O escanearlo apoyándolo en la bandeja del lector".
        [*] - Pantalla inicial: poner el apartado de "Seleccione su idioma" con las banderas ocupando el mayor espacio de
-             la pantalla y la información para optener la guía ponerla debajo de las banderas, poder ser en la esquina inferior derecha.
+             la pantalla y la información para optener la guía ponerla debajo de las banderas, poder ser en la esquina
+             inferior derecha.
        [*] - Pantalla 2: Invertir el orden: poner encima "Puede introducir su documento de identidad" y debajo
              "O escanearlo apoyándolo en la bandeja del lector".
        [*] - Pantalla 6: al pulsar en el botón "Seleccionar" de las cuentas, si se pulsa en la parte de códigos de cuentas
@@ -79,9 +81,11 @@
        [*] - Sustituir <EMAIL> por el email del viajero.
        [*] - Pantalla 5: debe sombrear en rojo todos los campos obligatorios que estén vacíos (antes de dar al botón finalizar).
        [*] - Poner la nota de selección de cuenta en la casilla de al lado de "5.- Medio de Pago", es decir, encima de
-             las columnas de cuentas IBAN o sin IBAN. Poner esta nota y el aviso importante de campos obligatorios en letra color rojo.
+             las columnas de cuentas IBAN o sin IBAN. Poner esta nota y el aviso importante de campos obligatorios en
+             letra color rojo.
        [*] - Para las Islas Caiman mostró el mensaje de ok como si fuese un país de la UE. Revisar mensajes y de donde.
-               NOTA: EL MENSAJE ESTÁ BIEN PORQUE ESTÁ RETORNANDO UN CÓDIGO DE ERROR DE RED Y ESO NO TIENE FORMATO POR PAÍSES DE LA COMUNIDAD
+               NOTA: EL MENSAJE ESTÁ BIEN PORQUE ESTÁ RETORNANDO UN CÓDIGO DE ERROR DE RED Y ESO NO TIENE FORMATO POR
+               PAÍSES DE LA COMUNIDAD
        [*] - Pantalla 2: En la parte de escaneo, eliminar el dibujo de la pantalla y poner la imagen de un DNI y de un
              pasaporte, marcando con un recuadro rojo la parte del documento que tiene que escanear.
        [*] Revisar campos obligatorios en la opción sin iban. Permitió enviar sin clave de control ni código del banco.
@@ -106,7 +110,7 @@
         [*] - Iban pasarlo a mayúsculas
         [*] - cambio de mensaje de error Alert por un LoadDialog()
         [*] - Creo que con el DER en papel a veces da error al pasarlo un poco doblado. Si da error que salga un error
-                 más identificativo, "inténtelo de nuevo"
+              más identificativo, "inténtelo de nuevo"
 
     TODO: 16/11/2022
         [*] - Error BigDecimal en el campo de TotalDigic en el DER.
@@ -114,7 +118,7 @@
     TODO: 10/11/2022
         [*] - CREAR la notificación del procesando en los procesos que quedan en espera.
         [*] - Siguen sin aparecer las pantallas de "procesando", donde se les dé feedback a los viajeros para que
-        [*] -  sepan qué esperar y si está recogiendo o no los datos o si ya puede escanear otro documento.
+        [*] - sepan qué esperar y si está recogiendo o no los datos o si ya puede escanear otro documento.
 
     TODO: 15/11/2022
         Según la respuesta del servicio aparecerán los siguientes mensajes:
@@ -123,10 +127,12 @@
         [*] - SU SOLICITUD HA SIDO VALIDADA. GRACIAS POR SU VISITA A LAS ISLAS CANARIAS, QUE TENGA UN BUEN VIAJE DE VUELTA A CASA.
         [*] - OK y no es País de UE.
         [*] - icono de ok verde
-        [*] - SU SOLICITUD QUEDA PENDIENTE DE APORTAR DOCUMENTACIÓN DE IMPORTACIÓN EN DESTINO. LE INFORMAREMOS VÍA EMAIL DEL PROCESO DE SU SOLICITUD.
+        [*] - SU SOLICITUD QUEDA PENDIENTE DE APORTAR DOCUMENTACIÓN DE IMPORTACIÓN EN DESTINO. LE INFORMAREMOS VÍA EMAIL
+              DEL PROCESO DE SU SOLICITUD.
         [*] - VF.
         [*] - icono de warning.
-        [*] - SU SOLICITUD ESTÁ SUJETA A COMPROBACIÓN FÍSICA. DIRÍJASE AL PERSONAL DE LA AGENCIA TRIBUTARIA CANARIA. LE INFORMAREMOS VÍA EMAIL DEL PROCESO DE SU SOLICITUD.
+        [*] - SU SOLICITUD ESTÁ SUJETA A COMPROBACIÓN FÍSICA. DIRÍJASE AL PERSONAL DE LA AGENCIA TRIBUTARIA CANARIA.
+              LE INFORMAREMOS VÍA EMAIL DEL PROCESO DE SU SOLICITUD.
         [*] - ER
         [*] - icono de error rojo
         [*] - LE INFORMAREMOS VÍA EMAIL DEL PROCESO DE SU SOLICITUD
@@ -141,7 +147,7 @@
     TODO: 11/11/2022
         [*] - Icono de ERROR en el resultado del DER cambiarlo a Warning.
         [*] - Que en la pantalla después de meter el pasaporte aparezca ya activa la ventana modal con el texto
-                 "Escanee los der de uno en uno y pulse cerrar cuando termine".
+              "Escanee los der de uno en uno y pulse cerrar cuando termine".
         [*] - pantalla validar der activar la solicitud de fecha de embarque
         [*] - Pantalla 8f5e2665:
             [*] - 4.- "Datos del transporte".

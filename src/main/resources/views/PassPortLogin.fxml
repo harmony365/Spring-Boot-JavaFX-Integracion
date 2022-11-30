@@ -67,9 +67,9 @@
                                           <Font size="30.0" />
                                        </font>
                                     </Label>
-                                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="872.0">
+                                    <HBox alignment="CENTER" prefHeight="76.0" prefWidth="921.0">
                                        <children>
-                                          <Button fx:id="p3_btn_aceptar" focusTraversable="false" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchToAceptar" prefHeight="97.0" prefWidth="276.0" text="%p3_btn_aceptar">
+                                          <Button fx:id="p3_btn_aceptar" focusTraversable="false" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchToAceptar" prefHeight="66.0" prefWidth="240.0" text="%p3_btn_aceptar">
                                              <font>
                                                 <Font size="20.0" />
                                              </font>
@@ -79,7 +79,7 @@
                                                 <Font size="30.0" />
                                              </font>
                                           </Label>
-                                          <Button fx:id="p3_btn_cancelar" focusTraversable="false" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchToAnterior" prefHeight="97.0" prefWidth="276.0" text="%p3_btn_cancelar">
+                                          <Button fx:id="p3_btn_cancelar" focusTraversable="false" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchToAnterior" prefHeight="66.0" prefWidth="210.0" text="%p3_btn_cancelar">
                                              <font>
                                                 <Font size="20.0" />
                                              </font>
@@ -90,7 +90,7 @@
                                        <children>
                                           <Button fx:id="p3_btn_demo" focusTraversable="false" mnemonicParsing="false" onAction="#QRcodeRead" prefHeight="47.0" prefWidth="63.0" text="DEMO" />
                                           <Label fx:id="p3_passaporte11" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="921.0" textAlignment="CENTER" wrapText="true" />
-                                          <Label fx:id="p3_passaporte" alignment="CENTER" contentDisplay="CENTER" prefHeight="230.0" prefWidth="921.0" text="%p3_passaporte" textAlignment="CENTER" wrapText="true">
+                                          <Label fx:id="p3_passaporte" alignment="CENTER" contentDisplay="CENTER" prefHeight="125.0" prefWidth="921.0" text="%p3_passaporte" textAlignment="CENTER" wrapText="true">
                                              <font>
                                                 <Font size="30.0" />
                                              </font>
@@ -98,7 +98,7 @@
                                           <Label fx:id="p3_passaporte111" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="35.0" prefHeight="40.0" prefWidth="921.0" textAlignment="CENTER" wrapText="true" />
                                           <Button fx:id="p3_btn_qr" focusTraversable="false" mnemonicParsing="false" onAction="#switchToQRCode" prefHeight="179.0" prefWidth="198.0">
                                              <graphic>
-                                                <ImageView fx:id="p3_qrcode_img" fitHeight="355.0" fitWidth="498.0" pickOnBounds="true" preserveRatio="true">
+                                                <ImageView fx:id="p3_qrcode_img" fitHeight="275.0" fitWidth="498.0" pickOnBounds="true" preserveRatio="true">
                                                    <image>
                                                       <Image url="@../img/dni-pasaporte.png" />
                                                    </image>
