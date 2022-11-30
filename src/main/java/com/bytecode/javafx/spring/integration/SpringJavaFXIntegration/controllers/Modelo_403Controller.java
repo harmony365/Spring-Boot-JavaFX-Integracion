@@ -452,9 +452,8 @@ public class Modelo_403Controller implements Initializable {
 
     @FXML
     private void LoadDialogProccess(){
-        JFXDialogLayout content = new JFXDialogLayout();
 
-        content.setBody(new ImageView("/img/procesando.gif"));
+        JFX_content.setBody(new ImageView("/img/procesando_dot_2.gif"));
 
         JFXDialog dialog = new JFXDialog(root, content, JFXDialog.DialogTransition.CENTER, false);
         JFXButton button = new JFXButton(bundle.getString( "p2_btn_popup"));

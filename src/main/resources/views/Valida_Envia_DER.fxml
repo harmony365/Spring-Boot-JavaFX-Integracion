@@ -342,9 +342,9 @@
       </Label>
       <StackPane fx:id="stpProcesando" prefHeight="1090.0" prefWidth="1929.0" visible="false">
          <children>
-            <ImageView fx:id="imgProcesando" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgProcesando" fitHeight="524.0" fitWidth="795.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/procesando.gif" />
+                  <Image url="@../img/procesando_dot_2.gif" />
                </image>
             </ImageView>
          </children>

@@ -469,9 +469,9 @@
 
       <StackPane fx:id="stpProcesando" prefHeight="1156.0" prefWidth="2059.0" visible="false">
          <children>
-            <ImageView fx:id="imgProcesando" fitHeight="211.0" fitWidth="231.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgProcesando" fitHeight="468.0" fitWidth="902.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/procesando.gif" />
+                  <Image url="@../img/procesando_dot_2.gif" />
                </image>
             </ImageView>
          </children>

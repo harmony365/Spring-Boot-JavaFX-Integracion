@@ -1,18 +1,17 @@
 package com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.controllers;
 
 import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.App;
+import com.bytecode.javafx.spring.integration.SpringJavaFXIntegration.utiles.VirtualKeyboard;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -247,10 +246,36 @@ public class PassPortLoginController  implements Initializable {
             }
         });
 
-        p3_qrcode_img.requestFocus();
-
         ActionEvent event = new ActionEvent();
         switchToQRCode(event);
+        p3_qrcode_img.requestFocus();
+
+        /* Implementación de teclado virtual */
+        /*
+        final TextField textField = new TextField();
+        textField.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("text field: "+textField.getText());
+            }
+        });
+        final TextArea textArea = new TextArea();
+
+        Stage stage = new Stage();
+        final VBox root = new VBox(5);
+        root.setPadding(new Insets(10));
+        Scene scene = new Scene(root);
+
+        VirtualKeyboard vkb = new VirtualKeyboard();
+
+        // just add a border to easily visualize the boundary of the keyboard:
+        vkb.view().setStyle("-fx-border-color: darkblue; -fx-border-radius: 5;");
+        //vkb.view().disableProperty().bind(false);
+
+        root.getChildren().addAll(textField, textArea, vkb.view());
+        stage.setScene(scene);
+        stage.show();
+        */
 
     }  
 
