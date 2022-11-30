@@ -824,6 +824,12 @@ public class Valida_Envia_DERController implements Initializable {
                 msgIcon = "null";
                 color = Color.rgb(252, 227, 227, 1);
                 break;
+            case "06E859" :
+            case "06E800" :
+                status = 1;
+                msgIcon = "null";
+                color = Color.rgb(252, 227, 227, 1);
+                break;
             case "VF" :
                 status = 1;
                 msgIcon = "warning";
@@ -841,7 +847,6 @@ public class Valida_Envia_DERController implements Initializable {
                 // Le agregamos datos
                 MaginErrores.add("06E028");
                 MaginErrores.add("06E004");
-                MaginErrores.add("06E800");
                 MaginErrores.add("06E857");
                 MaginErrores.add("06E856");
                 MaginErrores.add("06E157");

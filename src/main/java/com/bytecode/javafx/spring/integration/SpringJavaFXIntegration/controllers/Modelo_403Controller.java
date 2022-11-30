@@ -100,9 +100,6 @@ public class Modelo_403Controller implements Initializable {
     *  Variables de la plantilla
     */
 
-    @FXML
-    private JFXDialog p2_Dialog_Procesando;
-
     @FXML private Button p2_btn_aceptar,  p2_btn_qr, p2_btn_salir, p2_btn_demo, p2_btn_wsdl, p2_btn_add_403;
 
     @FXML private Label p2_lb_justificante, p2_lb_datos_establecimiento,  p2_lb_nif,  p2_lb_razon_social,
@@ -192,10 +189,6 @@ public class Modelo_403Controller implements Initializable {
         //
         LoadProccess(false);
 
-        p2_Dialog_Procesando.setTransitionType(JFXDialog.DialogTransition.CENTER);
-        p2_Dialog_Procesando.setOverlayClose(false);
-        p2_Dialog_Procesando.setDialogContainer(root);
-
         p2_img_barcode.getProperties().put(VK_STATE, VK_STATE_DISABLED);
 
         bundle = resources;
@@ -284,13 +277,16 @@ public class Modelo_403Controller implements Initializable {
                 LoadProccess(true);
                 //System.out.println("p2_img_barcode Key Pressed: " + ke.getText());
                 //System.out.println("p2_img_barcode Key Pressed: " + ke.getCharacter());
-                ScannerReader = ScannerReader + ke.getCharacter(); 
-                
-                if (ke.getCode().equals(KeyCode.ENTER) || 
+                ScannerReader = ScannerReader + ke.getCharacter();
+
+                if (ke.getCode() == KeyCode.ESCAPE){
+                    LoadProccess(false);
+                }
+                if (ke.getCode() == KeyCode.ENTER ||
                     ke.getCharacter().getBytes()[0] == '\n' || 
                     ke.getCharacter().getBytes()[0] == '\r') {
                 
-                    System.out.println("\nData: " + ScannerReader); 
+                    System.out.println("\nData: " + ScannerReader);
                     
                     try {
                         QRcodeRead(ScannerReader,0);
@@ -303,8 +299,10 @@ public class Modelo_403Controller implements Initializable {
                     }
 
                     ScannerReader="";
+                    JFX_dialog2.close();
     
-                }                
+                }
+                //LoadProccess(false);
             }
         });
 
@@ -318,7 +316,7 @@ public class Modelo_403Controller implements Initializable {
             LoadProccess(false);
             e.printStackTrace();
         }
-
+        LoadProccess(false);
     }
 
     @FXML
@@ -422,15 +420,17 @@ public class Modelo_403Controller implements Initializable {
         }));
     }
 
+    private JFXDialogLayout JFX_content = new JFXDialogLayout();
+    private JFXDialog JFX_dialog ;
+    private JFXDialogLayout JFX_content2 = new JFXDialogLayout();
+    private JFXDialog JFX_dialog2 ;
     @FXML
     private void LoadDialog(String title, String body){
-        JFXDialogLayout content = new JFXDialogLayout();
 
-        content.setHeading(new Text(title));
-        content.setBody(new Text(body));
-        content.setStyle("-fx-font-size: 20;");
+        JFX_content.setHeading(new Text(title));
+        JFX_content.setBody(new Text(body));
+        JFX_content.setStyle("-fx-font-size: 20;");
 
-        JFXDialog dialog = new JFXDialog(root, content, JFXDialog.DialogTransition.CENTER, false);
         JFXButton button = new JFXButton(bundle.getString( "p2_btn_popup"));
         button.setButtonType(JFXButton.ButtonType.RAISED);
         button.setStyle("-fx-background-color: #00bfff;");
@@ -438,24 +438,23 @@ public class Modelo_403Controller implements Initializable {
             @Override
             public void handle(ActionEvent actionEvent) {
                 p2_img_barcode.requestFocus();
-                dialog.close();
+                JFX_dialog.close();
             }
         });
 
-        content.setActions(button);
+        JFX_content.setActions(button);
+        JFX_dialog = new JFXDialog(root, JFX_content, JFXDialog.DialogTransition.CENTER, false);
         p2_img_barcode.requestFocus();
-        dialog.show();
+        JFX_dialog.show();
 
 
     }
-
 
     @FXML
     private void LoadDialogProccess(){
 
         JFX_content.setBody(new ImageView("/img/procesando_dot_2.gif"));
 
-        JFXDialog dialog = new JFXDialog(root, content, JFXDialog.DialogTransition.CENTER, false);
         JFXButton button = new JFXButton(bundle.getString( "p2_btn_popup"));
         button.setButtonType(JFXButton.ButtonType.RAISED);
         button.setStyle("-fx-background-color: #00bfff;");
@@ -463,41 +462,32 @@ public class Modelo_403Controller implements Initializable {
             @Override
             public void handle(ActionEvent actionEvent) {
                 p2_img_barcode.requestFocus();
-                dialog.close();
+                JFX_dialog.close();
             }
         });
 
-        content.setActions(button);
+        JFX_content.setActions(button);
+        JFX_dialog = new JFXDialog(root, JFX_content, JFXDialog.DialogTransition.CENTER, false);
         p2_img_barcode.requestFocus();
-        dialog.show();
+        JFX_dialog.show();
 
 
     }
 
-
     @FXML
     private void LoadDialogEscanear(){
-/*
-        p2_btn_add_403.setDisable(true);
-        p2_btn_salir.setDisable(true);
-        p2_btn_wsdl.setDisable(true);
-        p2_btn_demo.setDisable(true);
-        //p2_tv_justificantesdigic.setDisable(true);
-*/
+
         String title, body;
 
         title = "DIALOG" ;
 
         body = bundle.getString( "p2_lb_popup_escanee_qr");
 
-        JFXDialogLayout content = new JFXDialogLayout();
+        JFX_content2.setHeading(new Text(title));
+        JFX_content2.setHeading(new ImageView("/img/scanearModelo403.png"));
+        JFX_content2.setBody(new Text(body));
+        JFX_content2.setStyle("-fx-font-size: 20;");
 
-        content.setHeading(new Text(title));
-        content.setHeading(new ImageView("/img/scanearModelo403.png"));
-        content.setBody(new Text(body));
-        content.setStyle("-fx-font-size: 20;");
-
-        JFXDialog dialog = new JFXDialog(root, content, JFXDialog.DialogTransition.CENTER, false);
         JFXButton button = new JFXButton(bundle.getString( "p2_btn_popup"));
         button.setButtonType(JFXButton.ButtonType.RAISED);
         button.setStyle("-fx-background-color: #00bfff;");
@@ -512,49 +502,32 @@ public class Modelo_403Controller implements Initializable {
                 p2_btn_wsdl.setDisable(false);
                 p2_btn_demo.setDisable(false);
                 //p2_tv_justificantesdigic.setDisable(false);
-                dialog.close();
+                JFX_dialog2.close();
             }
         });
 
-        content.setActions(button);
+        JFX_content2.setActions(button);
+        JFX_dialog2 = new JFXDialog(root, JFX_content2, JFXDialog.DialogTransition.CENTER, false);
 
-        dialog.show();
+        JFX_dialog2.show();
         p2_img_barcode.requestFocus();
 
     }
-
 
     @FXML
     private void BtnActionWsdl(ActionEvent event) throws SQLException, IOException, InvocationTargetException {
         //switchToWSDL();
         LoadDialog("ESTA ES UNA PRUEBA","QUE TAL ÉSTA PRUEBA.\nSE VE MUY BIEN\nNO?");
 
-    }    
+    }
 
     @FXML 
     private void switchToAnterior() throws IOException {
-        /*
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirmation Dialog");
-        alert.setHeaderText("Look, a Confirmation Dialog");
-        alert.setContentText("Are you ok with this?");
 
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
-            Locale locale = Locale.getDefault();
-            App.setRoot("/views/primary",locale);
-        } else {
-            // ... user chose CANCEL or closed the dialog
-        }
-*/
+        JFX_content.setHeading(new Text(bundle.getString( "p2_btn_anterior_dialogo_Heading")));
+        JFX_content.setBody(new Text(bundle.getString( "p2_btn_anterior_dialogo_Body")));
+        JFX_content.setStyle("-fx-font-size: 20;");
 
-        JFXDialogLayout content = new JFXDialogLayout();
-
-        content.setHeading(new Text(bundle.getString( "p2_btn_anterior_dialogo_Heading")));
-        content.setBody(new Text(bundle.getString( "p2_btn_anterior_dialogo_Body")));
-        content.setStyle("-fx-font-size: 20;");
-
-        JFXDialog dialog = new JFXDialog(root, content, JFXDialog.DialogTransition.CENTER, false);
         JFXButton buttonOK = new JFXButton(bundle.getString( "p2_btn_anterior_dialogo_ok"));
         JFXButton buttonCancel = new JFXButton(bundle.getString( "p2_btn_anterior_dialogo_cancelar"));
         buttonOK.setButtonType(JFXButton.ButtonType.RAISED);
@@ -564,13 +537,13 @@ public class Modelo_403Controller implements Initializable {
         buttonCancel.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                dialog.close();
+                JFX_dialog.close();
             }
         });
         buttonOK.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                dialog.close();
+                JFX_dialog.close();
 
                 try {
 
@@ -586,9 +559,11 @@ public class Modelo_403Controller implements Initializable {
             }
         });
 
-        content.setActions(buttonOK,buttonCancel);
+        JFX_content.setActions(buttonOK,buttonCancel);
 
-        dialog.show();
+        JFX_dialog = new JFXDialog(root, JFX_content, JFXDialog.DialogTransition.CENTER, false);
+
+        JFX_dialog.show();
 
     }
 
@@ -692,7 +667,6 @@ public class Modelo_403Controller implements Initializable {
                 if(App.parametrosModel.getAppDemo()) System.out.print("\nfecha Limite Salida: Se encuentra caducada");
                 p2_tx_info_item.setText(bundle.getString( "p2_tx_info_fechalimite"));
                 //p2_an_info_item.setVisible(true);
-                 p2_Dialog_Procesando.close();
 
                  LoadDialog("", bundle.getString( "p2_tx_info_fechalimite"));
 
@@ -701,7 +675,6 @@ public class Modelo_403Controller implements Initializable {
                  if(App.parametrosModel.getAppDemo()) System.out.print("\nvalorDocumento: No corresponde con el valor esperado");
                 p2_tx_info_item.setText(bundle.getString( "p2_tx_info_item2"));
                 //p2_an_info_item.setVisible(true);
-                 p2_Dialog_Procesando.close();
 
                  LoadDialog("", bundle.getString( "p2_tx_info_item2"));
 
@@ -712,7 +685,6 @@ public class Modelo_403Controller implements Initializable {
                 
                 p2_tx_info_item.setText(bundle.getString( "p2_tx_info_item"));                
                 //p2_an_info_item.setVisible(true);
-                 p2_Dialog_Procesando.close();
 
                  LoadDialog("", bundle.getString( "p2_tx_info_item"));
 

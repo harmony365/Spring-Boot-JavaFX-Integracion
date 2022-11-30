@@ -72,7 +72,7 @@ public class App extends Application {
 
     public static String UUIDProcess,MensajeValidaDER_icon,MensajeValidaDER_error,MensajeValidaDER_Pais,MensajeValidaDER_email;
 
-    public static Boolean MensajeValidaDER_action;
+    public static Boolean MensajeValidaDER_action, Runtime_DEBUG = false;
 
     private final static Logger LOGGER = LogManager.getLogger(App.class.getName());
 
@@ -113,6 +113,10 @@ public class App extends Application {
     }
 
 	public static void main(String[] args) {
+        if (args.length > 1 || args[0].equals("DEBUG")) { //si hay más de 1 parámetro
+            Runtime_DEBUG = true;
+            System.out.println("La Aplicación está corriendo en Modo " + args[0]);
+        }
 		
 		launch(args);
 	}
@@ -161,6 +165,11 @@ public class App extends Application {
 
             ob = new JSONParser().parse(new FileReader("Parametros.json"));
             parametros = (JSONObject) ob;
+
+            if((Boolean) parametros.get("AppDemo")){
+                Runtime_DEBUG = true;
+            }
+
             parametrosModel.ParametrosModel(
                 (String) parametros.get("WsdlUrl"),
                 (String) parametros.get("WsdlUser"),
@@ -171,7 +180,7 @@ public class App extends Application {
                 (String) parametros.get("PasaporteDemo"),
                 (String) parametros.get("DniNifNieTieDemo"),
                 (String) parametros.get("GuiaQR"),
-                (Boolean) parametros.get("AppDemo"),
+                Runtime_DEBUG,
                 (String) date.format(formatter)
             );
 
@@ -262,7 +271,8 @@ public class App extends Application {
 
             if (event.getCode() == KeyCode.ESCAPE) {
                 System.out.println("ESCAPE pressed Target: " + target);
-                //event.consume();
+                event.consume();
+
             } 
 
             /*            
@@ -338,6 +348,7 @@ public class App extends Application {
         System.out.println("App: stop");
         BackGroundWonder.stop();
         Platform.exit();
+        System.exit(0);
     }
 
 

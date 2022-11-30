@@ -14,6 +14,14 @@
         [] - y la mayoría de sugerencias fueron por el teclado. que sea mas grande, que con el enter y el tab pase de campo,
           que picando fuera se cierre,....
 
+
+    TODO: 30/11/2022
+        [*] - 06E859 Error en la presentación. Motivo: Justificante eliminado.
+        [*] - 06E800 Autoliquidación duplicada. No se permite la presentación.
+
+    TODO: 28/11/2022
+        [*] - Pantalla 2: cambiar el foco del campo del nie y nit a la imagen.
+
     TODO: 21/11/2022
         [*] - Pantalla 3: Localizar una imagen más representativa, que se parezca más al formato del kiosco o a un lector
              de QR.
