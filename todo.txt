@@ -14,6 +14,12 @@
         [] - y la mayoría de sugerencias fueron por el teclado. que sea mas grande, que con el enter y el tab pase de campo,
           que picando fuera se cierre,....
 
+    TODO: 21/11/2022
+        [*] - Pantalla 3: Localizar una imagen más representativa, que se parezca más al formato del kiosco o a un lector
+             de QR.
+
+    TODO: 21/11/2022
+        [*] - Pantalla 3: Ventana modal de escanear documento de DER esta imagen no deberá permanecer tras el primer escaneo.
 
     TODO: 30/11/2022
         [*] - 06E859 Error en la presentación. Motivo: Justificante eliminado.
